@@ -1,0 +1,1 @@
+"G:\Debugging Tools for Windows (x86)\windbg.exe" -b -k com:pipe,port=\\.\pipe\com_1,baud=115200,reconnect -y E:\wrk\Symbols -srcpath E:\wrk\base
