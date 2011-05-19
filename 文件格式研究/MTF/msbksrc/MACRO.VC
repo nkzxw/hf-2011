@@ -1,0 +1,8 @@
+#macro defines for Microsofts VC 5.0 command line compiler
+EXE = exe
+OBJ = obj
+DEL = del
+CC = cl /c
+LNK = link
+
+

@@ -1,0 +1,8 @@
+#macro defines for Microsofts QC25 environment
+EXE = exe
+OBJ = obj
+DEL = del
+DELIM = ;
+CC = qcl /c /AL
+LNK = qlink
+
