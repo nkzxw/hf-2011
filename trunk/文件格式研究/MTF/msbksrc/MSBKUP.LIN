@@ -1,0 +1,47 @@
+# make build file for msbackup programs
+# in a single compiler environment just include the correct file
+
+#macro defines for gcc environment
+OS_STR = UNIX
+EXE = 
+OBJ = o
+DEL = rm
+DELIM = 
+CC = gcc -c -ggdb
+LNK = gcc -ggdb
+
+
+
+#dependancies below generic for Unix gcc and the Evil Empire's cl
+#remove match, its not unix compatible right now...
+
+ALL: msqic ntbkup
+
+CLEAN:
+	$(DEL) *.$(OBJ)
+
+#*.QIC reader
+msqic: msqic.$(OBJ) qicdcomp.$(OBJ) msqicrcv.$(OBJ) 
+	$(LNK) -o msqic msqic.$(OBJ) qicdcomp.$(OBJ) msqicrcv.$(OBJ) $(DELIM)
+
+msqic.$(OBJ): msqic.c msqic.h
+	$(CC) msqic.c
+
+msqicrcv.$(OBJ): msqicrcv.c msqic.h
+	$(CC) msqicrcv.c
+
+qicdcomp.$(OBJ): qicdcomp.c msqic.h
+	$(CC) qicdcomp.c
+
+
+#*.BKF reader
+ntbkup: ntbkup.$(OBJ) nttree.$(OBJ)
+	$(LNK) -o ntbkup ntbkup.$(OBJ) nttree.$(OBJ) $(DELIM)
+
+ntbkup.$(OBJ): ntbkup.c  ntbkup.h
+	$(CC) -D_FILE_OFFSET_BITS=64 ntbkup.c
+
+
+nttree.$(OBJ): nttree.c  ntbkup.h
+	$(CC) -D_FILE_OFFSET_BITS=64 nttree.c
+

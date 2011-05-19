@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="BackupReader">
+</Property><Property Name="解决方案文件" Value="E:\work\2011-5-18\文件格式研究\MTF\BackupReader\BackupReader.sln">
+</Property><Property Name="Date" Value="2011年5月18日">
+</Property><Property Name="Time" Value="17:46">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="BackupReader.sln" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader.sln">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\BackupReader.csproj" Description="项目文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\BackupReader.csproj">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\BackupReader.csproj.user" Description="项目用户文件成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\BackupReader.csproj.user">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\CBackupReader.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\CBackupReader.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\CBackupStream.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\CBackupStream.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\CCatalog.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\CCatalog.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\CDataStream.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\CDataStream.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\CDescriptorBlock.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\CDescriptorBlock.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\COSSpecificData.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\COSSpecificData.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\CSupport.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\CSupport.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\frmMain.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\frmMain.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\frmMain.Designer.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\frmMain.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\Program.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\Program.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\Properties\AssemblyInfo.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\Properties\Resources.Designer.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\Properties\Settings.Designer.cs" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\Properties\Settings.settings" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\backup.ico" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\backup.ico">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\frmMain.resx" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\frmMain.resx">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\Properties\Resources.resx" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\Properties\app.manifest" Description="文件已成功备份为 E:\work\2011-5-18\文件格式研究\MTF\BackupReader\Backup\BackupReader\Properties\app.manifest">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\BackupReader.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="BackupReader" Source="BackupReader\BackupReader.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="BackupReader.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="BackupReader.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BackupReader" Source="BackupReader\BackupReader.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event></UpgradeLog>

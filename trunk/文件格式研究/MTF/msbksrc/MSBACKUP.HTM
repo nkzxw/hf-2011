@@ -1,0 +1,1531 @@
+<!-- a brief review of Win9x MSBACKUP work
+     see csource/dump/msqic.c and sub dir msbackup/ntbkup.*
+     and inet\download\sdk for qic###.pdf
+        122 deals with compression, maybe of interest
+11/27/03 update to include more information on
+        data recovery, and *.bkf format from NTBackUp
+        Expanded keywords string to include these new topics
+12/06/03 minnor update to ntbkup structure definitions
+12/09/03 add NTBKUP multi-set and update DIRB information
+01/08/04 copy current 12/22/03 page to msbkup03.htm to preserve
+         Updating to reflect MTF spec, removing my structures.
+         Also convert all of document to reflect open source
+         nature and change program name from XPBKUP to NTBKUP.
+         add sections on DOWNLOADs and Acknowledgments
+01/20/04 change @cmd instructions for MSQIC as added named 'ROOT' for Win98
+01/26/04 add @cmd for NTBKUP
+02/03/04 add Recovery MSBackUp format notes based on Avik's info
+02/08/04 add Java MTF reader links
+03/19/04 add bug fix info for latest versions
+04/29/04 correct numeric argument info, change most in MSQIC to hex
+         a while ago.  Program usage screen was correct but not
+         image of it in this document!  Also add link to MSQIC 1.12
+05/03/04 add link in download to msqic-b.htm for v1.11 trial
+05/29/04 go to ntbkup 1.04
+07/09/04 go to ntbkup 1.06 and make msqic v1.11 the standard removing links to beta
+06/14/05 copy prior page to msbackup4.htm  add latest versions with quad word
+         offsets, ntbkup 1.07 and msqic 1.11 and version history
+         as well as logic of floppy based backup structure for msqic, #MVQICFMT
+[think text is about right, but need to update archives to do distribution
+ should do current NTBKUP usage screen in examples section, can see if
+ stuff on msqic patching is clear enough
+]
+03/02/07 add ntbkup 1.07c notes and credit
+03/21/07 add ntbkup warning that unicode file names not supported in open()
+11/27/07 add link to doskbup.htm
+01/22/08 When added ntbkup 1.07c I did not update source archive
+    instead mentioned it was slightly out of date.  Correct
+    this with updated archive in preperation for soureforge migration
+-->
+<html>
+<HEAD>
+<META Name="description" 
+   Content="Win9x MSBackUp File Format & Data Recovery">
+<META Name="keywords" 
+   Content="Win9x,file format,Data Recovery,QIC,qic113,MSBackup,SeaGate,BKF,MTF,NTBackUp,archive,compression">
+</HEAD>
+
+<body>
+<h2>Win9x & XP & NT MSBackUp File Format and Data Recovery</h2>
+<pre>
+Created:     10/02/03
+Last Update: 03/02/07
+Current Versions: MSQIC.exe  1.11     NTBKUP.exe  1.07c
+</pre>
+<h3>Contents</h3>
+<a href="#SUPPORT">Short Support Rant</a><br>
+<a href="#INTRO">Introduction & Disclaimer</a><br>
+<a href="dosbkup.htm">Norton's MSBackup (supplied with MSDOS 6.xx)</a><br>
+<a href="#W98QICFMT">Win98 *.QIC MSBackUp's File Format</a><br>
+<a href="#W95QICFMT">Win95 *.QIC  MSBackUp File Format</a><br>
+<a href="#RECQICFMT">Disastor Recovery? version of *.QIC  MSBackUp File Format</a><br>
+<a href="#MVQICFMT">Multi-Volume *.QIC MSBackup issues</a><br>
+<a href="#QICDCOMP">QIC Data Decompression</a><br>
+<a href="#LFILE">Large File Issues</a>, the 2 Giga Byte file limit<br>
+<a href="#BKF-FMT">NTBackUp's *.BKF Data File Format</a><br>
+<a href="#MSQIC">Data Recovery from a *.QIC file with MSQIC</a><br>
+<a href="#NTBKUP">Data Recovery from a *.BKF file with NTBkUp</a><br>
+<a href="#MVBKFFMT">Multi-Volume *.BKF Backup issues</a><br>
+<a href="msbkoutp.htm">Sample Program Output</a><br>
+<a href="#DWLD">Downloads available & Version history</a><br>
+<a href="msbk-faq.htm">MSBackUp FAQ</a><br>
+<a href="#ACK">Acknowledgements</a><br>
+<a href="#LINKS">Links</a> to related programs and information
+<a name="SUPPORT"</a>
+<h3>Support Rant</h3>
+I guess its not surprising that one gets a fair amount of email when
+you put something like this out for free.  My target audience was other programmers
+or IT professionals, although I'm happy for anyone who benifits. 
+I did it cause I was interested in the file formats, not to make money.  
+However, as indicated near the end of the download section, my return on invested time is currently around $0.10 per hour. <b>PLEASE READ THE DOCUMENTATION AVAILABLE</b> 
+before asking me a question.  I spent a fair amount of time writing the <a href="msbkoutp.htm"> Sample Output</a> section which has syntax examples and the output they should produce.  This was written in the hope of minimizing repeated questions.
+Much of the mail I get would not have been sent if this section had been
+read, and its getting tedious!  I admit to being over 50 years old, so I'm more
+comfortable with a command line interface than apparently many of today's users.
+If you don't know how to use a consol application in Windows, please do some
+research elsewhere before asking me.  If you are really desperate and need
+a holding hand, then pay me for my time (minimum rate is $50/hour).  I'm currently
+underemployed and need the money!  Please do not compliment me on the free software
+and then ask me to do your job for you.<p>
+
+Beginning in 2004 the amount of email I recieve on this subject has decreased.
+I suspect most people who might get burned by these 'great' MS applications have
+resolved their problems.  I am happy to give anyone a couple of free support
+emails.  I have also charged a few people for extracting files from, or
+'fixing' corrupted backup files.  In general this has worked well, and I include
+some <a href="#ACK">acknowledgements</a>, however I've also been stiffed for several 
+days work so if you need something like this I now have a money in front policy.<p>
+
+I also spend half my time at the end of a dirt road with a slow telephone link.
+Please to not send large attachements without discussing it in advance.  Recently
+a well intentioned user sent me some *.jpg screen images of his output, this would
+have been painful if I had been on the dirt road when I recieved them.<br>
+<b>End of Rant</b>
+<p>
+<a name="INTRO"</a>
+<h4>Introduction to MSBackUp</h4>
+This page discusses some of the internal structures I've observed/discovered
+in the backup programs distributed with the Win32 versions of
+Microsoft's Windows Operating systems.  It also introduces two freely 
+available programs I wrote based on this information to recover data 
+from backup archive files (*.QIC and *.BKF) created with these Windows 
+backup programs.  As of 2004 I've made the source code for these
+programs available under the GNU Public License.<p>
+
+I took a look at Win32 Backup Programs after coming across a FreeDos
+<a href="http://projects.freedos.net/backup/brtecdoc.htm">project</a>.
+The project page above says there were several incompatible
+MSDOS versions of BACKUP.  Apparently none of these
+are compatible with the Win32 programs described below, and
+worse I currently know of three mutually incompatible Win32
+backup programs: NT, XP, and Win 2000 use NTBackup while Win95 and Win98
+used different versions of MSBackup.  By default NTBackup produces a *.BKF
+file and both versions of MSBackup produce *.QIC files,
+but the *.QIC internals are sufficiently different that these files
+can only be used with the program with which
+they were created. Thanks again guys, that's real helpful in a 
+backup program!<p>
+
+If one does a search for 'QIC Data Recovery' you will find a number of
+people have backed up their Win9x data, and installed a newer OS, ie XP
+or Win 98, only to find they can't restore the data without going back to the
+older OS.  My <a href="#MSQIC">MSQIC</a> attempts to solve this problem.
+I found a third party 
+<a href="http://www.cknow.com/ckinfo/acro_q/qic_1.shtml">article<a>
+which discusses Win9x vs WinXP MSBackUp incompatibility. <br>
+Note: sorry I believe the URL above is correct, but sometimes it redirects 
+for some reason.  If above doesn' take you to 'Quarter-Inch Cartridge'
+go to 'Q' in the index, then pick QIC.<br>
+Also a <a href="http://www.vtc.net/~cdgoldin/caveat/backups.htm">review</a>
+which may be of interest and is definately a fun read.<p>
+
+I couldn't resist looking at the more recent <a href="#NTBKUP">NTBackup</a>
+issues and also created a program that will restore files from these archives.
+It turns out both my programs are useful for data recovery.  Apparently passing
+one of these backup archives around a network can cause minnor corruption such
+that even the originating program no longer recognizes the file, yet my
+more simplistic approaches are perfectly happy recovering the data.<p>
+
+Additional information is available from 
+<a href="http://support.microsoft.com/?kbid=305381">Microsoft</a>
+which confirms the NTBackUp incompatibility with Win32 *.QIC formats.
+It seems odd, but this Microsoft Knowledge Base article seems
+to say the NT and XP versions of NTBackUp are different. Apparently none
+of the new NTBackUp programs support QIC tapes
+as the Win9x versions did. The NTBackUp version that comes with XP (but not NT) 
+can read an uncompressed *.QIC file image. The Microsoft article says
+NTBackUp uses a different file compression algorithm. So if you compressed
+your archive or are running NT, Microsoft can't help you.
+Another third party article about 
+<a href="http://www.scscc.com/ASK/Ask%20The%20Experts.htm">XP Home</a>
+edition suggests it is not so easy to find or install NTBackUp if you
+don't have the Professional edition.(Search for NTBackUp on page above to
+find the relevant section)<p>
+
+The general solution for recovering data from a *.QIC archive seems to be 
+you should take the file to a Win9x machine running the OS the archive was
+created with and use its standard MSBackUp program if you despreately need 
+to recover the older archive.  This is not bad advise, just not very convenient.<p>
+
+I have not been trapped by this problem.  I either backup the original files to CDROM, or
+use a Unix compatible TAR program whose format hasn't change significantly
+in something like 20 years.  However I was curious about the data
+file format and I did the exploration described below.  At this time
+I understand the general layout of both *.QIC and *.BKF files.  I only
+know how to decompress *.QIC files.  As of 2004 I'm making both executable
+versions and source code available under the GNU Public License.
+Binary <a href="#DWLD">distributions</a> for
+MSDOS, WIN32, and Linux are now freely available.  However I still
+ask that you give me feedback so I can improve these programs
+(ie fix bugs!).
+<p>
+
+I don't imagine there will be a lot of interest in this, but if
+you have gotten this far and are interested please send me
+a <a href="http://www.fpns.net/willy/contact.htm">note</a>.  
+I'd be interested in looking at your sample archive data if these programs 
+do not work properly.  In particular I do not have either WinXP nor NT
+so I can not create my own *.BKF archives.
+People have sent me several small uncompressed *.BKF archives as samples
+that I've used to verify this work. Please DO NOT send large files
+without checking, I don't always have a high speed connection nor
+a lot of disk space.  Its apparently not possible to activate 
+the compression option when backing up to a file, and I only deal with *.BKF 
+<b>files</b>.<p>
+
+
+<h2> <b>WARNING:</b> all information presented below are GUESSES done by inspection.  
+Use this information and the associated programs at your own risk. 
+I do NOT claim they are correct nor accept liability for your use of them.
+</h2>
+
+<a name="W98QICFMT"</a>
+<h4>Win98 QIC Backup File Format</h4>
+The data structures described below were obtained by inspection of
+*.qic BackUp files produced by the program below which came
+with my WinME operating system.  More information about this BackUp
+program is supposed to be available from the vendor, <a href = 
+"http://www.seagatesoftware.com">Seagate</a>.  However when I tried
+the URL I was redirected to a site that doesn't seem to have much
+to do with this product.  Seagate Software was apparently purchased
+by Veritas Software in 1999.
+The 'About' box in the help menu displays the following information:
+<pre>
+Microsoft Backup
+Version 4.10.1397
+Distributed by: Seagate Software, Inc.
+Copyright 1998 Seagate Software, Inc. All rights reserved
+</pre>
+
+
+Note after about 10 days looking at this WinME format, I find differences
+between it and my <a href="#W95QICFMT">Win95 BackUp</a> programs *.qic files.
+The major and minor version numbers from the VTBL header from the WinME program
+in the *.qic files discussed below are 0x5341 and 0x49.
+<p>
+
+
+The Win9x version of MSBackUp clearly has some relationship to the QIC format
+<a href="http://www.qic.org/html/qicstan.html">specifications</a> which
+are available on-line.  I'd done some work on this previously as I
+have some QIC80 tape drives.  However I quickly found the MSBackUp
+*.qic file format is significantly different.  I am using the
+structure definitions below to attempt to describe what I have
+learned regarding the *.qic file format.  See the msqic.h file in the
+source code archive for the most recent information.<p>
+
+<pre>
+typedef unsigned char BYTE;
+typedef unsigned short WORD;
+typedef unsigned long DWORD;
+
+
+// from pp9 of QIC113G, 
+struct qic_vtbl {
+BYTE tag[4]; // should be 'VTBL'
+DWORD nseg; // # of logical segments
+char  desc[44];
+DWORD date; // date and time created
+BYTE flag;  // bitmap
+BYTE seq;   // multi catridge sequence #
+WORD rev_major,rev_minor; // revision numberrs
+BYTE vres[14]; // reserved for vendor extensions
+DWORD start,end; // physical QFA block numbers, in WIN98 and WINME
+                 // these point to start volume data and dir segments
+BYTE passwd[8]; // if not used, start with a 0 byte
+DWORD dirSz,     // size of file set directory region in bytes
+      dataSz[2]; // total size of data region in bytes
+BYTE OSver[2];   // major and minor #
+BYTE sdrv[16];   // source drive volume lable
+BYTE ldev,       // logical dev file set originated from
+     res,        // should be 0
+     comp,       // compression bitmap, 0 if not used
+     OStype,
+     res2[2];       // more reserved stuff
+};
+
+/* If its a compressed volume there will be cseg_head
+   records ahead of each segment (in both catalog and data segments).  
+   The first immediately follows the Volume Table area
+   For the sake of argument, lets assume per QIC133 segments are
+   supposed to be &#60 32K, ie seg_sz high order bit isn't required.
+   Its used as a flag bit, set to indicate raw data.  IE do not 
+   decompress this segment.  Use seg_sz to jump to the
+   next segment header.
+*/
+#define SEG_SZ  0x7400  // Segment Size = blocking factor for *.QIC file
+#define RAW_SEG 0x8000  // flag for a raw data segment
+
+struct cseg_head {
+DWORD cum_sz,   // cumlative uncompressed bytes preceeding this segment
+      cum_sz_hi;// normally zero. High order DWORD of above for > 4Gb
+WORD  seg_sz;   // physical bytes in this segment, offset to next header
+                // typically 40% -50% of bytes which will be decompressed
+};
+
+
+// see section 7.1.3 of QIC 113 Spec for directory info, does not match below
+
+// DATA_SIG only if in data region 
+struct ms_dir_fixed {
+WORD rec_len;   // only valid in dir set
+DWORD ndx[2];   // thought this was quad word pointer to data? apparently not
+                // ndx[0] varies, ndx[1] = 0, was unknow[8]  
+                // in data section always seems to be 0xffffffff
+WORD path_len,  // @ 0xA  # path chars, exits in catalog and data section
+                // however path chars only present in data section
+     unknww1;   // 0xA  always?
+BYTE flag;      //  flag bytes
+WORD unknww2;   // 0x7  always?
+DWORD file_len; // @ 0x11 # bytes in original file
+BYTE unknwb1[20],  // was flags[0x18] but attrib at flags[20]
+     attrib,
+     unknwb2[3];   
+DWORD c_datetime, // created
+      unknwl1,    // always 0xFFFFFFFF?
+      a_datetime, // accessed
+      unknwl2,    // always 0xFFFFFFFF?
+      m_datetime, // modified, as shown in DOS
+      unknwl3;    // so can be expanded? always 0xFFFFFFFF?
+WORD nm_len; // length of the long variable length name
+};
+// var length name, case sensitive, unicode
+
+struct ms_dir_fixed2 {
+BYTE unkwn1[13];   // was [0x15];  this region fairly constant
+DWORD var1;        // these vars change file to file
+DWORD var2;
+WORD  nm_len; // length of 2nd, short ie DOS, variable length name
+};
+
+// var length name, always upper case => DOS, unicode
+// if in data region path follows, not in directory set
+//     var length path per ms_dir_fixed.path_len, unicode
+
+// BOTH ms_dir_fix* structures must be packed!
+
+/* Bitmap defines for flags
+   below seem to work with my current ms_dir_fixed.flag
+   don't seem to match QIC113G
+
+   Note there are a LOT of undefined bits below.  Wonder what they might be?
+*/
+#define SUBDIR   0x1  // this is a directory entry, not a file
+#define EMPTYDIR 0x2  // this marks an empty sub-directory
+#define DIRLAST  0x8  // last entry in this directory
+#define DIREND   0x30  // last entry in entire volume directory
+#define DAT_SIG  0x33CC33CCL // signature at start of Data Segment
+#define EDAT_SIG 0x66996699L // just before start of data file
+/* EDAT_SIG is immediately followed by a WORD before the
+   actual data stream starts.  No idea what this is, in my
+   sample files its been 0x7.  I ignore it
+*/
+
+#define BASEYR 1970 // uses unix base year and elapsed seconds in time
+</pre>
+
+Starting from the top, the file begins with a standard QIC113
+volume table per struct qic_vtbl.  There is at least one VTBL tag entry
+followed by a second Microsoft specific MDID tag and data block
+to terminate the volume table.  Most of the fields conform to
+the QIC specification, however bit 5 of the flag byte is not set
+although the directory set does seem to follow the data region.
+I'm not clear if the size fields conform or not (can't tell
+from my reading of the spec).  dataSz looks like the number
+of uncompressed bytes used for the data region.  dirSz is
+the number of bytes from the start of the directory to the
+end of the file. The volume table header area normally
+contains 256 bytes, one VTBL region and one MDID region.  However if
+multiple drives are contained in the archive there is one VTBL for
+each drive.  In a compressed volume these records are immediately followed by
+10 bytes for the first struct cseg_head.<p>
+
+Note to find the beginning of the data or directory (catalog) segements
+use the qic_vtbl start and end fields.  Subtracting 3 from each of
+these produces the number of SEG_SZ segments before the start of
+the data.  Ie a value of 3 implies data starts immediately after the
+MDID region.  See also the discussion of how this is done for
+<a href="#W95QICFMT">WIN95</a> archives.  The WIN95 logic works for
+single volume WIN98 and WINME archives.
+
+Following this header region where entries have a 128 byte block size,
+the remainder of the file is broken up into segments of 0x7400 bytes (SEG_SZ).
+All Win98/ME archives I've seen do not compress the 1st segment,
+nor the catalog segment(s), thus these files will always be at least
+59648 bytes long.  Data <a href="#QICDCOMP">compression</a> is discussed
+in detail later, but is done on a segment by segment basis.<p>
+
+The first data region segment immediately follows the VTBL header region.
+In a compressed volume the sum of the bytes in the VTBL header region 
++ dataSz generally takes one well past EOF, ie dataSz always
+represents the uncompressed data length.  Without compression, for my sample
+files, the VTBL header region size + dataSz falls significantly
+short of the beginning of the directory set because the last segment
+is rarely full.  In Win98/ME the dirSz is the physical size of the segment(s),
+but in Win95 it is the amount of space used in the segment(s).<p>
+
+The time stamps MSQIC displays for the individual files
+in the archive look correct.  However the time stamp for the VTBL
+creation time, data, was off by two years into the future. I added
+a corrective fudge factor, but its odd.  In the process of
+trying to figure out this time stamp issue and address why
+MSBackUp won't recognize my output files, I looked at the
+second volume table region with tag = 'MDID'.  A sample dump
+follows:
+<pre>
+ 00080: 4D 44 49 44  4D 65 64 69  75 6D 49 44  34 35 37 33 |MDIDMediumID4573
+ 00090: 38 31 33 31  39 30 30 38  35 30 36 38  37 37 34 B0 |813190085068774.
+ 000A0: 56 52 30 31  30 30 B0 43  53 42 36 44  37 B0 46 4D |VR0100.CSB6D7.FM
+ 000B0: 32 B0 55 4C  64 6F 68 65  6C 70 2D 74  73 74 B0 44 |2.ULdohelp-tst.D
+ 000C0: 54 33 46 37  39 37 32 44  44 B0 FF FD  FE F0 B0 00 |T3F7972DD.......
+ 000D0: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00 |................
+ 000E0: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00 |................
+ 000F0: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00 |................
+ </pre> 
+It appears to be a series of id tags followed by ascii strings,
+except that the string terminator is 0xB0.  My best guess at
+the id tags is as follows:
+<pre>
+Tag        used as
+MDID     - vtbl tag
+MediumID - unique 19 decimal digits for identification
+VR       - version? always 0100
+CS       - ? followed by 4 hex bytes
+FM       - ? always followed by '2'?  format?
+UL       - user label, ascii input string
+DT       - datetime of archive creation as 8 hex bytes
+</pre>
+The DT string seems to be in the same format as the file time stamps.
+It matches the time stamp of the archive file within +/- 10 hours.
+The difference is still puzzling, but much closer than the 
+VTBL.datetime.  Possibly just a timezone issue?  The CS tag
+is a puzzle, it varies without any logic I can determine.
+Nor can I figure out how the Unique MediumID value is generated.
+Either of these could be the problem in getting MSBackUp to 
+recognize my files, but I just don't get it.<p>
+
+
+
+Each directory entry contains two or more variable length strings.  The general format
+is similar to the QIC113 specification but the internal structure
+is significantly different as indicated by my ms_dir_fix* structures
+above. Every field with a name starting with 'unknw' has an unknown
+function, ie I have a significant amount to learn!  But the ones
+I do understand should be enough to reconstruct a file at its original
+location.  The directory contains repeats of the following:
+<pre>
+  {  struct ms_dir_fixed,
+     variable length long file name,
+     struct ms_dir_fixed2,
+     variable length short (MSDOS) file name,
+     a path string (may be empty)
+  }
+</pre>
+The discussion below relates to how this information is arranged in
+the directory (catalog) region of the file.  As mentioned its slightly
+different in the data region of the file where it is duplicated.
+The first field, rec_len, in ms_dir_fixed, is the length of
+the entire variable length block so one can read the entire
+thing or break the read up into segments. ms_dir_fixed contains most
+of the key file information and is followed by the long filename.
+This is in turn followed by ms_dir_fixed2 and the MSDOS 8.3 format 
+sort file name. Both structures contain a nm_len field
+which is the number of data bytes in the variable length string which immediately follows 
+the structure.  This length field may be zero as it seems to be for the
+root directory.  The names appear to be in unicode, in my samples
+every second byte in the name is zero.  They are not NUL terminated.
+As indicated in the structure definition above, the path string at the
+end only exists in the data region, not the catalog region.  path_len
+may also be zero representing an empty string.<p>
+
+The key data is in the ms_dir_fixed structure.  Its flag field is
+a bitmap which uses the defines {SUBDIR,LASTDIR,ENDDIR} above.
+The meaning is consistent with the QIC113 specification, but the
+bit values are different.  As indicated in the structure definition
+the file length, time stamps {creation, modification, last access},
+and file attributes have been identified.  The attribute byte
+matches the standard MSDOS attributes.  The names in the directory
+listing appear to be in alphbetic sorted order (case sensitive) based on
+the long file name for each subdirectoy containing a file.  
+I have not yet identified the link from the
+directory to the individual files in the data section.  However the
+order in the directory set seems to match the order in the data region.
+Ie one can determine the files location in the data region by an appropriate
+summation of the file and header bytes. Also note that a compressed archive
+file has struct cseg_head records embedded in its directory region even though
+the region is not compressed (the RAW_SEG bit is set in the seg_sz field).<p>
+
+The structure of the data region is similar, but each entry additionally
+contains the DAT_SIG and EDAT_SIG signature fields and if the entry
+represents a file rather than a directory is followed by the file data.
+Per the comment following EDAT_SIG above, there
+is also a WORD value between the EDAT_SIG and file data that I ignore.
+Note there is more information in the directory set fields than the data set
+fields for equivant structures.  My guess is that additional information is added as
+the file is opened and read.  Then MSBackUp updates the structures
+and writes them to the directory set (the catalog in MSBackUp terms).  
+In particluar for Win98/ME the first 10
+bytes of the ms_fixed_dir are always 0xFF.  Therefore if one were
+to attempt to directly parse the data set regions (ie for emergency
+recovery per msqic -x) the rec_len and ndx[] fields are not valid.  Also as mentioned
+above, the data region is the only place the data path string occurs,
+when looking at the directory set region one must generate the path from
+preceeding subdir entries.<p>
+
+I had someone point out that MSBACKUP *.qic files can span multiple volumes
+of media.  The person I talked to had 3 Zip disks in a single archive.  I
+have duplicated this behavior with floppy disks.  I only tried it once, and
+created an archive that filled the 1st floppy and spilled over onto a 2nd.
+There as a *.qic file on each that was consistent, ie MSQIC recognized them.
+The first had the flags set indicating "Volume spans multiple cartidges"
+and the second did not.  The catalog for the first only included the files
+that were in the archive on that disk.  The catalog for the second included
+all the files in both archive files.  It is not apparent to me how one would
+know which of the files in this catalog were on the prior disk.  Again one
+expects this information to be in some of the fields I don't understand,
+but I have no idea where!
+<p>
+
+For that matter, I expect a linkage from the catalog to the data region,
+but just don't see it.  There are a number of fields in the struct ms_dir_fixed 
+that I do not understand, but nothing jumps out at me regarding this linkage.
+
+<a name="W95QICFMT"</a>
+<h4>Win95 QIC Backup File Format</h4>
+I had read a couple review articles that suggested the Win9x
+family all used the same *.qic format.  This doesn't appear
+to be the case as I just did a trial with my Win95 machine and
+its a little different!  Won't you know. The two programs 
+do not recognize each others output.<p>
+
+The major and minor version numbers from the VTBL header from my Win95 program
+are 0x71 and 0x6.  The about box for the Win95 program displays:
+<pre>
+ Microsoft (R) Backup
+ Windows 95
+ Developed by Colorado Memory Systems
+ a division of Hewlett-Packard corporation
+</pre>
+
+In General the Win98 structures described above are valid, but they
+are arranged slightly differently.
+The data section starts immediately after the first and only
+128 byte VTBL record.  There is no VTBL record tagged MDID.
+If there are multiple drives in the backup, they are all in the
+same VTBL section with different subtrees for the different volumes.
+The lack of an MDID record is probably sufficient reason for the Win98/ME 
+version to reject the Win95 data, but I found a couple other small differences.  
+The segment compression algorithm seems a little different in that all 
+data segments are compressed and the RAW_SEG flag never occurs in 
+the data section of a Win95 archive 
+(at least it wasn't in the one file I looked at...).
+The Win95 data section format includes 18 extra bytes (3 pairs of
+the EDAT_SIG each followed by one WORD) after a subdirectory, and
+12 extra bytes (2 of the 3 subdir groups) after a file's data.  Although
+the format of the catalog directory entries is the same, the Win95
+program names the root node(s) by volume lable and drive letter
+while WinME leaves the root name empty and has a different VTBL for each
+volume.
+<p>
+
+The value of VTBL.dirSz is also different.  For Win95 its seems to be the
+actual size of the directory data in the directory segment.  
+In the WinME archives dirSz was the offset
+back into the file from EOF to the start of the directory data.
+In WIN95 VTBL.end field does not point to the first directory segment
+and the dirSz field is the number of actual bytes used by the directory rather
+than the total number of bytes in the directory segments.  The following algorithm 
+is used to find the directory data in WIN95 archives, and also works for a later 
+WIN98 and WINME archives which only contains a signle volume (one VTBL entry)
+and therefore only have one catalog region.
+<pre>
+If archive is NOT compressed 
+   sz = 29696 = SEG_SZ
+else
+   sz = 29686 (leave space for a cseg_head)
+cnt = VTBL.dirSz/sz
+if(VTBL.dirSZ % sz) cnt = cnt + 1 (increment if there is a remainder)
+seek back cnt * sz bytes from EOF
+</pre>
+Ie always back up an integer # of segments segment based on the amount of
+space required for the directory and seg_head records
+which occur at the start of all segments if its a compressed archive.
+<p>
+
+Just for fun I decided to back up multiple drives in a single
+archive.  The Win95 program did what makes sense to me, it
+put all the drives in one archive.  WinME
+conversely makes a new VTBL entry for each drive.  It appears to
+create one VTBL region at the beginning of the file containing a separate 
+entry for each drive.  These WinME
+archives are concatenated together as a data region
+and catalog, one per drive.  In my simple test cases this made for a very large,
+sparsely populated archive as 6 segments were required (two
+per drive).  WinME fills in the vtbl.sdrv[] and .ldev
+fields for each drive whereas Win95 leaves them blank as they
+can be associated with multiple drives which is indicated in the
+catalog of a Win95 archive.
+
+<a name="RECQICFMT"</a>
+<h4>Disastor Recovery? version of *.QIC  MSBackUp File Format</h4>
+In early February of 2004 I was contacted by the first *.QIC user I've talked
+to who has an archive larger than 4Gb.  Its a pretty strange archive compared to
+the discussion above, but does show a lot of common features.  I have not
+studied this in detail as it is the only case I've found so far, but I'm
+open to more input.<p>
+
+The biggest difference is that the entire first segment is filled with MDID
+blocks with no VTBL blocks.  File data starts in the 2nd segment.  The first
+'file' appears to be a detailed ascii description of the backup options.  It does
+not have a valid file name in the definition block and pretty clearly
+describes the backup.  A few typical lines are shown below, I've added line feeds
+for readability.
+<pre>
+&#60BACKUP_COMPONENTS xmlns="x-schema:#VssComponentMetadata" 
+version="1.0" 
+bootableSystemStateBackup="yes"
+selectComponents="yes"
+backupType="full"&#62
+&#60WRITER_COMPONENTS instanceId="02dc7a92-fa7a-42cd-a16c-56b5ebe2b1dc"
+writerId="a6ad56c2-b509-4e6c-bb19-49d8f43532f0"&#62
+&#60COMPONENT componentName="WMI" componentType="database"/&#62
+&#60/WRITER_COMPONENTS>
+&#60WRITER_COMPONENTS instanceId="0d56dab1-a14b-43dc-a8cc-70efa3104c18"
+writerId="f2436e37-09f5-41af-9b2a-4ca2435dbfd5"&#62
+&#60COMPONENT componentName="COM+ Registration Database"
+.....
+</pre>
+The "...." above means it continues like this for quite a while.
+Then a fairly standard *.QIC WinME format file follows.
+This was a compressed file, but we had to parse the blocks for cseg_headers
+to be sure since there were no apparent VTBL records.  The 2nd segment,
+the first after the last MDID region, was not compressed.  Most of the remainding 
+segments in the file appear to be compressed although we haven't looked at all of them.
+However the cseg_head.seg_sz was 0x73F2 for full segments rather than the
+0x73F6 value I've seen in the past.  After some review it turns out that
+there is a 4 byte long word at the end of each compressed segment in this
+file.  No idea what this is.  It doesn't occur in the other *.QIC files I've looked at.
+However the current decompression algorithm seems to work fine. We have yet to find a
+catalog region, but this is larger than I thought *.QIC files could be, and the current 
+versions of MSQIC don't handle this case.
+An alternate compilation is available and included in the source code distribution
+as Avik.c, but it seems rare enough I haven't bothered with a binary distribution.
+As described <a href="#LFILE">below</a> I've added 64 bit long integer support to
+NTBKUP, and the same logic could easily be added to Avik.c if someone finds another
+backup archive of this nature.
+<p>
+
+The owner of this file says he believes it was created  
+"as the output of a disaster recovery as oppopsed to a straight files only backup".
+The system on which it was created is long gone.
+I don't find this option in my version of MSBackUp, but haven't explored it in detail.
+I'm putting this note here in case someone else has this experience.  More information
+about how to such a file is created would be interesting.<p>
+
+<a name="MVQICFMT">
+<h4>Multi-Volume *.QIC MSBackup issues</h4>
+I looked at how MSBackup creates multi-volume backups in the summer of 2004
+when someone pointed out that my MSQIC program does not work with multiple
+floppy disk based archives.  I made a small three volume backup by writing to 
+720Kb floppies.  It was interesting, each of the three disks contained a VTBL, 
+a data region, and a catalog.  However only the first of the three could be 
+recovered directly with my MSQIC program.
+The VTBL of each disk has the multi-volume bit set in the flag byte and the
+seq byte set to the sequence number in the series.  The data region matches
+that of a single volume file.  However each successive catalog includes all
+the files contained in prior disks in the backup set and the offsets to file data in
+the data region are those that would result if the data from all prior disks 
+had been appended into a single file.  They are not the offset into the current
+volume, which is why MSQIC fails on all but the first disk.<p>
+
+As proof of concept, I've written a stand alone program, Nseg.c, that will construct 
+a single decompressed file by successively appending the data regions of successive volumes.  On the last volume in the set you tell it to finalize the file by appending 
+the catalog from this last volume to the end of the new archive.  This produces a single 
+uncompressed file that works with MSQIC.  It assumes you have enough space to write 
+everything to your hard disk.  I have not bothered to document this carefully, nor put 
+the code on this web site as I have had very little interest in MSQIC over the last year.
+However if anyone needs this get in touch with me and we'll work something out.
+The only person I've actually discussed this with had one floppy in their set which
+was corrupted, and this can complicate things...
+
+
+<a name="QICDCOMP">
+<h4>QIC Data Decompression</h4>
+I seem to have this working.  Its often between difficult
+and impossible to reverse engineer compression by inspection.
+However we seem to be in luck as the authors (Microsoft/Segate?)
+were nice enough to set the Volume Table compression
+bitmap byte, comp, correctly.  Per QIC123D.pdf the
+identifier <b>000001</b> indicates the standard described
+in QIC122B.pdf.  These are available from <a href="http://www.qic.org">
+QIC.org</a> as mentioned near the top of the page.<p>
+
+For the record I can't reproduce the example in QIC122B, I fear
+there may be some typos.  I have now decompressed a couple sample
+archives and have feedback from others who have used my alorithm
+successfully, so I'm pretty sure its correct.  Interestingly enough the first 
+segment( roughtly 30Kb) in Win98 is not compressed, but the other segments are.
+Conversely Win95 MSBackup seems to compress all the segments in a volume.<p>
+
+A compressed archive is broken up into a series of segments.
+I'm not sure why it was done this way as files often cross
+the segment boundries.  This allows one to decompress subsections
+on a segment by segment basis in large archives.
+Each segment is preceeded by the 10
+byte cseg_head record shown above.  These only occur in
+compressed files.  The first cseg_head record immediately follows the
+Volume table normally at file byte offset 256 for Win98 backups (assuming
+there is only one volume) and byte offset
+128 for Win96 backups.  The cseg_head records form a linked
+list of the segments as there are often some unused bytes
+at the end of a segment which must be skipped.<p>
+
+In a compressed archive there will be a cseg_head record at the start
+of each segment, at increments of SEG_SZ (0x7400) following the end
+of the volume table.  As mentioned above, the RAW_SEG flag in the
+cseg_head.seg_sz field indicates if the data has been compressed.
+The first segment of a data region and the catalog segments are not compressed.
+One obtains the physical size of the segment data by masking the high
+order RAW_SEG bit in the seg_sz field.  In the data region, the size will be
+0x73F6 if the entire segment is used (10 bytes are used by the cseg_head).
+There is always a terminating cseg_head in the data region with seg_sz = 0.  
+The preceeding cseg_head.seg_sz will be @#60 0x73ED as the terminating header
+is always inserted inside a segment and does not occur at the 0x7400 block
+boundry.  In small archive the first data region cseg_head may point to this
+terminating header.  If and apparently only if ther terminator occurs in
+the first uncompressed segment the first word of the cseg_head.cum_sz field 
+contains the byte offset from the end of this word to the next cseg_head.
+One only needs to know this because normally the terminating cseg_head.cum_sz
+is zero, but not when it occurs in the first data segment.<p>
+When you find the terminating header,  you are done with the data section of the file.
+If you were decompressing the segments as they were traversed, you should have
+decompressed the number of bytes indicated in the VTBL.dataSz
+field. <p>
+
+Note in a compressed file the catalog segments also have cseg_head records at
+the start of each segment, however there is not a terminating record for the
+catalog section.  All catalog records seem to have a seg_sz = 0xF7F6.
+The actual data length is determined by the flags in the catalog data.<p>
+
+I am able to decode each segment independantly
+using a slightly modified QIC122B algorithm.  With my
+sample text files its about a 2:1 compression factor, not
+bad for a fairly simple algorithm. I've found one major difference
+between the publish specification and practical application.  
+When copying a string of bytes
+from the history buffer, the example in QIC122B uses an
+offset to the start of the region to copy which is an absolute 
+index into the history buffer.  MSBackUp apparently uses
+a relative offset from the current position in the history buffer
+to the start of the data to copy.  Care must be taken to
+wrap this relative offset back to the end of the history
+buffer when required (basically a modulo operation to prevent
+a negative index).  With this system an offset
+of zero is still the termination marker for the algorithm.
+As with many compression algorithms, this depends on the 
+nearby data so you have to decode segments as a unified block,
+you can't jump in and start in the middle of a segment.  One can
+get a handle on which segments contain which files by comparing
+the file set directory with the cseg_head records as records in
+the directory and data regions occur in the same order.  The point
+is that if one has a large archive and were desperate you could 
+unpack portions of it rather than the entire archive.  However I
+suggest you just get a large spare drive and decompress the hole
+thing if you need to play around with the data.
+<p>
+
+<a name="LFILE"</a>
+<h4>Large File Issues</h4>
+
+The default behavior of programs I have created for MSDOS, WIN32, and Linux 
+is ANSI C compliant.  The programs used 32 bit 
+signed integers for lseek() positioning within a file.  This was good enough
+for a long time with PCs, but disk capacity and current usage has gone
+past this now.  Under Linux and WIN32, there are large disk options that allow 
+64 bit file offsets to solve this problem.  I found a nice 
+<a href="http://www.ntfs.com/ntfs_vs_fat.htm" alt="ntfs_vs_fat.htm">review</a>
+of the file and disk sizes supported by current file systems.  It appears that
+the systems that supported MSBackUp and *.QIC files {Win95, Win98, WinME} ONLY
+supported FAT32 which has a 4 GB file size limit.  This can be handled by
+casting the ANSI C return from lseek() to an unsigned long.  This is the approach
+I've taken in MSQIC.  If you have a *.QIC file larger than 4 GB please tell me
+about it.  How was it created, what operating system?  Note see the
+<a href="#RECQICFMT">section</a> above for a brief discussion of an exception to this
+rule!
+<p>
+
+When one ventures into NTBackUp *.BKF files one quickly runs into the 4GB boundry.
+My MSDOS binary for NTBKUP is limited to 4GB files, but the WIN32 and Linux versions
+use long longs for 64 bit file offsets.  The part that becomes a little ugly
+is displaying such an offset.  Although GNU's gcc supports long long format
+specifications for printf() its not portable (at least not to MSVC 5.0).
+For simplicity long longs are only displayed in hex in these programs.<p>
+
+I'm working on a FAT32 system so I can't test these large file options.
+If you have a *.BKF file > 4GB and are interested in this project, please test 
+it with my code.  This code is known to work with smaller archives
+on FAT32 systems.  Please do NOT send me a sample archive, I have no place to put it!
+<p>
+
+<a name="BKF-FMT"</a>
+<h4>XP/NTBackUp File Format</h4>
+Once again, I feel stupid. To a significant extent I find I have 
+re-invented the wheel. I spent a significant amount of time reverse
+engineering the NTBackUp File format and writing test code.
+On 12/22/03 a better researcher than I informed me
+that most of the information I presented on my web page was
+available in a much <b>nicer</b> and more <b>detailed</b> format on a
+<a href="http://www.layton-graphics.com/mtf/">web page </a> 
+by Alan Stewart.  This page provides links to a
+document, MTF_100a.PDF, which describes the *.bkf file format and a
+Linux source code archive for reading MTF backup Tapes (as opposed to disk image files). 
+The source code for this tape reader is released under the GNU Pulbic license.
+Although it was news to me, the file format is apparently offically
+known as "Microsoft Tape Format", MTF.  The specification above was published in 
+September of 2000 by Seagate, but the original source seems to have disappeared
+from the internet along with the other seagatesoftware.com pages.  I wish I'd known 
+about this document before I started my reverse engineering project!
+Thanks to Wolfgang Keller for bringing this information to my attention, and
+the author, D. Alan Stewart, for making it all available.
+In a private communication Alan Stewart told me there are plans to make
+his MTF reader into an open source project at Source Forge.  Watch for it.
+
+<p>
+Once I knew the appropriate name I also found a brief summary 
+<a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;104223">
+article</a> by Microsoft that confirms NTBackUp files are MTF compatible.
+However no links are provided to the supporting MTF documentation.
+More recently, 1/27/2004, a <a href="http://sourceforge.net/projects/jmtf/">
+JAVA MTF Reader</a> was released by Michael Bauer.  I have not looked at this
+yet, but it seems like a nice cross platform solution to the problem.
+<p>
+My structures and trial program only dealt with a semi-functional subset of this
+MTF specification.  The portions of the MTF document I've reviewed so far 
+appear to be <b>VERY</b> similar to the *.bkf archive samples I've seen.  
+Its not exactly light reading but seems to cover everything.
+A few high points below:
+<pre>
+MTF_DB_HDR - section 5.1 describes a common header for the main file 
+             blocks. This maps to my tag_head, although I didn't know 
+             what a lot of it was about.  See the block ID table, for
+             blocks that conform to the common header block checksum rule.
+
+MTF_STREAM_HDR - section 6.1 and 
+Type 1 Media Based Catalog - section 7.3 describe the TFDD catalog region.
+             Note I treat this like the other common blocks, but apparently
+             it is technically a data stream. In the *.bkf files I've seen
+             its position is padded to an 0x400 byte boundry, but there
+             seems to be nothing in the specification to require this.
+
+Format Logical Block - section 3.4.  The logical block has been  0x400 for 
+             the *.bkf I've seen. The specification says 0x200 is also a valid 
+             size and it is defined in the tape header, MTF_TAPE.format.
+
+MTF_TAPE.major version = 1 in *.bkf files I've looked at.
+MTF_SSET.minnor version = 0 These match the version numbers for this document.
+
+MTF_DIRB    - section 5.2.4  There is one of these for each directory
+              backed up on the media.  All MTF_FILE blocks following
+              an MTF_DIRB are located in this directory. They are often LARGE!  
+
+MTF_FILE    - section 5.2.5, maps to my xp_file
+
+MTF_TAPE_ADDRESS - section 4.2 clarifys how to locate the variable
+             length data sections.  I had identified the length field,
+             but not the offset as its the same in all my *.bkf examples.
+
+OS specific data is covered in Appendix A.  Most MTF_DB_HDRs contain a
+pointer to some sort of OS specific data.  This spec talks about NT
+specific data for OS ID = 14 and OS Versions 0 and 1.  The *.bkf files
+I've seen are OS ID 14 with OS Version 2 which is not covered. However 
+the attribute and short name fields seem to be in the same locations 
+(I have not tried to figure out what is different in Version 2).
+
+</pre>
+
+
+After releasing this, the author of JMTF and I have both discovered that
+some regions beginning with the FILE tag do not contain the STAN stream
+record.  In July of 2004 Geoff Nordli emailed me a sample *.bkf file that 
+explains this behavior.  It appears that empty files are stored without a 
+STAN stream, so as of version 1.06, if no STAN stream is detected the file 
+is created with no data which matches the normal behavior of NTBackUp.<p>
+
+Given the MTF information I now see how the entire file can be represented
+as a linked list of data elements.  Each main block common header has a 'next event'
+offset.  This either points to the next main block header, or the start of a
+chain of stream headers which are linked together in a similar mannor.
+The last stream header in a chain points to the next main block header.
+I added some of this to my proof of concept program which enhanced its
+ability to traverse *.bkf files.  In particular finding the start of 
+each individual file's data is now totally generic and I see there is normally
+a checksum after the file data which can be used for validation.<p>
+
+The original section titled "Obsolete Structure Analysis" describing 
+my reverse engineering has been deleted as the document above is much better.
+The only point worth making is that the *.QIC concept of 30Kb segments seems 
+to have been dropped making the files a little more compact.  
+<p>
+
+
+<a name="MSQIC">
+<h4>MSQIC, features and limitations</h4>
+As proof of concept I wrote a 16 bit MSDOS program that
+compiles with MS QC 2.5.  I later extended this to compile with
+gcc under Linux and MSVC 5.0 as a console application under WIN32.  
+These are console level applications (no GUI) which will allow one to view key
+areas in and extract files from a *.QIC file produced by 
+Win95 or Win98's MSBackUp program.  I'm slowly enhancing the data
+recovery options available as I talk to people and see how files get
+broken.  See the <a href="#DWLD">Downloads</a> section for availability.<p>
+
+I believe it decompresses my Win9x MSBackup compressed
+archives correctly, ie the data recovered looks like
+the original.  My original goal was do this decompression and then let
+the NTBackUp that comes with WinXP to manipulate entire archives
+decompressed with this program.  However my WinME MSBackUp doesn't
+recognize the decompressed file MSQIC produces so I doubt NTBackup will either.  
+It must be a very subtle difference as I have done byte comparisons
+between MSQIC's output and what MSBackUp produces without compression
+and do not see the difference!  Its close BUT being off by 1%
+is the same as being off by a mile.  Sigh.<p>
+
+However MSQIC stands alone and can extract individual files or groups
+of files from a sub-directory from either
+compressed or uncompressed archives.  It can also decompress
+the entire archive, and will recognize it afterwards. 
+Its useful for recovering files you desperately need, or as a testing tool for 
+examining an archives internals.  Or if you are a brave soul, try the -p or @
+options to restore large blocks of the directory tree stored in the archive.
+The command line options are shown below:
+<pre>
+MSQIC Ver 1.11  compiled for OS_STR
+Copyright 2003 William T. Kranz
+...
+
+msqic &#60file&#62 [@<cmd>] -p [-x<nm>] [-t] [-v]  [-s{c|d}#] [-f{d|e|s}] [-d] [-r]
+ @&#60cmd&#62 to extract directories based on command file
+-p&#60path&#62 extract all FILES from ONE path in directory tree
+-x to extract file, nm, using paths in tree structure
+-t[ds] to display catalog as tree, d =&#62 directory only, s =&#62 with segment info
+-v just display VTBL and exit
+-fd find file id 0x33cc33cc in data
+-fe find file id 0x66996699 in data
+-fs find & display compressed file segments
+-sc# force start catalog (directory set) at hex offset
+-sd# force start data region at hex offset
+-D to decompress archive and write output to dcomp.out
+-d##[:#] to decompress a segment(s) starting at hex offset ## in file
+     use optional hex :cnt to decompress cnt contiguous segments
+-r[filter] attempt raw file data recovery, use -sd to set data region start 
+     use optional filter string, ie *.txt, to limit hits
+</pre>
+
+An archive file name must be supplied or you get the display above.<br>
+Under MSDOS it must be a 8.3 style short filename.<br>
+MSDOS systems also only display 8.3 style paths while Linux and Win32
+systems can handle long file names. The OS_STR above indicates
+the Operating System the program was compiled for: MSDOS, WIN32, Unix, or CYGWIN.
+<p>
+
+By default when run with just a
+file name argument the catalog is displayed with each of the 
+files attributes and the file names truncated to 18 characters so they fit on one line.
+Adding -v or -t changes the display as indicated above.<p>
+
+The first options listed, {@, -p, -x, -t}, all depend on a valid catalog
+in the *.QIC archive and will fail if it doesn't exist.  They parse the
+catalog dynamically allocating the directory tree in memory.  Large archives
+and systems with limited memory could have problems with these. Alternatively
+try the -r option that does not depend on the catalog nor directory tree.<p>
+
+The -t option attempts to display the full file name with 
+indentation below the associated sub-directories to indicate the tree structure 
+on the disk when the backup was created.  There are two additional options which
+may follow -t. A 'd' only displays subdirectores (see @ option below) without
+the files.  An 's' appends numbers after the file name which are the 
+segment:offset to help you locate a specific file in a compressed segment.<p>
+
+The -x option allows extracting a single file from the archive to the current
+directory.  It depends on the paths shown via -t, and on all but MSDOS systems
+the path and file name search is case sensitive. File time stamps and the
+read/write permission attribute are preserved as of version 1.08.
+<p>
+
+The -s options allow forcing the file position used for the data and directory regions.
+This is required if your file has a corrupted VTBL region (which occurs more often
+than you might think) but other parts of the file are in tact.  Typically you use
+the -f option below to find appropriate values for the -s options.<p>
+
+The -f options search the archive file, display hits, and then exit.
+A compressed file is a series of compressed segments, each preceeded by
+a struct cseg_head.  These segment locations are listed via
+the -fs option. -fs accepts an optional start address for the search,
+and its only a best guess which doesn't work well unless there are several
+segments in the chain.  Look at the output to be sure it makes sense.
+After finding the beginning of one or more
+compressed segments, they can be individually decompressed with
+the -d### option (note use a hex offset as displayed by -fs, prior to version
+1.09 this was decimal and you had to add 10 bytes to skip the cseg_head).<p>
+
+The -D option attempts to decompress an entire compressed file, or for
+Win98 and WinME multi-volume archives, one of the volumes.  Using the
+-s option in conjunction can help when the VTBL is corrupted.
+
+The -x option will do a case sensitive search
+for a path specification and extract the file if found.<p>
+
+The bulk of the code was written before I discovered that WinME (but not Win95)
+produces a separate VTBL entry for each drive.  If decompressing an
+archive created by Win98/ME which included multiple drives with MSQIC, you 
+can currently only access one at a time.  At startup you will be 
+prompted to select the drive of interest which will the be labled 'ROOT'
+in the tree display. Otherwise the operations are the same.  If doing
+data recovery on a file with Multiple VTBL entries for the different drives, 
+you will find its broken up into separate
+sections as if the data and directory regions from separate archives
+were concatonated together.  MSQIC lets you work with one section
+at a time, you can use the -v option to see where each of the
+sections in the file is located.<p>
+
+Since version 1.10 some interactive prompts have been added at startup
+when a valid VTBL region can't be found.  These ask you to use the
+-s options to set the regions of interest and confirm the archive 
+type as there are differences between Win95 and the latter Win98 and WinME
+format.<p>
+
+
+The @ and -p options were introduced with version 1.07.  The -p option
+is a special case of the more general @ options. A command file path
+specification must immediately follow the '@' symbol.  This file controls
+extraction of files at the directory level and has the following format:<br>
+One line for each source directory to be extracted.<br>
+The line must contain a source directory specification for the archive followed
+by a redirection path to the destination disk
+separated from the source by white space.  With the -p option only one
+source path can be specified, and the destination is always the current directory.<p>
+
+Use the -td option to get a list of directories in the archive.  I recommend
+redirecting this output to a file and editing it to be sure you don't have
+an upper/lower case error.  Use it to create the desired command file or source path.
+The current implimentation forces the use of the OS specific path
+delimiter, DOS and Windows use '\' and Unix uses '/'.
+If the source directory path ends with a delimiter ('\' or '/')
+only the files in this directory will be extracted.  If the path ends
+with '*' all sub-directory contents below this directory will also 
+be extracted to corresponding
+directories below the destination directory.  If the source path ends with
+'+' the program will attempt to create subdirectories before doing
+the extraction. To be parsed the source path must end with the appropriate OS 
+specific delimitor, '*' or '+'.<br>
+With the @ option, a redirection path must also be added on the same line.  
+Be sure to add some spaces to separate it from the source specification and to
+add quotes around any paths containing white space.  The redirection
+path will be subsituted for the source path when the file(s) and optional
+sub-directories are extracted.<p>
+If you have spaces in a path specification you must enclose the complete
+path in quotes. Note I do special processing for the OS specific destination 
+path ".\" and "./", these map to the system's current drive and directory.
+Further more there are some odd side effects with the -p option
+when processing a quoted path that ends in '\' as required by MSDOS and WIN32.
+See the <a href="msbkoutp.htm">examples and discussion</a> page.
+<p>
+The following sample Windows file would extract all files from \temp in the archive
+to the same directory on the current source drive.  The second line says extract
+all files and sub-directories in or below \dos in the archive to "d:\old dos".  
+The last line extracts all files from \test in the archive to the current directory.
+<pre>
+  ROOT\temp\   \temp\
+  ROOT\dos*   "d:\old dos\"
+  ROOT\test\  .\
+</pre>
+In the example above I've assumed these files were generated on Win98 systems 
+and that the path separators are '\'.  When used on a linux system you should use
+the redirect path with appropriate '/' separators.    
+The default is to
+write to the current drive, but the redirect path is free format
+and should support MSDOS style drive specifiers as well as mounted linux drives. 
+File time stamps and ownership are not preserved on extraction.
+Destination directories WILL NOT be created, they must exist for the 
+extraction to work.<p>
+
+Possibly the most confusing
+thing is the Win95 versus Win98 format issue.  In Win95 the root node has
+a name preceeding the separator, while in Win98 its embedded in the MDID
+and does not occur in the archive tree display.  
+I force the top level name 'ROOT' for for the Win98 systems.
+Again the -t option will
+show this and you should use the same format when generating your command file.
+<p>
+
+I've also added a command line option, -p<source path> to perform  
+directory based extraction similar to one line in the @cmd_file.
+Supply a source path in the archive terminated by '\','/' or '*'.  The
+system will supply a redirect path to the current directory where the
+files from the source directory are extracted.  If a recursive 
+copy is requested with the '*' terminator the files in all the
+source subdirectories will be copied as long as the required subdirectory
+exists under the current directory.  Note that entire an entire drive
+in a Win98 style archive could be restored with the following command
+if all the sub-directories existed and the root directory, \, was the
+current directory:<br>
+-pROOT*<p>
+
+A word of caution about using the @ option with compressed files.
+Its not a very efficient algorithm.  If you are doing a lot of small
+files you would be well advised to decompress the entire archive
+and then do the extraction.  When extracting from a compressed archive
+the segment(s) containing EACH file are decompressed to extract the
+file.  If there are 10 files in a given segment, it will be decompressed
+10 times during the extraction process!  One could do this more 
+efficiently, but at this point that isn't the way its being done.<p>
+
+I only own and have looked at two OS specific versions of *.qic archives and 
+both were slightly different, just enough so the data had to be handled 
+differently during extraction. 
+Several other people have used this code successfully, but that's not to say
+there isn't a 3rd or 4th variation out there somewhere.
+Another limitation of the original proof of concept code was that
+it used 32 bit signed longs for file lengths and seeks
+within the backup archive file.  The data structures appear
+to be designed for 64 bit values, but for simplicity I have
+ignored the four high order bytes. See the <a href="#LFILE">large file issues</a>
+discussion above. 
+In Version 1.03, I fixed the logic for archives where the dirSz is greater than 29696 
+(aproximately 250 files). 
+<p>
+
+The time stamps my program displays for the individual files
+in the archive look correct.  However for some reason the time stamp 
+for the VTBL creation time was off by two years into the future. 
+A corrective fudge factor has been added, but don't put complete faith
+in this value.<p>
+
+In discussions with people who have tried this program for data recovery
+I came across some whose VTBL section were corrupted (all zeros).  The 
+command line options -sd# and -sc# were added to override the VTBL and
+work in this case.  For Win95 use -sd128 and for Win98 use -sd256 for
+the start of the data region.  For both, the catalog normally starts at the
+beginning of the last segment and is not compressed, see the 
+<a href="#W98QICFMT">details</a> above.
+The changes in MSQIC 1.11 were prompted by Darryl Hunt from Austrialia wrote 
+regarding a data recovery problem.  His archive was mostly in tact, but since
+VTBL region was corrupt MSQIC did not know it was compressed.  I 
+added some interactive prompts allow the user to set some of the VTBL fields to
+correct the problem.  See the end of the <a href="msbkoutp.htm">MSQIC</a> sample output
+for more detail on this.  If your archive is not corrupted in this mannor the changes
+should be transparent.
+<p>
+
+
+<p>
+The -r option was added to recover data from damaged files.  If your archive
+is not damaged the -x or @ options maybe the method of choice, but you are
+welcome to try -r.  It only works with a <b>decompressed</b> file, or sections
+of one produced with either the -D or -d options.  However it does not
+use the catalog, it directly parses the information in the data region
+and is intended for people whose catalog has been corrupted/destroyed.
+This is a bit tricky as the file length is not included in the data region
+headers (the field is always 0xFFFFFFFF).  For each file found the program
+searches ahead for what looks like a another file header block and estimates
+the length.  This seems to work, but is chancey.  Use the -sd option to
+control where the search starts.  If you have a damaged or non-existant VTBL
+header you will also need to use the -sc option to set the end of the data
+region.  For a group of decompressed segments extracted from a file use
+-sd0 to start at the beginning and -sc### where the numbers represent the
+length of the datafile.  Note that there is no next header for the last file
+in an archive or archive segment.  Appropriate use of the -sc parameter can
+limit garbage appended to the end of a file, however in an intact archive the
+'garbage' is typically NUL bytes inserted to pad to the end of the segment.
+The optional filter selects files by case
+insensitive matches with the MSDOS (short) file names.  Note that during
+extraction all files are written to the current directory.<p>
+
+When using the -r option 
+there are a couple interactive prompts.  In particular it asks for 
+the data format (Win95 versus Win98), whether you want to display
+or extract files, and if extracting whether you want to interactively select
+the files to be extracted.  It needs to know which OS version created the
+archive to estimate the file lengths (Win95 has 12 extra bytes after the
+file's data) but the default of Win98 will display files from either type
+of archive correctly.  If it thinks you have choosen unwisely it will tell
+you as a warning.<p>
+
+Another 'feature' introduced in Version 1.03 is -sv.  This is not documented in the
+standard usage display as its a fairly dangerous option.  It allows the
+use of a data file to create or overwrite the VTBL region. Sample data files and
+instruction available on request, but this is only recommended in an emergency.
+Its the only operation preformed by this program that writes to the archive.<p>
+
+Ralf Westram from Germany has been a consistent gadfly, friend, and great
+tester.  He has so far discovered some signed/unsigned errors in my
+4 GB file access implementation and bugs in my parsing of the catalog for compressed
+files when they exceeded one segment (Ver < 1.03), and the directory tree generation 
+(Ver < 1.04) which affects file extraction via the -x option.  He also
+introduced me to the CYGWIN Linux environment under windows.
+Thanks for the tips Ralf.
+
+<a name="NTBKUP"</a>
+<h4>NTBKUP</h4>
+Being curious I have also looked at the NTBackUp format in *.BKF
+files.  I've spent less time on this so its not as robust
+as MSQIC. However, since one expects Microsoft to come out with a new
+incompatible version of Backup with their next OS release I thought it
+was time to start looking at this issue.  As mentioned above,
+NTBackUp doesn't seem to have a <b>file</b> compression option so there are
+no decompression options.  This program is also freely <a href="#DWLD">available</a>,
+but you have to provide feedback...<p>
+
+<pre>
+NTBKUP Ver 1.07c  compiled for OS_STR with MAX_PATH = 100
+Copyright 2003 William T. Kranz
+...
+
+usage: ntbkup &#60file name&#62 [-x[filter]] [-l] [-p] [@&#60cmd&#62] [-c] [-d] [-f] [-j#] [-s#] [-t] [-v]
+     -x to unconditionally extract all files matching filter
+     -l&#60path&#62 where full case sensitive path limits extract 
+     -p&#60path&#62 recursive path based directory extract
+     @&#60cmd&#62 use path based extract and redirection command file
+         all extracts use [filter] from -x, default filter is *.*
+     -c to display catalog regions for TAG == TFDD
+     -d display directory tree from raw data region
+     -f&#60tag&#62[:start:[len]] to find 4 char tag with optional start pos and length
+     -j#[:#] jump to start position in file for data recovery (modulo 0x400)
+         optionally follow start offset with :# for an end offset
+     -s# to limit options above to a particular SET by #
+     -t[:start[:end]] display tags only from start to end offset
+     -v  to set verbose mode
+
+</pre>
+The &#60file name&#62  argument is required, without it you get the display above.<br>
+Under MSDOS the file name must be a 8.3 style short filename.<br>
+The OS_STR above indicates the Operating System the program was compiled for: 
+MSDOS, WIN32, Unix, or CYGWIN.
+<p>
+
+Currently NTBKUP will by default display all the tags in the source archive file.<br>  
+The -c option lists the files in the archive by parsing the catalog region(s).<br>
+The rest of the options ignore the catalog and parse (or control parsing in) the data 
+region directly which can be useful for data recovery. <br>
+The -d option only lists the directories (DIRB tags)
+and can be useful to determine the paths to be used with the -l, -p, or @ commands.
+As indicated below the -x has an optional filter argument.<br>
+When -x is used without -p or -l it ignores the directories and extracts all files 
+in the archive matching the filter.  You can use -l with a path description
+to limit file extraction to a single directory (this path description should <b>not</b>
+include a drive specification, to select a drive use the -s option).<br> 
+The -p option is similar but also extracts and optionally creates subdirectories 
+below the specified archive directory.<br> 
+The -l and -p options are mutually exclusive.
+In both cases the extraction starts in the current directory.  You can additionally
+define a filter to be used in these directories with -x.  This filter specification
+is also used with the @&#60cmd&#62 file.  The default filter is *.* for all files.<br>
+Since version 1.02 the time stamp and attribute (READ/WRITE status) is preserved 
+when the files are extracted. A command file can also be used to specify
+a series of paths for the extraction with the @ command, its format is discussed below.
+Under MSDOS the short, 8.3, filename is used when the file is extracted.
+Under WIN32 and Linux the full file name is used.<br>
+The -s# option may be used in multi-set volumes to restrict the operations
+above to a single set.  Run NTBKUP with no options to see the set numbers.
+If -s is not used, operations are performed on all sets in the archive.<p>
+
+Although its not indicated in the program output above because there isn't
+space on the console screen, the options -f, -j, and -t may all be
+followed by the letter 'h'.  By default the arguments are treated as
+unsigned integers (ie decimal).  Appending either an 'h' or an 'H' ahead
+of the numeric value interpruts the value as hexidecimal.  Ie -jA would
+fail and be ignored, but -jhA would jump to hex offset 0xA before starting
+to process the file.
+<p>
+The -p and @ options are new with version 1.02 (and relatively untested so use
+prudence).  They mimic logic developed in MSQIC.  A preliminary pass is made through
+the data file and the names and location of all the directoires (DIRB regions) in
+the archive are stored in a dynamically allocated tree structure.  Then this tree is
+searched for the user supplied directory strings.  Unlike -l, a drive specification
+is required, ie "C:". The source path is the name stored in the archive, these paths
+may be viewed with the -d option.  A source path
+description is valid if it has one of 3 terminators.  1) the OS specific directory
+terminator, '/' in unix and '\' in an MSDOS or WIN32 environment.  This denotes only
+this directory should be extracted.  2) A '*' which denotes that this directory and
+all those below it in the directory tree should be extracted if, and only if, the
+matching directory exists on the target system.  3) A '+' is similar to '*', but
+will attempt to create sub directories as required. <br>
+With the -p option you just specify the source path and extraction starts at the
+current directory.  With option 2 or 3 above the archive subdirectories below the
+source directory will be copied to corresponding location below the current directory
+on the target system.<br>
+With the @&#60cmd&#62 option, the &#60cmd&#62 represents a command file name.  This 
+ascii text file will be opened and read line by line.  Each line should contain 
+an archive source path as described above, one or more spaces, ' ', and a 
+redirection path.  Rather than starting in the current directory, the redirection 
+path is used for the starting directory.  For proper parsing the redirection path 
+must end with the OS specific delimitor, '\' or '/'.
+<p>
+Note that if any of the directory names in a path include spaces, ' ', then
+the entire path must be quoted.  Further more there are some odd side effects with the -p 
+option when processing a quoted path that ends in '\' as required by MSDOS and WIN32.
+See the <a href="msbkoutp.htm">examples and discussion</a> page.
+<p>
+CAUTION:  Due to the way this program evolved, files are extracted by changing
+the current directory on the target machine to a desired directory and then
+doing the extraction in this directory.  This has a couple implications. First,
+your current directory is likely to change after using the @ command.
+Second, this has not been extensively tested.  I've tried to trap errors, but
+if it gets out of sync during extraction from a large archive you could have a
+real <b>mess</b>.  Be cautious with use of the '+' terminator enabling directory 
+creation.  Try some small sub paths to be sure you know how it works before attempting
+to extract the entire archive as indicated in my example.  I've done this successfully,
+but you might not be so fortunate.
+<p>
+Potential file command lines are shown in quotes below followed by a comment
+which should NOT be in the file:
+<pre>
+"c:+ \croot\"     create & extact all archive files & directories at or below C:\
+                  in the archive to \croot and below on the current drive
+
+"c:\temp\ d:\temp\" extract files from archive c:\temp to d:\temp
+
+"c:\csource* \csource" extact files and directories from archive at pr below
+                       c:\csource to matching directorys on current drive if
+                       the directory exists, otherwise skip over it.
+</pre>
+<p>
+I've now talked to a couple people with corrupted *.BKF files.  I was
+surprised, but apparently NTBackUp isn't always happy with archive files
+after they have been created.  Especially if they have been passed around
+networks.  Still exploring this, but added a few more command line
+options. The -j and -f options should not be used together.  The
+program terminates after -f.  You can force it to start at a
+particular offset with -j.  -f will search for identifiers at ALL
+file offsets rather than just block boundries.  You must enter 4 ascii
+characters for the desired tag, you may optionally enter a ':' delimited start
+offset and byte length for the search area.  Use -fh if hex offsets
+are to be used for these qualifiers.  Note I was sloppy about this,
+the maximum value you can enter here is a 32 bit unsigned integer.  If
+you have a file that requires 64 bit offsets you won't be able to
+specify start or end points beyond 4GB.
+<p>
+It appears that the lack of file compression and the advent of
+large disks causes people to make what I concider very large
+backup archives, see <a href="#LFILE">large file issues</a>. 
+Dan and I worked together in March of 2004 to debug my -p and @
+logic.  Ultimately he was able to extract 4GB from the directory
+tree in a 20GB *.bkf file with a single -p command line option.
+<p>
+<B>Warning</B> in the Spring of 2007 I was contacted by two different people who
+were attempting to recover files with NTBackUp and discovered to their dismay that
+it completely ignores unicode in the file names when it tires to extract them.  Sorry 
+I was pretty lazy about this.  The *.BKF file format supports the use of unicode file names,
+but I ignore the 16 bit information and just strip the 8 bit char portion in the
+function getn_unicode() in ntbkup.c.  This could be corrected fairly easily if you have
+a compiler that supports unicode in its open() function (my MSVC 5.0 does not, but I believe linux gcc with glibc-2.2 does).  At the moment I have no plan to revisit this myself, but will post here if someone
+else takes the effort.
+
+
+<a name="MVBKFFMT"</a>
+<h4>Multi-Volume *.BKF Backup Issues</h4>
+In 2005 I spoke to someone who had made an MTF style backup to floppy
+disks.  Apparently its still possible to do this, and although one
+can recover a lot of the data with the current version of NTBKUP by
+processing the floppies one by one you can't get it all.  The problem
+is NTBKUP.exe expects a single contiguous file and doesn't know how
+to skip ahead to the next floppy.  Presumably there is a continuation
+header of some sort, but I have not looked at this problem.  The person
+who brought this to my attention recovered everything they wanted by
+processing the disks individually.  If anyone is desperate, I could work
+it out, but it would cost you.  It took a couple days to get a workable 
+solution for *.qic files.
+
+
+
+<a name="DWLD"></a>
+<h3>Downloads & Version History</h3>
+I am making these executable and the associated source code freely available.  The source
+code is distributed under the <a href="http://www.gnu.org/licenses/gpl.html">
+GNU General Public License</a> in the hope of promting
+free, expandable software.  The source code for both MSQIC and NTBKUP
+are availabe in a single archive.  Binary OS specific distributions are 
+available in separate archives.  All distributions are LHA compatible as
+that has become my standard since it was one of the first early freely available
+archive systems.  As a favor to Angelique I'm also making the raw *.exe for
+the WIN32 versions directly available if you don't want to expand the archive
+and are runing a 32 bit version of Microsoft Windows.<br>
+Current versions: MSQIC V 1.12      NTBkUp  V 1.07c
+<ul>
+<li><a href="msbksrc.lzh">MSBackup Source</a> archive for QIC and BKF files  (see environments below)
+<li><a href="msbkdos.lzh">MSBackup</a>
+   archive of binaries for MSDOS (via Microsoft QuickC 2.5)
+<li><a href="msbkwin.lzh">MSBackup</a> 
+   archive of binaries for WIN32 (via Microsoft Visual C 5.0)
+<li><a href="ntbkup.exe">NTBKUP.exe</a> Ver 1.07c executable for WIN32
+<li><a href="msqic.exe">MSQIC.exe</a> Ver 1.12 executable for WIN32
+<li><a href="msbklin.lzh">MSBackup</a> 
+   archive of binaries for Linux V2.4 (via gcc 2.91.66)
+</ul>
+I own/have compilers for each of the environments above and have attempted
+to test these programs in these environments.  I've also verified the Linux
+binaries run under Linux 2.2.  For reasons I currently don't understand the
+binaries give a 'segmentation fault' under the Linux 2.0 kernel and the
+version of make (3.76.1) with this kernel doesn't like my msbkup.lin make file.
+Version 3.79 of GNU make is perfectly happy.  I can manually build the programs
+with my 2.0.36 kernel, but gcc 2.7.2.3 does not appear to support the 64 bit
+file offset required by NTBKUP (although it can be built without this if the
+error check in main() is removed). There are also a couple of
+gcc ports.  Ralf introduced me to <a href="http://cygwin.com">CYGWIN</a>
+which provides a GNU/Linux environment under Win32.  I have not provided
+CYGWIN binaries, but the source compiles and runs with gcc 3.3.1 in the 
+CYGWIN 1.3.x environment.
+This implies it would also compile with <a href="http://www.delorie.com/djgpp/">
+DJGPP</a> but I have not tested this.  I'd greatly appreciate some
+input from a DJGPP user on this issue.
+<p>
+Note that although this is 'free' software I'm very willing
+to accept job offers or cash contributions if this
+does something useful for you.  To date exactly <b>one</b> person has
+given me a $50 Ebay gift certificate (I would have preferred something at
+the local liquor store).  Three people have paid me for a few hours actively
+consulting on issues related to corrupted archives, and one person 
+(Thanks <b>Jack</b>) has failed to send me their promised compensation. 
+One person paid for a minnor modification and recompilation of NTBKUP. 
+This works out to about $0.15 per hour for my effort.  
+I guess freeware isn't very cost effective...<p>
+Version history:<br>
+<b>02/07/04</b>  Initial source release was MSQIC 1.09  and NTBKUP 1.02<br>
+<b>02/08/04</b>  MSQIC 1.09a, correct minnor error preserving file attributes with -r option
+<br>
+<b>03/19/04</b>  MSQIC 1.10 and NTBKUP 1.03,
+          In MSQIC correct error in file attribute preservation with -r option
+          and add interactive option to continue if the VTBL is corrupt by
+          using the -sc and -sd options
+          In NTBKUP correct some errors in -p and @ options so it correctly 
+          creates the directory tree with the '+' terminator.
+          In both versions change get_paths() logic so correctly handles a
+          quoted destination path when the @ option is used.<br>
+          Todo: Add Unix code supplied by Berend de Boer to auto configure make file<br>
+<b>04/29/04</b>  MSQIC 1.11 
+          Add more interactive logic for the case where the VTBL is not
+          found to recreate enough of this information that an entire volume
+          may be decompressed via -D.
+<br>
+<b>05/17/04</b> NTBKUP 1.04,
+          Allow volume name to be a network share.  Previously assumed it was
+          a drive letter.  Also change filter parsing to allow more than one
+          period in file names per user requests.
+<br>
+<b>06/03/04</b> NTBKUP 1.05, minnor change to display logic, removes display
+          of directory parsing during -d, -p options in the hope that error
+          messages will be noticed.
+<br>                   
+<b>07/08/04</b> NTBKUP 1.06, create empty files when there is no file data
+          associated with a FILE region (ie STAN stream is not found).  Remove
+          'do_file' error message which was displayed in this case.
+<br>
+<b>04/06/2005</b> NTBKUP 1.07, fix some bugs in parsing of command line arguments
+          for -s and -f arguments which had stopped working.  Add 
+          optional end specification for the -j command line argument.
+          Allow specification of 64 bit long integer file offsets on the command
+          line for those OS which support files larger than 4Gb. <b> Warning </b>
+          it appears the -p and @ options may not create empty directories when
+          recreating a sub-tree.  I doubt I have the energy to chase this, but
+          be careful, empty nodes may be missing in re-created trees.
+          
+<br>    
+<b>12/30/2006</b> NTBKUP 1.07c, was created and is now offered as the default WIN32 
+          download.  
+<br>
+<b>06/01/2007</b> MSQIC 1.12, was notified by a user the Win95 backups are have a
+          slightly different format, add -st95 command line option to force this mode.
+         
+<b>01/22/2008</b> Update source file distribution archive to reflect changes in
+          NTBKUP 1.07c.
+<br>
+
+<p>
+I think I'll give it a rest for a while, but if you find a bug
+or want to contribute some information please 
+<a href="contact.htm">contact</a> me.  I'll attempt to fix bugs, and look at enhancements,
+but I want to move on to something else.  I'd rather provide a link to
+your enhancement and let you support it yourself.
+<p> 
+I was contacted in January about moving the project to SourcForge, and
+this will probably happen soon.  When it does I will provide a link here.
+<p>
+<a name="ACK"></a>
+<h3>Acknowledgments</h3>
+I want to give thanks to a couple people who gave significant
+help or feedback during the development cycle:<br>
+<pre>
+Ralf Westram for significant testing and bug detection on MSQIC
+Alan Stewart for making the MTF_100a specification available
+Wolfgang Keller for showing me where to find MTF_100a, and for
+    providing sample *.bkf test files
+Phillip Luebke for sending me my first set of *.bkf test files
+Berend de Boer for the Unix auto configuration logic
+Dan Boyne for identifing bugs in NTBKUP and testing my fixes
+Darryl Hunt for sample output and motivation for MSQIC 1.11 enhancements
+Peter Feldman for sample NTBackup archives containing network shares per NTBKUP 1.04 enhancement
+Geoff Nordli for clarification of the empty file issue per NTBKUP 1.06
+</pre>
+Also a couple people who followed through after offering to pay me to help
+recover data.  Thanks to a nice gentalman from Canada who wishes to remain
+annoymous and Gregg Paquette who is starting a computer consulting <a href="http://www.ekgus.com">business </a>.  The latest version of NTBKUP, 1.07c,
+was requested and <b>funded</b> by Andrew Deatherage of symcas.com, thanks for the check!
+
+
+
+
+<a name="LINKS"></a>
+<h3>Links of Interest</h3>
+<ul>
+<li><a href="http://projects.freedos.net/backup/brtecdoc.htm">
+     FreeDos project to read MSDOS backup archives<a> This link takes you to
+     the Technical Doc describing the format for DOS 2.x to 5.x.  The source
+     code no longer seems to be available, and DOS 6.x is not covered as it
+     used the proprietary 'DoubleSpace' compression system.
+<li><a href="http://www.cknow.com/ckinfo/acro_q/qic_1.shtml">
+     Discusses Win9x vs WinXP MSBackUp incompatibility</a>
+<li><a href="http://www.vtc.net/~cdgoldin/caveat/backups.htm">
+     Amusing review of the 'Features' of MSBackUP to *.QIC archives</a>
+<li><a href="http://www.qic.org/html/qicstan.html">
+    QIC80 (quarter inch tape) standards</a> (interesting but NOT *.QIC archive format)<br>
+    Search for QIC122B.pdf which defines the *.QIC compression algorithm
+<li><a href="http://www.layton-graphics.com/mtf/">
+    Alan Stewart's MTF web page</a> 
+    includes MTF_100a.PDF specification and source code<br>
+    for an MTF Tape reader (as opposed to files)
+<li><a href="http://sourceforge.net/projects/jmtf/">JAVA MTF Reader</a> by Michael Bauer
+<li><a href=
+"http://www-personal.umich.edu/%7Ejklaas/tapebackup.html">
+Reading DOS/Windows Backup tapes</a> James Klaas contacted me.  He wants to start a 
+project to look at some of the vendor specific variations used on QIC80 tape drives.
+
+<li><a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;104223">
+     Microsoft confirms that NTBackUp files are MTF compatible</a>
+<li><a href="http://support.microsoft.com/default.aspx?kbid=328742">
+     Microsoft reports a bug in USB storage driver (Usbstor.sys)</a> used by NTBackUp
+     with some tape drives
+</a>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+E:\work\2011-5-18\文件格式研究\MTF\BackupReader\BackupReader\bin\Debug\BackupReader.exe
+E:\work\2011-5-18\文件格式研究\MTF\BackupReader\BackupReader\bin\Debug\BackupReader.pdb
+E:\work\2011-5-18\文件格式研究\MTF\BackupReader\BackupReader\obj\Debug\ResolveAssemblyReference.cache
+E:\work\2011-5-18\文件格式研究\MTF\BackupReader\BackupReader\obj\Debug\BackupReader.frmMain.resources
+E:\work\2011-5-18\文件格式研究\MTF\BackupReader\BackupReader\obj\Debug\BackupReader.Properties.Resources.resources
+E:\work\2011-5-18\文件格式研究\MTF\BackupReader\BackupReader\obj\Debug\BackupReader.csproj.GenerateResource.Cache
+E:\work\2011-5-18\文件格式研究\MTF\BackupReader\BackupReader\obj\Debug\BackupReader.exe
+E:\work\2011-5-18\文件格式研究\MTF\BackupReader\BackupReader\obj\Debug\BackupReader.pdb
