@@ -1,0 +1,8 @@
+TARGETNAME=wrkFilter
+TARGETTYPE=DRIVER
+DRIVERTYPE=FS
+TARGETPATH=OBJ
+
+SOURCES=KrnlLib.cpp			\
+				FileFilter.cpp	\
+				FastIoFlt.cpp				

@@ -1,0 +1,720 @@
+
+Breakpoint 0 hit
+nt!IopInitializeBuiltinDriver:
+809ee754 55              push    ebp
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f89febf8 80a058df f89fec34 80091e70 f84f4596 nt!IopInitializeBuiltinDriver [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\ioinit.c @ 2466]
+f89fec5c 809ef86b 80087000 f89feca0 fffffe20 nt!IopInitializeBootDrivers+0x2c9
+f89feccc 809ed95c 80087000 00000000 82f45538 nt!IoInitSystem+0x619 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\ioinit.c @ 687]
+f89feda0 808e07cb 80087000 f89feddc 80930c70 nt!Phase1InitializationDiscard+0x6e0 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\init\initos.c @ 1531]
+f89fedac 80930c70 80087000 00000000 00000000 nt!Phase1Initialization+0xb [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\init\initos.c @ 929]
+f89feddc 8088731e 808e07c0 80087000 00000000 nt!PspSystemThreadStartup+0x2e [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ps\create.c @ 2214]
+00000000 00000000 00000000 00000000 00000000 nt!KiThreadStartup+0x16 [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\threadbg.asm @ 78]
+
+
+kd> uf nt!IopInitializeBootDrivers
+nt!IopInitializeBootDrivers:
+80a05616 55              push    ebp
+80a05617 8bec            mov     ebp,esp
+80a05619 83ec38          sub     esp,38h
+80a0561c 56              push    esi
+80a0561d 8d45f8          lea     eax,[ebp-8]
+80a05620 50              push    eax
+80a05621 33f6            xor     esi,esi
+80a05623 56              push    esi
+80a05624 56              push    esi
+80a05625 68460aa180      push    offset nt!RawInitialize (80a10a46)
+80a0562a 8d45d8          lea     eax,[ebp-28h]
+80a0562d 50              push    eax
+80a0562e 8d45d0          lea     eax,[ebp-30h]
+80a05631 50              push    eax
+80a05632 c645ff00        mov     byte ptr [ebp-1],0
+80a05636 66c745d22000    mov     word ptr [ebp-2Eh],20h
+80a0563c 66c745d01e00    mov     word ptr [ebp-30h],1Eh
+80a05642 c745d4da55a080  mov     dword ptr [ebp-2Ch],offset nt!IopStartRamdisk+0x2a6 (80a055da)
+80a05649 66c745da0200    mov     word ptr [ebp-26h],2
+80a0564f 668975d8        mov     word ptr [ebp-28h],si
+80a05653 c745dcfa55a080  mov     dword ptr [ebp-24h],offset nt!IopStartRamdisk+0x2c6 (80a055fa)
+80a0565a e8f590feff      call    nt!IopInitializeBuiltinDriver (809ee754)
+80a0565f 3975f8          cmp     dword ptr [ebp-8],esi
+80a05662 743b            je      nt!IopInitializeBootDrivers+0x89 (80a0569f)
+
+nt!IopInitializeBootDrivers+0x4e:
+80a05664 56              push    esi
+80a05665 e890efffff      call    nt!PpInitGetGroupOrderIndex (80a045fa)
+80a0566a 0fb7c0          movzx   eax,ax
+80a0566d 3dffff0000      cmp     eax,0FFFFh
+80a05672 a3687c8a80      mov     dword ptr [nt!IopGroupIndex (808a7c68)],eax
+80a05677 7505            jne     nt!IopInitializeBootDrivers+0x68 (80a0567e)
+
+nt!IopInitializeBootDrivers+0x63:
+80a05679 56              push    esi
+80a0567a 6a10            push    10h
+80a0567c eb1c            jmp     nt!IopInitializeBootDrivers+0x84 (80a0569a)
+
+nt!IopInitializeBootDrivers+0x68:
+80a0567e 685070696e      push    6E697050h
+80a05683 c1e003          shl     eax,3
+80a05686 50              push    eax
+80a05687 6a01            push    1
+80a05689 e8e434e8ff      call    nt!ExAllocatePoolWithTag (80888b72)
+80a0568e 3bc6            cmp     eax,esi
+80a05690 a36c7c8a80      mov     dword ptr [nt!IopGroupTable (808a7c6c)],eax
+80a05695 750f            jne     nt!IopInitializeBootDrivers+0x90 (80a056a6)
+
+nt!IopInitializeBootDrivers+0x81:
+80a05697 56              push    esi
+80a05698 6a11            push    11h
+
+nt!IopInitializeBootDrivers+0x84:
+80a0569a e8c95be6ff      call    nt!HeadlessKernelAddLogEntry (8086b268)
+
+nt!IopInitializeBootDrivers+0x89:
+80a0569f 32c0            xor     al,al
+80a056a1 e91a050000      jmp     nt!IopInitializeBootDrivers+0x5aa (80a05bc0)
+
+nt!IopInitializeBootDrivers+0x90:
+80a056a6 33c9            xor     ecx,ecx
+80a056a8 3935687c8a80    cmp     dword ptr [nt!IopGroupIndex (808a7c68)],esi
+80a056ae 761c            jbe     nt!IopInitializeBootDrivers+0xb6 (80a056cc)
+
+nt!IopInitializeBootDrivers+0x9a:
+80a056b0 33c0            xor     eax,eax
+
+nt!IopInitializeBootDrivers+0x9c:
+80a056b2 8b156c7c8a80    mov     edx,dword ptr [nt!IopGroupTable (808a7c6c)]
+80a056b8 8d04c2          lea     eax,[edx+eax*8]
+80a056bb 41              inc     ecx
+80a056bc 894004          mov     dword ptr [eax+4],eax
+80a056bf 8900            mov     dword ptr [eax],eax
+80a056c1 0fb7c1          movzx   eax,cx
+80a056c4 3b05687c8a80    cmp     eax,dword ptr [nt!IopGroupIndex (808a7c68)]
+80a056ca 72e6            jb      nt!IopInitializeBootDrivers+0x9c (80a056b2)
+
+nt!IopInitializeBootDrivers+0xb6:
+80a056cc 57              push    edi
+80a056cd 8b7d08          mov     edi,dword ptr [ebp+8]
+80a056d0 8b37            mov     esi,dword ptr [edi]
+80a056d2 eb0f            jmp     nt!IopInitializeBootDrivers+0xcd (80a056e3)
+
+nt!IopInitializeBootDrivers+0xbe:
+80a056d4 f6463704        test    byte ptr [esi+37h],4
+80a056d8 7407            je      nt!IopInitializeBootDrivers+0xcb (80a056e1)
+
+nt!IopInitializeBootDrivers+0xc4:
+80a056da 57              push    edi
+80a056db 56              push    esi
+80a056dc e8f359efff      call    nt!MmCallDllInitialize (808fb0d4)
+
+nt!IopInitializeBootDrivers+0xcb:
+80a056e1 8b36            mov     esi,dword ptr [esi]
+
+nt!IopInitializeBootDrivers+0xcd:
+80a056e3 3bf7            cmp     esi,edi
+80a056e5 75ed            jne     nt!IopInitializeBootDrivers+0xbe (80a056d4)
+
+nt!IopInitializeBootDrivers+0xd1:
+80a056e7 8d4710          lea     eax,[edi+10h]
+80a056ea 53              push    ebx
+80a056eb 8b18            mov     ebx,dword ptr [eax]
+80a056ed e9ee000000      jmp     nt!IopInitializeBootDrivers+0x1ca (80a057e0)
+
+nt!IopInitializeBootDrivers+0xdc:
+80a056f2 8b4318          mov     eax,dword ptr [ebx+18h]
+80a056f5 685070696e      push    6E697050h
+80a056fa 6a1c            push    1Ch
+80a056fc 6a01            push    1
+80a056fe 8945ec          mov     dword ptr [ebp-14h],eax
+80a05701 e86c34e8ff      call    nt!ExAllocatePoolWithTag (80888b72)
+80a05706 8bf0            mov     esi,eax
+80a05708 85f6            test    esi,esi
+80a0570a 0f84c8000000    je      nt!IopInitializeBootDrivers+0x1c2 (80a057d8)
+
+nt!IopInitializeBootDrivers+0xfa:
+80a05710 6a07            push    7
+80a05712 59              pop     ecx
+80a05713 33c0            xor     eax,eax
+80a05715 8bfe            mov     edi,esi
+80a05717 f3ab            rep stos dword ptr es:[edi]
+80a05719 6819000200      push    20019h
+80a0571e 8d4310          lea     eax,[ebx+10h]
+80a05721 50              push    eax
+80a05722 6a00            push    0
+80a05724 8d45f4          lea     eax,[ebp-0Ch]
+80a05727 50              push    eax
+80a05728 897604          mov     dword ptr [esi+4],esi
+80a0572b 8936            mov     dword ptr [esi],esi
+80a0572d 895e0c          mov     dword ptr [esi+0Ch],ebx
+80a05730 e84d56f6ff      call    nt!IopOpenRegistryKeyEx (8096ad82)
+80a05735 85c0            test    eax,eax
+80a05737 7d0d            jge     nt!IopInitializeBootDrivers+0x130 (80a05746)
+
+nt!IopInitializeBootDrivers+0x123:
+80a05739 6a00            push    0
+80a0573b 56              push    esi
+80a0573c e8012ce8ff      call    nt!ExFreePoolWithTag (80888342)
+80a05741 e992000000      jmp     nt!IopInitializeBootDrivers+0x1c2 (80a057d8)
+
+nt!IopInitializeBootDrivers+0x130:
+80a05746 8b45f4          mov     eax,dword ptr [ebp-0Ch]
+80a05749 894610          mov     dword ptr [esi+10h],eax
+80a0574c ff75f4          push    dword ptr [ebp-0Ch]
+80a0574f e8a6eeffff      call    nt!PpInitGetGroupOrderIndex (80a045fa)
+80a05754 33ff            xor     edi,edi
+80a05756 663bc7          cmp     ax,di
+80a05759 8945f0          mov     dword ptr [ebp-10h],eax
+80a0575c 755a            jne     nt!IopInitializeBootDrivers+0x1a2 (80a057b8)
+
+nt!IopInitializeBootDrivers+0x148:
+80a0575e 8d45d8          lea     eax,[ebp-28h]
+80a05761 50              push    eax
+80a05762 ff75f4          push    dword ptr [ebp-0Ch]
+80a05765 c645ff01        mov     byte ptr [ebp-1],1
+80a05769 e82a64eeff      call    nt!IopGetDriverNameFromKeyNode (808ebb98)
+80a0576e 85c0            test    eax,eax
+80a05770 7c66            jl      nt!IopInitializeBootDrivers+0x1c2 (80a057d8)
+
+nt!IopInitializeBootDrivers+0x15c:
+80a05772 8d45f8          lea     eax,[ebp-8]
+80a05775 50              push    eax
+80a05776 8b45ec          mov     eax,dword ptr [ebp-14h]
+80a05779 57              push    edi
+80a0577a 50              push    eax
+80a0577b ff701c          push    dword ptr [eax+1Ch]
+80a0577e 8d4310          lea     eax,[ebx+10h]
+80a05781 50              push    eax
+80a05782 8d45d8          lea     eax,[ebp-28h]
+80a05785 50              push    eax
+80a05786 e8c98ffeff      call    nt!IopInitializeBuiltinDriver (809ee754)
+80a0578b 57              push    edi
+80a0578c 894618          mov     dword ptr [esi+18h],eax
+80a0578f ff75dc          push    dword ptr [ebp-24h]
+80a05792 e8ab2be8ff      call    nt!ExFreePoolWithTag (80888342)
+80a05797 ff75f4          push    dword ptr [ebp-0Ch]
+80a0579a e88d68e2ff      call    nt!ZwClose (8082c02c)
+80a0579f 57              push    edi
+80a057a0 56              push    esi
+80a057a1 e89c2be8ff      call    nt!ExFreePoolWithTag (80888342)
+80a057a6 397df8          cmp     dword ptr [ebp-8],edi
+80a057a9 7463            je      nt!IopInitializeBootDrivers+0x1f8 (80a0580e)
+
+nt!IopInitializeBootDrivers+0x195:
+80a057ab ff3510728a80    push    dword ptr [nt!IopRootDeviceNode (808a7210)]
+80a057b1 e806ebffff      call    nt!PipNotifySetupDevices (80a042bc)
+80a057b6 eb20            jmp     nt!IopInitializeBootDrivers+0x1c2 (80a057d8)
+
+nt!IopInitializeBootDrivers+0x1a2:
+80a057b8 ff75f4          push    dword ptr [ebp-0Ch]
+80a057bb e84ce9ffff      call    nt!PipGetDriverTagPriority (80a0410c)
+80a057c0 66894614        mov     word ptr [esi+14h],ax
+80a057c4 0fb745f0        movzx   eax,word ptr [ebp-10h]
+80a057c8 8b0d6c7c8a80    mov     ecx,dword ptr [nt!IopGroupTable (808a7c6c)]
+80a057ce 56              push    esi
+80a057cf 8d04c1          lea     eax,[ecx+eax*8]
+80a057d2 50              push    eax
+80a057d3 e8aaeaffff      call    nt!PipInsertDriverList (80a04282)
+
+nt!IopInitializeBootDrivers+0x1c2:
+80a057d8 8b4508          mov     eax,dword ptr [ebp+8]
+80a057db 8b1b            mov     ebx,dword ptr [ebx]
+80a057dd 83c010          add     eax,10h
+
+nt!IopInitializeBootDrivers+0x1ca:
+80a057e0 3bd8            cmp     ebx,eax
+80a057e2 0f850affffff    jne     nt!IopInitializeBootDrivers+0xdc (80a056f2)
+
+nt!IopInitializeBootDrivers+0x1d2:
+80a057e8 33c0            xor     eax,eax
+80a057ea 3905687c8a80    cmp     dword ptr [nt!IopGroupIndex (808a7c68)],eax
+80a057f0 8945f0          mov     dword ptr [ebp-10h],eax
+80a057f3 0f86e0010000    jbe     nt!IopInitializeBootDrivers+0x3c3 (80a059d9)
+
+nt!IopInitializeBootDrivers+0x1e3:
+80a057f9 8b0d6c7c8a80    mov     ecx,dword ptr [nt!IopGroupTable (808a7c6c)]
+80a057ff c1e003          shl     eax,3
+80a05802 8945e4          mov     dword ptr [ebp-1Ch],eax
+80a05805 03c1            add     eax,ecx
+80a05807 8b30            mov     esi,dword ptr [eax]
+80a05809 e98f010000      jmp     nt!IopInitializeBootDrivers+0x387 (80a0599d)
+
+nt!IopInitializeBootDrivers+0x1f8:
+80a0580e 57              push    edi
+80a0580f ff356c7c8a80    push    dword ptr [nt!IopGroupTable (808a7c6c)]
+80a05815 e8282be8ff      call    nt!ExFreePoolWithTag (80888342)
+
+nt!IopInitializeBootDrivers+0x204:
+80a0581a 32c0            xor     al,al
+80a0581c e99d030000      jmp     nt!IopInitializeBootDrivers+0x5a8 (80a05bbe)
+
+nt!IopInitializeBootDrivers+0x20b:
+80a05821 8b4610          mov     eax,dword ptr [esi+10h]
+80a05824 8945f4          mov     dword ptr [ebp-0Ch],eax
+80a05827 8b5e0c          mov     ebx,dword ptr [esi+0Ch]
+80a0582a 8b7b18          mov     edi,dword ptr [ebx+18h]
+80a0582d 8d45d8          lea     eax,[ebp-28h]
+80a05830 50              push    eax
+80a05831 c6461701        mov     byte ptr [esi+17h],1
+80a05835 ff75f4          push    dword ptr [ebp-0Ch]
+80a05838 e85b63eeff      call    nt!IopGetDriverNameFromKeyNode (808ebb98)
+80a0583d 85c0            test    eax,eax
+80a0583f 7d09            jge     nt!IopInitializeBootDrivers+0x234 (80a0584a)
+
+nt!IopInitializeBootDrivers+0x22b:
+80a05841 c6461601        mov     byte ptr [esi+16h],1
+80a05845 e91d010000      jmp     nt!IopInitializeBootDrivers+0x351 (80a05967)
+
+nt!IopInitializeBootDrivers+0x234:
+80a0584a 8d45e8          lea     eax,[ebp-18h]
+80a0584d 50              push    eax
+80a0584e 68fe55a080      push    offset nt!IopStartRamdisk+0x2ca (80a055fe)
+80a05853 ff75f4          push    dword ptr [ebp-0Ch]
+80a05856 e8dd46eeff      call    nt!IopGetRegistryValue (808e9f38)
+80a0585b 85c0            test    eax,eax
+80a0585d 7c3e            jl      nt!IopInitializeBootDrivers+0x287 (80a0589d)
+
+nt!IopInitializeBootDrivers+0x249:
+80a0585f 8b45e8          mov     eax,dword ptr [ebp-18h]
+80a05862 83780c00        cmp     dword ptr [eax+0Ch],0
+80a05866 7427            je      nt!IopInitializeBootDrivers+0x279 (80a0588f)
+
+nt!IopInitializeBootDrivers+0x252:
+80a05868 668b480c        mov     cx,word ptr [eax+0Ch]
+80a0586c 66894dc8        mov     word ptr [ebp-38h],cx
+80a05870 66894dca        mov     word ptr [ebp-36h],cx
+80a05874 8b4808          mov     ecx,dword ptr [eax+8]
+80a05877 03c8            add     ecx,eax
+80a05879 6a01            push    1
+80a0587b 8d45c8          lea     eax,[ebp-38h]
+80a0587e 50              push    eax
+80a0587f 894dcc          mov     dword ptr [ebp-34h],ecx
+80a05882 e82fe7ffff      call    nt!PipLookupGroupName (80a03fb6)
+80a05887 8945ec          mov     dword ptr [ebp-14h],eax
+80a0588a 8b45e8          mov     eax,dword ptr [ebp-18h]
+80a0588d eb04            jmp     nt!IopInitializeBootDrivers+0x27d (80a05893)
+
+nt!IopInitializeBootDrivers+0x279:
+80a0588f 8365ec00        and     dword ptr [ebp-14h],0
+
+nt!IopInitializeBootDrivers+0x27d:
+80a05893 6a00            push    0
+80a05895 50              push    eax
+80a05896 e8a72ae8ff      call    nt!ExFreePoolWithTag (80888342)
+80a0589b eb04            jmp     nt!IopInitializeBootDrivers+0x28b (80a058a1)
+
+nt!IopInitializeBootDrivers+0x287:
+80a0589d 8365ec00        and     dword ptr [ebp-14h],0
+
+nt!IopInitializeBootDrivers+0x28b:
+80a058a1 ff75f4          push    dword ptr [ebp-0Ch]
+80a058a4 8365f800        and     dword ptr [ebp-8],0
+80a058a8 e80bf7ffff      call    nt!PipCheckDependencies (80a04fb8)
+80a058ad 84c0            test    al,al
+80a058af 0f848c000000    je      nt!IopInitializeBootDrivers+0x32b (80a05941)
+
+nt!IopInitializeBootDrivers+0x29f:
+80a058b5 8b4608          mov     eax,dword ptr [esi+8]
+80a058b8 85c0            test    eax,eax
+80a058ba 8945f8          mov     dword ptr [ebp-8],eax
+80a058bd 0f8584000000    jne     nt!IopInitializeBootDrivers+0x331 (80a05947)
+
+nt!IopInitializeBootDrivers+0x2ad:
+80a058c3 384616          cmp     byte ptr [esi+16h],al
+80a058c6 7579            jne     nt!IopInitializeBootDrivers+0x32b (80a05941)
+
+nt!IopInitializeBootDrivers+0x2b2:
+80a058c8 8d45f8          lea     eax,[ebp-8]
+80a058cb 50              push    eax
+80a058cc 6a00            push    0
+80a058ce 57              push    edi
+80a058cf ff771c          push    dword ptr [edi+1Ch]
+80a058d2 83c310          add     ebx,10h
+80a058d5 53              push    ebx
+80a058d6 8d45d8          lea     eax,[ebp-28h]
+80a058d9 50              push    eax
+80a058da e8758efeff      call    nt!IopInitializeBuiltinDriver (809ee754)
+80a058df 894618          mov     dword ptr [esi+18h],eax
+80a058e2 8b4df8          mov     ecx,dword ptr [ebp-8]
+80a058e5 85c9            test    ecx,ecx
+80a058e7 7470            je      nt!IopInitializeBootDrivers+0x343 (80a05959)
+
+nt!IopInitializeBootDrivers+0x2d3:
+80a058e9 e8d02de6ff      call    nt!ObfReferenceObject (808686be)
+80a058ee ff75f8          push    dword ptr [ebp-8]
+80a058f1 e8dc6bf6ff      call    nt!IopIsLegacyDriver (8096c4d2)
+80a058f6 84c0            test    al,al
+80a058f8 7547            jne     nt!IopInitializeBootDrivers+0x32b (80a05941)
+
+nt!IopInitializeBootDrivers+0x2e4:
+80a058fa 8b4df8          mov     ecx,dword ptr [ebp-8]
+80a058fd 33ff            xor     edi,edi
+80a058ff 397904          cmp     dword ptr [ecx+4],edi
+80a05902 7537            jne     nt!IopInitializeBootDrivers+0x325 (80a0593b)
+
+nt!IopInitializeBootDrivers+0x2ee:
+80a05904 8b4118          mov     eax,dword ptr [ecx+18h]
+80a05907 397810          cmp     dword ptr [eax+10h],edi
+80a0590a 742f            je      nt!IopInitializeBootDrivers+0x325 (80a0593b)
+
+nt!IopInitializeBootDrivers+0x2f6:
+80a0590c 57              push    edi
+80a0590d 57              push    edi
+80a0590e 83c00c          add     eax,0Ch
+80a05911 50              push    eax
+80a05912 e88d90f6ff      call    nt!IopIsAnyDeviceInstanceEnabled (8096e9a4)
+80a05917 84c0            test    al,al
+80a05919 751d            jne     nt!IopInitializeBootDrivers+0x322 (80a05938)
+
+nt!IopInitializeBootDrivers+0x305:
+80a0591b 3845ff          cmp     byte ptr [ebp-1],al
+80a0591e 7421            je      nt!IopInitializeBootDrivers+0x32b (80a05941)
+
+nt!IopInitializeBootDrivers+0x30a:
+80a05920 8b45f8          mov     eax,dword ptr [ebp-8]
+80a05923 f6400808        test    byte ptr [eax+8],8
+80a05927 7518            jne     nt!IopInitializeBootDrivers+0x32b (80a05941)
+
+nt!IopInitializeBootDrivers+0x313:
+80a05929 8b4018          mov     eax,dword ptr [eax+18h]
+80a0592c 83c00c          add     eax,0Ch
+80a0592f 50              push    eax
+80a05930 57              push    edi
+80a05931 e8e87af6ff      call    nt!IopDriverLoadingFailed (8096d41e)
+80a05936 eb09            jmp     nt!IopInitializeBootDrivers+0x32b (80a05941)
+
+nt!IopInitializeBootDrivers+0x322:
+80a05938 8b4df8          mov     ecx,dword ptr [ebp-8]
+
+nt!IopInitializeBootDrivers+0x325:
+80a0593b 51              push    ecx
+80a0593c e81385f6ff      call    nt!IopDeleteLegacyKey (8096de54)
+
+nt!IopInitializeBootDrivers+0x32b:
+80a05941 837df800        cmp     dword ptr [ebp-8],0
+80a05945 7412            je      nt!IopInitializeBootDrivers+0x343 (80a05959)
+
+nt!IopInitializeBootDrivers+0x331:
+80a05947 8b45ec          mov     eax,dword ptr [ebp-14h]
+80a0594a 85c0            test    eax,eax
+80a0594c 7403            je      nt!IopInitializeBootDrivers+0x33b (80a05951)
+
+nt!IopInitializeBootDrivers+0x338:
+80a0594e ff4010          inc     dword ptr [eax+10h]
+
+nt!IopInitializeBootDrivers+0x33b:
+80a05951 8b45f8          mov     eax,dword ptr [ebp-8]
+80a05954 894608          mov     dword ptr [esi+8],eax
+80a05957 eb04            jmp     nt!IopInitializeBootDrivers+0x347 (80a0595d)
+
+nt!IopInitializeBootDrivers+0x343:
+80a05959 c6461601        mov     byte ptr [esi+16h],1
+
+nt!IopInitializeBootDrivers+0x347:
+80a0595d 6a00            push    0
+80a0595f ff75dc          push    dword ptr [ebp-24h]
+80a05962 e8db29e8ff      call    nt!ExFreePoolWithTag (80888342)
+
+nt!IopInitializeBootDrivers+0x351:
+80a05967 807e1600        cmp     byte ptr [esi+16h],0
+80a0596b 7518            jne     nt!IopInitializeBootDrivers+0x36f (80a05985)
+
+nt!IopInitializeBootDrivers+0x357:
+80a0596d ff75f8          push    dword ptr [ebp-8]
+80a05970 e8c5f6ffff      call    nt!PipAddDevicesToBootDriver (80a0503a)
+80a05975 33ff            xor     edi,edi
+80a05977 57              push    edi
+80a05978 57              push    edi
+80a05979 57              push    edi
+80a0597a 57              push    edi
+80a0597b 6a06            push    6
+80a0597d 57              push    edi
+80a0597e e80315e7ff      call    nt!PipRequestDeviceAction (80876e86)
+80a05983 eb02            jmp     nt!IopInitializeBootDrivers+0x371 (80a05987)
+
+nt!IopInitializeBootDrivers+0x36f:
+80a05985 33ff            xor     edi,edi
+
+nt!IopInitializeBootDrivers+0x371:
+80a05987 e8ece9ffff      call    nt!PipWaitForBootDevicesDeleted (80a04378)
+80a0598c 84c0            test    al,al
+80a0598e 7468            je      nt!IopInitializeBootDrivers+0x3e2 (80a059f8)
+
+nt!IopInitializeBootDrivers+0x37a:
+80a05990 8b45e4          mov     eax,dword ptr [ebp-1Ch]
+80a05993 8b0d6c7c8a80    mov     ecx,dword ptr [nt!IopGroupTable (808a7c6c)]
+80a05999 8b36            mov     esi,dword ptr [esi]
+80a0599b 03c1            add     eax,ecx
+
+nt!IopInitializeBootDrivers+0x387:
+80a0599d 3bf0            cmp     esi,eax
+80a0599f 0f857cfeffff    jne     nt!IopInitializeBootDrivers+0x20b (80a05821)
+
+nt!IopInitializeBootDrivers+0x38f:
+80a059a5 66837df001      cmp     word ptr [ebp-10h],1
+80a059aa 751a            jne     nt!IopInitializeBootDrivers+0x3b0 (80a059c6)
+
+nt!IopInitializeBootDrivers+0x396:
+80a059ac 6a00            push    0
+80a059ae 6a00            push    0
+80a059b0 e8e5beffff      call    nt!IopAllocateLegacyBootResources (80a0189a)
+80a059b5 c705f8708a80a6699580 mov dword ptr [nt!IopAllocateBootResourcesRoutine (808a70f8)],offset nt!IopAllocateBootResources (809569a6)
+80a059bf c605b8708a8001  mov     byte ptr [nt!IopBootConfigsReserved (808a70b8)],1
+
+nt!IopInitializeBootDrivers+0x3b0:
+80a059c6 ff45f0          inc     dword ptr [ebp-10h]
+80a059c9 0fb745f0        movzx   eax,word ptr [ebp-10h]
+80a059cd 3b05687c8a80    cmp     eax,dword ptr [nt!IopGroupIndex (808a7c68)]
+80a059d3 0f8220feffff    jb      nt!IopInitializeBootDrivers+0x1e3 (80a057f9)
+
+nt!IopInitializeBootDrivers+0x3c3:
+80a059d9 33ff            xor     edi,edi
+80a059db 803dbcf4898000  cmp     byte ptr [nt!IoRemoteBootClient (8089f4bc)],0
+80a059e2 bb806967ff      mov     ebx,0FF676980h
+80a059e7 7452            je      nt!IopInitializeBootDrivers+0x425 (80a05a3b)
+
+nt!IopInitializeBootDrivers+0x3d3:
+80a059e9 ff7508          push    dword ptr [ebp+8]
+80a059ec e8510e0000      call    nt!IopStartTcpIpForRemoteBoot (80a06842)
+80a059f1 bec00000c0      mov     esi,0C00000C0h
+80a059f6 eb28            jmp     nt!IopInitializeBootDrivers+0x40a (80a05a20)
+
+nt!IopInitializeBootDrivers+0x3e2:
+80a059f8 57              push    edi
+80a059f9 6a12            push    12h
+80a059fb e9d6000000      jmp     nt!IopInitializeBootDrivers+0x4c0 (80a05ad6)
+
+nt!IopInitializeBootDrivers+0x3ea:
+80a05a00 83ff14          cmp     edi,14h
+80a05a03 731f            jae     nt!IopInitializeBootDrivers+0x40e (80a05a24)
+
+nt!IopInitializeBootDrivers+0x3ef:
+80a05a05 834de4ff        or      dword ptr [ebp-1Ch],0FFFFFFFFh
+80a05a09 8d45e0          lea     eax,[ebp-20h]
+80a05a0c 50              push    eax
+80a05a0d 6a00            push    0
+80a05a0f 895de0          mov     dword ptr [ebp-20h],ebx
+80a05a12 e8bd68e2ff      call    nt!ZwDelayExecution (8082c2d4)
+80a05a17 ff7508          push    dword ptr [ebp+8]
+80a05a1a 47              inc     edi
+80a05a1b e8220e0000      call    nt!IopStartTcpIpForRemoteBoot (80a06842)
+
+nt!IopInitializeBootDrivers+0x40a:
+80a05a20 3bc6            cmp     eax,esi
+80a05a22 74dc            je      nt!IopInitializeBootDrivers+0x3ea (80a05a00)
+
+nt!IopInitializeBootDrivers+0x40e:
+80a05a24 85c0            test    eax,eax
+80a05a26 7d11            jge     nt!IopInitializeBootDrivers+0x423 (80a05a39)
+
+nt!IopInitializeBootDrivers+0x412:
+80a05a28 6a00            push    0
+80a05a2a 6a00            push    0
+80a05a2c 50              push    eax
+80a05a2d 6a03            push    3
+80a05a2f 68bb000000      push    0BBh
+80a05a34 e80bfbe1ff      call    nt!KeBugCheckEx (80825544)
+
+nt!IopInitializeBootDrivers+0x423:
+80a05a39 33ff            xor     edi,edi
+
+nt!IopInitializeBootDrivers+0x425:
+80a05a3b 57              push    edi
+80a05a3c 57              push    edi
+80a05a3d 57              push    edi
+80a05a3e 57              push    edi
+80a05a3f 6a01            push    1
+80a05a41 57              push    edi
+80a05a42 c60538718a8001  mov     byte ptr [nt!PnPBootDriversLoaded (808a7138)],1
+80a05a49 e83814e7ff      call    nt!PipRequestDeviceAction (80876e86)
+80a05a4e e809e9ffff      call    nt!PipWaitForBootDevicesStarted (80a0435c)
+80a05a53 84c0            test    al,al
+80a05a55 7505            jne     nt!IopInitializeBootDrivers+0x446 (80a05a5c)
+
+nt!IopInitializeBootDrivers+0x441:
+80a05a57 57              push    edi
+80a05a58 6a13            push    13h
+80a05a5a eb7a            jmp     nt!IopInitializeBootDrivers+0x4c0 (80a05ad6)
+
+nt!IopInitializeBootDrivers+0x446:
+80a05a5c e88fc9e1ff      call    nt!IopCallBootDriverReinitializationRoutines (808223f0)
+80a05a61 84c0            test    al,al
+80a05a63 740e            je      nt!IopInitializeBootDrivers+0x45d (80a05a73)
+
+nt!IopInitializeBootDrivers+0x44f:
+80a05a65 e8f2e8ffff      call    nt!PipWaitForBootDevicesStarted (80a0435c)
+80a05a6a 84c0            test    al,al
+80a05a6c 7505            jne     nt!IopInitializeBootDrivers+0x45d (80a05a73)
+
+nt!IopInitializeBootDrivers+0x458:
+80a05a6e 57              push    edi
+80a05a6f 6a14            push    14h
+80a05a71 eb63            jmp     nt!IopInitializeBootDrivers+0x4c0 (80a05ad6)
+
+nt!IopInitializeBootDrivers+0x45d:
+80a05a73 8b7508          mov     esi,dword ptr [ebp+8]
+80a05a76 6a0a            push    0Ah
+80a05a78 680a56a080      push    offset nt!IopStartRamdisk+0x2d6 (80a0560a)
+80a05a7d ff7634          push    dword ptr [esi+34h]
+80a05a80 e8398de7ff      call    nt!_memicmp (8087e7be)
+80a05a85 83c40c          add     esp,0Ch
+80a05a88 85c0            test    eax,eax
+80a05a8a 750f            jne     nt!IopInitializeBootDrivers+0x485 (80a05a9b)
+
+nt!IopInitializeBootDrivers+0x476:
+80a05a8c 56              push    esi
+80a05a8d e8a2f8ffff      call    nt!IopStartRamdisk (80a05334)
+80a05a92 e8c5e8ffff      call    nt!PipWaitForBootDevicesStarted (80a0435c)
+80a05a97 84c0            test    al,al
+80a05a99 74bc            je      nt!IopInitializeBootDrivers+0x441 (80a05a57)
+
+nt!IopInitializeBootDrivers+0x485:
+80a05a9b 807dff00        cmp     byte ptr [ebp-1],0
+80a05a9f 741a            je      nt!IopInitializeBootDrivers+0x4a5 (80a05abb)
+
+nt!IopInitializeBootDrivers+0x48b:
+80a05aa1 834de4ff        or      dword ptr [ebp-1Ch],0FFFFFFFFh
+80a05aa5 8d45e0          lea     eax,[ebp-20h]
+80a05aa8 50              push    eax
+80a05aa9 57              push    edi
+80a05aaa 895de0          mov     dword ptr [ebp-20h],ebx
+80a05aad e82268e2ff      call    nt!ZwDelayExecution (8082c2d4)
+80a05ab2 e8a5e8ffff      call    nt!PipWaitForBootDevicesStarted (80a0435c)
+80a05ab7 84c0            test    al,al
+80a05ab9 749c            je      nt!IopInitializeBootDrivers+0x441 (80a05a57)
+
+nt!IopInitializeBootDrivers+0x4a5:
+80a05abb 56              push    esi
+80a05abc e891a9feff      call    nt!IopCreateArcNames (809f0452)
+80a05ac1 85c0            test    eax,eax
+80a05ac3 0f8c51fdffff    jl      nt!IopInitializeBootDrivers+0x204 (80a0581a)
+
+nt!IopInitializeBootDrivers+0x4b3:
+80a05ac9 56              push    esi
+80a05aca e8478ffeff      call    nt!IopMarkBootPartition (809eea16)
+80a05acf 84c0            test    al,al
+80a05ad1 750d            jne     nt!IopInitializeBootDrivers+0x4ca (80a05ae0)
+
+nt!IopInitializeBootDrivers+0x4bd:
+80a05ad3 57              push    edi
+80a05ad4 6a15            push    15h
+
+nt!IopInitializeBootDrivers+0x4c0:
+80a05ad6 e88d57e6ff      call    nt!HeadlessKernelAddLogEntry (8086b268)
+80a05adb e93afdffff      jmp     nt!IopInitializeBootDrivers+0x204 (80a0581a)
+
+nt!IopInitializeBootDrivers+0x4ca:
+80a05ae0 393d687c8a80    cmp     dword ptr [nt!IopGroupIndex (808a7c68)],edi
+80a05ae6 c6053c768a8001  mov     byte ptr [nt!PnPBootDriversInitialized (808a763c)],1
+80a05aed 897df0          mov     dword ptr [ebp-10h],edi
+80a05af0 0f86ba000000    jbe     nt!IopInitializeBootDrivers+0x59a (80a05bb0)
+
+nt!IopInitializeBootDrivers+0x4e0:
+80a05af6 33c0            xor     eax,eax
+
+nt!IopInitializeBootDrivers+0x4e2:
+80a05af8 8bd8            mov     ebx,eax
+80a05afa c1e303          shl     ebx,3
+80a05afd e98c000000      jmp     nt!IopInitializeBootDrivers+0x578 (80a05b8e)
+
+nt!IopInitializeBootDrivers+0x4ec:
+80a05b02 807dff00        cmp     byte ptr [ebp-1],0
+80a05b06 8b30            mov     esi,dword ptr [eax]
+80a05b08 8b0e            mov     ecx,dword ptr [esi]
+80a05b0a 8908            mov     dword ptr [eax],ecx
+80a05b0c 894104          mov     dword ptr [ecx+4],eax
+80a05b0f 8b4e08          mov     ecx,dword ptr [esi+8]
+80a05b12 894df8          mov     dword ptr [ebp-8],ecx
+80a05b15 744f            je      nt!IopInitializeBootDrivers+0x550 (80a05b66)
+
+nt!IopInitializeBootDrivers+0x501:
+80a05b17 807e1600        cmp     byte ptr [esi+16h],0
+80a05b1b 7549            jne     nt!IopInitializeBootDrivers+0x550 (80a05b66)
+
+nt!IopInitializeBootDrivers+0x507:
+80a05b1d 51              push    ecx
+80a05b1e e8af69f6ff      call    nt!IopIsLegacyDriver (8096c4d2)
+80a05b23 84c0            test    al,al
+80a05b25 8b4df8          mov     ecx,dword ptr [ebp-8]
+80a05b28 753c            jne     nt!IopInitializeBootDrivers+0x550 (80a05b66)
+
+nt!IopInitializeBootDrivers+0x514:
+80a05b2a 397904          cmp     dword ptr [ecx+4],edi
+80a05b2d 7537            jne     nt!IopInitializeBootDrivers+0x550 (80a05b66)
+
+nt!IopInitializeBootDrivers+0x519:
+80a05b2f f6410808        test    byte ptr [ecx+8],8
+80a05b33 7531            jne     nt!IopInitializeBootDrivers+0x550 (80a05b66)
+
+nt!IopInitializeBootDrivers+0x51f:
+80a05b35 c6461601        mov     byte ptr [esi+16h],1
+80a05b39 8b4df8          mov     ecx,dword ptr [ebp-8]
+80a05b3c f6410801        test    byte ptr [ecx+8],1
+80a05b40 7524            jne     nt!IopInitializeBootDrivers+0x550 (80a05b66)
+
+nt!IopInitializeBootDrivers+0x52c:
+80a05b42 83490801        or      dword ptr [ecx+8],1
+80a05b46 8b4df8          mov     ecx,dword ptr [ebp-8]
+80a05b49 8b4134          mov     eax,dword ptr [ecx+34h]
+80a05b4c 3bc7            cmp     eax,edi
+80a05b4e 7403            je      nt!IopInitializeBootDrivers+0x53d (80a05b53)
+
+nt!IopInitializeBootDrivers+0x53a:
+80a05b50 51              push    ecx
+80a05b51 ffd0            call    eax
+
+nt!IopInitializeBootDrivers+0x53d:
+80a05b53 ff75f8          push    dword ptr [ebp-8]
+80a05b56 e88db5f1ff      call    nt!ObMakeTemporaryObject (809210e8)
+80a05b5b 8b4df8          mov     ecx,dword ptr [ebp-8]
+80a05b5e e8292ce6ff      call    nt!ObfDereferenceObject (8086878c)
+80a05b63 8b4df8          mov     ecx,dword ptr [ebp-8]
+
+nt!IopInitializeBootDrivers+0x550:
+80a05b66 3bcf            cmp     ecx,edi
+80a05b68 7405            je      nt!IopInitializeBootDrivers+0x559 (80a05b6f)
+
+nt!IopInitializeBootDrivers+0x554:
+80a05b6a e81d2ce6ff      call    nt!ObfDereferenceObject (8086878c)
+
+nt!IopInitializeBootDrivers+0x559:
+80a05b6f 807e1600        cmp     byte ptr [esi+16h],0
+80a05b73 740a            je      nt!IopInitializeBootDrivers+0x569 (80a05b7f)
+
+nt!IopInitializeBootDrivers+0x55f:
+80a05b75 8b460c          mov     eax,dword ptr [esi+0Ch]
+80a05b78 8b4018          mov     eax,dword ptr [eax+18h]
+80a05b7b 80483602        or      byte ptr [eax+36h],2
+
+nt!IopInitializeBootDrivers+0x569:
+80a05b7f ff7610          push    dword ptr [esi+10h]
+80a05b82 e8a564e2ff      call    nt!ZwClose (8082c02c)
+80a05b87 57              push    edi
+80a05b88 56              push    esi
+80a05b89 e8b427e8ff      call    nt!ExFreePoolWithTag (80888342)
+
+nt!IopInitializeBootDrivers+0x578:
+80a05b8e a16c7c8a80      mov     eax,dword ptr [nt!IopGroupTable (808a7c6c)]
+80a05b93 03c3            add     eax,ebx
+80a05b95 3900            cmp     dword ptr [eax],eax
+80a05b97 0f8565ffffff    jne     nt!IopInitializeBootDrivers+0x4ec (80a05b02)
+
+nt!IopInitializeBootDrivers+0x587:
+80a05b9d ff45f0          inc     dword ptr [ebp-10h]
+80a05ba0 0fb745f0        movzx   eax,word ptr [ebp-10h]
+80a05ba4 3b05687c8a80    cmp     eax,dword ptr [nt!IopGroupIndex (808a7c68)]
+80a05baa 0f8248ffffff    jb      nt!IopInitializeBootDrivers+0x4e2 (80a05af8)
+
+nt!IopInitializeBootDrivers+0x59a:
+80a05bb0 57              push    edi
+80a05bb1 ff356c7c8a80    push    dword ptr [nt!IopGroupTable (808a7c6c)]
+80a05bb7 e88627e8ff      call    nt!ExFreePoolWithTag (80888342)
+80a05bbc b001            mov     al,1
+
+nt!IopInitializeBootDrivers+0x5a8:
+80a05bbe 5b              pop     ebx
+80a05bbf 5f              pop     edi
+
+nt!IopInitializeBootDrivers+0x5aa:
+80a05bc0 5e              pop     esi
+80a05bc1 c9              leave
+80a05bc2 c20800          ret     8
