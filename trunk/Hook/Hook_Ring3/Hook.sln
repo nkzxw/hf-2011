@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlobalHook", "GlobalHook\GlobalHook.vcproj", "{8BA2C3AB-19C7-4273-AFD2-A1619FE3860B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlobalApp", "GlobalApp\GlobalApp.vcproj", "{931010F5-C6D9-4B0A-8960-F57F70AE8839}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HookImportApi", "HookImportApi\HookImportApi.vcproj", "{752CF184-0608-4A6A-83D3-6AA642C21ABB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InlineHook", "InlineHook\InlineHook.vcproj", "{374C9702-3ABA-4F39-A2AD-D8D803CDA790}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MouseHook", "MouseHook\MouseHook.vcproj", "{C6EF4E7D-0E85-4D56-9807-F3F59FFD8A0D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KeboardHook", "KeboardHook\KeboardHook.vcproj", "{FC5550F3-204D-481C-865B-F7EDEB42634E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BA2C3AB-19C7-4273-AFD2-A1619FE3860B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8BA2C3AB-19C7-4273-AFD2-A1619FE3860B}.Debug|Win32.Build.0 = Debug|Win32
+		{8BA2C3AB-19C7-4273-AFD2-A1619FE3860B}.Release|Win32.ActiveCfg = Release|Win32
+		{8BA2C3AB-19C7-4273-AFD2-A1619FE3860B}.Release|Win32.Build.0 = Release|Win32
+		{931010F5-C6D9-4B0A-8960-F57F70AE8839}.Debug|Win32.ActiveCfg = Debug|Win32
+		{931010F5-C6D9-4B0A-8960-F57F70AE8839}.Debug|Win32.Build.0 = Debug|Win32
+		{931010F5-C6D9-4B0A-8960-F57F70AE8839}.Release|Win32.ActiveCfg = Release|Win32
+		{931010F5-C6D9-4B0A-8960-F57F70AE8839}.Release|Win32.Build.0 = Release|Win32
+		{752CF184-0608-4A6A-83D3-6AA642C21ABB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{752CF184-0608-4A6A-83D3-6AA642C21ABB}.Debug|Win32.Build.0 = Debug|Win32
+		{752CF184-0608-4A6A-83D3-6AA642C21ABB}.Release|Win32.ActiveCfg = Release|Win32
+		{752CF184-0608-4A6A-83D3-6AA642C21ABB}.Release|Win32.Build.0 = Release|Win32
+		{374C9702-3ABA-4F39-A2AD-D8D803CDA790}.Debug|Win32.ActiveCfg = Debug|Win32
+		{374C9702-3ABA-4F39-A2AD-D8D803CDA790}.Debug|Win32.Build.0 = Debug|Win32
+		{374C9702-3ABA-4F39-A2AD-D8D803CDA790}.Release|Win32.ActiveCfg = Release|Win32
+		{374C9702-3ABA-4F39-A2AD-D8D803CDA790}.Release|Win32.Build.0 = Release|Win32
+		{C6EF4E7D-0E85-4D56-9807-F3F59FFD8A0D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C6EF4E7D-0E85-4D56-9807-F3F59FFD8A0D}.Debug|Win32.Build.0 = Debug|Win32
+		{C6EF4E7D-0E85-4D56-9807-F3F59FFD8A0D}.Release|Win32.ActiveCfg = Release|Win32
+		{C6EF4E7D-0E85-4D56-9807-F3F59FFD8A0D}.Release|Win32.Build.0 = Release|Win32
+		{FC5550F3-204D-481C-865B-F7EDEB42634E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FC5550F3-204D-481C-865B-F7EDEB42634E}.Debug|Win32.Build.0 = Debug|Win32
+		{FC5550F3-204D-481C-865B-F7EDEB42634E}.Release|Win32.ActiveCfg = Release|Win32
+		{FC5550F3-204D-481C-865B-F7EDEB42634E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
