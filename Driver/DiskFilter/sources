@@ -1,0 +1,5 @@
+TARGETNAME=DiskFilter
+TARGETTYPE=DRIVER
+
+SOURCES=DiskFilter.c		\
+        Bitmap.c
