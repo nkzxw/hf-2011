@@ -227,16 +227,23 @@ void CGlobalAppDlg::OnBnClickedInjectDllButton()
 	OutputDebugString (L"Inject dll entry.\n");
 
 	WCHAR *pwchProsess = L"xxx.exe";
-	char *pchDll = "xxx.dll";
+	char *pchDll = "xxx.dll"; //dll绝对路径
 
 	HANDLE hToken;
+	//
+	//打开当前进程令牌环
+	//
 	if (!OpenProcessToken (GetCurrentProcess (), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken))
 	{
 		OutputDebugString (L"OpenProcessToken Error.\n");
 		return;
 	}
 
+	
 	LUID luid;
+	//
+	//获得进程本地唯一ID
+	//
 	if (!LookupPrivilegeValue (NULL, SE_DEBUG_NAME,&luid))
 	{
 		OutputDebugString (L"LookupPrivilegeValue Error.\n");
@@ -248,6 +255,9 @@ void CGlobalAppDlg::OnBnClickedInjectDllButton()
 	tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
 	tp.Privileges[0].Luid = luid;
 
+	//
+	//调整进程的权限
+	//
 	if (!AdjustTokenPrivileges (hToken, 0, &tp, sizeof (TOKEN_PRIVILEGES), NULL, NULL))
 	{
 		OutputDebugString (L"AdjustTokenPrivileges Error.\n");
@@ -259,6 +269,9 @@ void CGlobalAppDlg::OnBnClickedInjectDllButton()
 	PROCESSENTRY32 pe;
 	BOOL bNext;
 
+	//
+	//创建系统进程快照
+	//
 	pe.dwSize = sizeof (pe);
 	hSnap = CreateToolhelp32Snapshot (TH32CS_SNAPPROCESS, 0);
 	bNext = Process32First (hSnap, &pe);
@@ -277,9 +290,32 @@ void CGlobalAppDlg::OnBnClickedInjectDllButton()
 	LPVOID lpAddr;
 	FARPROC pfn;
 
+	//
+	//远程注入DLL其实是通过 CreateRemoteThread 建立一个远程线程调用 LoadLibrary 函数来加载我们指定的DLL，
+	//可是如何能让远程线程知道我要加载DLL呢，要知道在Win32系统下，每个进程都拥有自己的4G虚拟地址空间，各个进程之 间都是相互独立的。
+	//所我们需要在远程进程的内存空间里申请一块内存空间，写入我们的需要注入的 DLL 的路径． 需要用到的 API 函数有：
+	//
+
+	//
+	//申请dll 路径的进程空间 
+	//
 	lpAddr = VirtualAllocEx (hkernel32, NULL, strlen (pchDll), MEM_COMMIT, PAGE_READWRITE);
+
+	//
+	//写入DLL路径到插入进程
+	//
 	WriteProcessMemory (hkernel32, lpAddr, pchDll, strlen(pchDll), NULL);
+
+	//
+	//获得LoadLibraryA 函数地址， 假设所有win32进程的LoadLibraryA地址相同
+	//
 	pfn = GetProcAddress (GetModuleHandleW(L"kernel32.dll"), "LoadLibraryA");
+
+	//
+	//创建远程线程执行LoadLibraryA 函数
+	//
 	CreateRemoteThread(hkernel32,NULL,0,(LPTHREAD_START_ROUTINE)pfn,lpAddr,NULL,0);
+
+	CloseHandle (hkernel32);
 
 }
