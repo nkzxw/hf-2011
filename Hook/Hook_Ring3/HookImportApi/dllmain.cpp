@@ -20,11 +20,7 @@ int WINAPI MessageBoxProxy(
     __in_opt LPCSTR lpCaption,
     __in UINT uType);
 
-int * addr = (int *)MessageBoxA;    //保存函数的入口地址
-int * myaddr = (int *)MessageBoxProxy;
-
-int *oldAddr = NULL;
-int *newAddr = NULL;
+PFNMESSAGEBOX OldMessageBox = (PFNMESSAGEBOX)MessageBoxA;
 
 int WINAPI MessageBoxProxy(
 	__in_opt HWND hWnd,
@@ -32,43 +28,57 @@ int WINAPI MessageBoxProxy(
     __in_opt LPCSTR lpCaption,
     __in UINT uType)
 {
-	OutputDebugString (L"MessageBoxProxy Entry.\n");
-	return ((PFNMESSAGEBOX)oldAddr)(NULL, "hook", "hook", 0);
+	OutputDebugStringW (L"MessageBoxProxy Entry.\n");
+	return ((PFNMESSAGEBOX)OldMessageBox)(NULL, "hook", "hook", 0);
 }	
 	
-void StartHook (char *functionName)
+void StartHook (char *functionName, PROC pfnNew)
 {
-	OutputDebugString (L"StartHook Entry.\n");
+	OutputDebugStringW (L"StartHook Entry.\n");
 
 	HMODULE hModule = GetModuleHandle (NULL);
 	PIMAGE_DOS_HEADER pDosHeader = (PIMAGE_DOS_HEADER)hModule;
 	PIMAGE_NT_HEADERS pNtHeaders = (PIMAGE_NT_HEADERS)((BYTE *)hModule + pDosHeader->e_lfanew);
 	PIMAGE_OPTIONAL_HEADER pOptHeader = (PIMAGE_OPTIONAL_HEADER)&(pNtHeaders->OptionalHeader);
 
-	PIMAGE_IMPORT_DESCRIPTOR pImportDescriptor = (PIMAGE_IMPORT_DESCRIPTOR)((BYTE *)hModule + pOptHeader->DataDirectory[1].VirtualAddress);
+	PIMAGE_IMPORT_DESCRIPTOR pImportDesc = (PIMAGE_IMPORT_DESCRIPTOR)((BYTE *)hModule + pOptHeader->DataDirectory[1].VirtualAddress);
 
-	while (pImportDescriptor->FirstThunk)
+	while (pImportDesc->FirstThunk)
 	{
-		char *dllName= (char *)((BYTE *)hModule + pImportDescriptor->Name);
-		PIMAGE_THUNK_DATA pThunkData = (PIMAGE_THUNK_DATA)((BYTE *)hModule + pImportDescriptor->OriginalFirstThunk);
+		char *dllName= (char *)((BYTE *)hModule + pImportDesc->Name);
 
-		int no = 1;
-		while (pThunkData->u1.Function)
+		PIMAGE_THUNK_DATA pFirstThunk = (PIMAGE_THUNK_DATA)((PBYTE)hModule + pImportDesc->FirstThunk);
+		PIMAGE_THUNK_DATA pOriginalThunk = (PIMAGE_THUNK_DATA)((PBYTE)hModule + pImportDesc->OriginalFirstThunk);
+
+		//
+		// 确保函数不是以序号导入的。
+		//
+		if ((pOriginalThunk->u1.ForwarderString & IMAGE_ORDINAL_FLAG32) != 0)
+			return;
+
+		while (pOriginalThunk->u1.Function)
 		{
-			char *funname = (char *)((BYTE *)hModule + (DWORD)pThunkData->u1.AddressOfData + 2);
-			DWORD *pdwAddr = (DWORD *)((BYTE *)hModule + (DWORD)pImportDescriptor->FirstThunk + (no -1));
-			if ((*pdwAddr) == (int)oldAddr)
+			PIMAGE_IMPORT_BY_NAME pImageByName = (PIMAGE_IMPORT_BY_NAME)((PBYTE)hModule + pOriginalThunk->u1.AddressOfData);
+
+			if (lstrcmpi((LPCSTR)pImageByName->Name, functionName) == 0)
 			{
+				OutputDebugStringA ("[HideService]: StartHook Enter.\n");
+
 				DWORD dwAddr;
 				MEMORY_BASIC_INFORMATION mbi;
-				VirtualQuery (pdwAddr, &mbi, sizeof (mbi));
-				VirtualProtect (pdwAddr, sizeof (DWORD), PAGE_READWRITE, &dwAddr);
-				WriteProcessMemory (GetCurrentProcess (), pdwAddr, &newAddr, sizeof (DWORD), NULL);
-				VirtualProtect (pdwAddr, sizeof (DWORD), dwAddr, 0);
+				VirtualQuery ((LPVOID)(&(pFirstThunk->u1.Function)), &mbi, sizeof (mbi));
+				VirtualProtect ((LPVOID)(&(pFirstThunk->u1.Function)), sizeof (DWORD), PAGE_READWRITE, &dwAddr);
+				WriteProcessMemory (GetCurrentProcess (), (LPVOID)(&(pFirstThunk->u1.Function)), &pfnNew, sizeof (DWORD), NULL);
+				VirtualProtect ((LPVOID)(&(pFirstThunk->u1.Function)), sizeof (DWORD), dwAddr, 0);
+				return;
 			}
+			pOriginalThunk++;
+			pFirstThunk++;
 		}
+		pImportDesc++;
 	}
 }
+
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
@@ -78,10 +88,12 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
-		StartHook ("MessageBoxA");
+		StartHook ("MessageBoxA", (PROC)MessageBoxProxy);
+
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
 	case DLL_PROCESS_DETACH:
+		StartHook ("MessageBoxA", (PROC)OldMessageBox);
 		break;
 	}
 	return TRUE;
