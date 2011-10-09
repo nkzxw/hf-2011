@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MouseHook", "MouseHook\Mous
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KeboardHook", "KeboardHook\KeboardHook.vcproj", "{FC5550F3-204D-481C-865B-F7EDEB42634E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HookExportApi", "HookExportApi\HookExportApi.vcproj", "{5E153096-B8D5-4C6A-BC86-77C6D03C0260}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -43,6 +45,10 @@ Global
 		{FC5550F3-204D-481C-865B-F7EDEB42634E}.Debug|Win32.Build.0 = Debug|Win32
 		{FC5550F3-204D-481C-865B-F7EDEB42634E}.Release|Win32.ActiveCfg = Release|Win32
 		{FC5550F3-204D-481C-865B-F7EDEB42634E}.Release|Win32.Build.0 = Release|Win32
+		{5E153096-B8D5-4C6A-BC86-77C6D03C0260}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5E153096-B8D5-4C6A-BC86-77C6D03C0260}.Debug|Win32.Build.0 = Debug|Win32
+		{5E153096-B8D5-4C6A-BC86-77C6D03C0260}.Release|Win32.ActiveCfg = Release|Win32
+		{5E153096-B8D5-4C6A-BC86-77C6D03C0260}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
