@@ -1,0 +1,10 @@
+;@InterfaceName=IConnectionPoint
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IConnectionPoint::GetConnectionInterface(IUnknown* pObject,IID* pIID);|out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IConnectionPoint::GetConnectionPointContainer(IUnknown* pObject,IConnectionPointContainer ** ppCPC);|out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IConnectionPoint::Advise(IUnknown* pObject,IUnknown* pUnk,DWORD* pdwCookie);|out|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IConnectionPoint::Unadvise(IUnknown* pObject,DWORD dwCookie);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IConnectionPoint::EnumConnections(IUnknown* pObject,IEnumConnections** ppEnum);|out|FailureIfNegativeRet

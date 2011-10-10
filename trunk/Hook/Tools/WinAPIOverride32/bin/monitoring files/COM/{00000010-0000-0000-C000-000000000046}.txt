@@ -1,0 +1,12 @@
+;@InterfaceName=IRunningObjectTable
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IRunningObjectTable::Register(IUnknown* pObject,DWORD grfFlags,IUnknown* punkObject,IMoniker* pmkObjectName,DWORD* pdwRegister);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IRunningObjectTable::Revoke(IUnknown* pObject,DWORD dwRegister);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IRunningObjectTable::IsRunning(IUnknown* pObject,IMoniker* pmkObjectName);
+VTBLIndex=6|HRESULT IRunningObjectTable::GetObject(IUnknown* pObject,IMoniker* pmkObjectName,IUnknown** ppunkObject);|Out|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IRunningObjectTable::NoteChangeTime(IUnknown* pObject,DWORD dwRegister,FILETIME* pfiletime);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IRunningObjectTable::GetTimeOfLastChange(IUnknown* pObject,IMoniker* pmkObjectName,FILETIME* pfiletime);|FailureIfNegativeRet|Out
+VTBLIndex=9|HRESULT IRunningObjectTable::EnumRunning(IUnknown* pObject,IEnumMoniker** ppenumMoniker);|Out|FailureIfNegativeRet

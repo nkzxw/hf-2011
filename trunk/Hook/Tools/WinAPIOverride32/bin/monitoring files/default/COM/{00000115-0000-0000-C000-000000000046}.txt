@@ -1,0 +1,11 @@
+;@InterfaceName=IOleInPlaceUIWindow
+
+; include IOleWindow
+BaseIID={00000114-0000-0000-C000-000000000046}
+
+VTBLIndex=5|HRESULT IOleInPlaceUIWindow::GetBorder(IUnknown* pObject,LPRECT lprectBorder);|FailureIfNegativeRet|Out
+VTBLIndex=6|HRESULT IOleInPlaceUIWindow::RequestBorderSpace(IUnknown* pObject,LPCBORDERWIDTHS pborderwidths);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IOleInPlaceUIWindow::SetBorderSpace(IUnknown* pObject,LPCBORDERWIDTHS pborderwidths);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IOleInPlaceUIWindow::SetActiveObject(IUnknown* pObject,IOleInPlaceActiveObject* pActiveObject,LPCOLESTR pszObjName);|FailureIfNegativeRet
+
+

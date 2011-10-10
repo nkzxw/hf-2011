@@ -1,0 +1,15 @@
+;@InterfaceName=IParseDisplayName
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IParseDisplayName::ParseDisplayName(IUnknown* pObject,IBindCtx* pbc,LPOLESTR pszDisplayName,ULONG* pchEaten,IMoniker** ppmkOut);|FailureIfNegativeRet|Out
+
+
+
+
+
+
+
+
+

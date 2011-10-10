@@ -1,0 +1,7 @@
+typedef struct _SMALL_RECT 
+{
+  SHORT Left;
+  SHORT Top;
+  SHORT Right;
+  SHORT Bottom;
+} SMALL_RECT;

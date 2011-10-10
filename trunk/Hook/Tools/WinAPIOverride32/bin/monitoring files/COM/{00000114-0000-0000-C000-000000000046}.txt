@@ -1,0 +1,13 @@
+;@InterfaceName=IOleWindow
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IOleWindow::GetWindow(IUnknown* pObject,HWND* phwnd);|FailureIfNegativeRet|Out
+VTBLIndex=4|HRESULT IOleWindow::ContextSensitiveHelp(IUnknown* pObject,BOOL fEnterMode);|FailureIfNegativeRet
+
+
+
+
+
+

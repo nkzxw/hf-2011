@@ -1,0 +1,17 @@
+;@InterfaceName=IPropertyPage
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IPropertyPage::SetPageSite(IUnknown* pObject,IPropertyPageSite *pPageSite);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IPropertyPage::Activate(IUnknown* pObject,HWND hWndParent,LPCRECT prc,BOOL bModal);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IPropertyPage::Deactivate(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IPropertyPage::GetPageInfo(IUnknown* pObject,PROPPAGEINFO* pPageInfo);|FailureIfNegativeRet|Out
+VTBLIndex=7|HRESULT IPropertyPage::SetObjects(IUnknown* pObject,ULONG cObjects,IUnknown** ppUnk);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IPropertyPage::Show(IUnknown* pObject,UINT nCmdShow);|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IPropertyPage::Move(IUnknown* pObject,LPCRECT prc);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IPropertyPage::IsPageDirty(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IPropertyPage::Apply(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IPropertyPage::Help(IUnknown* pObject,LPCOLESTR pszHelpDir);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IPropertyPage::TranslateAccelerator(IUnknown* pObject,LPMSG pMsg);|FailureIfNegativeRet
+

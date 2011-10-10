@@ -1,0 +1,11 @@
+typedef struct _KEY_EVENT_RECORD {
+    BOOL bKeyDown;
+    WORD wRepeatCount;
+    WORD wVirtualKeyCode;
+    WORD wVirtualScanCode;
+    union {
+        WCHAR UnicodeChar;
+        CHAR   AsciiChar;
+    } uChar;
+    DWORD dwControlKeyState;
+} KEY_EVENT_RECORD, *PKEY_EVENT_RECORD;

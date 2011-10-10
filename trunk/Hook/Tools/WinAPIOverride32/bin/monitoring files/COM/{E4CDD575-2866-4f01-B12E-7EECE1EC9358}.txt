@@ -1,0 +1,10 @@
+;@InterfaceName=IDirect3DTexture8
+
+; include IDirect3DBaseTexture8
+BaseIID={B4211CFA-51B9-4a9f-AB78-DB99B2BB678E}
+
+VTBLIndex=14|HRESULT IDirect3DTexture8::GetLevelDesc(IUnknown* pObject,UINT Level,D3DSURFACE_DESC *pDesc);|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IDirect3DTexture8::GetSurfaceLevel(IUnknown* pObject,UINT Level,IDirect3DSurface8** ppSurfaceLevel);|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IDirect3DTexture8::LockRect(IUnknown* pObject,UINT Level,D3DLOCKED_RECT* pLockedRect,CONST RECT* pRect,DWORD Flags);|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IDirect3DTexture8::UnlockRect(IUnknown* pObject,UINT Level);|FailureIfNegativeRet
+VTBLIndex=18|HRESULT IDirect3DTexture8::AddDirtyRect(IUnknown* pObject,CONST RECT* pDirtyRect);|FailureIfNegativeRet

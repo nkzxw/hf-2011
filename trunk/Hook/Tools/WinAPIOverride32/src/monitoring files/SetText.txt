@@ -1,0 +1,22 @@
+User32.dll|SetWindowTextA(HWND hWnd,LPCSTR lpString);|FailureIfNullRet
+User32.dll|SetWindowTextW(HWND hWnd,LPCWSTR lpString);|FailureIfNullRet
+
+User32.dll|SetDlgItemTextA(HWND hDlg,int nIDDlgItem,LPCSTR lpString);|FailureIfNullRet
+User32.dll|SetDlgItemTextW(HWND hDlg,int nIDDlgItem,LPCWSTR lpString);|FailureIfNullRet
+User32.dll|SetDlgItemInt(HWND hDlg,int nIDDlgItem,UINT uValue,BOOL bSigned);|FailureIfNullRet
+
+; WM_SETTEXT 0x000C
+User32.dll|SendMessageA(HWND hWnd,UINT Msg:LogValue=0xC,WPARAM wParam,LPSTR lParam);
+User32.dll|SendMessageW(HWND hWnd,UINT Msg:LogValue=0xC,WPARAM wParam,LPWSTR lParam);
+
+
+User32.dll|DrawTextA(HDC hDC,LPCSTR lpchText,int nCount,LPRECT lpRect,UINT uFormat);|FailureIfNullRet
+User32.dll|DrawTextW(HDC hDC,LPCWSTR lpchText,int nCount,LPRECT lpRect,UINT uFormat);|FailureIfNullRet
+
+User32.dll|DrawTextExA(HDC hdc,LPSTR lpchText,int cchText,LPRECT lprc,UINT dwDTFormat,LPDRAWTEXTPARAMS lpDTParams);|FailureIfNullRet
+User32.dll|DrawTextExW(HDC hdc,LPWSTR lpchText,int cchText,LPRECT lprc,UINT dwDTFormat,LPDRAWTEXTPARAMS lpDTParams);|FailureIfNullRet
+
+
+
+
+

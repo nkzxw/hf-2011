@@ -1,0 +1,3 @@
+typedef struct _MENU_EVENT_RECORD {
+    UINT dwCommandId;
+} MENU_EVENT_RECORD, *PMENU_EVENT_RECORD;

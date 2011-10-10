@@ -1,0 +1,60 @@
+;@InterfaceName=IDirectDrawSurface7
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+
+VTBLIndex=3|HRESULT IDirectDrawSurface7::AddAttachedSurface(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDIRECTDRAWSURFACE7 lpDDSAttachedSurface);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IDirectDrawSurface7::AddOverlayDirtyRect(LPDIRECTDRAWSURFACE7 lpDDSurface, LPRECT lpRect);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IDirectDrawSurface7::Blt(LPDIRECTDRAWSURFACE7 lpDDSurface,LPRECT lpDestRect,LPDIRECTDRAWSURFACE7 lpDDSrcSurface,LPRECT lpSrcRect,DWORD dwFlags,LPDDBLTFX lpDDBltF);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IDirectDrawSurface7::BltBatch(LPDIRECTDRAWSURFACE7 lpDDDestSurface,LPDDBLTBATCH lpDDBltBatch,DWORD dwCount,DWORD dwFlag);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IDirectDrawSurface7::BltFast(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwX,DWORD dwY,LPDIRECTDRAWSURFACE7 lpDDSrcSurface,LPRECT lpSrcRect,DWORD dwTran);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IDirectDrawSurface7::DeleteAttachedSurfaces(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlags,LPDIRECTDRAWSURFACE7 lpDDSAttachedSurface);|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IDirectDrawSurface7::EnumAttachedSurfaces(LPDIRECTDRAWSURFACE7 lpDDSurface,LPVOID lpContext,LPDDENUMSURFACESCALLBACK lpEnumSurfacesCallback);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IDirectDrawSurface7::EnumOverlayZOrders(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlags,LPVOID lpContext,LPDDENUMSURFACESCALLBACK lpfnCallback);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IDirectDrawSurface7::Flip(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDIRECTDRAWSURFACE7 lpDDSurfaceTargetOverride,DWORD dwFlag);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IDirectDrawSurface7::GetAttachedSurface(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDDSCAPS2 lpDDSCaps,LPLPDIRECTDRAWSURFACE7* lplpDDAttachedSurface);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IDirectDrawSurface7::GetBltStatus(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlag);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IDirectDrawSurface7::GetCaps(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDDSCAPS2 lpDDSCap);|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IDirectDrawSurface7::GetClipper(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDIRECTDRAWCLIPPER* lplpDDClippe);|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IDirectDrawSurface7::GetColorKey(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlags,LPDDCOLORKEY lpDDColorKey);|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IDirectDrawSurface7::GetDC(LPDIRECTDRAWSURFACE7 lpDirectDrawSurface,HDCFAR *lphD);|FailureIfNegativeRet
+VTBLIndex=18|HRESULT IDirectDrawSurface7::GetFlipStatus(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlag);|FailureIfNegativeRet
+VTBLIndex=19|HRESULT IDirectDrawSurface7::GetOverlayPosition(LPDIRECTDRAWSURFACE7 lpDDSurface,LPLONG lplX,LPLONG lplY);|FailureIfNegativeRet
+VTBLIndex=20|HRESULT IDirectDrawSurface7::GetPalette(LPDIRECTDRAWSURFACE7 lpDDSurface,LPLPDIRECTDRAWPALETTE lplpDDPalette);|FailureIfNegativeRet
+VTBLIndex=21|HRESULT IDirectDrawSurface7::GetPixelFormat(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDDPIXELFORMAT lpDDPixelFormat);|FailureIfNegativeRet
+VTBLIndex=22|HRESULT IDirectDrawSurface7::GetSurfaceDesc(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDDSURFACEDESC2 lpDDSurfaceDesc);|FailureIfNegativeRet
+VTBLIndex=23|HRESULT IDirectDrawSurface7::Initialize(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDIRECTDRAW lpDD,LPDDSURFACEDESC2 lpDDSurfaceDesc);|FailureIfNegativeRet
+VTBLIndex=24|HRESULT IDirectDrawSurface7::IsLost(LPDIRECTDRAWSURFACE7 lpDDSurface);|FailureIfNegativeRet
+VTBLIndex=25|HRESULT IDirectDrawSurface7::Lock(LPDIRECTDRAWSURFACE7 lpDDSurface,LPRECT lpDestRect,LPDDSURFACEDESC2 lpDDSurfaceDesc,DWORD dwFlags,HANDLE hEvent);|FailureIfNegativeRet
+VTBLIndex=26|HRESULT IDirectDrawSurface7::ReleaseDC(LPDIRECTDRAWSURFACE7 lpDDSurface,HDC hDC);|FailureIfNegativeRet
+VTBLIndex=27|HRESULT IDirectDrawSurface7::Restore(LPDIRECTDRAWSURFACE7 lpDDSurface);|FailureIfNegativeRet
+VTBLIndex=28|HRESULT IDirectDrawSurface7::SetClipper(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDIRECTDRAWCLIPPER lpDDClippe);|FailureIfNegativeRet
+VTBLIndex=29|HRESULT IDirectDrawSurface7::SetColorKey(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlags,LPDDCOLORKEY lpDDColorKey);|FailureIfNegativeRet
+VTBLIndex=30|HRESULT IDirectDrawSurface7::SetOverlayPosition(LPDIRECTDRAWSURFACE7 lpDDSurface,LONG lX,LONG lY);|FailureIfNegativeRet
+VTBLIndex=31|HRESULT IDirectDrawSurface7::SetPalette(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDIRECTDRAWPALETTE lpDDPalette);|FailureIfNegativeRet
+VTBLIndex=32|HRESULT IDirectDrawSurface7::Unlock(LPDIRECTDRAWSURFACE7 lpDDSurface,LPVOID lpSurfaceData);|FailureIfNegativeRet
+VTBLIndex=33|HRESULT IDirectDrawSurface7::UpdateOverlay(LPDIRECTDRAWSURFACE7 lpDDSrcSurface,LPRECT lpSrcRect,LPDIRECTDRAWSURFACE7 lpDDDestSurface,LPRECT lpDestRect,DWORD dwFlags,LPDDOVERLAYFX lpDDOverlayFx);|FailureIfNegativeRet
+VTBLIndex=34|HRESULT IDirectDrawSurface7::UpdateOverlayDisplay(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlag);|FailureIfNegativeRet
+VTBLIndex=35|HRESULT IDirectDrawSurface7::UpdateOverlayZOrder(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlags,LPDIRECTDRAWSURFACE7 lpDDSReference);|FailureIfNegativeRet
+
+;Added in the v2 interface
+VTBLIndex=36|HRESULT IDirectDrawSurface7::GetDDInterface(LPDIRECTDRAWSURFACE7 lpDDSurface,LPVOID* lplpDD)|out|FailureIfNegativeRet
+VTBLIndex=37|HRESULT IDirectDrawSurface7::PageLock(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlags)|FailureIfNegativeRet
+VTBLIndex=38|HRESULT IDirectDrawSurface7::PageUnlock(LPDIRECTDRAWSURFACE7 lpDDSurface,DWORD dwFlags)|FailureIfNegativeRet
+
+;Added in the v3 interface
+VTBLIndex=39|HRESULT IDirectDrawSurface7::SetSurfaceDesc(LPDIRECTDRAWSURFACE7 lpDDSurface,LPDDSURFACEDESC2 lpddsd2,DWORD dwFlags)|FailureIfNegativeRet
+
+;Added in the v4 interface
+VTBLIndex=40|HRESULT IDirectDrawSurface7::SetPrivateData(LPDIRECTDRAWSURFACE7 lpDDSurface, REFGUID guidTag, LPVOID lpData:PointedDataSize=Arg4, DWORD cbSize, DWORD dwFlags)|FailureIfNegativeRet
+VTBLIndex=41|HRESULT IDirectDrawSurface7::GetPrivateData(LPDIRECTDRAWSURFACE7 lpDDSurface, REFGUID guidTag, LPVOID lpData, LPDWORD lpcbBufferSize)|out|FailureIfNegativeRet
+VTBLIndex=42|HRESULT IDirectDrawSurface7::FreePrivateData(LPDIRECTDRAWSURFACE7 lpDDSurface, REFGUID guidTag)|FailureIfNegativeRet
+VTBLIndex=43|HRESULT IDirectDrawSurface7::GetUniquenessValue(LPDIRECTDRAWSURFACE7 lpDDSurface, LPDWORD lpValue)|out|FailureIfNegativeRet
+VTBLIndex=44|HRESULT IDirectDrawSurface7::ChangeUniquenessValue(LPDIRECTDRAWSURFACE7 lpDDSurface)|FailureIfNegativeRet
+
+;Added in the v7 interface
+VTBLIndex=45|HRESULT IDirectDrawSurface7::SetPriority(LPDIRECTDRAWSURFACE7 lpDDSurface, DWORD) |FailureIfNegativeRet
+VTBLIndex=46|HRESULT IDirectDrawSurface7::GetPriority(LPDIRECTDRAWSURFACE7 lpDDSurface, LPDWORD) |out|FailureIfNegativeRet
+VTBLIndex=47|HRESULT IDirectDrawSurface7::SetLOD(LPDIRECTDRAWSURFACE7 lpDDSurface, DWORD) |FailureIfNegativeRet
+VTBLIndex=48|HRESULT IDirectDrawSurface7::GetLOD(LPDIRECTDRAWSURFACE7 lpDDSurface, LPDWORD) |out|FailureIfNegativeRet

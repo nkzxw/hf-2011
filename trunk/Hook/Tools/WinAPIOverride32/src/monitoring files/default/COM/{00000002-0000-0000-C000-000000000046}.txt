@@ -1,0 +1,13 @@
+;@InterfaceName=IMalloc
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|void* IMalloc::Alloc(IUnknown* pObject,ULONG cb);
+VTBLIndex=4|void* IMalloc::Realloc(IUnknown* pObject,void* pv,ULONG cb);
+VTBLIndex=5|void IMalloc::Free(IUnknown* pObject,void* pv);
+VTBLIndex=6|ULONG IMalloc::GetSize(IUnknown* pObject,void* pv);
+VTBLIndex=7|int IMalloc::DidAlloc(IUnknown* pObject,void* pv);
+VTBLIndex=8|void IMalloc::HeapMinimize(IUnknown* pObject);
+
+

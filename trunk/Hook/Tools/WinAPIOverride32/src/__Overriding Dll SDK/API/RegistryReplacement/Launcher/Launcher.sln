@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Launcher", "Launcher.vcproj", "{9CB29615-E76D-4870-A735-0E62443CF042}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		DebugUnicode = DebugUnicode
+		Release = Release
+		ReleaseUnicode = ReleaseUnicode
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{9CB29615-E76D-4870-A735-0E62443CF042}.Debug.ActiveCfg = Debug|Win32
+		{9CB29615-E76D-4870-A735-0E62443CF042}.Debug.Build.0 = Debug|Win32
+		{9CB29615-E76D-4870-A735-0E62443CF042}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{9CB29615-E76D-4870-A735-0E62443CF042}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{9CB29615-E76D-4870-A735-0E62443CF042}.Release.ActiveCfg = Release|Win32
+		{9CB29615-E76D-4870-A735-0E62443CF042}.Release.Build.0 = Release|Win32
+		{9CB29615-E76D-4870-A735-0E62443CF042}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{9CB29615-E76D-4870-A735-0E62443CF042}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

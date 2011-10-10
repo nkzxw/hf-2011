@@ -1,0 +1,17 @@
+;@InterfaceName=IInternetZoneManager
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IInternetZoneManager::GetZoneAttributes(IUnknown* pObject,DWORD dwZone,ZONEATTRIBUTES* pZoneAttributes);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IInternetZoneManager::SetZoneAttributes(IUnknown* pObject,DWORD dwZone,ZONEATTRIBUTES* pZoneAttributes);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IInternetZoneManager::GetZoneCustomPolicy(IUnknown* pObject,DWORD dwZone,REFGUID guidKey,BYTE** ppPolicy,DWORD* pcbPolicy,URLZONEREG urlZoneReg);|Out|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IInternetZoneManager::SetZoneCustomPolicy(IUnknown* pObject,DWORD dwZone,REFGUID guidKey,BYTE* pPolicy,DWORD cbPolicy,URLZONEREG urlZoneReg);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IInternetZoneManager::GetZoneActionPolicy(IUnknown* pObject,DWORD dwZone,DWORD dwAction,BYTE* pPolicy,DWORD cbPolicy,URLZONEREG urlZoneReg);|Out|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IInternetZoneManager::SetZoneActionPolicy(IUnknown* pObject,DWORD dwZone,DWORD dwAction,BYTE* pPolicy,DWORD cbPolicy,URLZONEREG urlZoneReg);|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IInternetZoneManager::PromptAction(IUnknown* pObject,DWORD dwAction,HWND hwndParent,LPCWSTR pwszUrl,LPCWSTR pwszText,DWORD dwPromptFlags);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IInternetZoneManager::LogAction(IUnknown* pObject,DWORD dwAction,LPCWSTR pwszUrl,LPCWSTR pwszText,DWORD dwLogFlags);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IInternetZoneManager::CreateZoneEnumerator(IUnknown* pObject,DWORD* pdwEnum,DWORD* pdwCount,DWORD dwFlags);|Out|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IInternetZoneManager::GetZoneAt(IUnknown* pObject,DWORD dwEnum,DWORD dwIndex,DWORD* pdwZone);|Out|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IInternetZoneManager::DestroyZoneEnumerator(IUnknown* pObject,DWORD dwEnum);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IInternetZoneManager::CopyTemplatePoliciesToZone(IUnknown* pObject,DWORD dwTemplate,DWORD dwZone,DWORD dwReserved);|FailureIfNegativeRet

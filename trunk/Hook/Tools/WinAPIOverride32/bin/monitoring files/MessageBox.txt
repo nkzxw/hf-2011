@@ -1,0 +1,9 @@
+user32.dll|BOOL MessageBeep( UINT uType:Define=user32.dll/MessageBox_Type.txt)|BlockingCall |FailureIfNullRet
+user32.dll|int MessageBoxA( HWND hWnd, LPCSTR  lpText, LPCSTR  lpCaption, UINT uType:Define=user32.dll/MessageBox_Type.txt)|BlockingCall |FailureIfNullRet
+user32.dll|int MessageBoxExA( HWND hWnd, LPCSTR  lpText, LPCSTR  lpCaption, UINT uType:Define=user32.dll/MessageBox_Type.txt, WORD wLanguageId)|BlockingCall |FailureIfNullRet
+user32.dll|int MessageBoxExW( HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType:Define=user32.dll/MessageBox_Type.txt, WORD wLanguageId)|BlockingCall |FailureIfNullRet
+user32.dll|int MessageBoxIndirectA( const LPMSGBOXPARAMS lpMsgBoxParams)|Out|BlockingCall |FailureIfNullRet
+user32.dll|int MessageBoxIndirectW( const LPMSGBOXPARAMS lpMsgBoxParams)|Out|BlockingCall |FailureIfNullRet
+user32.dll|int MessageBoxTimeoutA(HWND hWnd, LPCSTR  lpText, LPCSTR  lpCaption, UINT uType:Define=user32.dll/MessageBox_Type.txt, WORD wLanguageId,DWORD dwTimeOutInMs)|BlockingCall |FailureIfNullRet
+user32.dll|int MessageBoxTimeoutW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType:Define=user32.dll/MessageBox_Type.txt, WORD wLanguageId,DWORD dwTimeOutInMs)|BlockingCall |FailureIfNullRet
+user32.dll|int MessageBoxW( HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType:Define=user32.dll/MessageBox_Type.txt)|BlockingCall |FailureIfNullRet

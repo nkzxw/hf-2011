@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FakeIsDebuggerPresent", "FakeIsDebuggerPresent.vcproj", "{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		ReleaseUnicode|Win32 = ReleaseUnicode|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.Debug|Win32.Build.0 = Debug|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.Release|Win32.ActiveCfg = Release|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.Release|Win32.Build.0 = Release|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.ReleaseUnicode|Win32.ActiveCfg = ReleaseUnicode|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.ReleaseUnicode|Win32.Build.0 = ReleaseUnicode|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+;@InterfaceName=IDirect3DBaseTexture8
+
+; include IDirect3DResource8
+BaseIID={1B36BB7B-09B7-410a-B445-7D1430D7B33F}
+
+VTBLIndex=11|DWORD IDirect3DBaseTexture8::SetLOD(IUnknown* pObject,DWORD LODNew);
+VTBLIndex=12|DWORD IDirect3DBaseTexture8::GetLOD(IUnknown* pObject);
+VTBLIndex=13|DWORD IDirect3DBaseTexture8::GetLevelCount(IUnknown* pObject);

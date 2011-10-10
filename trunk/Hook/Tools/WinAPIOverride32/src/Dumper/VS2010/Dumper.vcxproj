@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugUnicode|Win32">
+      <Configuration>DebugUnicode</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseUnicode|Win32">
+      <Configuration>ReleaseUnicode</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{74602576-C86D-4AD0-92C0-91D203666B24}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)Dumper.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Dumper.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)Dumper.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;_UNICODE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)Dumper.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Dumper.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'">
+    <ClCompile>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;UNICODE;_UNICODE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)Dumper.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Tools\Process\MailSlot\MailSlotClient.cpp" />
+    <ClCompile Include="..\..\Tools\Process\MailSlot\MailSlotServer.cpp" />
+    <ClCompile Include="..\..\Tools\Process\x86CrossCompatibility\x86CrossCompatibility.cpp" />
+    <ClCompile Include="..\Dumper.cpp" />
+    <ClCompile Include="..\KernelMemoryUserInterface.cpp" />
+    <ClCompile Include="..\KernelProcessesInfo.cpp" />
+    <ClCompile Include="..\MemoryIntegrityReport.cpp" />
+    <ClCompile Include="..\MemoryUserInterface.cpp" />
+    <ClCompile Include="..\ModuleIntegrityChecking.cpp" />
+    <ClCompile Include="..\ProcessesInfos.cpp" />
+    <ClCompile Include="..\RawDump.cpp" />
+    <ClCompile Include="..\ThreadCallStack.cpp" />
+    <ClCompile Include="..\WindowThreadProcessIdUserInterface.cpp" />
+    <ClCompile Include="..\..\Tools\String\AnsiUnicodeConvert.cpp" />
+    <ClCompile Include="..\..\Tools\APIError\APIError.cpp" />
+    <ClCompile Include="..\..\Tools\Disasm\CallInstructionSizeFromRetAddress\CallInstructionSizeFromRetAddress.cpp" />
+    <ClCompile Include="..\..\Tools\Clipboard\Clipboard.cpp" />
+    <ClCompile Include="..\..\Tools\Gui\Dialog\DialogBase.cpp" />
+    <ClCompile Include="..\..\Tools\Gui\Dialog\DialogHelper.cpp" />
+    <ClCompile Include="..\..\Tools\Dll\DllFinder.cpp" />
+    <ClCompile Include="..\..\Tools\Dll\DllFindFuncNameFromRVA.cpp" />
+    <ClCompile Include="..\..\Tools\Dll\DllSideBySideAssembyFinder.cpp" />
+    <ClCompile Include="..\..\Tools\Dll\DllStub.cpp" />
+    <ClCompile Include="..\..\Tools\Driver\Driver.cpp" />
+    <ClCompile Include="..\..\Tools\Process\Dump\Dump.cpp" />
+    <ClCompile Include="..\..\Tools\Process\Dump\DumpToExe.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\HtmlViewer\HtmlViewerWindow.cpp" />
+    <ClCompile Include="..\..\Tools\KernelMemoryAccess\KernelMemoryAccessInterface.cpp" />
+    <ClCompile Include="..\..\Tools\LinkList\LinkList.cpp" />
+    <ClCompile Include="..\..\Tools\LinkList\LinkListBase.cpp" />
+    <ClCompile Include="..\..\Tools\LinkList\SingleThreaded\LinkListBaseSingleThreaded.cpp" />
+    <ClCompile Include="..\..\Tools\LinkList\LinkListSimple.cpp" />
+    <ClCompile Include="..\..\Tools\LinkList\SingleThreaded\LinkListSimpleSingleThreaded.cpp" />
+    <ClCompile Include="..\..\Tools\Gui\ListView\Listview.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\ModulesInfos\ModulesInfos.cpp" />
+    <ClCompile Include="..\..\Tools\Process\ModulesParser\ModulesParser.cpp" />
+    <ClCompile Include="..\..\Tools\Version\OsVersion.cpp" />
+    <ClCompile Include="..\..\Tools\Pe\PE.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Dll\PeManifestAssembly.cpp" />
+    <ClCompile Include="..\..\Tools\Gui\Menu\PopUpMenu.cpp" />
+    <ClCompile Include="..\..\Tools\Privilege\Privilege.cpp" />
+    <ClCompile Include="..\..\Tools\Process\ProcessAndThreadID\ProcessAndThreadID.cpp" />
+    <ClCompile Include="..\..\Tools\Process\ProcessCallStack\ProcessCallStack.cpp" />
+    <ClCompile Include="..\..\Tools\Process\ProcessHelper\ProcessHelper.cpp" />
+    <ClCompile Include="..\..\Tools\Process\Memory\ProcessMemory.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='DebugUnicode|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseUnicode|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\Rebar\Rebar.cpp" />
+    <ClCompile Include="..\..\Tools\Gui\SelectWindow\SelectWindow.cpp" />
+    <ClCompile Include="..\..\Tools\Gui\Splitter\Splitter.cpp" />
+    <ClCompile Include="..\..\Tools\File\StdFileOperations.cpp" />
+    <ClCompile Include="..\..\Tools\String\StringConverter.cpp" />
+    <ClCompile Include="..\..\Tools\String\StrToHex.cpp" />
+    <ClCompile Include="..\..\Tools\File\TextFile.cpp" />
+    <ClCompile Include="..\..\Tools\Thread\ThreadContext.cpp" />
+    <ClCompile Include="..\..\Tools\Gui\ToolBar\Toolbar.cpp" />
+    <ClCompile Include="..\..\Tools\String\TrimString.cpp" />
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\DebugInfos.cpp" />
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\FunctionBlockInfos.cpp" />
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\FunctionInfos.cpp" />
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\LabelInfos.cpp" />
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\ModuleInfos.cpp" />
+    <ClCompile Include="..\..\Tools\Com\RegisterComComponent.cpp" />
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\regs.cpp" />
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\SymbolLocation.cpp" />
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\ThunkInfos.cpp" />
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\TypeInfos.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Tools\Process\MailSlot\MailSlotClient.h" />
+    <ClInclude Include="..\..\Tools\Process\MailSlot\MailSlotServer.h" />
+    <ClInclude Include="..\..\Tools\Process\x86CrossCompatibility\x86CrossCompatibility.h" />
+    <ClInclude Include="..\..\Tools\Process\x86CrossCompatibility\x86CrossCompatibilityInterProcessCom.h" />
+    <ClInclude Include="..\KernelProcessesInfo.h" />
+    <ClInclude Include="..\dumper.h" />
+    <ClInclude Include="..\KernelMemoryUserInterface.h" />
+    <ClInclude Include="..\MemoryIntegrityReport.h" />
+    <ClInclude Include="..\MemoryUserInterface.h" />
+    <ClInclude Include="..\ModuleIntegrityChecking.h" />
+    <ClInclude Include="..\ProcessesInfos.h" />
+    <ClInclude Include="..\RawDump.h" />
+    <ClInclude Include="..\resource.h" />
+    <ClInclude Include="..\ThreadCallStack.h" />
+    <ClInclude Include="..\WindowThreadProcessIdUserInterface.h" />
+    <ClInclude Include="..\..\Tools\Dll\DllSideBySideAssembyFinder.h" />
+    <ClInclude Include="..\..\Tools\Dll\PeManifestAssembly.h" />
+    <ClInclude Include="..\..\Tools\String\AnsiUnicodeConvert.h" />
+    <ClInclude Include="..\..\Tools\APIError\APIError.h" />
+    <ClInclude Include="..\..\Tools\Disasm\CallInstructionSizeFromRetAddress\CallInstructionSizeFromRetAddress.h" />
+    <ClInclude Include="..\..\Tools\Clipboard\Clipboard.h" />
+    <ClInclude Include="..\..\Tools\Gui\Dialog\DialogBase.h" />
+    <ClInclude Include="..\..\Tools\Gui\Dialog\DialogHelper.h" />
+    <ClInclude Include="..\..\Tools\Dll\DllFinder.h" />
+    <ClInclude Include="..\..\Tools\Dll\DllFindFuncNameFromRVA.h" />
+    <ClInclude Include="..\..\Tools\Dll\DllStub.h" />
+    <ClInclude Include="..\..\Tools\Driver\Driver.h" />
+    <ClInclude Include="..\..\Tools\Process\Dump\Dump.h" />
+    <ClInclude Include="..\..\Tools\Process\Dump\DumpToExe.h" />
+    <ClInclude Include="..\..\Tools\Gui\HtmlViewer\HtmlViewerExport.h" />
+    <ClInclude Include="..\..\Tools\Gui\HtmlViewer\HtmlViewerWindow.h" />
+    <ClInclude Include="..\..\Tools\Process\InjLib\InjLib.h" />
+    <ClInclude Include="..\..\Tools\KernelMemoryAccess\KernelMemoryAccessExport.h" />
+    <ClInclude Include="..\..\Tools\KernelMemoryAccess\KernelMemoryAccessInterface.h" />
+    <ClInclude Include="..\..\Tools\LinkList\LinkList.h" />
+    <ClInclude Include="..\..\Tools\LinkList\LinkListBase.h" />
+    <ClInclude Include="..\..\Tools\LinkList\SingleThreaded\LinkListBaseSingleThreaded.h" />
+    <ClInclude Include="..\..\Tools\LinkList\LinkListSimple.h" />
+    <ClInclude Include="..\..\Tools\LinkList\SingleThreaded\LinkListSimpleSingleThreaded.h" />
+    <ClInclude Include="..\..\Tools\Gui\ListView\Listview.h" />
+    <ClInclude Include="..\..\Tools\Process\ModulesInfos\ModulesInfos.h" />
+    <ClInclude Include="..\..\Tools\Process\ModulesParser\ModulesParser.h" />
+    <ClInclude Include="..\..\Tools\Version\OsVersion.h" />
+    <ClInclude Include="..\..\Tools\Pe\PE.h" />
+    <ClInclude Include="..\..\Tools\Gui\Menu\PopUpMenu.h" />
+    <ClInclude Include="..\..\Tools\Privilege\Privilege.h" />
+    <ClInclude Include="..\..\Tools\Process\ProcessAndThreadID\ProcessAndThreadID.h" />
+    <ClInclude Include="..\..\Tools\Process\ProcessCallStack\ProcessCallStack.h" />
+    <ClInclude Include="..\..\Tools\Process\ProcessHelper\ProcessHelper.h" />
+    <ClInclude Include="..\..\Tools\Process\Memory\ProcessMemory.h" />
+    <ClInclude Include="..\..\Tools\Gui\Rebar\Rebar.h" />
+    <ClInclude Include="..\..\Tools\Gui\SelectWindow\SelectWindow.h" />
+    <ClInclude Include="..\..\Tools\Gui\Splitter\Splitter.h" />
+    <ClInclude Include="..\..\Tools\File\StdFileOperations.h" />
+    <ClInclude Include="..\..\Tools\String\StringConverter.h" />
+    <ClInclude Include="..\..\Tools\String\StrToHex.h" />
+    <ClInclude Include="..\..\Tools\Process\ProcessAndThreadID\Struct.h" />
+    <ClInclude Include="..\..\Tools\File\TextFile.h" />
+    <ClInclude Include="..\..\Tools\Thread\ThreadContext.h" />
+    <ClInclude Include="..\..\Tools\Gui\ToolBar\Toolbar.h" />
+    <ClInclude Include="..\..\Tools\String\TrimString.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\callback.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\DebugInfos.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\FunctionBlockInfos.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\FunctionInfos.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\LabelInfos.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\ModuleInfos.h" />
+    <ClInclude Include="..\..\Tools\Com\RegisterComComponent.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\regs.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\SymbolLocation.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\ThunkInfos.h" />
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\TypeInfos.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resource\App.ico" />
+    <None Include="..\Resource\blank.bmp" />
+    <None Include="..\Resource\CallStack.ico" />
+    <None Include="..\Resource\Context.ico" />
+    <None Include="..\Resource\cross.bmp" />
+    <None Include="..\Resource\cursor.cur" />
+    <None Include="..\Resource\dll.ico" />
+    <None Include="..\Resource\down.ico" />
+    <None Include="..\Resource\downdown.ico" />
+    <None Include="..\Resource\downhot.ico" />
+    <None Include="..\Resource\Dump.ico" />
+    <None Include="..\Resource\DumpToExe.ico" />
+    <None Include="..\Resource\ejectlib.ico" />
+    <None Include="..\Resource\icon_app.ico" />
+    <None Include="..\Resource\injlib.ico" />
+    <None Include="..\Resource\IntegrityChecking.ico" />
+    <None Include="..\Resource\IntegrityRestored.gif" />
+    <None Include="..\Resource\InvalidSection.gif" />
+    <None Include="..\Resource\InvalidSection.jpg" />
+    <None Include="..\Resource\Kernel.ico" />
+    <None Include="..\Resource\Kill.ico" />
+    <None Include="..\Resource\KillDisabled.ico" />
+    <None Include="..\Resource\memory.ico" />
+    <None Include="..\Resource\Pause.ico" />
+    <None Include="..\Resource\PauseDisabled.ico" />
+    <None Include="..\Resource\Priority.ico" />
+    <None Include="..\Resource\refresh.ico" />
+    <None Include="..\Resource\Report.jpg" />
+    <None Include="..\Resource\restore.gif" />
+    <None Include="..\Resource\Resume.ico" />
+    <None Include="..\Resource\ResumeDisabled.ico" />
+    <None Include="..\Resource\save.jpg" />
+    <None Include="..\Resource\SuspendedCount.ico" />
+    <None Include="..\Resource\sys.ico" />
+    <None Include="..\Resource\up.ico" />
+    <None Include="..\Resource\updown.ico" />
+    <None Include="..\Resource\uphot.ico" />
+    <None Include="..\Resource\users.ico" />
+    <None Include="..\Resource\ValidSection.gif" />
+    <None Include="..\Resource\ValidSection.jpg" />
+    <None Include="..\Resource\window_thread_proc_id.ico" />
+    <None Include="..\Resource\integrity_report.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="..\Resource\Dumper.exe.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Dumper.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Dumper.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

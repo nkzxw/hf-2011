@@ -1,0 +1,8 @@
+;@InterfaceName=IDeskBar
+
+; include IOleWindow
+BaseIID={00000114-0000-0000-C000-000000000046}
+
+VTBLIndex=5|HRESULT IDeskBar::SetClient(IUnknown* pObject,IUnknown* punkClient);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IDeskBar::GetClient(IUnknown* pObject,IUnknown** ppunkClient);|Out|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IDeskBar::OnPosRectChangeDB(IUnknown* pObject,LPRECT prc);|FailureIfNegativeRet

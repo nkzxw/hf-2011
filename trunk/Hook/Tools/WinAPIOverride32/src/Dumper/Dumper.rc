@@ -1,0 +1,379 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 5,4,4,0
+ PRODUCTVERSION 5,4,4,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "Jacquelin POTIER jacquelin.potier@free.fr"
+            VALUE "FileDescription", "Dumper"
+            VALUE "FileVersion", "5, 4, 4, 0"
+            VALUE "InternalName", "Dumper"
+            VALUE "LegalCopyright", "Copyright (C) 2005-2010 jacquelin.potier@free.fr"
+            VALUE "OriginalFilename", "Dumper.exe"
+            VALUE "ProductName", " Dumper"
+            VALUE "ProductVersion", "5, 4, 4, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "Resource\\Dumper.exe.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_DUMPER DIALOGEX 0, 0, 695, 400
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_NOPARENTNOTIFY | WS_EX_CONTROLPARENT | WS_EX_APPWINDOW
+CAPTION "Dumper"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST_PROCESSES,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,2,24,646,85
+    GROUPBOX        "Process Modules",IDC_STATIC_GROUP_PROCESS_MODULES,2,137,
+                    646,78,WS_GROUP
+    CONTROL         "",IDC_LIST_MODULES,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,6,147,399,62
+    GROUPBOX        "Process Threads",IDC_STATIC_GROUP_PROCESS_THREADS,2,231,
+                    646,85,WS_GROUP
+    CONTROL         "",IDC_LIST_THREADS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,6,263,399,50
+END
+
+IDD_DIALOG_RAW_DUMP DIALOGEX 0, 0, 211, 78
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Raw Dump"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Process",IDC_STATIC_PROCESS_RAW_DUMP,7,8,26,8
+    COMBOBOX        IDC_COMBO_RAW_DUMP_SELECT_PROCESS,83,8,116,30,
+                    CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Start Address (RVA)",IDC_STATIC,7,26,66,8
+    EDITTEXT        IDC_EDIT_RAW_DUMP_START_ADDRESS,83,23,67,14,
+                    ES_AUTOHSCROLL
+    LTEXT           "Size in bytes",IDC_STATIC,7,41,41,8
+    EDITTEXT        IDC_EDIT_RAW_DUMP_SIZE,83,38,67,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Dump",IDOK,51,57,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,111,57,50,14
+END
+
+IDD_DIALOG_MEMORY DIALOGEX 0, 0, 469, 268
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Memory"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Process",IDC_STATIC_PROCESS_CAPTION,7,8,77,8
+    COMBOBOX        IDC_COMBO_MEMORY_SELECT_PROCESS,87,8,123,30,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Read",IDC_STATIC,7,22,455,102
+    LTEXT           "Start Address (RVA)",IDC_STATIC,14,34,66,8
+    EDITTEXT        IDC_EDIT_MEMORY_READ_START_ADDRESS,88,31,67,14,
+                    ES_AUTOHSCROLL
+    LTEXT           "Size in bytes",IDC_STATIC,211,34,41,8
+    EDITTEXT        IDC_EDIT_MEMORY_READ_SIZE,285,31,67,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Read",IDC_BUTTON_MEMORY_READ,409,31,50,14
+    EDITTEXT        IDC_EDIT_MEMORY_READ_RESULT,14,47,388,75,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+    GROUPBOX        "Write",IDC_STATIC,7,126,455,74
+    LTEXT           "Start Address (RVA)",IDC_STATIC,14,139,66,8
+    EDITTEXT        IDC_EDIT_MEMORY_WRITE_START_ADDRESS,88,138,67,14,
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MEMORY_WRITE_ENTRY,88,155,314,42,ES_MULTILINE | 
+                    WS_VSCROLL
+    PUSHBUTTON      "Write",IDC_BUTTON_MEMORY_WRITE,409,138,50,14
+    GROUPBOX        "Allocate",IDC_STATIC,7,201,455,32
+    LTEXT           "Size in bytes",IDC_STATIC,17,213,41,8
+    EDITTEXT        IDC_EDIT_MEMORY_ALLOCATE_MEMORY_SIZE,88,211,67,14,
+                    ES_AUTOHSCROLL
+    LTEXT           "Address of Allocated Memory (RVA)",IDC_STATIC,164,213,
+                    115,8
+    EDITTEXT        IDC_EDIT_MEMORY_ALLOCATE_MEMORY_ADDRESS,288,211,67,14,
+                    ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Allocate",IDC_BUTTON_MEMORY_ALLOCATE,409,211,50,14
+    GROUPBOX        "Free Previous Allocated",IDC_STATIC,7,233,455,28
+    LTEXT           "Previous Allocated Address (RVA)",IDC_STATIC,19,245,108,
+                    8
+    EDITTEXT        IDC_EDIT_MEMORY_FREE_ALLOCATED_ADDRESS,169,243,67,14,
+                    ES_AUTOHSCROLL
+    PUSHBUTTON      "Free",IDC_BUTTON_MEMORY_FREE,409,243,50,14
+    LTEXT           "Hexa data",IDC_STATIC,16,155,34,8
+END
+
+IDD_DIALOG_THREAD_CONTEXT DIALOGEX 0, 0, 173, 83
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Thread Registers"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,61,62,50,14
+    EDITTEXT        IDC_EDIT_CONTEXT_REGISTERS,7,7,159,54,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_DIALOG_CALLSTACK DIALOGEX 0, 0, 500, 250
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Call Stack"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,224,229,50,14
+    EDITTEXT        IDC_EDIT_CALL_STACK,7,7,486,219,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+END
+
+IDD_DIALOG_WINDOW_THREAD_PROCESS_ID DIALOGEX 0, 0, 186, 46
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Window Process and Thread Id"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         146,IDC_WINDOW_THREAD_PROCESS_ID_PICTURE_CONTROL,"Static",
+                    SS_BITMAP | SS_REALSIZEIMAGE,7,12,21,17
+    EDITTEXT        IDC_EDIT_WINDOW_PROCESS_ID,98,7,81,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_WINDOW_THREAD_ID,98,23,81,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Process Id",IDC_STATIC,58,9,34,8
+    LTEXT           "Thread Id",IDC_STATIC,58,26,32,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG_DUMPER, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 692
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 400
+    END
+
+    IDD_DIALOG_RAW_DUMP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 204
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 71
+    END
+
+    IDD_DIALOG_MEMORY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 462
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 261
+    END
+
+    IDD_DIALOG_THREAD_CONTEXT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 166
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 76
+    END
+
+    IDD_DIALOG_CALLSTACK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 493
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 243
+    END
+
+    IDD_DIALOG_WINDOW_THREAD_PROCESS_ID, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 39
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_APP            ICON                    "Resource\\icon_app.ico"
+IDI_ICON_DOWN           ICON                    "Resource\\down.ico"
+IDI_ICON_DOWN_DOWN      ICON                    "Resource\\downdown.ico"
+IDI_ICON_DOWN_HOT       ICON                    "Resource\\downhot.ico"
+IDI_ICON_UP             ICON                    "Resource\\up.ico"
+IDI_ICON_UP_DOWN        ICON                    "Resource\\updown.ico"
+IDI_ICON_UP_HOT         ICON                    "Resource\\uphot.ico"
+IDI_ICON_DUMP_TO_EXE    ICON                    "Resource\\DumpToExe.ico"
+IDI_ICON_KERNEL         ICON                    "Resource\\Kernel.ico"
+IDI_ICON_KILL           ICON                    "Resource\\Kill.ico"
+IDI_ICON_MEMORY         ICON                    "Resource\\memory.ico"
+IDI_ICON_SUSPEND        ICON                    "Resource\\Pause.ico"
+IDI_ICON_REFRESH        ICON                    "Resource\\refresh.ico"
+IDI_ICON_RESUME         ICON                    "Resource\\Resume.ico"
+IDI_ICON_USER           ICON                    "Resource\\users.ico"
+IDI_ICON_DUMP           ICON                    "Resource\\Dump.ico"
+IDI_ICON_PRIORITY       ICON                    "Resource\\Priority.ico"
+IDI_ICON_SUSPENDED_COUNT ICON                    "Resource\\SuspendedCount.ico"
+IDI_ICON_CALLSTACK      ICON                    "Resource\\CallStack.ico"
+IDI_ICON_CONTEXT        ICON                    "Resource\\Context.ico"
+IDI_ICON_RESUME_DISABLED ICON                    "Resource\\ResumeDisabled.ico"
+IDI_ICON_KILL_DISABLED  ICON                    "Resource\\KillDisabled.ico"
+IDI_ICON_SUSPEND_DISABLED ICON                    "Resource\\PauseDisabled.ico"
+IDI_ICON_INJLIB         ICON                    "Resource\\injlib.ico"
+IDI_ICON_EJECTLIB       ICON                    "Resource\\ejectlib.ico"
+IDI_ICON_INTEGRITY_CHECKING ICON                    "Resource\\IntegrityChecking.ico"
+IDI_ICON_DEFAULT_APP    ICON                    "Resource\\App.ico"
+IDI_ICON_DLL            ICON                    "Resource\\dll.ico"
+IDI_ICON_SYS            ICON                    "Resource\\sys.ico"
+IDI_ICON_WINDOW_THREAD_PROCESS_ID ICON                    "Resource\\window_thread_proc_id.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BLANK               BITMAP                  "resource\\blank.bmp"
+IDB_CROSS               BITMAP                  "resource\\cross.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CURSOR_TARGET       CURSOR                  "resource\\cursor.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+IDR_HTML_REPORT         HTML                    "Resource\\integrity_report.htm"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// IMG
+//
+
+IDR_IMG_INVALID_SECTION IMG                     "Resource\\InvalidSection.gif"
+IDR_IMG_REPORT          IMG                     "Resource\\Report.jpg"
+IDR_IMG_VALID_SECTION   IMG                     "Resource\\ValidSection.gif"
+IDR_IMG_RESTORE         IMG                     "Resource\\restore.gif"
+IDR_IMG_SAVE            IMG                     "Resource\\save.jpg"
+IDR_IMG_INTEGRITY_RESTORED IMG                     "Resource\\IntegrityRestored.gif"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

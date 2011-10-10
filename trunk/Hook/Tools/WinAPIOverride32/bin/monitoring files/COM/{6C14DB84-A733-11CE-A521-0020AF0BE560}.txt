@@ -1,0 +1,9 @@
+;@InterfaceName=IDirectDrawPalette
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT GetCaps(LPDIRECTDRAWPALETTE lpDDPalette,LPDWORD lpdwCaps);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT GetEntries(LPDIRECTDRAWPALETTE lpDDPalette,DWORD dwFlags,DWORD dwBase,DWORD dwNumEntries,LPPALETTEENTRY lpEntries);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT Initialize(LPDIRECTDRAWPALETTE lpDDPalette,LPDIRECTDRAW lpDD,DWORD dwFlags,LPPALETTEENTRY lpDDColorTable);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT SetEntries(LPDIRECTDRAWPALETTE lpDDPalette,DWORD dwFlags,DWORD dwStartingEntry,DWORD dwCount,LPPALETTEENTRY lpEntries);|FailureIfNegativeRet

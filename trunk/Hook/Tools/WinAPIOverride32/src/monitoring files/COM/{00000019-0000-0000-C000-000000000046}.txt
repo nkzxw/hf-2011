@@ -1,0 +1,7 @@
+;@InterfaceName=IExternalConnection
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|DWORD IExternalConnection::AddConnection(IUnknown* pObject,DWORD exconn,DWORD dwreserved);
+VTBLIndex=4|DWORD IExternalConnection::ReleaseConnection(IUnknown* pObject,DWORD extconn,DWORD dwreserved,BOOL fLastReleaseCloses);

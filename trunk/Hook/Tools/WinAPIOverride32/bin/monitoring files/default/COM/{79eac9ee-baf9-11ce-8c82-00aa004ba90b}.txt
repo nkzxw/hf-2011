@@ -1,0 +1,13 @@
+;@InterfaceName=IInternetSecurityManager
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IInternetSecurityManager::SetSecuritySite(IUnknown* pObject,IInternetSecurityMgrSite *pSite);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IInternetSecurityManager::GetSecuritySite(IUnknown* pObject,IInternetSecurityMgrSite **ppSite);|Out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IInternetSecurityManager::MapUrlToZone(IUnknown* pObject,LPCWSTR pwszUrl,DWORD *pdwZone,DWORD dwFlags);|Out|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IInternetSecurityManager::GetSecurityId(IUnknown* pObject,LPCWSTR pwszUrl,BYTE *pbSecurityId,DWORD *pcbSecurityId,DWORD_PTR dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IInternetSecurityManager::ProcessUrlAction(IUnknown* pObject,LPCWSTR pwszUrl,DWORD dwAction,BYTE *pPolicy,DWORD cbPolicy,BYTE *pContext,DWORD cbContext,DWORD dwFlags,DWORD dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IInternetSecurityManager::QueryCustomPolicy(IUnknown* pObject,LPCWSTR pwszUrl,REFGUID guidKey,BYTE **ppPolicy,DWORD *pcbPolicy,BYTE *pContext,DWORD cbContext,DWORD dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IInternetSecurityManager::SetZoneMapping(IUnknown* pObject,DWORD dwZone,LPCWSTR lpszPattern,DWORD dwFlags);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IInternetSecurityManager::GetZoneMappings(IUnknown* pObject,DWORD dwZone,IEnumString **ppenumString,DWORD dwFlags);|Out|FailureIfNegativeRet

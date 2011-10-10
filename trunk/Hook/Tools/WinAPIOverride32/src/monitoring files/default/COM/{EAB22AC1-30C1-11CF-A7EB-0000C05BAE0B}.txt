@@ -1,0 +1,30 @@
+;@InterfaceName=IWebBrowser
+
+; include IDispatch
+BaseIID={00020400-0000-0000-C000-000000000046}
+
+VTBLIndex=7|HRESULT IWebBrowser::GoBack(IUnknown* pObject,void);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IWebBrowser::GoForward(IUnknown* pObject,void);|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IWebBrowser::GoHome(IUnknown* pObject,void);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IWebBrowser::GoSearch(IUnknown* pObject,void);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IWebBrowser::Navigate(IUnknown* pObject,BSTR URL,VARIANT* Flags,VARIANT* TargetFrameName,VARIANT* PostData,VARIANT* Headers);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IWebBrowser::Refresh(IUnknown* pObject,void);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IWebBrowser::Refresh2(IUnknown* pObject,VARIANT* Level);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IWebBrowser::Stop(IUnknown* pObject,void);|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IWebBrowser::get_Application(IUnknown* pObject,IDispatch** ppDisp);|FailureIfNegativeRet|Out
+VTBLIndex=16|HRESULT IWebBrowser::get_Parent(IUnknown* pObject,IDispatch** ppDisp);|FailureIfNegativeRet|Out
+VTBLIndex=17|HRESULT IWebBrowser::get_Container(IUnknown* pObject,IDispatch** ppDisp);|FailureIfNegativeRet|Out
+VTBLIndex=18|HRESULT IWebBrowser::get_Document(IUnknown* pObject,IDispatch** ppDisp);|FailureIfNegativeRet|Out
+VTBLIndex=19|HRESULT IWebBrowser::get_TopLevelContainer(IUnknown* pObject,short* pBool);|FailureIfNegativeRet|Out
+VTBLIndex=20|HRESULT IWebBrowser::get_Type(IUnknown* pObject,BSTR* Type);|FailureIfNegativeRet|Out
+VTBLIndex=21|HRESULT IWebBrowser::get_Left(IUnknown* pObject,long* pl);|FailureIfNegativeRet|Out
+VTBLIndex=22|HRESULT IWebBrowser::put_Left(IUnknown* pObject,long Left);|FailureIfNegativeRet
+VTBLIndex=23|HRESULT IWebBrowser::get_Top(IUnknown* pObject,long* pl);|FailureIfNegativeRet|Out
+VTBLIndex=24|HRESULT IWebBrowser::put_Top(IUnknown* pObject,long Top);|FailureIfNegativeRet
+VTBLIndex=25|HRESULT IWebBrowser::get_Width(IUnknown* pObject,long* pl);|FailureIfNegativeRet|Out
+VTBLIndex=26|HRESULT IWebBrowser::put_Width(IUnknown* pObject,long Width);|FailureIfNegativeRet
+VTBLIndex=27|HRESULT IWebBrowser::get_Height(IUnknown* pObject,long* pl);|FailureIfNegativeRet|Out
+VTBLIndex=28|HRESULT IWebBrowser::put_Height(IUnknown* pObject,long Height);|FailureIfNegativeRet
+VTBLIndex=29|HRESULT IWebBrowser::get_LocationName(IUnknown* pObject,BSTR* LocationName);|FailureIfNegativeRet|Out
+VTBLIndex=30|HRESULT IWebBrowser::get_LocationURL(IUnknown* pObject,BSTR* LocationURL);|FailureIfNegativeRet|Out
+VTBLIndex=31|HRESULT IWebBrowser::get_Busy(IUnknown* pObject,short* pBool);|FailureIfNegativeRet|Out

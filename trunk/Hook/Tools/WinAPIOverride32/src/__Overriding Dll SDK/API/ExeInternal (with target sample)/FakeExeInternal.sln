@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FakeExeInternal", "FakeExeInternal.vcproj", "{4374F0F3-6773-458B-BEC0-B46F692336C3}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TargetSample", "TargetSample\TargetSample.vcproj", "{77C810C2-498B-483E-8353-0AC76538F88D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		DebugUnicode = DebugUnicode
+		Release = Release
+		ReleaseUnicode = ReleaseUnicode
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{4374F0F3-6773-458B-BEC0-B46F692336C3}.Debug.ActiveCfg = Debug|Win32
+		{4374F0F3-6773-458B-BEC0-B46F692336C3}.Debug.Build.0 = Debug|Win32
+		{4374F0F3-6773-458B-BEC0-B46F692336C3}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{4374F0F3-6773-458B-BEC0-B46F692336C3}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{4374F0F3-6773-458B-BEC0-B46F692336C3}.Release.ActiveCfg = Release|Win32
+		{4374F0F3-6773-458B-BEC0-B46F692336C3}.Release.Build.0 = Release|Win32
+		{4374F0F3-6773-458B-BEC0-B46F692336C3}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{4374F0F3-6773-458B-BEC0-B46F692336C3}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+		{77C810C2-498B-483E-8353-0AC76538F88D}.Debug.ActiveCfg = Debug|Win32
+		{77C810C2-498B-483E-8353-0AC76538F88D}.Debug.Build.0 = Debug|Win32
+		{77C810C2-498B-483E-8353-0AC76538F88D}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{77C810C2-498B-483E-8353-0AC76538F88D}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{77C810C2-498B-483E-8353-0AC76538F88D}.Release.ActiveCfg = Release|Win32
+		{77C810C2-498B-483E-8353-0AC76538F88D}.Release.Build.0 = Release|Win32
+		{77C810C2-498B-483E-8353-0AC76538F88D}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{77C810C2-498B-483E-8353-0AC76538F88D}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

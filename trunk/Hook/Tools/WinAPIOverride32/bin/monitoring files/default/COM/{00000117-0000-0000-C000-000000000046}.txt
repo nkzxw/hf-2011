@@ -1,0 +1,11 @@
+;@InterfaceName=IOleInPlaceActiveObject
+
+; include IOleWindow
+BaseIID={00000114-0000-0000-C000-000000000046}
+
+VTBLIndex=5|HRESULT IOleInPlaceActiveObject::TranslateAccelerator(IUnknown* pObject,LPMSG lpmsg);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IOleInPlaceActiveObject::OnFrameWindowActivate(IUnknown* pObject,BOOL fActivate);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IOleInPlaceActiveObject::OnDocWindowActivate(IUnknown* pObject,BOOL fActivate);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IOleInPlaceActiveObject::ResizeBorder(IUnknown* pObject,LPCRECT prcBorder,IOleInPlaceUIWindow pUIWindow,BOOL fFrameWindow);|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IOleInPlaceActiveObject::EnableModeless(IUnknown* pObject,BOOL fEnable);|FailureIfNegativeRet
+

@@ -1,0 +1,18 @@
+KERNEL32.DLL|LoadLibraryA(PSTR lpFileName)|FailureIfNullRet
+KERNEL32.DLL|LoadLibraryW(PWSTR lpFileName)|FailureIfNullRet
+KERNEL32.DLL|LoadLibraryExA(LPCSTR lpFileName,HANDLE hFile,DWORD dwFlags);|FailureIfNullRet
+KERNEL32.DLL|LoadLibraryExW(LPCWSTR lpFileName,HANDLE hFile,DWORD dwFlags);|FailureIfNullRet
+KERNEL32.DLL|GetModuleHandleA(LPCSTR lpModuleName);|FailureIfNullRet
+KERNEL32.DLL|GetModuleHandleW(LPCWSTR lpModuleName);|FailureIfNullRet
+KERNEL32.DLL|GetModuleHandleExA(DWORD dwFlags,LPCSTR lpModuleName,HMODULE* phModule);|out|FailureIfNullRet
+KERNEL32.DLL|GetModuleHandleExW(DWORD dwFlags,LPCWSTR lpModuleName,HMODULE* phModule);|out|FailureIfNullRet
+KERNEL32.DLL|FreeLibrary(HMODULE hModule);|FailureIfNullRet
+
+ntdll.dll|NTSTATUS NTAPI LdrGetDllHandle(PWORD pwPath,PVOID,PUNICODE_STRING ModuleFileName,PHANDLE pHModule)|Out|FailureIfNotNullRet
+ntdll.dll|NTSTATUS NTAPI LdrGetDllHandleEx(UNKNOWN,PWORD pwPath,PVOID,PUNICODE_STRING ModuleFileName,PHANDLE pHModule)|Out|FailureIfNotNullRet
+ntdll.dll|NTSTATUS NTAPI LdrLoadDll(PWCHAR PathToFile,ULONG Flags,PUNICODE_STRING ModuleFileName,PHANDLE ModuleHandle);|Out|FailureIfNotNullRet
+ntdll.dll|NTSTATUS NTAPI LdrUnloadDll(HANDLE ModuleHandle);|FailureIfNotNullRet
+
+
+
+

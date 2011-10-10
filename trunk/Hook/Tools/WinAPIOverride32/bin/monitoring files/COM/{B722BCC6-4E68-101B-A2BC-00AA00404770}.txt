@@ -1,0 +1,22 @@
+;@InterfaceName=IOleDocumentView
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IOleDocumentView::SetInPlaceSite(IUnknown* pObject,IOleInPlaceSite* pIPSite);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IOleDocumentView::GetInPlaceSite(IUnknown* pObject,IOleInPlaceSite** ppIPSite);|FailureIfNegativeRet|Out
+VTBLIndex=5|HRESULT IOleDocumentView::GetDocument(IUnknown* pObject,IUnknown** ppunk);|FailureIfNegativeRet|Out
+VTBLIndex=6|HRESULT IOleDocumentView::SetRect(IUnknown* pObject,LPRECT prcView);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IOleDocumentView::GetRect(IUnknown* pObject,LPRECT prcView);|FailureIfNegativeRet|Out
+VTBLIndex=8|HRESULT IOleDocumentView::SetRectComplex(IUnknown* pObject,LPRECT prcView,LPRECT prcHScroll,LPRECT prcVScroll,LPRECT prcSizeBox);|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IOleDocumentView::Show(IUnknown* pObject,BOOL fShow);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IOleDocumentView::UIActivate(IUnknown* pObject,BOOL fUIActivate);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IOleDocumentView::Open(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IOleDocumentView::Close(IUnknown* pObject,DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IOleDocumentView::SaveViewState(IUnknown* pObject,IStream* pstm);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IOleDocumentView::ApplyViewState(IUnknown* pObject,IStream* pstm);|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IOleDocumentView::Clone(IUnknown* pObject,IOleInPlaceSite* pIPSiteNew,IOleDocumentView** ppViewNew);|FailureIfNegativeRet|Out
+
+
+
+

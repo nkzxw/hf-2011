@@ -1,0 +1,9 @@
+;@InterfaceName=IDispatch
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IDispatch::GetTypeInfoCount(IUnknown* pObject,UINT* pctinfo);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IDispatch::GetTypeInfo(IUnknown* pObject,UINT iTInfo,LCID lcid,ITypeInfo** ppTInfo);|Out|FailureIfNegativeRet |ObjectCreation(CLSIDValue=CurrentObjectCLSID|IIDValue={00020401-0000-0000-C000-000000000046}|ObjectStackIndex=12)
+VTBLIndex=5|HRESULT IDispatch::GetIDsOfNames(IUnknown* pObject,REFIID riid,OLECHAR** rgszNames,UINT cNames,LCID lcid,DISPID* rgDispId);|Out|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IDispatch::Invoke(IUnknown* pObject,DISPID dispIdMember,REFIID riid,LCID lcid,WORD wFlags,DISPPARAMS* pDispParams,VARIANT* pVarResult,EXCEPINFO* pExcepInfo,UINT* puArgErr);|Out|FailureIfNegativeRet

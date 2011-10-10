@@ -1,0 +1,7 @@
+;@InterfaceName=IShellDetails
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IShellDetails::GetDetailsOf(IUnknown* pObject,LPCITEMIDLIST pidl, UINT iColumn, SHELLDETAILS *pDetails);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IShellDetails::ColumnClick(IUnknown* pObject,UINT iColumn);|FailureIfNegativeRet

@@ -1,0 +1,12 @@
+;@InterfaceName=IOleInPlaceSiteEx
+
+; include IOleInPlaceSite
+BaseIID={00000119-0000-0000-C000-000000000046}
+
+VTBLIndex=15|HRESULT IOleInPlaceSiteEx::OnInPlaceActivateEx(IUnknown* pObject,BOOL* pfNoRedraw,DWORD dwFlags);|FailureIfNegativeRet|Out
+VTBLIndex=16|HRESULT IOleInPlaceSiteEx::OnInPlaceDeactivateEx(IUnknown* pObject,BOOL fNoRedraw);|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IOleInPlaceSiteEx::RequestUIActivate(IUnknown* pObject);|FailureIfNegativeRet
+
+
+
+

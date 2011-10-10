@@ -1,0 +1,24 @@
+;@InterfaceName=IActiveDesktop
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3| HRESULT IActiveDesktop::ApplyChanges(IUnknown* pObject,DWORD dwFlags);|FailureIfNegativeRet
+VTBLIndex=4| HRESULT IActiveDesktop::GetWallpaper(IUnknown* pObject,LPWSTR pwszWallpaper, UINT cchWallpaper, DWORD dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=5| HRESULT IActiveDesktop::SetWallpaper(IUnknown* pObject,LPCWSTR pwszWallpaper, DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=6| HRESULT IActiveDesktop::GetWallpaperOptions(IUnknown* pObject,LPWALLPAPEROPT pwpo, DWORD dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=7| HRESULT IActiveDesktop::SetWallpaperOptions(IUnknown* pObject,LPCWALLPAPEROPT pwpo, DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=8| HRESULT IActiveDesktop::GetPattern(IUnknown* pObject,LPWSTR pwszPattern, UINT cchPattern, DWORD dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=9| HRESULT IActiveDesktop::SetPattern(IUnknown* pObject,LPCWSTR pwszPattern, DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IActiveDesktop::GetDesktopItemOptions(IUnknown* pObject,LPCOMPONENTSOPT pco, DWORD dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IActiveDesktop::SetDesktopItemOptions(IUnknown* pObject,LPCCOMPONENTSOPT pco, DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IActiveDesktop::AddDesktopItem(IUnknown* pObject,LPCCOMPONENT pcomp, DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IActiveDesktop::AddDesktopItemWithUI(IUnknown* pObject,HWND hwnd, LPCOMPONENT pcomp, DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IActiveDesktop::ModifyDesktopItem(IUnknown* pObject,LPCCOMPONENT pcomp, DWORD dwFlags);|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IActiveDesktop::RemoveDesktopItem(IUnknown* pObject,LPCCOMPONENT pcomp, DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IActiveDesktop::GetDesktopItemCount(IUnknown* pObject,LPINT lpiCount, DWORD dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IActiveDesktop::GetDesktopItem(IUnknown* pObject,int nComponent, LPCOMPONENT pcomp, DWORD dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=18|HRESULT IActiveDesktop::GetDesktopItemByID(IUnknown* pObject,ULONG_PTR dwID, LPCOMPONENT pcomp, DWORD dwReserved);|Out|FailureIfNegativeRet
+VTBLIndex=19|HRESULT IActiveDesktop::GenerateDesktopItemHtml(IUnknown* pObject,LPCWSTR pwszFileName, LPCOMPONENT pcomp, DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=20|HRESULT IActiveDesktop::AddUrl(IUnknown* pObject,HWND hwnd, LPCWSTR pszSource, LPCOMPONENT pcomp, DWORD dwFlags);|FailureIfNegativeRet
+VTBLIndex=21|HRESULT IActiveDesktop::GetDesktopItemBySource(IUnknown* pObject,LPCWSTR pwszSource, LPCOMPONENT pcomp, DWORD dwReserved);|Out|FailureIfNegativeRet

@@ -1,0 +1,7 @@
+;@InterfaceName=IDirectDrawColorControl
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IDirectDrawColorControl::GetColorControls(IUnknown* pObject,LPDDCOLORCONTROL lpColorControl);|out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IDirectDrawColorControl::SetColorControls(IUnknown* pObject,LPDDCOLORCONTROL lpColorControl);|FailureIfNegativeRet

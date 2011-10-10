@@ -1,0 +1,13 @@
+;@InterfaceName=IViewObject
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IViewObject::Draw(IUnknown* pObject,DWORD dwAspect,LONG lindex,void* pvAspect,DVTARGETDEVICE* ptd,HDC hicTargetDev,HDC hdcDraw,LPRECTL lprcBounds,LPRECTL lprcWBounds,PVOID pfnContinue,DWORD dwContinue);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IViewObject::GetColorSet(IUnknown* pObject,DWORD dwAspect,LONG lindex,void* pvAspect,DVTARGETDEVICE* ptd,HDC hicTargetDev,LOGPALETTE** ppColorSet);|FailureIfNegativeRet|Out
+VTBLIndex=5|HRESULT IViewObject::Freeze(IUnknown* pObject,DWORD dwAspect,LONG lindex,void* pvAspect,DWORD* pdwFreeze);|FailureIfNegativeRet|Out
+VTBLIndex=6|HRESULT IViewObject::Unfreeze(IUnknown* pObject,DWORD dwFreeze);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IViewObject::SetAdvise(IUnknown* pObject,DWORD dwAspect,DWORD advf,IAdviseSink * pAdvSink);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IViewObject::GetAdvise(IUnknown* pObject,DWORD * pdwAspect,DWORD* padvf,IAdviseSink** ppAdvSink);|FailureIfNegativeRet|Out
+
+

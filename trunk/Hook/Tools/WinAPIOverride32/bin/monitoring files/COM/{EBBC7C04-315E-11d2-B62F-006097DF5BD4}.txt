@@ -1,0 +1,15 @@
+;@InterfaceName=IProgressDialog
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3| HRESULT IProgressDialog::StartProgressDialog(IUnknown* pObject,HWND hwndParent, IUnknown * punkEnableModless, DWORD dwFlags, LPCVOID pvResevered);|FailureIfNegativeRet
+VTBLIndex=4| HRESULT IProgressDialog::StopProgressDialog(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=5| HRESULT IProgressDialog::SetTitle(IUnknown* pObject,LPCWSTR pwzTitle);|FailureIfNegativeRet
+VTBLIndex=6| HRESULT IProgressDialog::SetAnimation(IUnknown* pObject,HINSTANCE hInstAnimation, UINT idAnimation);|FailureIfNegativeRet
+VTBLIndex=7| BOOL IProgressDialog::HasUserCancelled) (IUnknown* pObject);
+VTBLIndex=8| HRESULT IProgressDialog::SetProgress(IUnknown* pObject,DWORD dwCompleted, DWORD dwTotal);|FailureIfNegativeRet
+VTBLIndex=9| HRESULT IProgressDialog::SetProgress64(IUnknown* pObject,ULONGLONG ullCompleted, ULONGLONG ullTotal);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IProgressDialog::SetLine(IUnknown* pObject,DWORD dwLineNum, LPCWSTR pwzString, BOOL fCompactPath, LPCVOID pvResevered);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IProgressDialog::SetCancelMsg(IUnknown* pObject,LPCWSTR pwzCancelMsg, LPCVOID pvResevered);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IProgressDialog::Timer(IUnknown* pObject,DWORD dwTimerAction, LPCVOID pvResevered);|FailureIfNegativeRet

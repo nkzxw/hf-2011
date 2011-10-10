@@ -1,0 +1,15 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;      proxy list syntax : 
+; 
+;         ; for comments 
+;
+;         ip:port:ProxyType where ProxyType is GET, CONNECT, SOCKS4 or SOCKS5
+;
+;  ex : 66.220.11.235:3128:CONNECT
+;       165.229.205.91:4769:SOCKS5
+;
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+

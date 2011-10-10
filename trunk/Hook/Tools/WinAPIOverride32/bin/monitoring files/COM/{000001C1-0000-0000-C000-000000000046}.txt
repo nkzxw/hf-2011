@@ -1,0 +1,10 @@
+;@InterfaceName=IEnumContextProps
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IEnumContextProps::Next(IUnknown* pObject,ULONG celt,ContextProperty* pContextProperties,ULONG* pceltFetched);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IEnumContextProps::Skip(IUnknown* pObject,ULONG celt);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IEnumContextProps::Reset(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IEnumContextProps::Clone(IUnknown* pObject,IEnumContextProps**  ppEnumContextProps);|Out|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IEnumContextProps::Count(IUnknown* pObject,ULONG* pcelt);|Out|FailureIfNegativeRet

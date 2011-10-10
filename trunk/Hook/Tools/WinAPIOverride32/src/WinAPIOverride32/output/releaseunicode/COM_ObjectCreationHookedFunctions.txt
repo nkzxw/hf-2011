@@ -1,0 +1,118 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;                Function hooked to handle created com objects
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; SYNTAX :
+;
+; DllName|FunctionName|Option1|Option2...|OptionN
+; WinApiOverrideDllNameLike|FunctionName|Option1|Option2...|OptionN
+; ! to disable spying of specified function
+; ; for comments
+;
+;where options are
+;
+; StackSize=                   for all definition, specify the stack size in bytes of all parameters
+;
+;
+;for CLSID (for all definition provide information on CLSID)
+;
+; CLSIDStackIndex=             bytes count between stack position (esp) and CLSID parameter address
+; REFCLSIDStackIndex=          bytes count between stack position (esp) and CLSID* parameter address
+; CLSIDValue=                  CLSID string value (used for function not requiring a CLSID parameter)
+;
+;
+;for IID (not needed if function has a MULTI_QI parameter)
+;
+; IIDStackIndex=               bytes count between stack position (esp) and IID parameter address
+; REFIIDStackIndex=            bytes count between stack position (esp) and IID* parameter address
+; IIDValue=                    IID string value (used for function not requiring an IID parameter like DirectDrawCreate)
+;
+;
+;for single object creation (if object pointer is a parameter like CoCreateInstance)
+;
+; ObjectStackIndex=            bytes count between stack position (esp) and object pointer parameter address
+;
+;for single object creation (if object pointer is the returned value like Direct3DCreate8)
+;
+; ObjectIsReturnedValue
+;
+;for multiple objects creation (like CoCreateInstanceEx)
+;
+; ObjectArrayStackIndex=       bytes count between stack position (esp) and MULTI_QI array parameter address
+; ObjectArraySizeStackIndex=   bytes count between stack position (esp) and MULTI_QI array size parameter address
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;HRESULT CoGetInstanceFromFile(COSERVERINFO* pServerInfo,CLSID * pclsid,IUnknown * punkOuter,DWORD dwClsCtx,DWORD grfMode, OLECHAR * szName,ULONG cmq, MULTI_QI * rgmqResults);
+ole32.dll|CoGetInstanceFromFile|StackSize=32|REFCLSIDStackIndex=4|ObjectArraySizeStackIndex=24|ObjectArrayStackIndex=28
+
+;HRESULT CoGetInstanceFromIStorage( COSERVERINFO * pServerInfo, CLSID * pclsid, IUnknown * punkOuter, DWORD dwClsCtx, IStorage * pstg, ULONG cmq, MULTI_QI * rgmqResults);
+ole32.dll|CoGetInstanceFromIStorage|StackSize=28|REFCLSIDStackIndex=4|ObjectArraySizeStackIndex=20|ObjectArrayStackIndex=24
+
+;STDAPI CoGetClassObject(REFCLSID rclsid,DWORD dwClsContext,COSERVERINFO * pServerInfo,REFIID riid,LPVOID * ppv);
+ole32.dll|CoGetClassObject|StackSize=20|REFCLSIDStackIndex=0|REFIIDStackIndex=12|ObjectStackIndex=16
+
+;STDAPI CoCreateInstance(REFCLSID rclsid,LPUNKNOWN pUnkOuter,DWORD dwClsContext,REFIID riid,LPVOID * ppv);
+;As CoCreateInstance calls CoCreateInstanceEx you don't need to hook both
+!ole32.dll|CoCreateInstance|StackSize=20|REFCLSIDStackIndex=0|REFIIDStackIndex=12|ObjectStackIndex=16
+
+;HRESULT CoCreateInstanceEx(REFCLSID rclsid,IUnknown * punkOuter,DWORD dwClsCtx,COSERVERINFO * pServerInfo,ULONG cmq,MULTI_QI * pResults);
+ole32.dll|CoCreateInstanceEx|StackSize=24|REFCLSIDStackIndex=0|ObjectArraySizeStackIndex=16|ObjectArrayStackIndex=20
+
+;OleCreate calls OleCreateEx
+!ole32.dll|OleCreate|StackSize=28|REFCLSIDStackIndex=0|REFIIDStackIndex=4|ObjectStackIndex=24
+
+ole32.dll|OleCreateEx|StackSize=48|REFCLSIDStackIndex=0|REFIIDStackIndex=4|ObjectStackIndex=44
+
+;OleCreateFromFile calls OleCreateFromFileEx
+ole32.dll|OleCreateFromFile|StackSize=32|REFCLSIDStackIndex=0|REFIIDStackIndex=8|ObjectStackIndex=28
+
+ole32.dll|OleCreateFromFileEx|StackSize=52|REFCLSIDStackIndex=0|REFIIDStackIndex=8|ObjectStackIndex=48
+
+
+;HRESULT WINAPI DirectDrawCreate(GUID FAR *lpGUID, LPDIRECTDRAW FAR *lplpDD, IUnknown FAR *pUnkOuter); 
+;CLSID_DirectDraw {D7B70EE0-4340-11CF-B063-0020AFC2CD35}
+;IID_IDirectDraw  {6C14DB80-A733-11CE-A521-0020AF0BE560}
+!ddraw.dll|DirectDrawCreate|StackSize=12|CLSIDValue={D7B70EE0-4340-11CF-B063-0020AFC2CD35}|IIDValue={6C14DB80-A733-11CE-A521-0020AF0BE560}|ObjectStackIndex=4
+
+
+;HRESULT WINAPI DirectDrawCreateEx( GUID FAR * lpGuid, LPVOID  *lplpDD, REFIID  iid,IUnknown FAR *pUnkOuter );
+;CLSID_DirectDraw {D7B70EE0-4340-11CF-B063-0020AFC2CD35}
+!ddraw.dll|DirectDrawCreateEx|StackSize=16|CLSIDValue={D7B70EE0-4340-11CF-B063-0020AFC2CD35}|REFIIDStackIndex=8|ObjectStackIndex=4
+
+
+;IDirect3D8* Direct3DCreate8(UINT SDKVersion);
+; no CLSID use IID as CLSID
+; IID_IDirect3D8 {1DD9E8DA-1C77-4d40-B0CF-98FEFDFF9512}
+!D3d8.dll|Direct3DCreate8|StackSize=4|CLSIDValue={1DD9E8DA-1C77-4d40-B0CF-98FEFDFF9512}|IIDValue={1DD9E8DA-1C77-4d40-B0CF-98FEFDFF9512}|ObjectIsReturnedValue
+
+;HRESULT SHGetDesktopFolder(IShellFolder **ppshf);
+!shell32.dll|SHGetDesktopFolder|StackSize=4|CLSIDValue={000214E6-0000-0000-C000-000000000046}|IIDValue={000214E6-0000-0000-C000-000000000046}|ObjectStackIndex=0
+
+;HRESULT SHBindToParent(LPCITEMIDLIST pidl,REFIID riid,VOID **ppv,LPCITEMIDLIST *ppidlLast);
+;Notice : SHBindToParent internally calls SHGetDesktopFolder
+!shell32.dll|SHBindToParent|StackSize=16|CLSIDValue={000214E6-0000-0000-C000-000000000046}|REFIIDStackIndex=4|ObjectStackIndex=8
+
+;HRESULT SHGetInstanceExplorer(IUnknown **ppunk);
+;CLSID_ShellBrowser {c08afd90-f2a1-11d1-8455-00a0c91f3880}
+;IID_IUnknown {00000000-0000-0000-C000-000000000046}
+!shell32.dll|SHGetInstanceExplorer|StackSize=4|CLSIDValue={c08afd90-f2a1-11d1-8455-00a0c91f3880}|IIDValue={00000000-0000-0000-C000-000000000046}|ObjectStackIndex=0
+
+;HRESULT CoGetMalloc(DWORD dwMemContext,LPMALLOC * ppMalloc);
+!ole32.dll|CoGetMalloc|StackSize=8|CLSIDValue={00000002-0000-0000-C000-000000000046}|IIDValue={00000002-0000-0000-C000-000000000046}|ObjectStackIndex=4
+
+;HRESULT SHGetMalloc(IMalloc **ppMalloc);
+; no CLSID use IID as CLSID
+; IID_IMalloc {00000002-0000-0000-C000-000000000046}
+;internally calls CoGetMalloc
+!shell32.dll|SHGetMalloc|StackSize=4|CLSIDValue={00000002-0000-0000-C000-000000000046}|IIDValue={00000002-0000-0000-C000-000000000046}|ObjectStackIndex=0
+
+;HRESULT LoadTypeLibEx( LPCOLESTR  szFile, REGKIND  regkind,  ITypeLib**  pptlib );
+!oleaut32|LoadTypeLibEx|StackSize=12|CLSIDValue={00020402-0000-0000-C000-000000000046}|IIDValue={00020402-0000-0000-C000-000000000046}|ObjectStackIndex=8
+
+;WINOLEAPI CreateClassMoniker(REFCLSID rclsid, IMoniker ** ppmk);
+; IID_IMoniker {0000000F-0000-0000-C000-000000000046}
+ole32.dll|CreateClassMoniker|StackSize=8|REFCLSIDStackIndex=0|IIDValue={0000000F-0000-0000-C000-000000000046}|ObjectStackIndex=4

@@ -1,0 +1,223 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_DEBUG_INFOS DIALOGEX 0, 0, 400, 305
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Debug Infos Viewer"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_TREE_DEBUG_INFOS,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,2,27,303,183
+    GROUPBOX        "Search Function",IDC_GROUP_FIND,2,223,396,76,WS_GROUP
+    CONTROL         "By Name",IDC_RADIO_BY_NAME,"Button",BS_AUTORADIOBUTTON,
+                    24,236,44,10
+    EDITTEXT        IDC_EDIT_FIND,75,235,292,14,ES_AUTOHSCROLL
+    CONTROL         "By Relative Virtual Address (RVA)",
+                    IDC_RADIO_BY_RELATIVE_VIRTUAL_ADDRESS,"Button",
+                    BS_AUTORADIOBUTTON,24,250,123,10
+    EDITTEXT        IDC_EDIT_FIND_BY_RELATIVE_VIRTUAL_ADDRESS,155,249,61,14,
+                    ES_AUTOHSCROLL
+    CONTROL         "By Virtual Address (VA)",IDC_RADIO_BY_VIRTUAL_ADDRESS,
+                    "Button",BS_AUTORADIOBUTTON,24,264,90,10
+    EDITTEXT        IDC_EDIT_FIND_BY_VIRTUAL_ADDRESS,155,263,61,14,
+                    ES_AUTOHSCROLL
+    PUSHBUTTON      "Find",IDC_BUTTON_FIND,105,281,50,14
+    PUSHBUTTON      "Find Next",IDC_BUTTON_FIND_NEXT,159,281,50,14
+    PUSHBUTTON      "Find Previous",IDC_BUTTON_FIND_PREVIOUS,213,281,50,14
+END
+
+IDD_DIALOGABOUT DIALOGEX 0, 0, 219, 110
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,84,89,50,14
+    ICON            IDI_ICON_GENERATE,IDC_STATIC,9,11,20,20
+    CTEXT           "Debug Infos Viewer v1.0",IDC_STATIC_ABOUT_TITLE,42,7,
+                    135,19
+    LTEXT           "Freeware under GPL Licence",IDC_STATIC,61,22,97,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG_DEBUG_INFOS, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 359
+        BOTTOMMARGIN, 302
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_GENERATE       ICON                    "resource\\generate.ico"
+IDI_ICON_EXPORT         ICON                    "resource\\export.ico"
+IDI_ICON_OPEN           ICON                    "resource\\open.ico"
+IDI_ICON_EXPAND         ICON                    "resource\\expand.ico"
+IDI_ICON_COLLAPSE       ICON                    "resource\\collapse.ico"
+IDI_ICON_FUNCTION       ICON                    "resource\\function.ico"
+IDI_ICON_LOCAL          ICON                    "resource\\local.ico"
+IDI_ICON_OBJ            ICON                    "resource\\obj.ico"
+IDI_ICON_PARAM          ICON                    "resource\\param.ico"
+IDI_ICON_THUNK          ICON                    "resource\\thunk.ico"
+IDI_ICON_EMPTY          ICON                    "resource\\empty.ico"
+IDI_ICON_SHOW_ASM       ICON                    "resource\\asm.ico"
+IDI_ICON_ABOUT          ICON                    "Resource\\about.ico"
+IDI_ICON_DONATION       ICON                    "Resource\\paypal.ico"
+IDI_ICON_UNCHECK_ALL    ICON                    "resource\\uncheck_all.ico"
+IDI_ICON_CHECK_ALL      ICON                    "Resource\\check_all.ico"
+IDI_ICON_CHECK_PROJECT_SPECIFIC ICON                    "Resource\\check_partial.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "resource\\DebugInfosViewer.exe.manifest"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// French (France) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+#ifdef _WIN32
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,8,0
+ PRODUCTVERSION 1,0,8,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "Jacquelin POTIER jacquelin.potier@free.fr"
+            VALUE "FileDescription", "DebugInfosViewer"
+            VALUE "FileVersion", "1, 0, 8, 0"
+            VALUE "InternalName", "DebugInfosViewer"
+            VALUE "LegalCopyright", "Copyright (C) 2008 jacquelin.potier@free.fr"
+            VALUE "LegalTrademarks", "http://jacquelin.potier.free.fr/"
+            VALUE "OriginalFilename", "DebugInfosViewer.exe"
+            VALUE "ProductName", "DebugInfosViewer"
+            VALUE "ProductVersion", "1, 0, 8, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+#endif    // French (France) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

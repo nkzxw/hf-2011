@@ -1,0 +1,11 @@
+;@InterfaceName=IAgent
+
+; include IDispatch
+BaseIID={00020400-0000-0000-C000-000000000046}
+
+VTBLIndex=7|HRESULT IAgent::Load(IUnknown* pObject,VARIANT vLoadKey,long* pdwCharID,long* pdwReqID);|out|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IAgent::Unload(IUnknown* pObject,long dwCharID);|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IAgent::Register(IUnknown* pObject,PULONG_PTR punkNotifySink,long* pdwSinkID);|out|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IAgent::Unregister(IUnknown* pObject,long dwSinkID);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IAgent::GetCharacter(IUnknown* pObject,long dwCharID,PULONG_PTR* ppunkCharacter);|out|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IAgent::GetSuspended(IUnknown* pObject,long* pbSuspended);|out|FailureIfNegativeRet

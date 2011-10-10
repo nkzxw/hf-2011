@@ -1,0 +1,9 @@
+;@InterfaceName=IEnumConnections
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IEnumConnections::Next(IUnknown* pObject,ULONG cConnections,CONNECTDATA** rgpcd,ULONG* pcFetched);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IEnumConnections::Skip(IUnknown* pObject,ULONG cConnections);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IEnumConnections::Reset(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IEnumConnections::Clone(IUnknown* pObject,IEnumConnections** ppenum);|Out|FailureIfNegativeRet

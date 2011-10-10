@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cdistorm", "cdistorm vs2003.vcproj", "{15051CE1-AB10-4239-973D-01B84F2AD0A9}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		clib = clib
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{15051CE1-AB10-4239-973D-01B84F2AD0A9}.clib.ActiveCfg = clib|Win32
+		{15051CE1-AB10-4239-973D-01B84F2AD0A9}.clib.Build.0 = clib|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

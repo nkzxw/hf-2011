@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FakeCOMObjectCreationSpy", "COMObjectCreationSpy.vcproj", "{592A90A3-A42A-4985-9E90-B77906079018}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		DebugUnicode = DebugUnicode
+		Release = Release
+		ReleaseUnicode = ReleaseUnicode
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{592A90A3-A42A-4985-9E90-B77906079018}.Debug.ActiveCfg = Debug|Win32
+		{592A90A3-A42A-4985-9E90-B77906079018}.Debug.Build.0 = Debug|Win32
+		{592A90A3-A42A-4985-9E90-B77906079018}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{592A90A3-A42A-4985-9E90-B77906079018}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{592A90A3-A42A-4985-9E90-B77906079018}.Release.ActiveCfg = Release|Win32
+		{592A90A3-A42A-4985-9E90-B77906079018}.Release.Build.0 = Release|Win32
+		{592A90A3-A42A-4985-9E90-B77906079018}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{592A90A3-A42A-4985-9E90-B77906079018}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

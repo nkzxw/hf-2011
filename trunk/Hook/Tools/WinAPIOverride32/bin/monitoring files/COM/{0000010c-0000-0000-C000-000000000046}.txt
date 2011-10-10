@@ -1,0 +1,6 @@
+;@InterfaceName=IPersist
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IPersist::GetClassID(IUnknown* pObject,CLSID* pClassID)|Out|FailureIfNegativeRet

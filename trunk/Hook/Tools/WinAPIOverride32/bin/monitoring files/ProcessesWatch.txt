@@ -1,0 +1,39 @@
+;-------------------------------------------------------------
+;     functions known to retrieve processes informations
+;-------------------------------------------------------------
+
+kernel32.dll|HANDLE CreateToolhelp32Snapshot(DWORD dwFlags,DWORD th32ProcessID);|FailureIfNullRet
+
+kernel32.dll|BOOL Process32First(HANDLE hSnapshot,LPPROCESSENTRY32 lppe);|FailureIfNullRet
+kernel32.dll|BOOL Process32Next(HANDLE hSnapshot, LPPROCESSENTRY32 lppe);|FailureIfNullRet
+
+kernel32.dll|BOOL Process32FirstW(HANDLE hSnapshot,LPPROCESSENTRY32W lppe);|FailureIfNullRet
+kernel32.dll|BOOL Process32NextW(HANDLE hSnapshot, LPPROCESSENTRY32W lppe);|FailureIfNullRet
+
+kernel32.dll|BOOL Module32First(HANDLE hSnapshot,LPMODULEENTRY32 lpme);|FailureIfNullRet
+kernel32.dll|BOOL Module32Next(HANDLE hSnapshot,LPMODULEENTRY32 lpme);|FailureIfNullRet
+
+kernel32.dll|BOOL Module32FirstW(HANDLE hSnapshot,LPMODULEENTRY32W lpme);|FailureIfNullRet
+kernel32.dll|BOOL Module32NextW(HANDLE hSnapshot,LPMODULEENTRY32W lpme);|FailureIfNullRet
+
+kernel32.dll|BOOL Thread32First(HANDLE hSnapshot,LPTHREADENTRY32 lpte);|FailureIfNullRet
+kernel32.dll|BOOL Thread32Next(HANDLE hSnapshot,LPTHREADENTRY32 lpte);|FailureIfNullRet
+
+kernel32.dll|BOOL Heap32First(LPHEAPENTRY32 lphe,DWORD th32ProcessID,ULONG_PTR th32HeapID);|FailureIfNullRet
+kernel32.dll|BOOL Heap32Next(LPHEAPENTRY32 lphe);|FailureIfNullRet
+
+kernel32.dll|BOOL Heap32ListFirst(HANDLE hSnapshot,LPHEAPLIST32 lphl);|FailureIfNullRet
+kernel32.dll|BOOL Heap32ListNext(HANDLE hSnapshot,LPHEAPLIST32 lphl);|FailureIfNullRet
+
+Psapi.dll|BOOL EnumProcesses(DWORD* lpidProcess,DWORD cb,DWORD* cbNeeded);|out|FailureIfNullRet
+Psapi.dll|BOOL EnumProcessModules(HANDLE hProcess,HMODULE* lphModule,DWORD cb,LPDWORD lpcbNeeded);|out|FailureIfNullRet
+Psapi.dll|DWORD GetModuleBaseNameA(HANDLE hProcess,HMODULE hModule,LPSTR lpBaseName,DWORD nSize);|out|FailureIfNullRet
+Psapi.dll|DWORD GetModuleBaseNameW(HANDLE hProcess,HMODULE hModule,LPWSTR lpBaseName,DWORD nSize);|out|FailureIfNullRet
+
+ntdll.dll|NTSTATUS NtQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemInformationClass,PVOID SystemInformation,ULONG SystemInformationLength,PULONG ReturnLength);|out|FailureIfNotNullRet
+
+;VDMDBG.DLL|INT VDMEnumProcessWOW( PROCESSENUMPROC fp, LPARAM lparam );
+;VDMDBG.DLL|INT VDMEnumTaskWOW( DWORD dwProcessId, TASKENUMPROC fp,LPARAM lparam );
+;VDMDBG.DLL|INT VDMEnumTaskWOWEx( DWORD dwProcessId, TASKENUMPROCEX fp,LPARAM lparam );
+
+WinSta.Dll|DWORD WinStationEnumerateProcesses(HANDLE hServer,ULONG LogonId,DWORD,PVOID Buffer,ULONG Length,PULONG pReturnLength)|out

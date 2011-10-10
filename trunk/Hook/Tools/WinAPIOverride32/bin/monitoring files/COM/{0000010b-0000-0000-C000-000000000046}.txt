@@ -1,0 +1,10 @@
+;@InterfaceName=IPersistFile
+
+; include IPersist
+BaseIID={0000010c-0000-0000-C000-000000000046}
+
+VTBLIndex=4|HRESULT IPersistFile::IsDirty(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IPersistFile::Load(IUnknown* pObject,LPCOLESTR pszFileName,DWORD dwMode);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IPersistFile::Save(IUnknown* pObject,LPCOLESTR pszFileName,BOOL fRemember);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IPersistFile::SaveCompleted(IUnknown* pObject,LPCOLESTR pszFileName);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IPersistFile::GetCurFile(IUnknown* pObject,LPOLESTR* ppszFileName);|FailureIfNegativeRet|Out

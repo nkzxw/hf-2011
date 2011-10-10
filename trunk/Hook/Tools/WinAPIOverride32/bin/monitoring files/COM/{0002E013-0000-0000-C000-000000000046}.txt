@@ -1,0 +1,11 @@
+;@InterfaceName=ICatInformation
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT ICatInformation::EnumCategories(IUnknown* pObject,LCID lcid,IEnumCATEGORYINFO** ppenumCatInfo);|FailureIfNegativeRet|Out
+VTBLIndex=4|HRESULT ICatInformation::GetCategoryDesc(IUnknown* pObject,REFCATID rcatid,LCID lcid,PWCHAR* ppszDesc);|FailureIfNegativeRet|Out
+VTBLIndex=5|HRESULT ICatInformation::EnumClassesOfCategories(IUnknown* pObject,ULONG cImplemented,CATID rgcatidImpl,ULONG cRequired,CATID rgcatidReq,IEnumCLSID** ppenumCLSID);|FailureIfNegativeRet|Out
+VTBLIndex=6|HRESULT ICatInformation::IsClassOfCategorie(IUnknown* pObject,REFCLSID rclsid,ULONG cImplemented,CATID rgcatidImpl,ULONG cRequired,CATID* rgcatidReq);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT ICatInformation::EnumImplCategoriesOfClass(IUnknown* pObject,REFCLSID rclsid,IEnumCATID** ppenumCATD);|FailureIfNegativeRet|Out
+VTBLIndex=8|HRESULT ICatInformation::EnumReqCategoriesOfClass(IUnknown* pObject,REFCLSID rclsid,IEnumCATID** ppenumCATD);|FailureIfNegativeRet|Out

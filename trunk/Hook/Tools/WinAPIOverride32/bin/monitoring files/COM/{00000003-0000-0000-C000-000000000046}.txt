@@ -1,0 +1,11 @@
+;@InterfaceName=IMarshal
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IMarshal::GetUnmarshalClass(IUnknown* pObject,REFIID riid,PULONG_PTR pv,DWORD dwDestContext,void* pvDestContext,DWORD mshlflags,CLSID* pCid);|out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IMarshal::GetMarshalSizeMax(IUnknown* pObject,REFIID riid,PULONG_PTR pv,DWORD dwDestContext,void* pvDestContext,DWORD mshlflags,ULONG* pSize);|out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IMarshal::MarshalInterface(IUnknown* pObject,PULONG_PTR pStm,REFIID riid,PULONG_PTR pv,DWORD dwDestContext,void* pvDestContext,DWORD mshlflags);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IMarshal::UnmarshalInterface(IUnknown* pObject,PULONG_PTR pStm,REFIID riid,PULONG_PTR ppv);|out|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IMarshal::ReleaseMarshalData(IUnknown* pObject,PULONG_PTR pStm);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IMarshal::DisconnectObject(IUnknown* pObject,DWORD dwReserved);|FailureIfNegativeRet

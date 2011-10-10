@@ -1,0 +1,13 @@
+;@InterfaceName=IOleContainer
+
+; include IParseDisplayName
+BaseIID={0000011a-0000-0000-C000-000000000046}
+
+VTBLIndex=4|HRESULT IOleContainer::EnumObjects(IUnknown* pObject,DWORD grfFlags,IEnumUnknown** ppenum);|FailureIfNegativeRet|Out
+VTBLIndex=5|HRESULT IOleContainer::LockContainer(IUnknown* pObject,BOOL fLock);|FailureIfNegativeRet|Out
+
+
+
+
+
+

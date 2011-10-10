@@ -1,0 +1,13 @@
+;@InterfaceName=IDirect3DSurface8
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+HRESULT IDirect3DSurface8::GetDevice(IUnknown* pObject, IDirect3DDevice8** ppDevice);|Out|FailureIfNegativeRet
+HRESULT IDirect3DSurface8::SetPrivateData(IUnknown* pObject, REFGUID refguid,CONST void* pData,DWORD SizeOfData,DWORD Flags);|FailureIfNegativeRet
+HRESULT IDirect3DSurface8::GetPrivateData(IUnknown* pObject, REFGUID refguid,void* pData,DWORD* pSizeOfData);|Out|FailureIfNegativeRet
+HRESULT IDirect3DSurface8::FreePrivateData(IUnknown* pObject, REFGUID refguid);|FailureIfNegativeRet
+HRESULT IDirect3DSurface8::GetContainer(IUnknown* pObject, REFIID riid,void** ppContainer);|Out|FailureIfNegativeRet
+HRESULT IDirect3DSurface8::GetDesc(IUnknown* pObject, D3DSURFACE_DESC *pDesc);|Out|FailureIfNegativeRet
+HRESULT IDirect3DSurface8::LockRect(IUnknown* pObject, D3DLOCKED_RECT* pLockedRect,CONST RECT* pRect,DWORD Flags);|FailureIfNegativeRet
+HRESULT IDirect3DSurface8::UnlockRect(IUnknown* pObject);|FailureIfNegativeRet

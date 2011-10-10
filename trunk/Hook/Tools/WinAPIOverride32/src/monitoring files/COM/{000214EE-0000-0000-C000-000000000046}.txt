@@ -1,0 +1,23 @@
+;@InterfaceName=IShellLinkA
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3| HRESULT IShellLinkA::GetPath(IUnknown* pObject,LPSTR pszFile,int cch,WIN32_FIND_DATAA *pfd,DWORD fFlags);|Out|FailureIfNegativeRet
+VTBLIndex=4| HRESULT IShellLinkA::GetIDList(IUnknown* pObject,LPITEMIDLIST *ppidl);|Out|FailureIfNegativeRet
+VTBLIndex=5| HRESULT IShellLinkA::SetIDList(IUnknown* pObject,LPCITEMIDLIST pidl);|FailureIfNegativeRet
+VTBLIndex=6| HRESULT IShellLinkA::GetDescription(IUnknown* pObject,LPSTR pszName,int cch);|Out|FailureIfNegativeRet
+VTBLIndex=7| HRESULT IShellLinkA::SetDescription(IUnknown* pObject,LPCSTR pszName);|FailureIfNegativeRet
+VTBLIndex=8| HRESULT IShellLinkA::GetWorkingDirectory(IUnknown* pObject,LPSTR pszDir,int cch);|Out|FailureIfNegativeRet
+VTBLIndex=9| HRESULT IShellLinkA::SetWorkingDirectory(IUnknown* pObject,LPCSTR pszDir);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IShellLinkA::GetArguments(IUnknown* pObject,LPSTR pszArgs,int cch);|Out|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IShellLinkA::SetArguments(IUnknown* pObject,LPCSTR pszArgs);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IShellLinkA::GetHotkey(IUnknown* pObject,WORD *pwHotkey);|Out|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IShellLinkA::SetHotkey(IUnknown* pObject,WORD wHotkey);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IShellLinkA::GetShowCmd(IUnknown* pObject,int *piShowCmd);|Out|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IShellLinkA::SetShowCmd(IUnknown* pObject,int iShowCmd);|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IShellLinkA::GetIconLocation(IUnknown* pObject,LPSTR pszIconPath,int cch,int *piIcon);|Out|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IShellLinkA::SetIconLocation(IUnknown* pObject,LPCSTR pszIconPath,int iIcon);|FailureIfNegativeRet
+VTBLIndex=18|HRESULT IShellLinkA::SetRelativePath(IUnknown* pObject,LPCSTR pszPathRel,DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=19|HRESULT IShellLinkA::Resolve(IUnknown* pObject,HWND hwnd,DWORD fFlags);|FailureIfNegativeRet
+VTBLIndex=20|HRESULT IShellLinkA::SetPath(IUnknown* pObject,LPCSTR pszFile);|FailureIfNegativeRet

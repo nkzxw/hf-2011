@@ -1,0 +1,25 @@
+;@InterfaceName=IWebBrowserApp
+
+; include IWebBrowser
+BaseIID={EAB22AC1-30C1-11CF-A7EB-0000C05BAE0B}
+
+VTBLIndex=32|HRESULT IWebBrowserApp::Quit(IUnknown* pObject,void);|FailureIfNegativeRet
+VTBLIndex=33|HRESULT IWebBrowserApp::ClientToWindow(IUnknown* pObject,int* pcx,int* pcy);|FailureIfNegativeRet|Out
+VTBLIndex=34|HRESULT IWebBrowserApp::PutProperty(IUnknown* pObject,BSTR Property,VARIANT vtValue);|FailureIfNegativeRet
+VTBLIndex=35|HRESULT IWebBrowserApp::GetProperty(IUnknown* pObject,BSTR Property,VARIANT* pvtValue);|FailureIfNegativeRet|Out
+VTBLIndex=36|HRESULT IWebBrowserApp::get_Name(IUnknown* pObject,BSTR* Name);|FailureIfNegativeRet|Out
+VTBLIndex=37|HRESULT IWebBrowserApp::get_HWND(IUnknown* pObject,SHANDLE_PTR* pHWND);|FailureIfNegativeRet|Out
+VTBLIndex=38|HRESULT IWebBrowserApp::get_FullName(IUnknown* pObject,BSTR* FullName);|FailureIfNegativeRet|Out
+VTBLIndex=39|HRESULT IWebBrowserApp::get_Path(IUnknown* pObject,BSTR* Path);|FailureIfNegativeRet|Out
+VTBLIndex=40|HRESULT IWebBrowserApp::get_Visible(IUnknown* pObject,short* pBool);|FailureIfNegativeRet|Out
+VTBLIndex=41|HRESULT IWebBrowserApp::put_Visible(IUnknown* pObject,short Value);|FailureIfNegativeRet
+VTBLIndex=42|HRESULT IWebBrowserApp::get_StatusBar(IUnknown* pObject,short* pBool);|FailureIfNegativeRet|Out
+VTBLIndex=43|HRESULT IWebBrowserApp::put_StatusBar(IUnknown* pObject,short Value);|FailureIfNegativeRet
+VTBLIndex=44|HRESULT IWebBrowserApp::get_StatusText(IUnknown* pObject,BSTR* StatusText);|FailureIfNegativeRet|Out
+VTBLIndex=45|HRESULT IWebBrowserApp::put_StatusText(IUnknown* pObject,BSTR StatusText);|FailureIfNegativeRet
+VTBLIndex=46|HRESULT IWebBrowserApp::get_ToolBar(IUnknown* pObject,int* Value);|FailureIfNegativeRet|Out
+VTBLIndex=47|HRESULT IWebBrowserApp::put_ToolBar(IUnknown* pObject,int Value);|FailureIfNegativeRet
+VTBLIndex=48|HRESULT IWebBrowserApp::get_MenuBar(IUnknown* pObject,short* Value);|FailureIfNegativeRet|Out
+VTBLIndex=49|HRESULT IWebBrowserApp::put_MenuBar(IUnknown* pObject,short Value);|FailureIfNegativeRet
+VTBLIndex=50|HRESULT IWebBrowserApp::get_FullScreen(IUnknown* pObject,short* pbFullScreen);|FailureIfNegativeRet|Out
+VTBLIndex=51|HRESULT IWebBrowserApp::put_FullScreen(IUnknown* pObject,short bFullScreen);|FailureIfNegativeRet

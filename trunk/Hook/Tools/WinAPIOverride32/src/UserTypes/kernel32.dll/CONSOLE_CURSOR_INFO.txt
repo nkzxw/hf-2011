@@ -1,0 +1,4 @@
+typedef struct _CONSOLE_CURSOR_INFO {
+    DWORD  dwSize;
+    BOOL   bVisible;
+} CONSOLE_CURSOR_INFO, *PCONSOLE_CURSOR_INFO;

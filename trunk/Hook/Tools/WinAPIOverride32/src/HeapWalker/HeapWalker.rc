@@ -1,0 +1,269 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_HEAP_WALKER DIALOGEX 0, 0, 519, 313
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "HeapWalker"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "1) Select Process",IDC_STATIC_SELECT_PROCESS_GROUP,7,21,
+                    177,27,WS_GROUP
+    LTEXT           "Process",IDC_STATIC,14,32,26,8
+    COMBOBOX        IDC_COMBO_PROCESSES,45,30,133,30,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "2) Select Heap List",IDC_STATIC_SELECT_HEAP_GROUP,198,
+                    21,140,27,WS_GROUP
+    LTEXT           "Heap List",IDC_STATIC,205,32,30,8
+    GROUPBOX        "Heap Content",IDC_STATIC_HEAP_CONTENT_GROUP,7,49,505,
+                    257,WS_GROUP
+    CONTROL         "",IDC_LIST_HEAP_CONTENT,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,10,59,498,243
+END
+
+IDD_DIALOG_SEARCH DIALOGEX 0, 0, 230, 121
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Search"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Search Type",IDC_STATIC,7,3,216,58
+    CONTROL         "Text",IDC_RADIO_SEARCH_TEXT,"Button",BS_AUTORADIOBUTTON,
+                    16,19,31,10
+    CONTROL         "Hex Data",IDC_RADIO_SEARCH_HEX_DATA,"Button",
+                    BS_AUTORADIOBUTTON,15,46,46,10
+    GROUPBOX        "Text Search Options",IDC_STATIC,66,8,153,34
+    CONTROL         "Ascii",IDC_CHECK_SEARCH_ASCII,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,74,17,30,10
+    CONTROL         "Unicode",IDC_CHECK_SEARCH_UNICODE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,74,29,41,10
+    CONTROL         "Match Case",IDC_CHECK_SEARCH_MATCH_CASE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,152,19,53,10
+    GROUPBOX        "Search Value",IDC_STATIC,7,60,215,34
+    EDITTEXT        IDC_EDIT_SEARCH_VALUE,15,72,200,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Find First",IDC_BUTTON_SEARCH_FIND_FIRST,60,98,50,14
+    PUSHBUTTON      "Find Previous",IDC_BUTTON_SEARCH_FIND_PREVIOUS,115,98,
+                    50,14
+    PUSHBUTTON      "Find Next",IDC_BUTTON_SEARCH_FIND_NEXT,170,98,50,14
+END
+
+IDD_DIALOG_HEX_DISPLAY DIALOGEX 0, 0, 392, 185
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Hex Display"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_HEX_DATA,7,7,378,171,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL
+END
+
+IDD_DIALOG_FILTERS DIALOGEX 0, 0, 231, 126
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Filters"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Apply",IDOK,174,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,174,24,50,14
+    LTEXT           "Min Block Size",IDC_STATIC,7,44,44,8
+    LTEXT           "Max Block Size",IDC_STATIC,7,61,47,8
+    EDITTEXT        IDC_EDIT_FILTERS_MIN_SIZE,61,42,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FILTERS_MAX_SIZE,61,59,40,14,ES_AUTOHSCROLL
+    CONTROL         "Apply filters to current heap entries",
+                    IDC_CHECK_FILTERS_APPLY_TO_CURRENT_RESULTS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,50,102,130,10
+    LTEXT           "Min Address",IDC_STATIC,7,10,40,8
+    LTEXT           "Max Address",IDC_STATIC,7,26,42,8
+    LTEXT           "Flags",IDC_STATIC,7,79,18,8
+    EDITTEXT        IDC_EDIT_FILTERS_MIN_ADDRESS,61,7,54,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FILTERS_MAX_ADDRESS,61,24,54,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO_FILTERS_FLAGS,61,77,54,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG_HEAP_WALKER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 512
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 306
+    END
+
+    IDD_DIALOG_SEARCH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 114
+    END
+
+    IDD_DIALOG_HEX_DISPLAY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 385
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 178
+    END
+
+    IDD_DIALOG_FILTERS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 224
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 119
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,1,0
+ PRODUCTVERSION 1,0,1,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040c04b0"
+        BEGIN
+            VALUE "CompanyName", "Jacquelin POTIER jacquelin.potier@free.fr"
+            VALUE "FileDescription", "HeapWalker"
+            VALUE "FileVersion", "1, 0, 1, 0"
+            VALUE "InternalName", "HeapWalker"
+            VALUE "LegalCopyright", "Copyright (C) 2007 jacquelin.potier@free.fr"
+            VALUE "LegalTrademarks", "http://jacquelin.potier.free.fr/"
+            VALUE "OriginalFilename", "HeapWalker.exe"
+            VALUE "ProductName", " HeapWalker"
+            VALUE "ProductVersion", "1, 0, 1, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x40c, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "Resource\\HeapWalker.exe.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_APP            ICON                    "Resource\\app.ico"
+IDI_ICON_MEMORY         ICON                    "Resource\\memory.ico"
+IDI_ICON_SEARCH         ICON                    "Resource\\Search.ico"
+IDI_ICON_FILTER         ICON                    "Resource\\Filter.ico"
+IDI_ICON_CANCEL         ICON                    "Resource\\cancel.ico"
+IDI_ICON_SAVE           ICON                    "Resource\\save.ico"
+IDI_ICON_START          ICON                    "Resource\\start.ico"
+IDI_ICON_REFRESH        ICON                    "Resource\\refresh.ico"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

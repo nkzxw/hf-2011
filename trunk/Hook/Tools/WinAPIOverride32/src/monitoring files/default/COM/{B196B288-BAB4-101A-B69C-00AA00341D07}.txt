@@ -1,0 +1,12 @@
+;@InterfaceName=IOleControl
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IOleControl::GetControlInfo(IUnknown* pObject,CONTROLINFO* pCI)|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IOleControl::OnMnemonic(IUnknown* pObject,LPMSG pMsg)|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IOleControl::OnAmbientPropertyChange(IUnknown* pObject,DISPID dispID)|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IOleControl::FreezeEvents(IUnknown* pObject,BOOL bFreeze)|FailureIfNegativeRet
+
+
+

@@ -1,0 +1,11 @@
+;@InterfaceName=IPersistStorage
+
+; include IPersist
+BaseIID={0000010c-0000-0000-C000-000000000046}
+
+VTBLIndex=4|HRESULT IPersistStorage::IsDirty(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IPersistStorage::InitNew(IUnknown* pObject,IStorage* pStg);|FailureIfNegativeRet|Out
+VTBLIndex=6|HRESULT IPersistStorage::Load(IUnknown* pObject,IStorage* pStg);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IPersistStorage::Save(IUnknown* pObject,IStorage* pStgSave,BOOL fSameAsLoad);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IPersistStorage::SaveCompleted(IUnknown* pObject,IStorage* pStgNew);|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IPersistStorage::HandsOffStorage(IUnknown* pObject);|FailureIfNegativeRet

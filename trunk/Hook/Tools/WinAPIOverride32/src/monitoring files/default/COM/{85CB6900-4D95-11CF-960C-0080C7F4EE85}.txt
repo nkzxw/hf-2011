@@ -1,0 +1,16 @@
+;@InterfaceName=IShellWindows
+
+; include IDispatch
+BaseIID={00020400-0000-0000-C000-000000000046}
+
+VTBLIndex=7| HRESULT IShellWindows::get_Count( IUnknown* pObject, long *Count);|Out|FailureIfNegativeRet
+VTBLIndex=8| HRESULT IShellWindows::Item( IUnknown* pObject,VARIANT index, IDispatch **Folder);|Out|FailureIfNegativeRet
+VTBLIndex=9| HRESULT IShellWindows::_NewEnum( IUnknown* pObject, IUnknown **ppunk);|Out|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IShellWindows::Register( IUnknown* pObject,IDispatch *pid,long hwnd,int swClass, long *plCookie);|Out|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IShellWindows::RegisterPending( IUnknown* pObject,long lThreadId,VARIANT *pvarloc,VARIANT *pvarlocRoot,int swClass, long *plCookie);|Out|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IShellWindows::Revoke( IUnknown* pObject,long lCookie);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IShellWindows::OnNavigate( IUnknown* pObject,long lCookie,VARIANT *pvarLoc);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IShellWindows::OnActivated( IUnknown* pObject,long lCookie,VARIANT_BOOL fActive);|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IShellWindows::FindWindowSW( IUnknown* pObject,VARIANT *pvarLoc,VARIANT *pvarLocRoot,int swClass, long *phwnd,int swfwOptions, IDispatch **ppdispOut);|Out|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IShellWindows::OnCreated( IUnknown* pObject,long lCookie,IUnknown *punk);|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IShellWindows::ProcessAttachDetach( IUnknown* pObject,VARIANT_BOOL fAttach);|FailureIfNegativeRet

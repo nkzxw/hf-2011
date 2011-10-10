@@ -1,0 +1,13 @@
+;@InterfaceName=IOleClientSite
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IOleClientSite::SaveObject(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IOleClientSite::GetMoniker(IUnknown* pObject,DWORD dwAssign,DWORD dwWhichMoniker,IMoniker** ppmk);|FailureIfNegativeRet|Out
+VTBLIndex=5|HRESULT IOleClientSite::GetContainer(IUnknown* pObject,LPOLECONTAINER* ppContainer);|FailureIfNegativeRet|Out
+VTBLIndex=6|HRESULT IOleClientSite::ShowObject(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IOleClientSite::OnShowWindow(IUnknown* pObject,BOOL fShow);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IOleClientSite::RequestNewObjectLayout(IUnknown* pObject);|FailureIfNegativeRet
+
+

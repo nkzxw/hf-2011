@@ -1,0 +1,7 @@
+;@InterfaceName=IInternetSecurityMgrSite
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IInternetSecurityMgrSite::GetWindow(IUnknown* pObject,HWND *phwnd);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IInternetSecurityMgrSite::EnableModeless(IUnknown* pObject,BOOL fEnable);|FailureIfNegativeRet

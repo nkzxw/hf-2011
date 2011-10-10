@@ -1,0 +1,128 @@
+;@InterfaceName=IDirect3DDevice8
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3| HRESULT IDirect3DDevice8::TestCooperativeLevel(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=4| UINT IDirect3DDevice8::GetAvailableTextureMem(IUnknown* pObject);
+VTBLIndex=5| HRESULT IDirect3DDevice8::ResourceManagerDiscardBytes(IUnknown* pObject, DWORD Bytes);|FailureIfNegativeRet
+VTBLIndex=6| HRESULT IDirect3DDevice8::GetDirect3D(IUnknown* pObject, IDirect3D8** ppD3D8);|FailureIfNegativeRet
+VTBLIndex=7| HRESULT IDirect3DDevice8::GetDeviceCaps(IUnknown* pObject, D3DCAPS8* pCaps);|FailureIfNegativeRet
+VTBLIndex=8| HRESULT IDirect3DDevice8::GetDisplayMode(IUnknown* pObject, D3DDISPLAYMODE* pMode);|FailureIfNegativeRet
+VTBLIndex=9| HRESULT IDirect3DDevice8::GetCreationParameters(IUnknown* pObject, D3DDEVICE_CREATION_PARAMETERS *pParameters);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IDirect3DDevice8::SetCursorProperties(IUnknown* pObject, UINT XHotSpot,UINT YHotSpot,IDirect3DSurface8* pCursorBitmap);|FailureIfNegativeRet
+VTBLIndex=11|void IDirect3DDevice8::SetCursorPosition(IUnknown* pObject, UINT XScreenSpace,UINT YScreenSpace,DWORD Flags);|FailureIfNegativeRet
+VTBLIndex=12|BOOL IDirect3DDevice8::ShowCursor(IUnknown* pObject, BOOL bShow);
+
+; CLSID ??? use IID_IDirect3DSwapChain8
+; IID_IDirect3DSwapChain8 {928C088B-76B9-4C6B-A536-A590853876CD}
+VTBLIndex=13|HRESULT IDirect3DDevice8::CreateAdditionalSwapChain(IUnknown* pObject, D3DPRESENT_PARAMETERS* pPresentationParameters,IDirect3DSwapChain8** pSwapChain);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={928C088B-76B9-4C6B-A536-A590853876CD}|IIDValue={928C088B-76B9-4C6B-A536-A590853876CD}|ObjectStackIndex=8)
+
+VTBLIndex=14|HRESULT IDirect3DDevice8::Reset(IUnknown* pObject, D3DPRESENT_PARAMETERS* pPresentationParameters);|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IDirect3DDevice8::Present(IUnknown* pObject, CONST RECT* pSourceRect,CONST RECT* pDestRect,HWND hDestWindowOverride,CONST RGNDATA* pDirtyRegion);|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IDirect3DDevice8::GetBackBuffer(IUnknown* pObject, UINT BackBuffer,D3DBACKBUFFER_TYPE Type,IDirect3DSurface8** ppBackBuffer);|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IDirect3DDevice8::GetRasterStatus(IUnknown* pObject, D3DRASTER_STATUS* pRasterStatus);|FailureIfNegativeRet
+VTBLIndex=18|void IDirect3DDevice8::SetGammaRamp(IUnknown* pObject, DWORD Flags,CONST D3DGAMMARAMP* pRamp);
+VTBLIndex=19|void IDirect3DDevice8::GetGammaRamp(IUnknown* pObject, D3DGAMMARAMP* pRamp);
+
+; CLSID ??? use IID_IDirect3DTexture8 
+; IID_IDirect3DTexture8 {E4CDD575-2866-4f01-B12E-7EECE1EC9358}
+VTBLIndex=20|HRESULT IDirect3DDevice8::CreateTexture(IUnknown* pObject, UINT Width,UINT Height,UINT Levels,DWORD Usage,D3DFORMAT Format,D3DPOOL Pool,IDirect3DTexture8** ppTexture);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={E4CDD575-2866-4f01-B12E-7EECE1EC9358}|IIDValue={E4CDD575-2866-4f01-B12E-7EECE1EC9358}|ObjectStackIndex=28)
+
+; CLSID ??? use IID_IDirect3DVolumeTexture8
+; IID_IDirect3DVolumeTexture8 {4B8AAAFA-140F-42ba-9131-597EAFAA2EAD}
+VTBLIndex=21|HRESULT IDirect3DDevice8::CreateVolumeTexture(IUnknown* pObject, UINT Width,UINT Height,UINT Depth,UINT Levels,DWORD Usage,D3DFORMAT Format,D3DPOOL Pool,IDirect3DVolumeTexture8** ppVolumeTexture);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={4B8AAAFA-140F-42ba-9131-597EAFAA2EAD}|IIDValue={4B8AAAFA-140F-42ba-9131-597EAFAA2EAD}|ObjectStackIndex=32)
+
+; CLSID ??? use IID_IDirect3DCubeTexture8
+; IID_IDirect3DCubeTexture8 {3EE5B968-2ACA-4c34-8BB5-7E0C3D19B750}
+VTBLIndex=22|HRESULT IDirect3DDevice8::CreateCubeTexture(IUnknown* pObject, UINT EdgeLength,UINT Levels,DWORD Usage,D3DFORMAT Format,D3DPOOL Pool,IDirect3DCubeTexture8** ppCubeTexture);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={3EE5B968-2ACA-4c34-8BB5-7E0C3D19B750}|IIDValue={3EE5B968-2ACA-4c34-8BB5-7E0C3D19B750}|ObjectStackIndex=24)
+
+; CLSID ??? use IID_IDirect3DVertexBuffer8
+; IID_IDirect3DVertexBuffer8 {8AEEEAC7-05F9-44d4-B591-000B0DF1CB95}
+VTBLIndex=23|HRESULT IDirect3DDevice8::CreateVertexBuffer(IUnknown* pObject, UINT Length,DWORD Usage,DWORD FVF,D3DPOOL Pool,IDirect3DVertexBuffer8** ppVertexBuffer);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={8AEEEAC7-05F9-44d4-B591-000B0DF1CB95}|IIDValue={8AEEEAC7-05F9-44d4-B591-000B0DF1CB95}|ObjectStackIndex=20)
+
+; CLSID ??? use IID_IDirect3DIndexBuffer8
+; IID_IDirect3DIndexBuffer8 {0E689C9A-053D-44a0-9D92-DB0E3D750F86}
+VTBLIndex=24|HRESULT IDirect3DDevice8::CreateIndexBuffer(IUnknown* pObject, UINT Length,DWORD Usage,D3DFORMAT Format,D3DPOOL Pool,IDirect3DIndexBuffer8** ppIndexBuffer);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={0E689C9A-053D-44a0-9D92-DB0E3D750F86}|IIDValue={0E689C9A-053D-44a0-9D92-DB0E3D750F86}|ObjectStackIndex=20)
+
+;CLSID for IDirect3DSurface8 ??? use IID_IDirect3DSurface8
+;IID_IDirect3DSurface8 {B96EEBCA-B326-4ea5-882F-2FF5BAE021DD}
+VTBLIndex=25|HRESULT IDirect3DDevice8::CreateRenderTarget(IUnknown* pObject, UINT Width,UINT Height,D3DFORMAT Format,D3DMULTISAMPLE_TYPE MultiSample,BOOL Lockable,IDirect3DSurface8** ppSurface);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={B96EEBCA-B326-4ea5-882F-2FF5BAE021DD}|IIDValue={B96EEBCA-B326-4ea5-882F-2FF5BAE021DD}|ObjectStackIndex=24)
+
+;CLSID for IDirect3DSurface8 ??? use IID_IDirect3DSurface8
+;IID_IDirect3DSurface8 {B96EEBCA-B326-4ea5-882F-2FF5BAE021DD}
+VTBLIndex=26|HRESULT IDirect3DDevice8::CreateDepthStencilSurface(IUnknown* pObject, UINT Width,UINT Height,D3DFORMAT Format,D3DMULTISAMPLE_TYPE MultiSample,IDirect3DSurface8** ppSurface);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={B96EEBCA-B326-4ea5-882F-2FF5BAE021DD}|IIDValue={B96EEBCA-B326-4ea5-882F-2FF5BAE021DD}|ObjectStackIndex=20)
+
+;CLSID for IDirect3DSurface8 ??? use IID_IDirect3DSurface8
+;IID_IDirect3DSurface8 {B96EEBCA-B326-4ea5-882F-2FF5BAE021DD}
+VTBLIndex=27|HRESULT IDirect3DDevice8::CreateImageSurface(IUnknown* pObject, UINT Width,UINT Height,D3DFORMAT Format,IDirect3DSurface8** ppSurface);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={B96EEBCA-B326-4ea5-882F-2FF5BAE021DD}|IIDValue={B96EEBCA-B326-4ea5-882F-2FF5BAE021DD}|ObjectStackIndex=16)
+
+VTBLIndex=28|HRESULT IDirect3DDevice8::CopyRects(IUnknown* pObject, IDirect3DSurface8* pSourceSurface,CONST RECT* pSourceRectsArray,UINT cRects,IDirect3DSurface8* pDestinationSurface,CONST POINT* pDestPointsArray);|FailureIfNegativeRet
+VTBLIndex=29|HRESULT IDirect3DDevice8::UpdateTexture(IUnknown* pObject, IDirect3DBaseTexture8* pSourceTexture,IDirect3DBaseTexture8* pDestinationTexture);|FailureIfNegativeRet
+VTBLIndex=30|HRESULT IDirect3DDevice8::GetFrontBuffer(IUnknown* pObject, IDirect3DSurface8* pDestSurface);|FailureIfNegativeRet
+VTBLIndex=31|HRESULT IDirect3DDevice8::SetRenderTarget(IUnknown* pObject, IDirect3DSurface8* pRenderTarget,IDirect3DSurface8* pNewZStencil);|FailureIfNegativeRet
+VTBLIndex=32|HRESULT IDirect3DDevice8::GetRenderTarget(IUnknown* pObject, IDirect3DSurface8** ppRenderTarget);|FailureIfNegativeRet
+VTBLIndex=33|HRESULT IDirect3DDevice8::GetDepthStencilSurface(IUnknown* pObject, IDirect3DSurface8** ppZStencilSurface);|FailureIfNegativeRet
+VTBLIndex=34|HRESULT IDirect3DDevice8::BeginScene(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=35|HRESULT IDirect3DDevice8::EndScene(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=36|HRESULT IDirect3DDevice8::Clear(IUnknown* pObject, DWORD Count,CONST D3DRECT* pRects,DWORD Flags,D3DCOLOR Color,float Z,DWORD Stencil);|FailureIfNegativeRet
+VTBLIndex=37|HRESULT IDirect3DDevice8::SetTransform(IUnknown* pObject, D3DTRANSFORMSTATETYPE State,CONST D3DMATRIX* pMatrix);|FailureIfNegativeRet
+VTBLIndex=38|HRESULT IDirect3DDevice8::GetTransform(IUnknown* pObject, D3DTRANSFORMSTATETYPE State,D3DMATRIX* pMatrix);|FailureIfNegativeRet
+VTBLIndex=39|HRESULT IDirect3DDevice8::MultiplyTransform(IUnknown* pObject, D3DTRANSFORMSTATETYPE,CONST D3DMATRIX*);|FailureIfNegativeRet
+VTBLIndex=40|HRESULT IDirect3DDevice8::SetViewport(IUnknown* pObject, CONST D3DVIEWPORT8* pViewport);|FailureIfNegativeRet
+VTBLIndex=41|HRESULT IDirect3DDevice8::GetViewport(IUnknown* pObject, D3DVIEWPORT8* pViewport);|FailureIfNegativeRet
+VTBLIndex=42|HRESULT IDirect3DDevice8::SetMaterial(IUnknown* pObject, CONST D3DMATERIAL8* pMaterial);|FailureIfNegativeRet
+VTBLIndex=43|HRESULT IDirect3DDevice8::GetMaterial(IUnknown* pObject, D3DMATERIAL8* pMaterial);|FailureIfNegativeRet
+VTBLIndex=44|HRESULT IDirect3DDevice8::SetLight(IUnknown* pObject, DWORD Index,CONST D3DLIGHT8*);|FailureIfNegativeRet
+VTBLIndex=45|HRESULT IDirect3DDevice8::GetLight(IUnknown* pObject, DWORD Index,D3DLIGHT8*);|FailureIfNegativeRet
+VTBLIndex=46|HRESULT IDirect3DDevice8::LightEnable(IUnknown* pObject, DWORD Index,BOOL Enable);|FailureIfNegativeRet
+VTBLIndex=47|HRESULT IDirect3DDevice8::GetLightEnable(IUnknown* pObject, DWORD Index,BOOL* pEnable);|FailureIfNegativeRet
+VTBLIndex=48|HRESULT IDirect3DDevice8::SetClipPlane(IUnknown* pObject, DWORD Index,CONST float* pPlane);|FailureIfNegativeRet
+VTBLIndex=49|HRESULT IDirect3DDevice8::GetClipPlane(IUnknown* pObject, DWORD Index,float* pPlane);|FailureIfNegativeRet
+VTBLIndex=50|HRESULT IDirect3DDevice8::SetRenderState(IUnknown* pObject, D3DRENDERSTATETYPE State,DWORD Value);|FailureIfNegativeRet
+VTBLIndex=51|HRESULT IDirect3DDevice8::GetRenderState(IUnknown* pObject, D3DRENDERSTATETYPE State,DWORD* pValue);|FailureIfNegativeRet
+VTBLIndex=52|HRESULT IDirect3DDevice8::BeginStateBlock(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=53|HRESULT IDirect3DDevice8::EndStateBlock(IUnknown* pObject, DWORD* pToken);|FailureIfNegativeRet
+VTBLIndex=54|HRESULT IDirect3DDevice8::ApplyStateBlock(IUnknown* pObject, DWORD Token);|FailureIfNegativeRet
+VTBLIndex=55|HRESULT IDirect3DDevice8::CaptureStateBlock(IUnknown* pObject, DWORD Token);|FailureIfNegativeRet
+VTBLIndex=56|HRESULT IDirect3DDevice8::DeleteStateBlock(IUnknown* pObject, DWORD Token);|FailureIfNegativeRet
+VTBLIndex=57|HRESULT IDirect3DDevice8::CreateStateBlock(IUnknown* pObject, D3DSTATEBLOCKTYPE Type,DWORD* pToken);|FailureIfNegativeRet
+VTBLIndex=58|HRESULT IDirect3DDevice8::SetClipStatus(IUnknown* pObject, CONST D3DCLIPSTATUS8* pClipStatus);|FailureIfNegativeRet
+VTBLIndex=59|HRESULT IDirect3DDevice8::GetClipStatus(IUnknown* pObject, D3DCLIPSTATUS8* pClipStatus);|FailureIfNegativeRet
+VTBLIndex=60|HRESULT IDirect3DDevice8::GetTexture(IUnknown* pObject, DWORD Stage,IDirect3DBaseTexture8** ppTexture);|FailureIfNegativeRet
+VTBLIndex=61|HRESULT IDirect3DDevice8::SetTexture(IUnknown* pObject, DWORD Stage,IDirect3DBaseTexture8* pTexture);|FailureIfNegativeRet
+VTBLIndex=62|HRESULT IDirect3DDevice8::GetTextureStageState(IUnknown* pObject, DWORD Stage,D3DTEXTURESTAGESTATETYPE Type,DWORD* pValue);|FailureIfNegativeRet
+VTBLIndex=63|HRESULT IDirect3DDevice8::SetTextureStageState(IUnknown* pObject, DWORD Stage,D3DTEXTURESTAGESTATETYPE Type,DWORD Value);|FailureIfNegativeRet
+VTBLIndex=64|HRESULT IDirect3DDevice8::ValidateDevice(IUnknown* pObject, DWORD* pNumPasses);|FailureIfNegativeRet
+VTBLIndex=65|HRESULT IDirect3DDevice8::GetInfo(IUnknown* pObject, DWORD DevInfoID,void* pDevInfoStruct,DWORD DevInfoStructSize);|FailureIfNegativeRet
+VTBLIndex=66|HRESULT IDirect3DDevice8::SetPaletteEntries(IUnknown* pObject, UINT PaletteNumber,CONST PALETTEENTRY* pEntries);|FailureIfNegativeRet
+VTBLIndex=67|HRESULT IDirect3DDevice8::GetPaletteEntries(IUnknown* pObject, UINT PaletteNumber,PALETTEENTRY* pEntries);|FailureIfNegativeRet
+VTBLIndex=68|HRESULT IDirect3DDevice8::SetCurrentTexturePalette(IUnknown* pObject, UINT PaletteNumber);|FailureIfNegativeRet
+VTBLIndex=69|HRESULT IDirect3DDevice8::GetCurrentTexturePalette(IUnknown* pObject, UINT *PaletteNumber);|FailureIfNegativeRet
+VTBLIndex=70|HRESULT IDirect3DDevice8::DrawPrimitive(IUnknown* pObject, D3DPRIMITIVETYPE PrimitiveType,UINT StartVertex,UINT PrimitiveCount);|FailureIfNegativeRet
+VTBLIndex=71|HRESULT IDirect3DDevice8::DrawIndexedPrimitive(IUnknown* pObject, D3DPRIMITIVETYPE,UINT minIndex,UINT NumVertices,UINT startIndex,UINT primCount);|FailureIfNegativeRet
+VTBLIndex=72|HRESULT IDirect3DDevice8::DrawPrimitiveUP(IUnknown* pObject, D3DPRIMITIVETYPE PrimitiveType,UINT PrimitiveCount,CONST void* pVertexStreamZeroData,UINT VertexStreamZeroStride);|FailureIfNegativeRet
+VTBLIndex=73|HRESULT IDirect3DDevice8::DrawIndexedPrimitiveUP(IUnknown* pObject, D3DPRIMITIVETYPE PrimitiveType,UINT MinVertexIndex,UINT NumVertexIndices,UINT PrimitiveCount,CONST void* pIndexData,D3DFORMAT IndexDataFormat,CONST void* pVertexStreamZeroData,UINT VertexStreamZeroStride);|FailureIfNegativeRet
+VTBLIndex=74|HRESULT IDirect3DDevice8::ProcessVertices(IUnknown* pObject, UINT SrcStartIndex,UINT DestIndex,UINT VertexCount,IDirect3DVertexBuffer8* pDestBuffer,DWORD Flags);|FailureIfNegativeRet
+VTBLIndex=75|HRESULT IDirect3DDevice8::CreateVertexShader(IUnknown* pObject, CONST DWORD* pDeclaration,CONST DWORD* pFunction,DWORD* pHandle,DWORD Usage);|FailureIfNegativeRet
+VTBLIndex=76|HRESULT IDirect3DDevice8::SetVertexShader(IUnknown* pObject, DWORD Handle);|FailureIfNegativeRet
+VTBLIndex=77|HRESULT IDirect3DDevice8::GetVertexShader(IUnknown* pObject, DWORD* pHandle);|FailureIfNegativeRet
+VTBLIndex=78|HRESULT IDirect3DDevice8::DeleteVertexShader(IUnknown* pObject, DWORD Handle);|FailureIfNegativeRet
+VTBLIndex=79|HRESULT IDirect3DDevice8::SetVertexShaderConstant(IUnknown* pObject, DWORD Register,CONST void* pConstantData,DWORD ConstantCount);|FailureIfNegativeRet
+VTBLIndex=80|HRESULT IDirect3DDevice8::GetVertexShaderConstant(IUnknown* pObject, DWORD Register,void* pConstantData,DWORD ConstantCount);|FailureIfNegativeRet
+VTBLIndex=81|HRESULT IDirect3DDevice8::GetVertexShaderDeclaration(IUnknown* pObject, DWORD Handle,void* pData,DWORD* pSizeOfData);|FailureIfNegativeRet
+VTBLIndex=82|HRESULT IDirect3DDevice8::GetVertexShaderFunction(IUnknown* pObject, DWORD Handle,void* pData,DWORD* pSizeOfData);|FailureIfNegativeRet
+VTBLIndex=83|HRESULT IDirect3DDevice8::SetStreamSource(IUnknown* pObject, UINT StreamNumber,IDirect3DVertexBuffer8* pStreamData,UINT Stride);|FailureIfNegativeRet
+VTBLIndex=84|HRESULT IDirect3DDevice8::GetStreamSource(IUnknown* pObject, UINT StreamNumber,IDirect3DVertexBuffer8** ppStreamData,UINT* pStride);|FailureIfNegativeRet
+VTBLIndex=85|HRESULT IDirect3DDevice8::SetIndices(IUnknown* pObject, IDirect3DIndexBuffer8* pIndexData,UINT BaseVertexIndex);|FailureIfNegativeRet
+VTBLIndex=86|HRESULT IDirect3DDevice8::GetIndices(IUnknown* pObject, IDirect3DIndexBuffer8** ppIndexData,UINT* pBaseVertexIndex);|FailureIfNegativeRet
+VTBLIndex=87|HRESULT IDirect3DDevice8::CreatePixelShader(IUnknown* pObject, CONST DWORD* pFunction,DWORD* pHandle);|FailureIfNegativeRet
+VTBLIndex=88|HRESULT IDirect3DDevice8::SetPixelShader(IUnknown* pObject, DWORD Handle);|FailureIfNegativeRet
+VTBLIndex=89|HRESULT IDirect3DDevice8::GetPixelShader(IUnknown* pObject, DWORD* pHandle);|FailureIfNegativeRet
+VTBLIndex=90|HRESULT IDirect3DDevice8::DeletePixelShader(IUnknown* pObject, DWORD Handle);|FailureIfNegativeRet
+VTBLIndex=91|HRESULT IDirect3DDevice8::SetPixelShaderConstant(IUnknown* pObject, DWORD Register,CONST void* pConstantData,DWORD ConstantCount);|FailureIfNegativeRet
+VTBLIndex=92|HRESULT IDirect3DDevice8::GetPixelShaderConstant(IUnknown* pObject, DWORD Register,void* pConstantData,DWORD ConstantCount);|FailureIfNegativeRet
+VTBLIndex=93|HRESULT IDirect3DDevice8::GetPixelShaderFunction(IUnknown* pObject, DWORD Handle,void* pData,DWORD* pSizeOfData);|FailureIfNegativeRet
+VTBLIndex=94|HRESULT IDirect3DDevice8::DrawRectPatch(IUnknown* pObject, UINT Handle,CONST float* pNumSegs,CONST D3DRECTPATCH_INFO* pRectPatchInfo);|FailureIfNegativeRet
+VTBLIndex=95|HRESULT IDirect3DDevice8::DrawTriPatch(IUnknown* pObject, UINT Handle,CONST float* pNumSegs,CONST D3DTRIPATCH_INFO* pTriPatchInfo);|FailureIfNegativeRet
+VTBLIndex=96|HRESULT IDirect3DDevice8::DeletePatch(IUnknown* pObject, UINT Handle);|FailureIfNegativeRet

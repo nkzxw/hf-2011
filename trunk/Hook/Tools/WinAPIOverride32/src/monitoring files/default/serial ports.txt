@@ -1,0 +1,34 @@
+kernel32.dll|BuildCommDCBA(LPCSTR lpDef,LPDCB lpDCB);|Out|FailureIfNullRet
+kernel32.dll|BOOL BuildCommDCBAndTimeoutsA( LPCSTR  lpDef, LPDCB lpDCB, LPCOMMTIMEOUTS lpCommTimeouts)|Out|FailureIfNullRet
+kernel32.dll|BOOL BuildCommDCBAndTimeoutsW( LPCWSTR lpDef, LPDCB lpDCB, LPCOMMTIMEOUTS lpCommTimeouts)|Out|FailureIfNullRet
+kernel32.dll|BuildCommDCBW(LPCWSTR lpDef,LPDCB lpDCB);|Out|FailureIfNullRet
+kernel32.dll|BOOL ClearCommBreak( HANDLE hFile)|FailureIfNullRet
+kernel32.dll|BOOL ClearCommError( HANDLE hFile, LPDWORD lpErrors, LPCOMSTAT lpStat)|Out|FailureIfNullRet
+kernel32.dll|BOOL CommConfigDialogA( LPCSTR  lpszName, HWND hWnd, LPCOMMCONFIG lpCC)|FailureIfNullRet
+kernel32.dll|BOOL CommConfigDialogW( LPCWSTR lpszName, HWND hWnd, LPCOMMCONFIG lpCC)|FailureIfNullRet
+kernel32.dll|BOOL EscapeCommFunction( HANDLE hFile, DWORD dwFunc)|FailureIfNullRet
+kernel32.dll|BOOL GetCommConfig( HANDLE hCommDev, LPCOMMCONFIG lpCC, LPDWORD lpdwSize)|Out|FailureIfNullRet
+kernel32.dll|BOOL GetCommMask( HANDLE hFile, LPDWORD lpEvtMask)|Out|FailureIfNullRet
+kernel32.dll|BOOL GetCommModemStatus( HANDLE hFile, LPDWORD lpModemStat)|Out|FailureIfNullRet
+kernel32.dll|BOOL GetCommProperties( HANDLE hFile, LPCOMMPROP lpCommProp)|Out|FailureIfNullRet
+kernel32.dll|BOOL GetCommState( HANDLE hFile, LPDCB lpDCB)|Out|FailureIfNullRet
+kernel32.dll|BOOL GetCommTimeouts( HANDLE hFile, LPCOMMTIMEOUTS lpCommTimeouts)|Out|FailureIfNullRet
+kernel32.dll|BOOL GetDefaultCommConfigA( LPCSTR  lpszName, LPCOMMCONFIG lpCC, LPDWORD lpdwSize)|Out|FailureIfNullRet
+kernel32.dll|BOOL GetDefaultCommConfigW( LPCWSTR lpszName, LPCOMMCONFIG lpCC, LPDWORD lpdwSize)|Out|FailureIfNullRet
+kernel32.dll|BOOL PurgeComm( HANDLE hFile, DWORD dwFlags)|FailureIfNullRet
+kernel32.dll|BOOL SetCommBreak( HANDLE hFile)|FailureIfNullRet
+kernel32.dll|BOOL SetCommConfig( HANDLE hCommDev, LPCOMMCONFIG lpCC, DWORD dwSize)|FailureIfNullRet
+kernel32.dll|BOOL SetCommMask( HANDLE hFile, DWORD dwEvtMask)|FailureIfNullRet
+kernel32.dll|BOOL SetCommState( HANDLE hFile, LPDCB lpDCB)|FailureIfNullRet
+kernel32.dll|BOOL SetCommTimeouts( HANDLE hFile, LPCOMMTIMEOUTS lpCommTimeouts)|FailureIfNullRet
+kernel32.dll|BOOL SetDefaultCommConfigA( LPCSTR  lpszName, LPCOMMCONFIG lpCC, DWORD dwSize)|FailureIfNullRet
+kernel32.dll|BOOL SetDefaultCommConfigW( LPCWSTR lpszName, LPCOMMCONFIG lpCC, DWORD dwSize)|FailureIfNullRet
+kernel32.dll|BOOL SetupComm( HANDLE hFile, DWORD dwInQueue, DWORD dwOutQueue)|FailureIfNullRet
+kernel32.dll|BOOL TransmitCommChar( HANDLE hFile, char cChar)|FailureIfNullRet
+kernel32.dll|BOOL WaitCommEvent( HANDLE hFile, LPDWORD lpEvtMask, LPOVERLAPPED lpOverlapped)|Out|FailureIfNullRet
+
+kernel32.dll|BOOL WriteFile( HANDLE hFile, LPCVOID lpBuffer:PointedDataSize=Arg3, DWORD nNumberOfBytesToWrite, LPDWORD lpNumberOfBytesWritten, LPOVERLAPPED lpOverlapped)|Out
+kernel32.dll|BOOL WriteFileEx( HANDLE hFile, LPCVOID lpBuffer:PointedDataSize=Arg3, DWORD nNumberOfBytesToWrite, LPOVERLAPPED lpOverlapped, LPOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine)|Out
+kernel32.dll|BOOL ReadFile( HANDLE hFile, LPVOID lpBuffer:PointedDataSize=Arg4, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead, LPOVERLAPPED lpOverlapped)|Out
+kernel32.dll|BOOL ReadFileEx( HANDLE hFile, LPVOID lpBuffer:PointedDataSize=Arg3, DWORD nNumberOfBytesToRead, LPOVERLAPPED lpOverlapped, LPOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine)|Out
+kernel32.dll|BOOL GetOverlappedResult( HANDLE hFile, LPOVERLAPPED lpOverlapped, LPDWORD lpNumberOfBytesTransferred, BOOL bWait)|Out|FailureIfNullRet

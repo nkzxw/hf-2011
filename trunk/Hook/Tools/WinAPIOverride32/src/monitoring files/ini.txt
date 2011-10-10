@@ -1,0 +1,38 @@
+kernel32.dll|UINT GetPrivateProfileIntA(LPCSTR lpAppName,LPCSTR lpKeyName,INT nDefault,LPCSTR lpFileName);|out
+kernel32.dll|UINT GetPrivateProfileIntW(LPCWSTR lpAppName,LPCSTR lpKeyName,INT nDefault,LPCSTR lpFileName);|out
+
+kernel32.dll|DWORD GetPrivateProfileSectionA(LPCSTR lpAppName,LPSTR lpReturnedString,DWORD nSize,LPCSTR lpFileName);|out|FailureIfNullRet
+kernel32.dll|DWORD GetPrivateProfileSectionW(LPCWSTR lpAppName,LPWSTR lpReturnedString,DWORD nSize,LPCWSTR lpFileName);|out|FailureIfNullRet
+
+kernel32.dll|DWORD GetPrivateProfileSectionNamesA(LPSTR lpszReturnBuffer,DWORD nSize,LPCSTR lpFileName);|out|FailureIfNullRet
+kernel32.dll|DWORD GetPrivateProfileSectionNamesW(LPWSTR lpszReturnBuffer,DWORD nSize,LPCWSTR lpFileName);|out|FailureIfNullRet
+
+kernel32.dll|DWORD GetPrivateProfileStringA(LPCSTR lpAppName,LPCSTR lpKeyName,LPCSTR lpDefault,LPSTR lpReturnedString,DWORD nSize,LPCSTR lpFileName);|out|FailureIfNullRet
+kernel32.dll|DWORD GetPrivateProfileStringW(LPCWSTR lpAppName,LPCWSTR lpKeyName,LPCWSTR lpDefault,LPWSTR lpReturnedString,DWORD nSize,LPCWSTR lpFileName);|out|FailureIfNullRet
+
+kernel32.dll|BOOL GetPrivateProfileStructA(LPCSTR lpszSection,LPCSTR lpszKey,LPVOID lpStruct,UINT uSizeStruct,LPCSTR szFile);|out |FailureIfNullRet
+kernel32.dll|BOOL GetPrivateProfileStructW(LPCWSTR lpszSection,LPCWSTR lpszKey,LPVOID lpStruct,UINT uSizeStruct,LPCWSTR szFile);|out |FailureIfNullRet
+
+kernel32.dll|UINT GetProfileIntA(LPCSTR lpAppName,LPCSTR lpKeyName,INT nDefault);|out
+kernel32.dll|UINT GetProfileIntW(LPCWSTR lpAppName,LPCWSTR lpKeyName,INT nDefault);|out
+
+kernel32.dll|DWORD GetProfileSectionA(LPCSTR lpAppName,LPSTR lpReturnedString,DWORD nSize);|out|FailureIfNullRet
+kernel32.dll|DWORD GetProfileSectionW(LPCWSTR lpAppName,LPWSTR lpReturnedString,DWORD nSize);|out|FailureIfNullRet
+
+kernel32.dll|DWORD GetProfileStringA(LPCSTR lpAppName,LPCSTR lpKeyName,LPCSTR lpDefault,LPSTR lpReturnedString,DWORD nSize);|out|FailureIfNullRet
+kernel32.dll|DWORD GetProfileStringW(LPCWSTR lpAppName,LPCWSTR lpKeyName,LPCWSTR lpDefault,LPWSTR lpReturnedString,DWORD nSize);|out|FailureIfNullRet
+
+kernel32.dll|BOOL WritePrivateProfileSectionA(LPCSTR lpAppName,LPCSTR lpString,LPCSTR lpFileName); |FailureIfNullRet
+kernel32.dll|BOOL WritePrivateProfileSectionW(LPCWSTR lpAppName,LPCWSTR lpString,LPCWSTR lpFileName); |FailureIfNullRet
+
+kernel32.dll|BOOL WritePrivateProfileStringA(LPCSTR lpAppName,LPCSTR lpKeyName,LPCSTR lpString,LPCSTR lpFileName); |FailureIfNullRet
+kernel32.dll|BOOL WritePrivateProfileStringW(LPCWSTR lpAppName,LPCWSTR lpKeyName,LPCWSTR lpString,LPCSTR lpFileName); |FailureIfNullRet
+
+kernel32.dll|BOOL WritePrivateProfileStructA(LPCSTR lpszSection,LPCSTR lpszKey,LPVOID lpStruct,UINT uSizeStruct,LPCSTR szFile); |FailureIfNullRet
+kernel32.dll|BOOL WritePrivateProfileStructW(LPCWSTR lpszSection,LPCWSTR lpszKey,LPVOID lpStruct,UINT uSizeStruct,LPCWSTR szFile); |FailureIfNullRet
+
+kernel32.dll|BOOL WriteProfileSectionA(LPCSTR lpAppName,LPCSTR lpString); |FailureIfNullRet
+kernel32.dll|BOOL WriteProfileSectionW(LPCWSTR lpAppName,LPCWSTR lpString); |FailureIfNullRet
+
+kernel32.dll|BOOL WriteProfileStringA(LPCSTR lpAppName,LPCSTR lpKeyName,LPCSTR lpString); |FailureIfNullRet
+kernel32.dll|BOOL WriteProfileStringW(LPCWSTR lpAppName,LPCWSTR lpKeyName,LPCWSTR lpString); |FailureIfNullRet

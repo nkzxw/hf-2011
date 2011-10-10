@@ -1,0 +1,55 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InjLib", "Lib\injlib.vcproj", "{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InjectLibSample", "exe\InjectLib.vcproj", "{6D24BEF7-D1F5-4483-87E0-E377CB1389D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7} = {4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InjLibDLL", "DLL\InjLibDLL.vcproj", "{1333E4CD-D21F-4684-AAE6-979E7D68D20E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		DebugUnicode = DebugUnicode
+		Release = Release
+		ReleaseUnicode = ReleaseUnicode
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}.Debug.ActiveCfg = Debug|Win32
+		{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}.Debug.Build.0 = Debug|Win32
+		{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}.Release.ActiveCfg = Release|Win32
+		{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}.Release.Build.0 = Release|Win32
+		{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{4ABC75E6-46E5-4D5E-9731-F6E4AB7CDEF7}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+		{6D24BEF7-D1F5-4483-87E0-E377CB1389D3}.Debug.ActiveCfg = Debug|Win32
+		{6D24BEF7-D1F5-4483-87E0-E377CB1389D3}.Debug.Build.0 = Debug|Win32
+		{6D24BEF7-D1F5-4483-87E0-E377CB1389D3}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{6D24BEF7-D1F5-4483-87E0-E377CB1389D3}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{6D24BEF7-D1F5-4483-87E0-E377CB1389D3}.Release.ActiveCfg = Release|Win32
+		{6D24BEF7-D1F5-4483-87E0-E377CB1389D3}.Release.Build.0 = Release|Win32
+		{6D24BEF7-D1F5-4483-87E0-E377CB1389D3}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{6D24BEF7-D1F5-4483-87E0-E377CB1389D3}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+		{1333E4CD-D21F-4684-AAE6-979E7D68D20E}.Debug.ActiveCfg = Debug|Win32
+		{1333E4CD-D21F-4684-AAE6-979E7D68D20E}.Debug.Build.0 = Debug|Win32
+		{1333E4CD-D21F-4684-AAE6-979E7D68D20E}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{1333E4CD-D21F-4684-AAE6-979E7D68D20E}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{1333E4CD-D21F-4684-AAE6-979E7D68D20E}.Release.ActiveCfg = Release|Win32
+		{1333E4CD-D21F-4684-AAE6-979E7D68D20E}.Release.Build.0 = Release|Win32
+		{1333E4CD-D21F-4684-AAE6-979E7D68D20E}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{1333E4CD-D21F-4684-AAE6-979E7D68D20E}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

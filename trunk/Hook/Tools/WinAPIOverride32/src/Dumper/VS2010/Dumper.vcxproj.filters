@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="Tools Sources">
+      <UniqueIdentifier>{c90ca7ac-8022-4ddf-a13b-4aed1913803e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools Headers">
+      <UniqueIdentifier>{7786259c-6f2f-47cb-8876-9c2d0e44cca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools DebugInfos">
+      <UniqueIdentifier>{5333ad30-55e8-46bf-916f-66ad9c780bda}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Dumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\KernelMemoryUserInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\KernelProcessesInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MemoryIntegrityReport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MemoryUserInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ModuleIntegrityChecking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ProcessesInfos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\RawDump.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThreadCallStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WindowThreadProcessIdUserInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\String\AnsiUnicodeConvert.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\APIError\APIError.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Disasm\CallInstructionSizeFromRetAddress\CallInstructionSizeFromRetAddress.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Clipboard\Clipboard.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\Dialog\DialogBase.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\Dialog\DialogHelper.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Dll\DllFinder.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Dll\DllFindFuncNameFromRVA.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Dll\DllSideBySideAssembyFinder.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Dll\DllStub.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Driver\Driver.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\Dump\Dump.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\Dump\DumpToExe.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\HtmlViewer\HtmlViewerWindow.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\KernelMemoryAccess\KernelMemoryAccessInterface.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\LinkList\LinkList.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\LinkList\LinkListBase.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\LinkList\SingleThreaded\LinkListBaseSingleThreaded.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\LinkList\LinkListSimple.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\LinkList\SingleThreaded\LinkListSimpleSingleThreaded.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\ListView\Listview.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\ModulesInfos\ModulesInfos.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\ModulesParser\ModulesParser.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Version\OsVersion.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Pe\PE.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Dll\PeManifestAssembly.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\Menu\PopUpMenu.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Privilege\Privilege.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\ProcessAndThreadID\ProcessAndThreadID.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\ProcessCallStack\ProcessCallStack.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\ProcessHelper\ProcessHelper.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\Memory\ProcessMemory.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\Rebar\Rebar.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\SelectWindow\SelectWindow.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\Splitter\Splitter.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\File\StdFileOperations.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\String\StringConverter.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\String\StrToHex.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\File\TextFile.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Thread\ThreadContext.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Gui\ToolBar\Toolbar.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\String\TrimString.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\DebugInfos.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\FunctionBlockInfos.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\FunctionInfos.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\LabelInfos.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\ModuleInfos.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Com\RegisterComComponent.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\regs.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\SymbolLocation.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\ThunkInfos.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\DebugInfos\DebugInfosClasses\TypeInfos.cpp">
+      <Filter>Tools DebugInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\MailSlot\MailSlotServer.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\x86CrossCompatibility\x86CrossCompatibility.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tools\Process\MailSlot\MailSlotClient.cpp">
+      <Filter>Tools Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\KernelProcessesInfo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dumper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\KernelMemoryUserInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MemoryIntegrityReport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MemoryUserInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ModuleIntegrityChecking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ProcessesInfos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\RawDump.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThreadCallStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WindowThreadProcessIdUserInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\String\AnsiUnicodeConvert.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\APIError\APIError.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Disasm\CallInstructionSizeFromRetAddress\CallInstructionSizeFromRetAddress.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Clipboard\Clipboard.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\Dialog\DialogBase.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\Dialog\DialogHelper.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Dll\DllFinder.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Dll\DllFindFuncNameFromRVA.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Dll\DllStub.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Driver\Driver.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\Dump\Dump.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\Dump\DumpToExe.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\HtmlViewer\HtmlViewerExport.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\HtmlViewer\HtmlViewerWindow.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\InjLib\InjLib.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\KernelMemoryAccess\KernelMemoryAccessExport.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\KernelMemoryAccess\KernelMemoryAccessInterface.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\LinkList\LinkList.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\LinkList\LinkListBase.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\LinkList\SingleThreaded\LinkListBaseSingleThreaded.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\LinkList\LinkListSimple.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\LinkList\SingleThreaded\LinkListSimpleSingleThreaded.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\ListView\Listview.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\ModulesInfos\ModulesInfos.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\ModulesParser\ModulesParser.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Version\OsVersion.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Pe\PE.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\Menu\PopUpMenu.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Privilege\Privilege.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\ProcessAndThreadID\ProcessAndThreadID.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\ProcessCallStack\ProcessCallStack.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\ProcessHelper\ProcessHelper.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\Memory\ProcessMemory.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\Rebar\Rebar.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\SelectWindow\SelectWindow.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\Splitter\Splitter.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\File\StdFileOperations.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\String\StringConverter.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\String\StrToHex.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\ProcessAndThreadID\Struct.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\File\TextFile.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Thread\ThreadContext.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Gui\ToolBar\Toolbar.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\String\TrimString.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\callback.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\DebugInfos.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\FunctionBlockInfos.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\FunctionInfos.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\LabelInfos.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\ModuleInfos.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Com\RegisterComComponent.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\regs.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\SymbolLocation.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\ThunkInfos.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\DebugInfos\DebugInfosClasses\TypeInfos.h">
+      <Filter>Tools DebugInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\x86CrossCompatibility\x86CrossCompatibility.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\x86CrossCompatibility\x86CrossCompatibilityInterProcessCom.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\MailSlot\MailSlotServer.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Process\MailSlot\MailSlotClient.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Dll\PeManifestAssembly.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Tools\Dll\DllSideBySideAssembyFinder.h">
+      <Filter>Tools Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resource\App.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\blank.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\CallStack.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\Context.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\cross.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\cursor.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\dll.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\down.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\downdown.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\downhot.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\Dump.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\DumpToExe.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\ejectlib.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\icon_app.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\injlib.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\IntegrityChecking.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\IntegrityRestored.gif">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\InvalidSection.gif">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\InvalidSection.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\Kernel.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\Kill.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\KillDisabled.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\memory.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\Pause.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\PauseDisabled.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\Priority.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\refresh.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\Report.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\restore.gif">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\Resume.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\ResumeDisabled.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\save.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\SuspendedCount.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\sys.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\up.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\updown.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\uphot.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\users.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\ValidSection.gif">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\ValidSection.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\window_thread_proc_id.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Resource\integrity_report.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="..\Resource\Dumper.exe.manifest">
+      <Filter>Resource Files</Filter>
+    </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Dumper.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

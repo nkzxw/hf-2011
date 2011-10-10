@@ -1,0 +1,7 @@
+;@InterfaceName=IObjectWithSite
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IObjectWithSite::SetSite(IUnknown* pObject,IUnknown* pUnkSite);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IObjectWithSite::GetSite(IUnknown* pObject,REFIID riid,void** ppvSite);|FailureIfNegativeRet|Out

@@ -1,0 +1,24 @@
+;@InterfaceName=IWebBrowser2
+
+; include IWebBrowserApp
+BaseIID={0002DF05-0000-0000-C000-000000000046}
+
+VTBLIndex=52|HRESULT IWebBrowser2::Navigate2(IUnknown* pObject,VARIANT* URL,VARIANT* Flags,VARIANT* TargetFrameName,VARIANT* PostData,VARIANT* Headers);|FailureIfNegativeRet
+VTBLIndex=53|HRESULT IWebBrowser2::QueryStatusWB(IUnknown* pObject,OLECMDID cmdID,OLECMDF* pcmdf);|FailureIfNegativeRet|Out
+VTBLIndex=54|HRESULT IWebBrowser2::ExecWB(IUnknown* pObject,OLECMDID cmdID,OLECMDEXECOPT cmdexecopt,VARIANT* pvaIn,VARIANT* pvaOut);|FailureIfNegativeRet|Out
+VTBLIndex=55|HRESULT IWebBrowser2::ShowBrowserBar(IUnknown* pObject,VARIANT* pvaClsid,VARIANT* pvarShow,VARIANT* pvarSize);|FailureIfNegativeRet
+VTBLIndex=56|HRESULT IWebBrowser2::get_ReadyState(IUnknown* pObject,READYSTATE* plReadyState);|FailureIfNegativeRet|Out
+VTBLIndex=57|HRESULT IWebBrowser2::get_Offline(IUnknown* pObject,short* pbOffline);|FailureIfNegativeRet|Out
+VTBLIndex=58|HRESULT IWebBrowser2::put_Offline(IUnknown* pObject,short bOffline);|FailureIfNegativeRet
+VTBLIndex=59|HRESULT IWebBrowser2::get_Silent(IUnknown* pObject,short* pbSilent);|FailureIfNegativeRet|Out
+VTBLIndex=60|HRESULT IWebBrowser2::put_Silent(IUnknown* pObject,short bSilent);|FailureIfNegativeRet
+VTBLIndex=61|HRESULT IWebBrowser2::get_RegisterAsBrowser(IUnknown* pObject,short* pbRegister);|FailureIfNegativeRet|Out
+VTBLIndex=62|HRESULT IWebBrowser2::put_RegisterAsBrowser(IUnknown* pObject,short bRegister);|FailureIfNegativeRet
+VTBLIndex=63|HRESULT IWebBrowser2::get_RegisterAsDropTarget(IUnknown* pObject,short* pbRegister);|FailureIfNegativeRet|Out
+VTBLIndex=64|HRESULT IWebBrowser2::put_RegisterAsDropTarget(IUnknown* pObject,short bRegister);|FailureIfNegativeRet
+VTBLIndex=65|HRESULT IWebBrowser2::get_TheaterMode(IUnknown* pObject,short* pbRegister);|FailureIfNegativeRet|Out
+VTBLIndex=66|HRESULT IWebBrowser2::put_TheaterMode(IUnknown* pObject,short bRegister);|FailureIfNegativeRet
+VTBLIndex=67|HRESULT IWebBrowser2::get_AddressBar(IUnknown* pObject,short* Value);|FailureIfNegativeRet|Out
+VTBLIndex=68|HRESULT IWebBrowser2::put_AddressBar(IUnknown* pObject,short Value);|FailureIfNegativeRet
+VTBLIndex=69|HRESULT IWebBrowser2::get_Resizable(IUnknown* pObject,short* Value);|FailureIfNegativeRet|Out
+VTBLIndex=70|HRESULT IWebBrowser2::put_Resizable(IUnknown* pObject,short Value);|FailureIfNegativeRet

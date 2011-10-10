@@ -1,0 +1,11 @@
+;@InterfaceName=IOleDocument
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IOleDocument::CreateView(IUnknown* pObject,IOleInPlaceSite* pIPSite,IStream* pstm,DWORD dwReserved,IOleDocumentView** ppView);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IOleDocument::GetDocMiscStatus(IUnknown* pObject,DWORD *pdwStatus);|Out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IOleDocument::EnumViews(IUnknown* pObject,IEnumOleDocumentViews** ppEnum,IOleDocumentView** ppView);|Out|FailureIfNegativeRet
+
+
+

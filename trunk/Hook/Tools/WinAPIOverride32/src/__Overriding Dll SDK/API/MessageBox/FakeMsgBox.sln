@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FakeMsgBox", "FakeMsgBox.vcproj", "{2378D02B-8554-40BA-A19D-9455746A0C16}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		DebugUnicode = DebugUnicode
+		Release = Release
+		ReleaseUnicode = ReleaseUnicode
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{2378D02B-8554-40BA-A19D-9455746A0C16}.Debug.ActiveCfg = Debug|Win32
+		{2378D02B-8554-40BA-A19D-9455746A0C16}.Debug.Build.0 = Debug|Win32
+		{2378D02B-8554-40BA-A19D-9455746A0C16}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{2378D02B-8554-40BA-A19D-9455746A0C16}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{2378D02B-8554-40BA-A19D-9455746A0C16}.Release.ActiveCfg = Release|Win32
+		{2378D02B-8554-40BA-A19D-9455746A0C16}.Release.Build.0 = Release|Win32
+		{2378D02B-8554-40BA-A19D-9455746A0C16}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{2378D02B-8554-40BA-A19D-9455746A0C16}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
