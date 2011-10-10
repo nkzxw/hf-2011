@@ -1,0 +1,5 @@
+#define CREATE_NEW          1
+#define CREATE_ALWAYS       2
+#define OPEN_EXISTING       3
+#define OPEN_ALWAYS         4
+#define TRUNCATE_EXISTING   5

@@ -1,0 +1,7 @@
+;@InterfaceName=IDirect3DSwapChain8
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IDirect3DSwapChain8::Present(IUnknown* pObject,CONST RECT* pSourceRect,CONST RECT* pDestRect,HWND hDestWindowOverride,CONST RGNDATA* pDirtyRegion);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IDirect3DSwapChain8::GetBackBuffer(IUnknown* pObject,UINT BackBuffer,D3DBACKBUFFER_TYPE Type,IDirect3DSurface8** ppBackBuffer);|FailureIfNegativeRet

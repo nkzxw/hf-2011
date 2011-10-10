@@ -1,0 +1,21 @@
+;@InterfaceName=IDirect3D8
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3| HRESULT IDirect3D8::RegisterSoftwareDevice(IUnknown* pObject, void* pInitializeFunction);|FailureIfNegativeRet
+VTBLIndex=4| UINT IDirect3D8::GetAdapterCount(IUnknown* pObject);
+VTBLIndex=5| HRESULT IDirect3D8::GetAdapterIdentifier(IUnknown* pObject, UINT Adapter,DWORD Flags,D3DADAPTER_IDENTIFIER8* pIdentifier);|Out|FailureIfNegativeRet
+VTBLIndex=6| UINT IDirect3D8::GetAdapterModeCount(IUnknown* pObject, UINT Adapter);
+VTBLIndex=7| HRESULT IDirect3D8::EnumAdapterModes(IUnknown* pObject, UINT Adapter,UINT Mode,D3DDISPLAYMODE* pMode);|FailureIfNegativeRet
+VTBLIndex=8| HRESULT IDirect3D8::GetAdapterDisplayMode(IUnknown* pObject, UINT Adapter,D3DDISPLAYMODE* pMode);|Out|FailureIfNegativeRet
+VTBLIndex=9| HRESULT IDirect3D8::CheckDeviceType(IUnknown* pObject, UINT Adapter,D3DDEVTYPE CheckType,D3DFORMAT DisplayFormat,D3DFORMAT BackBufferFormat,BOOL Windowed);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IDirect3D8::CheckDeviceFormat(IUnknown* pObject, UINT Adapter,D3DDEVTYPE DeviceType,D3DFORMAT AdapterFormat,DWORD Usage,D3DRESOURCETYPE RType,D3DFORMAT CheckFormat);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IDirect3D8::CheckDeviceMultiSampleType(IUnknown* pObject, UINT Adapter,D3DDEVTYPE DeviceType,D3DFORMAT SurfaceFormat,BOOL Windowed,D3DMULTISAMPLE_TYPE MultiSampleType);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IDirect3D8::CheckDepthStencilMatch(IUnknown* pObject, UINT Adapter,D3DDEVTYPE DeviceType,D3DFORMAT AdapterFormat,D3DFORMAT RenderTargetFormat,D3DFORMAT DepthStencilFormat);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IDirect3D8::GetDeviceCaps(IUnknown* pObject, UINT Adapter,D3DDEVTYPE DeviceType,D3DCAPS8* pCaps);|Out|FailureIfNegativeRet
+VTBLIndex=14|HMONITOR IDirect3D8::GetAdapterMonitor(IUnknown* pObject, UINT Adapter);|FailureIfNegativeRet
+
+; CLSID of IDirect3DDevice8 ??? use IID_IDirect3DDevice8
+; IID_IDirect3DDevice8 {7385E5DF-8FE8-41D5-86B6-D7B48547B6CF}
+VTBLIndex=15|HRESULT IDirect3D8::CreateDevice(IUnknown* pObject, UINT Adapter,D3DDEVTYPE DeviceType,HWND hFocusWindow,DWORD BehaviorFlags,D3DPRESENT_PARAMETERS* pPresentationParameters,IDirect3DDevice8** ppReturnedDeviceInterface);|FailureIfNegativeRet |ObjectCreation(CLSIDValue={7385E5DF-8FE8-41D5-86B6-D7B48547B6CF}|IIDValue={7385E5DF-8FE8-41D5-86B6-D7B48547B6CF}|ObjectStackIndex=24)

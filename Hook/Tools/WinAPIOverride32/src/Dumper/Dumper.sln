@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dumper", "Dumper.vcproj", "{74602576-C86D-4AD0-92C0-91D203666B24}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		DebugUnicode = DebugUnicode
+		Release = Release
+		ReleaseUnicode = ReleaseUnicode
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{74602576-C86D-4AD0-92C0-91D203666B24}.Debug.ActiveCfg = Debug|Win32
+		{74602576-C86D-4AD0-92C0-91D203666B24}.Debug.Build.0 = Debug|Win32
+		{74602576-C86D-4AD0-92C0-91D203666B24}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{74602576-C86D-4AD0-92C0-91D203666B24}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{74602576-C86D-4AD0-92C0-91D203666B24}.Release.ActiveCfg = Release|Win32
+		{74602576-C86D-4AD0-92C0-91D203666B24}.Release.Build.0 = Release|Win32
+		{74602576-C86D-4AD0-92C0-91D203666B24}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{74602576-C86D-4AD0-92C0-91D203666B24}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

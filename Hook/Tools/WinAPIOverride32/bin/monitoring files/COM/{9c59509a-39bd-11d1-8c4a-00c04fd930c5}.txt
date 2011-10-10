@@ -1,0 +1,52 @@
+;@InterfaceName=IDirectDraw4
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IDirectDraw4::Compact(LPDIRECTDRAW4 lpDD);|FailureIfNegativeRet
+
+;CreateSurface creates an IDirectDrawClipper
+;CLSID_DirectDraw {D7B70EE0-4340-11CF-B063-0020AFC2CD35}
+;IID_IDirectDrawClipper {593817A0-7DB3-11CF-A2DE-00AA00b93356}
+VTBLIndex=4|HRESULT IDirectDraw4::CreateClipper(LPDIRECTDRAW4 lpDD,DWORD dwFlags,LPDIRECTDRAWCLIPPER* lplpDDClipper,IUnknown* pUnkOuter);|out|FailureIfNegativeRet |ObjectCreation(CLSIDValue={D7B70EE0-4340-11CF-B063-0020AFC2CD35}|IIDValue={593817A0-7DB3-11CF-A2DE-00AA00b93356}|ObjectStackIndex=8)
+
+;CreatePalette creates an IDirectDrawPalette
+;CLSID_DirectDraw {D7B70EE0-4340-11CF-B063-0020AFC2CD35}
+;;IID_IDirectDrawPalette {6C14DB84-A733-11CE-A521-0020AF0BE560}
+VTBLIndex=5|HRESULT IDirectDraw4::CreatePalette(LPDIRECTDRAW4 lpDD,DWORD dwFlags,LPPALETTEENTRY lpColorTable,LPDIRECTDRAWPALETTE* lplpDDPalette,IUnknown FAR *pUnkOuter);|out|FailureIfNegativeRet |ObjectCreation(CLSIDValue={D7B70EE0-4340-11CF-B063-0020AFC2CD35}|IIDValue={6C14DB84-A733-11CE-A521-0020AF0BE560}|ObjectStackIndex=12)
+
+;CreateSurface creates an IDirectDrawSurface5 --> I don't find definition so use IDirectDrawSurface4
+;CLSID_DirectDraw {D7B70EE0-4340-11CF-B063-0020AFC2CD35}
+;IID_IDirectDrawSurface4 {0B2B8630-AD35-11D0-8EA6-00609797EA5B}
+VTBLIndex=6|HRESULT IDirectDraw4::CreateSurface(LPDIRECTDRAW4 lpDD,LPDDSURFACEDESC2 lpDDSurfaceDesc,LPDIRECTDRAWSURFACE4* lplpDDSurface,IUnknown* pUnkOuter);|out|FailureIfNegativeRet |ObjectCreation(CLSIDValue={D7B70EE0-4340-11CF-B063-0020AFC2CD35}|IIDValue={0B2B8630-AD35-11D0-8EA6-00609797EA5B}|ObjectStackIndex=8)
+
+;DuplicateSurface creates an IDirectDrawSurface5 --> I don't find definition so use IDirectDrawSurface4
+;CLSID_DirectDraw {D7B70EE0-4340-11CF-B063-0020AFC2CD35}
+;IID_IDirectDrawSurface4 {0B2B8630-AD35-11D0-8EA6-00609797EA5B}
+VTBLIndex=7|HRESULT IDirectDraw4::DuplicateSurface(LPDIRECTDRAW4 lpDD,LPDIRECTDRAWSURFACE lpDDSurface,LPLPDIRECTDRAWSURFACE4 lplpDupDDSurface);|out|FailureIfNegativeRet |ObjectCreation(CLSIDValue={D7B70EE0-4340-11CF-B063-0020AFC2CD35}|IIDValue={0B2B8630-AD35-11D0-8EA6-00609797EA5B}|ObjectStackIndex=8)
+
+VTBLIndex=8|HRESULT IDirectDraw4::EnumDisplayModes(LPDIRECTDRAW4 lpDD,DWORD dwFlags,LPDDSURFACEDESC2 lpDDSurfaceDesc,LPVOID lpContext,LPDDENUMMODESCALLBACK lpEnumCallback);|out|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IDirectDraw4::EnumSurfaces(LPDIRECTDRAW4 lpDD,DWORD dwFlags,LPDDSURFACEDESC2 lpDDSD,LPVOID lpContext,LPDDENUMSURFACESCALLBACK lpEnumCallback);|out|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IDirectDraw4::FlipToGDISurface(LPDIRECTDRAW lpD);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IDirectDraw4::GetCaps(LPDIRECTDRAW4 lpDD,LPDDCAPS lpDDDriverCaps,LPDDCAPS lpDDHELCap);|out|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IDirectDraw4::GetDisplayMode(LPDIRECTDRAW4 lpDD,LPDDSURFACEDESC2 lpDDSurfaceDes);|out|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IDirectDraw4::GetFourCCCodes(LPDIRECTDRAW lpD,DWORD* lpNumCodes,DWORD* lpCode);|out|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IDirectDraw4::GetGDISurface(LPDIRECTDRAW4 lpDD,LPDIRECTDRAWSURFACE4* lplpGDIDDSSurface);|out|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IDirectDraw4::GetMonitorFrequency(LPDIRECTDRAW4 lpDD,LPDWORD lpdwFrequency);|out|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IDirectDraw4::GetScanLine(LPDIRECTDRAW4 lpDD,LPDWORD lpdwScanLine);|out|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IDirectDraw4::GetVerticalBlankStatus(LPDIRECTDRAW4 lpDD,LPBOOL lpbIsInV);|out|FailureIfNegativeRet
+VTBLIndex=18|HRESULT IDirectDraw4::Initialize(LPDIRECTDRAW4 lpDD,GUID* lpGUID);|FailureIfNegativeRet
+VTBLIndex=19|HRESULT IDirectDraw4::RestoreDisplayMode(LPDIRECTDRAW lpD);|FailureIfNegativeRet
+VTBLIndex=20|HRESULT IDirectDraw4::SetCooperativeLevel(LPDIRECTDRAW4 lpDD,HWND hWnd,DWORD dwFlag);|FailureIfNegativeRet
+VTBLIndex=21|HRESULT IDirectDraw4::SetDisplayMode(LPDIRECTDRAW4 lpDD,DWORD dwWidth,DWORD dwHeight,DWORD dwBpp);|FailureIfNegativeRet
+VTBLIndex=22|HRESULT IDirectDraw4::WaitForVerticalBlank(LPDIRECTDRAW4 lpDD,DWORD dwFlags,HANDLE hEvent);|FailureIfNegativeRet
+
+;Added in the v2 interface
+VTBLIndex=23|HRESULT IDirectDraw4::GetAvailableVidMem(LPDIRECTDRAW4 lpDD, LPDDSCAPS2 lpDDSCaps, LPDWORD lpdwTotal, LPDWORD lpdwFree);|out|FailureIfNegativeRet
+
+
+;Added in the V4 Interface
+VTBLIndex=24|HRESULT IDirectDraw4::GetSurfaceFromDC(LPDIRECTDRAW4 lpDD,  HDC hdc, LPDIRECTDRAWSURFACE4* lpDDS4)|out|FailureIfNegativeRet
+VTBLIndex=25|HRESULT IDirectDraw4::RestoreAllSurfaces(LPDIRECTDRAW4 lpDD)|FailureIfNegativeRet
+VTBLIndex=26|HRESULT IDirectDraw4::TestCooperativeLevel(LPDIRECTDRAW4 lpDD)|FailureIfNegativeRet
+VTBLIndex=27|HRESULT IDirectDraw4::GetDeviceIdentifier(LPDIRECTDRAW4 lpDD, LPDDDEVICEIDENTIFIER lpdddi, DWORD dwFlags)|out|FailureIfNegativeRet

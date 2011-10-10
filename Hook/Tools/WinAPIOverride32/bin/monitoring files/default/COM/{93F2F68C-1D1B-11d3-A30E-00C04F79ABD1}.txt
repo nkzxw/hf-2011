@@ -1,0 +1,12 @@
+;@InterfaceName=IShellFolder2
+
+; include IShellFolder
+BaseIID={000214E6-0000-0000-C000-000000000046}
+
+VTBLIndex=13|HRESULT IShellFolder2::GetDefaultSearchGUID(IUnknown* pObject, GUID* pguid);|out|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IShellFolder2::EnumSearches(IUnknown* pObject, IEnumExtraSearch** ppenum);|out|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IShellFolder2::GetDefaultColumn(IUnknown* pObject, DWORD dwRes,ULONG* pSort,ULONG* pDisplay);|out|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IShellFolder2::GetDefaultColumnState(IUnknown* pObject, UINT iColumn,SHCOLSTATEF* pcsFlags);|out|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IShellFolder2::GetDetailsEx(IUnknown* pObject, LPCITEMIDLIST pidl,const SHCOLUMNID* pscid,VARIANT* pv);|out|FailureIfNegativeRet
+VTBLIndex=18|HRESULT IShellFolder2::GetDetailsOf(IUnknown* pObject, LPCITEMIDLIST pidl,UINT iColumn,SHELLDETAILS* psd);|out|FailureIfNegativeRet
+VTBLIndex=19|HRESULT IShellFolder2::MapColumnToSCID(IUnknown* pObject, UINT iColumn,SHCOLUMNID* pscid);|FailureIfNegativeRet

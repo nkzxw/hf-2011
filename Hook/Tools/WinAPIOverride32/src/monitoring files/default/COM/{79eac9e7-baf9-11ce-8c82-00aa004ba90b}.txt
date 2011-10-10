@@ -1,0 +1,12 @@
+;@InterfaceName=IInternetSession
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IInternetSession::RegisterNameSpace(IUnknown* pObject,IClassFactory* pCF,REFCLSID rclsid,LPCWSTR pwzProtocol,ULONG cPatterns,LPCWSTR* ppwzPatterns,DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IInternetSession::UnregisterNameSpace(IUnknown* pObject,IClassFactory* pCF,LPCWSTR pszProtocol);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IInternetSession::RegisterMimeFilter(IUnknown* pObject,IClassFactory* pCF,REFCLSID rclsid,LPCWSTR pwzType);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IInternetSession::UnregisterMimeFilter(IUnknown* pObject,IClassFactory* pCF,LPCWSTR pwzType);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IInternetSession::CreateBinding(IUnknown* pObject,LPBC pBC,LPCWSTR szUrl,IUnknown* pUnkOuter,IUnknown** ppUnk,IInternetProtocol** ppOInetProt,DWORD dwOption);|Out|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IInternetSession::SetSessionOption(IUnknown* pObject,DWORD dwOption,LPVOID pBuffer,DWORD dwBufferLength,DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IInternetSession::GetSessionOption(IUnknown* pObject,DWORD dwOption,LPVOID pBuffer,DWORD* pdwBufferLength,DWORD dwReserved);|Out|FailureIfNegativeRet

@@ -1,0 +1,23 @@
+;@InterfaceName=IShellLinkW
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3| HRESULT IShellLinkW::GetPath(IUnknown* pObject,LPWSTR pszFile,int cch,WIN32_FIND_DATAW *pfd,DWORD fFlags);|Out
+VTBLIndex=4| HRESULT IShellLinkW::GetIDList(IUnknown* pObject,LPITEMIDLIST *ppidl);|Out
+VTBLIndex=5| HRESULT IShellLinkW::SetIDList(IUnknown* pObject,LPCITEMIDLIST pidl);
+VTBLIndex=6| HRESULT IShellLinkW::GetDescription(IUnknown* pObject,LPWSTR pszName,int cch);|Out
+VTBLIndex=7| HRESULT IShellLinkW::SetDescription(IUnknown* pObject,LPCWSTR pszName);
+VTBLIndex=8| HRESULT IShellLinkW::GetWorkingDirectory(IUnknown* pObject,LPWSTR pszDir,int cch);|Out
+VTBLIndex=9| HRESULT IShellLinkW::SetWorkingDirectory(IUnknown* pObject,LPCWSTR pszDir);
+VTBLIndex=10|HRESULT IShellLinkW::GetArguments(IUnknown* pObject,LPWSTR pszArgs,int cch);|Out
+VTBLIndex=11|HRESULT IShellLinkW::SetArguments(IUnknown* pObject,LPCWSTR pszArgs);
+VTBLIndex=12|HRESULT IShellLinkW::GetHotkey(IUnknown* pObject,WORD *pwHotkey);|Out
+VTBLIndex=13|HRESULT IShellLinkW::SetHotkey(IUnknown* pObject,WORD wHotkey);
+VTBLIndex=14|HRESULT IShellLinkW::GetShowCmd(IUnknown* pObject,int *piShowCmd);|Out
+VTBLIndex=15|HRESULT IShellLinkW::SetShowCmd(IUnknown* pObject,int iShowCmd);
+VTBLIndex=16|HRESULT IShellLinkW::GetIconLocation(IUnknown* pObject,LPWSTR pszIconPath,int cch,int *piIcon);|Out
+VTBLIndex=17|HRESULT IShellLinkW::SetIconLocation(IUnknown* pObject,LPCWSTR pszIconPath,int iIcon);
+VTBLIndex=18|HRESULT IShellLinkW::SetRelativePath(IUnknown* pObject,LPCWSTR pszPathRel,DWORD dwReserved);
+VTBLIndex=19|HRESULT IShellLinkW::Resolve(IUnknown* pObject,HWND hwnd,DWORD fFlags);
+VTBLIndex=20|HRESULT IShellLinkW::SetPath(IUnknown* pObject,LPCWSTR pszFile);

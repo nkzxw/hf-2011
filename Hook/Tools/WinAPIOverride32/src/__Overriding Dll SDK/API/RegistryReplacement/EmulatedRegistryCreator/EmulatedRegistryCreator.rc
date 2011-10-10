@@ -1,0 +1,208 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040c04b0"
+        BEGIN
+            VALUE "FileDescription", "EmulatedRegistryCreator"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "EmulatedRegistryCreator"
+            VALUE "LegalCopyright", "Copyright (C) 2010 jacquelin.potier@free.fr"
+            VALUE "OriginalFilename", "EmulatedRegistryCreator"
+            VALUE "ProductName", "EmulatedRegistryCreator"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x40c, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_REGISTRY_CREATOR DIALOGEX 0, 0, 602, 294
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Emulated Registry Creator"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Hosts Registries",IDC_STATIC,7,7,159,212
+    CONTROL         "",IDC_LIST_HOSTS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,12,18,147,98
+    GROUPBOX        "Host Registry",IDC_STATIC,12,118,148,45
+    LTEXT           "Machine Name",IDC_STATIC,16,132,49,8
+    EDITTEXT        IDC_EDIT_ADD_HOST,67,129,89,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Add",IDC_BUTTON_ADD_HOST,31,146,50,14
+    PUSHBUTTON      "Rename",IDC_BUTTON_RENAME_HOST,86,146,50,14
+    LTEXT           "Remove selected hosts",IDC_STATIC,16,168,75,8
+    PUSHBUTTON      "Remove",IDC_BUTTON_REMOVE_SELECTED_HOSTS,106,166,50,14
+    CONTROL         "Allow connections to remote registry for selected host (else host registry will be fully emulated)",
+                    IDC_CHECK_ALLOW_CONNECTION_TO_REMOTE_REGISTRY_FOR_SELECTED_HOST,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,14,
+                    189,137,27
+    GROUPBOX        "Emulated Keys for Selected Host",IDC_STATIC,172,7,423,
+                    246
+    CONTROL         "",IDC_LIST_HOST_KEY,"SysListView32",LVS_REPORT | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,178,18,411,130
+    LTEXT           "Add Key with full path like",IDC_STATIC,181,154,217,8
+    LTEXT           "HKEY_CURRENT_USER\\Software\\Company\\CompanySoftware",
+                    IDC_STATIC,211,164,310,8
+    LTEXT           "or HKEY_LOCAL_MACHINE\\Software\\Company\\CompanySoftware",
+                    IDC_STATIC,209,174,326,8
+    EDITTEXT        IDC_EDIT_FULL_KEY_NAME_TO_ADD,207,186,247,14,
+                    ES_AUTOHSCROLL
+    PUSHBUTTON      "Add",IDC_BUTTON_ADD_KEY,460,185,50,14
+    LTEXT           "Remove selected keys",IDC_STATIC,180,207,72,8
+    PUSHBUTTON      "Remove",IDC_BUTTON_REMOVE_SELECTED_KEYS,258,205,50,14
+    CONTROL         "Extract values from windows registry to create configuration file",
+                    IDC_CHECK_EXTRACT_VALUES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,180,226,221,10
+    CONTROL         "Disable write access for not emulated keys (preserve windows registry)",
+                    IDC_CHECK_DISABLE_WRITE_ACCESS_ON_NOT_EMULATED_KEYS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,180,239,244,10
+    GROUPBOX        "General Options",IDC_STATIC,7,226,159,63
+    CONTROL         "Allow connections to unknown hosts registries",
+                    IDC_CHECK_ALLOW_CONNECTION_TO_UNKNOWN_HOSTS,"Button",
+                    BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,14,236,131,
+                    22
+    CONTROL         "Emulate child processes (each process launched by application will get same registry emulation)",
+                    IDC_CHECK_EMULATE_CHILD_PROCESSES,"Button",
+                    BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,13,256,145,
+                    30
+    LTEXT           "Create configuration file",IDC_STATIC,444,261,96,8
+    DEFPUSHBUTTON   "Create",IDOK,545,256,50,14
+    PUSHBUTTON      "Exit",IDCANCEL,545,273,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG_REGISTRY_CREATOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 595
+        TOPMARGIN, 7
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_APP            ICON                    "icon_app.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "EmulatedRegistryCreator.exe.manifest"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

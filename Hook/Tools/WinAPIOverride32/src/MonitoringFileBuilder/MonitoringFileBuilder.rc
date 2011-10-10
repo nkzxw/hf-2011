@@ -1,0 +1,308 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_MAIN DIALOGEX 0, 0, 562, 373
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Monitoring File Builder"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Target File",IDC_STATIC,8,3,35,8
+    EDITTEXT        IDC_EDIT_INPUT_FILE,8,14,213,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_BROWSE_INPUT,225,14,19,13
+    LTEXT           "Output Monitoring File",IDC_STATIC,8,29,72,8
+    EDITTEXT        IDC_EDIT_OUTPUT_FILE,8,40,213,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_BROWSE_OUTPUT,225,40,19,13
+    LTEXT           "Old Monitoring File (In case of update)",IDC_STATIC,7,
+                    57,124,8
+    EDITTEXT        IDC_EDIT_OLD_MONITORING_FILE,8,67,213,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_BROWSE_OLD_MONITORING_FILE,225,67,19,13
+    GROUPBOX        "Options",IDC_GROUP_OPTION,249,3,306,81
+    CONTROL         "If function definition not locally found, try to find it on online MSDN    (",
+                    IDC_CHECK_ONLINE_MSDN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,253,12,240,12
+    CONTROL         "Use Proxy   )",IDC_CHECK_USEPROXY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,495,13,57,10
+    CONTROL         "If function name doesn't give informations on number of parameters, call function to try to find number of parameters (Crash reports may will appear)",
+                    IDC_CHECK_CALL_TO_GUESS_NB_PARAM,"Button",
+                    BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,253,25,282,
+                    17
+    CONTROL         "Detect potential hook troubles during generation",
+                    IDC_CHECK_CHECK_TROUBLES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,253,44,171,10
+    CONTROL         "Generate first bytes analysis result. This avoid analysis each time your monitoring file is loaded, but your monitoring file is no more generic, that means you have to update it each time your exe/dll is modified.",
+                    IDC_CHECK_FIRST_BYTES_ANALYSIS,"Button",BS_AUTOCHECKBOX | 
+                    BS_MULTILINE | WS_TABSTOP,253,55,289,25
+    GROUPBOX        "Parsing Type",IDC_STATIC,7,84,548,34,WS_GROUP
+    CONTROL         "Parse Import Table (Used for EXE, OCX and sometimes DLL)",
+                    IDC_RADIO_IMPORT_TABLE,"Button",BS_AUTORADIOBUTTON,13,93,
+                    234,10
+    CONTROL         "Parse Export Table (Used for DLL)",
+                    IDC_RADIO_EXPORT_TABLE,"Button",BS_AUTORADIOBUTTON,13,
+                    105,236,10
+    CONTROL         "Parse .Net Assembly",IDC_RADIO_PARSE_NET,"Button",
+                    BS_AUTORADIOBUTTON,253,92,123,10
+    CONTROL         "Parse Associated Debug File",IDC_RADIO_PARSE_DEBUG_FILE,
+                    "Button",BS_AUTORADIOBUTTON,253,105,123,10
+    CONTROL         "COM Type Library",IDC_RADIO_PARSE_COM_TYPE_LIBRARY,
+                    "Button",BS_AUTORADIOBUTTON,398,92,116,10
+    CONTROL         "COM All Registered Type Library",
+                    IDC_RADIO_PARSE_COM_ALL_REGISTERED_TYPE_LIBRARY,"Button",
+                    BS_AUTORADIOBUTTON,398,105,140,10
+    GROUPBOX        "Monitoring File Generation",IDC_STATIC,7,120,236,37,
+                    WS_GROUP
+    CONTROL         "Full Generation",IDC_RADIO_FULL_GENERATION,"Button",
+                    BS_AUTORADIOBUTTON,13,131,164,10
+    CONTROL         "Partial Generation",IDC_RADIO_PARTIAL_GENERATION,"Button",
+                    BS_AUTORADIOBUTTON,13,145,163,10
+    PUSHBUTTON      "Generate",IDC_BUTTON_GENERATE,187,139,50,14
+    GROUPBOX        "Binaries Potential Troubles Detection ",
+                    IDC_GROUP_DETECT,7,157,236,27,WS_GROUP
+    LTEXT           "Only detect potential troubles",IDC_STATIC,13,170,96,8,
+                    NOT WS_GROUP
+    PUSHBUTTON      "Detection",IDC_BUTTON_CHECK_ERROR,187,167,50,14
+    GROUPBOX        "Monitoring File Update",IDC_GROUP_UPDATE,249,120,306,64,
+                    WS_GROUP
+    CONTROL         "Update monitoring file for a new version of a binary (search new functions and update first bytes analysis)",
+                    IDC_RADIO_FULL_UPDATE,"Button",BS_AUTORADIOBUTTON | 
+                    BS_MULTILINE,253,132,286,21
+    CONTROL         "Update first bytes analysis only",
+                    IDC_RADIO_UPDATE_BYTES_ANALYSIS,"Button",
+                    BS_AUTORADIOBUTTON,253,153,238,10
+    CONTROL         "Remove first bytes analysis",
+                    IDC_RADIO_UPDATE_REMOVE_BYTES_ANALYSIS,"Button",
+                    BS_AUTORADIOBUTTON,253,166,230,10
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,500,167,50,14
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER | WS_GROUP,
+                    7,190,489,11
+    PUSHBUTTON      "Cancel",IDCANCEL,500,187,23,17,BS_ICON | BS_FLAT | 
+                    WS_GROUP
+    GROUPBOX        "Generation Log",IDC_STATIC,7,203,548,163,WS_GROUP
+    EDITTEXT        IDC_EDIT_LOGS,11,213,540,150,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_NOHIDESEL | WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "Warnings and Errors",IDC_BUTTON_WARNING_ERROR_MSG,531,
+                    187,23,17,BS_ICON | BS_FLAT | WS_GROUP
+END
+
+IDD_DIALOG_FUNCTIONS_SELECTION DIALOGEX 0, 0, 521, 315
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Functions Selection"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Check All",IDC_BUTTON_CHECK_ALL,257,275,50,14
+    PUSHBUTTON      "Uncheck All",IDC_BUTTON_UNCHECK_ALL,311,275,50,14
+    PUSHBUTTON      "Check Selected",IDC_BUTTON_CHECK_SELECTED,374,275,64,14
+    PUSHBUTTON      "Uncheck Selected",IDC_BUTTON_UNCHECK_SELECTED,442,275,
+                    64,14
+    DEFPUSHBUTTON   "OK",IDOK,206,294,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,265,294,50,14
+    GROUPBOX        "Imported Libraries",IDC_STATIC_IMPORTED_LIBRARIES,7,7,
+                    136,286
+    CONTROL         "",IDC_LIST_IMPORTED_LIBRARIES,"SysListView32",
+                    LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,12,
+                    16,125,254
+    PUSHBUTTON      "Check All",IDC_BUTTON_CHECK_ALL_IMPORTED_LIBS,33,274,50,
+                    14
+    PUSHBUTTON      "Uncheck All",IDC_BUTTON_UNCHECK_ALL_IMPORTED_LIBS,87,
+                    274,50,14
+    GROUPBOX        "Imported / Exported Functions",
+                    IDC_STATIC_IMPORTED_EXPORTED_FUNCTIONS,146,7,368,286
+    CONTROL         "",IDC_LIST_IMPORTED_EXPORTED_FUNCTIONS,"SysListView32",
+                    LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,150,18,358,237
+    LTEXT           "Search",IDC_STATIC,151,260,23,8
+    COMBOBOX        IDC_COMBO_WIZARD_FUNC_SEARCH,185,258,252,30,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_DIALOG_WARNING_AND_ERRORS DIALOGEX 0, 0, 456, 201
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Errors and Warnings"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,202,183,50,14
+    EDITTEXT        IDC_EDIT_WARNINGS_AND_ERRORS,7,7,442,171,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | WS_VSCROLL | 
+                    WS_HSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG_MAIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 555
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 366
+    END
+
+    IDD_DIALOG_FUNCTIONS_SELECTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 514
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 308
+    END
+
+    IDD_DIALOG_WARNING_AND_ERRORS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 449
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 197
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_MONITORINGFILEBUILDER ICON                    "resource\\MonitoringBuilder.ico"
+IDI_ICON_CANCEL         ICON                    "resource\\cancel.ico"
+IDI_ICON_WARNINGS_AND_ERRORS ICON                    "resource\\ErrorMessage.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "resource\\MonitoringFileBuilder.exe.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,5,8,0
+ PRODUCTVERSION 1,5,8,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "Jacquelin POTIER jacquelin.potier@free.fr"
+            VALUE "FileDescription", "Monitoring File Builder"
+            VALUE "FileVersion", "1, 5, 8, 0"
+            VALUE "InternalName", "Monitoring File Builder"
+            VALUE "LegalCopyright", "Copyright (C) 2005 jacquelin.potier@free.fr"
+            VALUE "LegalTrademarks", "http://jacquelin.potier.free.fr/"
+            VALUE "OriginalFilename", "Monitoring File Builder.exe"
+            VALUE "ProductName", "Monitoring File Builder"
+            VALUE "ProductVersion", "1, 5, 8, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// EXE
+//
+
+IDR_EXE_FIND_STACK_BY_CALL EXE                     "resource\\FindStackSizeByCall.exe"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

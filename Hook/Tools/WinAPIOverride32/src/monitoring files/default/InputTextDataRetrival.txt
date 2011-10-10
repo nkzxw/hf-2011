@@ -1,0 +1,9 @@
+user32.dll|GetDlgItemTextA(HWND hDlg,int nIDDlgItem,LPSTR lpString,int nMaxCount);|Out |FailureIfNullRet
+user32.dll|GetDlgItemTextW(HWND hDlg,int nIDDlgItem,LPWSTR lpString,int nMaxCount);|Out |FailureIfNullRet
+user32.dll|GetDlgItemInt(HWND hDlg,int nIDDlgItem,BOOL* lpTranslated,BOOL bSigned);|Out
+; send message with WM_GETTEXT or EM_GETSELTEXT messages
+User32.dll|SendMessageA(HWND hWnd,UINT Msg:LogValue=0xd:LogValue=0x462,WPARAM wParam,LPSTR lParam);|Out
+User32.dll|SendMessageW(HWND hWnd,UINT Msg:LogValue=0xd:LogValue=0x462,WPARAM wParam,LPWSTR lParam);|Out
+
+user32.dll|int GetWindowTextA(HWND hWnd,LPSTR lpString,int nMaxCount);|FailureIfNullRet
+user32.dll|int GetWindowTextW(HWND hWnd,LPWSTR lpString,int nMaxCount);|FailureIfNullRet

@@ -1,0 +1,10 @@
+;@InterfaceName=IEnumString
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IEnumString::Next(IUnknown* pObject,ULONG celt,LPOLESTR* rgelt,ULONG* pceltFetched);|out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IEnumString::Skip(IUnknown* pObject,ULONG celt);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IEnumString::Reset(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IEnumString::Clone(IUnknown* pObject,IEnumString** ppenum);|out|FailureIfNegativeRet
+

@@ -1,0 +1,8 @@
+;@InterfaceName=IQuickActivate
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IQuickActivate::QuickActivate(IUnknown* pObject,QACONTAINER* pQaContainer,QACONTROL* pQaControl)|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IQuickActivate::SetContentExtent(IUnknown* pObject,LPSIZEL psizel)|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IQuickActivate::GetContentExtent(IUnknown* pObject,LPSIZEL psizel)|Out|FailureIfNegativeRet

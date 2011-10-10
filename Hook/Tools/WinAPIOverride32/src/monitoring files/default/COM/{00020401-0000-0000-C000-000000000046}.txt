@@ -1,0 +1,24 @@
+;@InterfaceName=ITypeInfo
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3| HRESULT ITypeInfo::GetTypeAttr(IUnknown* pObject,TYPEATTR** ppTypeAttr);|Out|FailureIfNegativeRet
+VTBLIndex=4| HRESULT ITypeInfo::GetTypeComp(IUnknown* pObject,ITypeComp** ppTComp);|Out|FailureIfNegativeRet
+VTBLIndex=5| HRESULT ITypeInfo::GetFuncDesc(IUnknown* pObject,UINT index,FUNCDESC** ppFuncDesc);|Out|FailureIfNegativeRet
+VTBLIndex=6| HRESULT ITypeInfo::GetVarDesc(IUnknown* pObject,UINT index,VARDESC** ppVarDesc);|Out|FailureIfNegativeRet
+VTBLIndex=7| HRESULT ITypeInfo::GetNames(IUnknown* pObject,MEMBERID memid,BSTR* rgBstrNames,UINT cMaxNames,UINT* pcNames);|Out|FailureIfNegativeRet
+VTBLIndex=8| HRESULT ITypeInfo::GetRefTypeOfImplType(IUnknown* pObject,UINT index,HREFTYPE* pRefType);|Out|FailureIfNegativeRet
+VTBLIndex=9| HRESULT ITypeInfo::GetImplTypeFlags(IUnknown* pObject,UINT index,INT* pImplTypeFlags);|Out|FailureIfNegativeRet
+VTBLIndex=10|HRESULT ITypeInfo::GetIDsOfNames(IUnknown* pObject,LPOLESTR* rgszNames,UINT cNames,MEMBERID* pMemId);|Out|FailureIfNegativeRet
+VTBLIndex=11|HRESULT ITypeInfo::Invoke(IUnknown* pObject,PVOID pvInstance,MEMBERID memid,WORD wFlags,DISPPARAMS* pDispParams,VARIANT* pVarResult,EXCEPINFO* pExcepInfo,UINT* puArgErr);|Out|FailureIfNegativeRet
+VTBLIndex=12|HRESULT ITypeInfo::GetDocumentation(IUnknown* pObject,MEMBERID memid,BSTR* pBstrName,BSTR* pBstrDocString,DWORD* pdwHelpContext,BSTR* pBstrHelpFile);|Out|FailureIfNegativeRet
+VTBLIndex=13|HRESULT ITypeInfo::GetDllEntry(IUnknown* pObject,MEMBERID memid,INVOKEKIND invKind,BSTR* pBstrDllName,BSTR* pBstrName,WORD* pwOrdinal);|Out|FailureIfNegativeRet
+VTBLIndex=14|HRESULT ITypeInfo::GetRefTypeInfo(IUnknown* pObject,HREFTYPE hRefType,ITypeInfo** ppTInfo);|Out|FailureIfNegativeRet |ObjectCreation(CLSIDValue=CurrentObjectCLSID|IIDValue={00020401-0000-0000-C000-000000000046}|ObjectStackIndex=8)
+VTBLIndex=15|HRESULT ITypeInfo::AddressOfMember(IUnknown* pObject,MEMBERID memid,INVOKEKIND invKind,PVOID* ppv);|Out|FailureIfNegativeRet
+VTBLIndex=16|HRESULT ITypeInfo::CreateInstance(IUnknown* pObject,IUnknown* pUnkOuter,REFIID riid,PVOID* ppvObj);|Out|FailureIfNegativeRet |ObjectCreation(CLSIDValue=CurrentObjectCLSID|REFIIDStackIndex=8|ObjectStackIndex=12)
+VTBLIndex=17|HRESULT ITypeInfo::GetMops(IUnknown* pObject,MEMBERID memid,BSTR* pBstrMops);|Out|FailureIfNegativeRet
+VTBLIndex=18|HRESULT ITypeInfo::GetContainingTypeLib(IUnknown* pObject,ITypeLib** ppTLib,UINT* pIndex);|Out|FailureIfNegativeRet
+VTBLIndex=19|void ITypeInfo::ReleaseTypeAttr(IUnknown* pObject,TYPEATTR* pTypeAttr);
+VTBLIndex=20|void ITypeInfo::ReleaseFuncDesc(IUnknown* pObject,FUNCDESC* pFuncDesc);
+VTBLIndex=21|void ITypeInfo::ReleaseVarDesc(IUnknown* pObject,VARDESC* pVarDesc);

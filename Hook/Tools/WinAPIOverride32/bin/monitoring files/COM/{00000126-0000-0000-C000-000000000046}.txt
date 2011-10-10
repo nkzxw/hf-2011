@@ -1,0 +1,10 @@
+;@InterfaceName=IRunnableObject
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IRunnableObject::GetRunningClass(IUnknown* pObject,LPCLSID lpClsid);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IRunnableObject::Run(IUnknown* pObject,LPBC lpbc);|FailureIfNegativeRet
+VTBLIndex=5|BOOL IRunnableObject::IsRunning(IUnknown* pObject);
+VTBLIndex=6|HRESULT IRunnableObject::LockRunning(IUnknown* pObject,BOOL fLock,BOOL fLastUnlockCloses);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IRunnableObject::SetContainedObject(IUnknown* pObject,BOOL fContained);|FailureIfNegativeRet

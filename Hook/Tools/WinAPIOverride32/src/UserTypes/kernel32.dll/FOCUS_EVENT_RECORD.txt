@@ -1,0 +1,3 @@
+typedef struct _FOCUS_EVENT_RECORD {
+    BOOL bSetFocus;
+} FOCUS_EVENT_RECORD, *PFOCUS_EVENT_RECORD;

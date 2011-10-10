@@ -1,0 +1,13 @@
+;@InterfaceName=IDirect3DResource8
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3| HRESULT IDirect3DResource8::GetDevice(IUnknown* pObject,IDirect3DDevice8** ppDevice);|FailureIfNegativeRet
+VTBLIndex=4| HRESULT IDirect3DResource8::SetPrivateData(IUnknown* pObject,REFGUID refguid,CONST void* pData,DWORD SizeOfData,DWORD Flags);|FailureIfNegativeRet
+VTBLIndex=5| HRESULT IDirect3DResource8::GetPrivateData(IUnknown* pObject,REFGUID refguid,void* pData,DWORD* pSizeOfData);|FailureIfNegativeRet
+VTBLIndex=6| HRESULT IDirect3DResource8::FreePrivateData(IUnknown* pObject,REFGUID refguid);|FailureIfNegativeRet
+VTBLIndex=7| DWORD IDirect3DResource8::SetPriority(IUnknown* pObject,DWORD PriorityNew);
+VTBLIndex=8| DWORD IDirect3DResource8::GetPriority(IUnknown* pObject);
+VTBLIndex=9| void IDirect3DResource8::PreLoad(IUnknown* pObject);
+VTBLIndex=10|D3DRESOURCETYPE IDirect3DResource8::GetType(IUnknown* pObject);

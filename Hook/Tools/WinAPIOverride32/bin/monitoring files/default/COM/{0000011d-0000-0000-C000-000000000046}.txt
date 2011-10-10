@@ -1,0 +1,18 @@
+;@InterfaceName=IOleLink
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IOleLink::SetUpdateOptions(IUnknown* pObject,DWORD dwUpdateOpt);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IOleLink::GetUpdateOptions(IUnknown* pObject,DWORD *pdwUpdateOpt);|FailureIfNegativeRet|Out
+VTBLIndex=5|HRESULT IOleLink::SetSourceMoniker(IUnknown* pObject,IMoniker *pmk,REFCLSID rclsid);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IOleLink::GetSourceMoniker(IUnknown* pObject,IMoniker** ppmk);|out|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IOleLink::SetSourceDisplayName(IUnknown* pObject,LPCOLESTR pszStatusText);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IOleLink::GetSourceDisplayName(IUnknown* pObject,LPOLESTR* ppszDisplayName);|FailureIfNegativeRet|Out
+VTBLIndex=9|HRESULT IOleLink::BindToSource(IUnknown* pObject,DWORD bindflags,IBindCtx* pbc);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IOleLink::BindIfRunning(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IOleLink::GetBoundSource(IUnknown* pObject,IUnknown** ppunk);|FailureIfNegativeRet|Out
+VTBLIndex=12|HRESULT IOleLink::UnbindSource(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IOleLink::Update(IUnknown* pObject,IBindCtx* pbc);|FailureIfNegativeRet
+
+

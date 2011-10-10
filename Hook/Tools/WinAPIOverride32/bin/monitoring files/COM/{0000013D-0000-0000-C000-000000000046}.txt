@@ -1,0 +1,8 @@
+;@InterfaceName=IClientSecurity
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IClientSecurity::QueryBlanket(IUnknown* pObject,IUnknown* pProxy,DWORD* pAuthnSvc,DWORD* pAuthzSvc,OLECHAR** pServerPrincName,DWORD* pAuthnLevel,DWORD* pImpLevel,RPC_AUTH_IDENTITY_HANDLE* pAuthInfo,DWORD* pCapabilities);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IClientSecurity::SetBlanket(IUnknown* pObject,IUnknown* pProxy,DWORD dwAuthnSvc,DWORD dwAuthzSvc,OLECHAR* pServerPrincName,DWORD dwAuthnLevel,DWORD dwImpLevel,RPC_AUTH_IDENTITY_HANDLE pAuthInfo,DWORD dwCapabilities);|Out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IClientSecurity::CopyProxy (IUnknown* pObject,IUnknown * pProxy,IUnknown ** ppCopy);|Out|FailureIfNegativeRet

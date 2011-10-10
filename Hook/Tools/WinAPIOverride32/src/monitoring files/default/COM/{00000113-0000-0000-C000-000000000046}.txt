@@ -1,0 +1,10 @@
+;@InterfaceName=IOleInPlaceObject
+
+; include IOleWindow
+BaseIID={00000114-0000-0000-C000-000000000046}
+
+VTBLIndex=5|HRESULT IOleInPlaceObject::InPlaceDeactivate(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IOleInPlaceObject::UIDeactivate(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IOleInPlaceObject::SetObjectRects(IUnknown* pObject,LPCRECT lprcPosRect,LPCRECT lprcClipRect);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IOleInPlaceObject::ReactivateAndUndo(IUnknown* pObject);|FailureIfNegativeRet
+

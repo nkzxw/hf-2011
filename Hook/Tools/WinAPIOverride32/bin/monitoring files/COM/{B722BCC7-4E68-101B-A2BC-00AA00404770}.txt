@@ -1,0 +1,9 @@
+;@InterfaceName=IOleDocumentSite
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IOleDocumentSite::ActivateMe(IUnknown* pObject,IOleDocumentView* pViewToActivate);|FailureIfNegativeRet
+
+
+

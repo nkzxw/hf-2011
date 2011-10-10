@@ -1,0 +1,34 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HookNet", "HookNet.vcproj", "{3E10721B-170A-489C-ADAC-06FB3E7800DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		WinApiOverride32Debug|Win32 = WinApiOverride32Debug|Win32
+		WinApiOverride32Release|Win32 = WinApiOverride32Release|Win32
+		WinApiOverride32UnicodeDebug|Win32 = WinApiOverride32UnicodeDebug|Win32
+		WinApiOverride32UnicodeRelease|Win32 = WinApiOverride32UnicodeRelease|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.Debug|Win32.Build.0 = Debug|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.Release|Win32.ActiveCfg = Release|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.Release|Win32.Build.0 = Release|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.WinApiOverride32Debug|Win32.ActiveCfg = WinApiOverride32Debug|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.WinApiOverride32Debug|Win32.Build.0 = WinApiOverride32Debug|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.WinApiOverride32Release|Win32.ActiveCfg = WinApiOverride32Release|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.WinApiOverride32Release|Win32.Build.0 = WinApiOverride32Release|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.WinApiOverride32UnicodeDebug|Win32.ActiveCfg = WinApiOverride32UnicodeDebug|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.WinApiOverride32UnicodeDebug|Win32.Build.0 = WinApiOverride32UnicodeDebug|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.WinApiOverride32UnicodeRelease|Win32.ActiveCfg = WinApiOverride32UnicodeRelease|Win32
+		{3E10721B-170A-489C-ADAC-06FB3E7800DD}.WinApiOverride32UnicodeRelease|Win32.Build.0 = WinApiOverride32UnicodeRelease|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

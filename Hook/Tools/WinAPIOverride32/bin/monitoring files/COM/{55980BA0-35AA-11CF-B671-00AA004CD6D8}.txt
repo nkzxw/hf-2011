@@ -1,0 +1,8 @@
+;@InterfaceName=IPointerInactive
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IPointerInactive::GetActivationPolicy(IUnknown* pObject,DWORD* pdwPolicy)|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IPointerInactive::OnInactiveMouseMove(IUnknown* pObject,LPCRECT pRectBounds,LONG x,LONG y,DWORD grfKeyState)|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IPointerInactive::OnInactiveSetCursor(IUnknown* pObject,LPCRECT pRectBounds,LONG x,LONG y,DWORD dwMouseMsg,BOOL fSetAlways)|FailureIfNegativeRet

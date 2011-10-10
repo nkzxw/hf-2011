@@ -1,0 +1,184 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "Jacquelin POTIER"
+            VALUE "FileDescription", "Launcher"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "Launcher"
+            VALUE "LegalCopyright", "Copyright (C) 2010 jacquelin.potier@free.fr"
+            VALUE "OriginalFilename", "Launcher"
+            VALUE "ProductName", "Launcher"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_APP DIALOGEX 0, 0, 377, 215
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Launcher Configuration"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,134,194,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,193,194,50,14
+    LTEXT           "Target Name (Path can be relative to Launcher)",IDC_STATIC,15,14,186,8
+    EDITTEXT        IDC_EDIT_TARGET_NAME,22,25,324,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_BROWSE_TARGET_NAME,351,25,19,14
+    LTEXT           "Target Command Line (optional)",IDC_STATIC,15,47,142,8
+    EDITTEXT        IDC_EDIT_TARGET_COMMAND_LINE,21,59,349,14,ES_AUTOHSCROLL
+    LTEXT           "Emulated Registry File (Path can be relative to Launcher)",IDC_STATIC,16,160,267,8
+    EDITTEXT        IDC_EDIT_EMULATED_REGISTRY_FILE,20,171,227,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_BROWSE_FOR_REGISTRY_FILE,248,171,19,14
+    PUSHBUTTON      "Create",IDC_BUTTON_CREATE_REGISTRY_FILE,320,171,50,14
+    GROUPBOX        "Filters",IDC_STATIC,7,74,363,78
+    CONTROL         "Emulate registry  only .exe",IDC_RADIO_BASE_MODULE,
+                    "Button",BS_AUTORADIOBUTTON,18,84,248,10
+    CONTROL         "Emulate registry for dll specified in following file",IDC_RADIO_FILTER_INCLUDE,
+                    "Button",BS_AUTORADIOBUTTON,17,96,248,10
+    CONTROL         "Emulate registry for all dll but those specified in following file",IDC_RADIO_FILTER_EXCLUDE,
+                    "Button",BS_AUTORADIOBUTTON,17,107,268,10
+    LTEXT           "Filtering file (Path can be relative to Launcher)",IDC_STATIC,13,119,260,8
+    EDITTEXT        IDC_EDIT_FILTERING_FILE,18,132,277,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_BROWSE_FILTERING_FILE,299,132,19,14
+    PUSHBUTTON      "Spy",IDC_BUTTON_SPY,269,171,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG_APP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 370
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 208
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_APP            ICON                    "Launcher.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "Launcher.exe.manifest"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

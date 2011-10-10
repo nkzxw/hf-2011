@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HookChildProcesses", "HookChildProcesses.vcproj", "{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HookChildProcessesInjectedPart", "overriding Dll\HookChildProcessesInjectedPart.vcproj", "{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestTarget", "TestTarget\TestTarget.vcproj", "{39A12CB2-9F5B-402C-A72B-854F58CFEA6E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		DebugUnicode = DebugUnicode
+		Release = Release
+		ReleaseUnicode = ReleaseUnicode
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.Debug.ActiveCfg = Debug|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.Debug.Build.0 = Debug|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.Release.ActiveCfg = Release|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.Release.Build.0 = Release|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.Debug.ActiveCfg = Debug|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.Debug.Build.0 = Debug|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.Release.ActiveCfg = Release|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.Release.Build.0 = Release|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{CE0B9B39-C6C5-4DCA-BC40-308389E5F1D9}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+		{39A12CB2-9F5B-402C-A72B-854F58CFEA6E}.Debug.ActiveCfg = Debug|Win32
+		{39A12CB2-9F5B-402C-A72B-854F58CFEA6E}.Debug.Build.0 = Debug|Win32
+		{39A12CB2-9F5B-402C-A72B-854F58CFEA6E}.DebugUnicode.ActiveCfg = Debug|Win32
+		{39A12CB2-9F5B-402C-A72B-854F58CFEA6E}.DebugUnicode.Build.0 = Debug|Win32
+		{39A12CB2-9F5B-402C-A72B-854F58CFEA6E}.Release.ActiveCfg = Release|Win32
+		{39A12CB2-9F5B-402C-A72B-854F58CFEA6E}.Release.Build.0 = Release|Win32
+		{39A12CB2-9F5B-402C-A72B-854F58CFEA6E}.ReleaseUnicode.ActiveCfg = Release|Win32
+		{39A12CB2-9F5B-402C-A72B-854F58CFEA6E}.ReleaseUnicode.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+;@InterfaceName=IStdMarshalInfo
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IStdMarshalInfo::GetClassForHandler(IUnknown* pObject,DWORD dwDestContext,void* pvDestContext,CLSID* pClsid);|Out|FailureIfNegativeRet

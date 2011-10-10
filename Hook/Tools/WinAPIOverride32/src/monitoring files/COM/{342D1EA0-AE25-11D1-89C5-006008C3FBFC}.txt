@@ -1,0 +1,6 @@
+;@InterfaceName=IClassFactoryEx
+
+; include IClassFactory
+BaseIID={00000001-0000-0000-C000-000000000046}
+
+VTBLIndex=5|HRESULT IClassFactoryEx::CreateInstanceWithContext(IUnknown* pObject,IUnknown* punkContext,IUnknown* punkOuter,REFIID riid,void** ppv);|Out|FailureIfNegativeRet|ObjectCreation(CLSIDValue=CurrentObjectCLSID|REFIIDStackIndex=12|ObjectStackIndex=16)

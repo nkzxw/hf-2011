@@ -1,0 +1,6 @@
+;@InterfaceName=IPersistFolder
+
+; include IPersist
+BaseIID={0000010c-0000-0000-C000-000000000046}
+
+VTBLIndex=4|HRESULT IPersistFolder::Initialize(IUnknown* pObject,LPCITEMIDLIST pidl);|FailureIfNegativeRet

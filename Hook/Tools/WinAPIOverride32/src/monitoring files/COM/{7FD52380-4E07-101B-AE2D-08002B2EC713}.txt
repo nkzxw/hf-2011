@@ -1,0 +1,12 @@
+;@InterfaceName=IPersistStreamInit
+
+; include IPersist
+BaseIID={0000010c-0000-0000-C000-000000000046}
+
+VTBLIndex=4|HRESULT IPersistStreamInit::IsDirty(IUnknown* pObject)|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IPersistStreamInit::Load(IUnknown* pObject,LPSTREAM pStm)|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IPersistStreamInit::Save(IUnknown* pObject,LPSTREAM pStm,BOOL fClearDirty)|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IPersistStreamInit::GetSizeMax(IUnknown* pObject,ULARGE_INTEGER* pcbSize)|Out|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IPersistStreamInit::InitNew(IUnknown* pObject)|FailureIfNegativeRet
+
+

@@ -1,0 +1,13 @@
+;@InterfaceName=ITaskScheduler
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT ITaskScheduler::SetTargetComputer(IUnknown* pObject,LPCWSTR pwszComputer);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT ITaskScheduler::GetTargetComputer(IUnknown* pObject,LPWSTR *ppwszComputer);|Out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT ITaskScheduler::Enum(IUnknown* pObject,IEnumWorkItems **ppEnumWorkItems);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT ITaskScheduler::Activate(IUnknown* pObject,LPCWSTR pwszName,REFIID riid,IUnknown **ppUnk);|Out|FailureIfNegativeRet
+VTBLIndex=7|HRESULT ITaskScheduler::Delete(IUnknown* pObject,LPCWSTR pwszName);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT ITaskScheduler::NewWorkItem(IUnknown* pObject,LPCWSTR pwszTaskName,REFCLSID rclsid,REFIID riid,IUnknown **ppUnk);|Out|FailureIfNegativeRet
+VTBLIndex=9|HRESULT ITaskScheduler::AddWorkItem(IUnknown* pObject,LPCWSTR pwszTaskName,IScheduledWorkItem *pWorkItem);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT ITaskScheduler::IsOfType(IUnknown* pObject,LPCWSTR pwszName,REFIID riid);|FailureIfNegativeRet

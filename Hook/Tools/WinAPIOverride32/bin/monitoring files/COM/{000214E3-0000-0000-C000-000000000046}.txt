@@ -1,0 +1,16 @@
+;@InterfaceName=IShellView
+
+; include IOleWindow
+BaseIID={00000114-0000-0000-C000-000000000046}
+
+VTBLIndex=5| HRESULT IShellView::TranslateAccelerator( IUnknown* pObject,MSG *pmsg)|FailureIfNegativeRet
+VTBLIndex=6| HRESULT IShellView::EnableModeless( IUnknown* pObject,BOOL fEnable)|FailureIfNegativeRet
+VTBLIndex=7| HRESULT IShellView::UIActivate( IUnknown* pObject,UINT uState)|FailureIfNegativeRet
+VTBLIndex=8| HRESULT IShellView::Refresh( IUnknown* pObject)|FailureIfNegativeRet
+VTBLIndex=9| HRESULT IShellView::CreateViewWindow( IUnknown* pObject,IShellView *psvPrevious,LPCFOLDERSETTINGS pfs,IShellBrowser *psb,RECT *prcView,HWND *phWnd)|Out|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IShellView::DestroyViewWindow( IUnknown* pObject)|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IShellView::GetCurrentInfo( IUnknown* pObject,LPFOLDERSETTINGS pfs)|Out|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IShellView::AddPropertySheetPages( IUnknown* pObject,DWORD dwReserved,LPFNSVADDPROPSHEETPAGE pfn,LPARAM lparam)|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IShellView::SaveViewState(IUnknown* pObject)|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IShellView::SelectItem( IUnknown* pObject,LPCITEMIDLIST pidlItem,SVSIF uFlags)|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IShellView::GetItemObject( IUnknown* pObject,UINT uItem,REFIID riid,void **ppv)|Out|FailureIfNegativeRet

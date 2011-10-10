@@ -1,0 +1,321 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_BREAK DIALOGEX 0, 0, 352, 210
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST
+CAPTION "Break"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Continue",IDC_BUTTON_CONTINUE,287,183,50,14
+    CTEXT           "Static",IDC_STATIC_BREAK_TEXT,7,7,338,42
+    EDITTEXT        IDC_EDIT_BREAK_PARAMETERS,14,52,323,112,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "Call Stack",IDC_BUTTON_CALLSTACK,14,183,50,14
+    PUSHBUTTON      "Memory",IDC_BUTTON_MEMORY,70,183,50,14
+    PUSHBUTTON      "Registers",IDC_BUTTON_REGISTERS,126,183,50,14
+    PUSHBUTTON      "Dump",IDC_BUTTON_BREAK_DUMP,182,183,50,14
+    CONTROL         "Don't break anymore for this function",
+                    IDC_CHECK_DONT_BREAK_AGAIN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,14,168,153,10
+END
+
+IDD_DIALOG_MEMORY DIALOGEX 0, 0, 469, 254
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Memory"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Read",IDC_STATIC,7,5,455,102
+    LTEXT           "Start Address (RVA)",IDC_STATIC,14,17,66,8
+    EDITTEXT        IDC_EDIT_MEMORY_READ_START_ADDRESS,88,14,67,14,
+                    ES_AUTOHSCROLL
+    LTEXT           "Size in bytes",IDC_STATIC,211,17,41,8
+    EDITTEXT        IDC_EDIT_MEMORY_READ_SIZE,285,14,67,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Read",IDC_BUTTON_MEMORY_READ,409,14,50,14
+    EDITTEXT        IDC_EDIT_MEMORY_READ_RESULT,14,30,388,75,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+    GROUPBOX        "Write",IDC_STATIC,7,109,455,74
+    LTEXT           "Start Address (RVA)",IDC_STATIC,14,122,66,8
+    EDITTEXT        IDC_EDIT_MEMORY_WRITE_START_ADDRESS,88,121,67,14,
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MEMORY_WRITE_ENTRY,88,138,314,42,ES_MULTILINE | 
+                    WS_VSCROLL
+    PUSHBUTTON      "Write",IDC_BUTTON_MEMORY_WRITE,409,121,50,14
+    GROUPBOX        "Allocate",IDC_STATIC,7,184,455,32
+    LTEXT           "Size in bytes",IDC_STATIC,17,196,41,8
+    EDITTEXT        IDC_EDIT_MEMORY_ALLOCATE_MEMORY_SIZE,88,194,67,14,
+                    ES_AUTOHSCROLL
+    LTEXT           "Address of Allocated Memory (RVA)",IDC_STATIC,164,196,
+                    115,8
+    EDITTEXT        IDC_EDIT_MEMORY_ALLOCATE_MEMORY_ADDRESS,288,194,67,14,
+                    ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Allocate",IDC_BUTTON_MEMORY_ALLOCATE,409,194,50,14
+    GROUPBOX        "Free Previous Allocated",IDC_STATIC,7,216,455,28
+    LTEXT           "Previous Allocated Address (RVA)",IDC_STATIC,19,228,108,
+                    8
+    EDITTEXT        IDC_EDIT_MEMORY_FREE_ALLOCATED_ADDRESS,169,226,67,14,
+                    ES_AUTOHSCROLL
+    PUSHBUTTON      "Free",IDC_BUTTON_MEMORY_FREE,409,226,50,14
+    LTEXT           "Hexa data",IDC_STATIC,16,138,34,8
+END
+
+IDD_DIALOG_REGISTERS DIALOGEX 0, 0, 219, 150
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Registers"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Apply",IDOK,52,129,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,110,129,50,14
+    LTEXT           "EAX",IDC_STATIC,19,16,14,8
+    EDITTEXT        IDC_EDIT_REGISTERS_EAX,36,13,57,14,ES_AUTOHSCROLL
+    LTEXT           "EBX",IDC_STATIC,119,16,13,8
+    EDITTEXT        IDC_EDIT_REGISTERS_EBX,137,13,57,14,ES_AUTOHSCROLL
+    LTEXT           "ECX",IDC_STATIC,19,32,14,8
+    EDITTEXT        IDC_EDIT_REGISTERS_ECX,36,29,57,14,ES_AUTOHSCROLL
+    LTEXT           "EDX",IDC_STATIC,119,32,14,8
+    EDITTEXT        IDC_EDIT_REGISTERS_EDX,137,29,57,14,ES_AUTOHSCROLL
+    LTEXT           "ESI",IDC_STATIC,19,48,12,8
+    EDITTEXT        IDC_EDIT_REGISTERS_ESI,36,45,57,14,ES_AUTOHSCROLL
+    LTEXT           "EDI",IDC_STATIC,119,48,12,8
+    EDITTEXT        IDC_EDIT_REGISTERS_EDI,137,45,57,14,ES_AUTOHSCROLL
+    LTEXT           "EFL",IDC_STATIC,19,64,12,8
+    EDITTEXT        IDC_EDIT_REGISTERS_EFL,36,61,57,14,ES_AUTOHSCROLL
+    LTEXT           "ES",IDC_STATIC,119,64,9,8
+    EDITTEXT        IDC_EDIT_REGISTERS_ES,137,61,57,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "FS",IDC_STATIC,19,80,9,8
+    EDITTEXT        IDC_EDIT_REGISTERS_FS,36,77,57,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "GS",IDC_STATIC,119,79,10,8
+    EDITTEXT        IDC_EDIT_REGISTERS_GS,137,76,57,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "ST 0",IDC_STATIC_REGISTER_ST_0,19,110,15,8
+    EDITTEXT        IDC_EDIT_REGISTERS_ST0,35,107,101,14,ES_AUTOHSCROLL
+    GROUPBOX        "Registers",IDC_STATIC,7,3,205,91
+    GROUPBOX        "Floating Returned Register",IDC_STATIC_FLOAT_REGISTERS,
+                    7,97,205,28
+END
+
+IDD_DIALOG_DUMP DIALOGEX 0, 0, 334, 125
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST
+CAPTION "Dump"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Output File",IDC_STATIC,7,8,320,24
+    LTEXT           "Full Path",IDC_STATIC,14,19,28,8
+    EDITTEXT        IDC_EDIT_DUMP_OUTPUT_FILE,64,15,256,14,ES_AUTOHSCROLL
+    GROUPBOX        "Module Dump",IDC_STATIC,7,38,320,31
+    LTEXT           "Select Module",IDC_STATIC,14,50,45,8
+    COMBOBOX        IDC_COMBO_DUMP_MODULE,64,48,201,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "Dump",IDC_BUTTON_DUMP,270,48,50,14
+    GROUPBOX        "Raw Dump",IDC_STATIC,7,70,320,28
+    LTEXT           "Start Address",IDC_STATIC,15,82,45,8
+    EDITTEXT        IDC_EDIT_DUMP_START_ADDRESS,64,79,60,14,ES_AUTOHSCROLL
+    LTEXT           "Size",IDC_STATIC,184,82,14,8
+    EDITTEXT        IDC_EDIT_DUMP_SIZE,203,79,60,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Raw Dump",IDC_BUTTON_DUMP_RAW_DUMP,270,79,50,14
+    PUSHBUTTON      "Exit",IDCANCEL,270,104,50,14
+END
+
+IDD_DIALOG_CALL_STACK DIALOGEX 0, 0, 501, 254
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Call Stack"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Ok",IDOK,225,233,50,14
+    EDITTEXT        IDC_EDIT_CALL_STACK,7,7,487,223,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+END
+
+IDD_DIALOG_QUERY_MONITORING_OWNERSHIP DIALOGEX 0, 0, 366, 134
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Warning : Multiple monitoring definitions found"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,157,115,50,14
+    LTEXT           "Static",IDC_STATIC_PREFIX,7,7,352,45
+    CONTROL         "New monitoring file takes the ownership of the hook",
+                    IDC_CHECK_TAKE_OWNERSHIP,"Button",BS_AUTOCHECKBOX | 
+                    BS_MULTILINE | WS_TABSTOP,15,64,182,10
+    CONTROL         "Keep existing conditional log and break configuration                                 (new conditional log and break values will be added to existing ones)",
+                    IDC_CHECK_REMOVE_COND_PARAM,"Button",BS_AUTOCHECKBOX | 
+                    BS_MULTILINE | WS_TABSTOP,15,74,252,24
+    CONTROL         "Apply these settings for all other multiple definitions",
+                    IDC_CHECK_TAKE_SAME_ACTION,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,92,101,181,10
+    LTEXT           "Select operations to do",IDC_STATIC,7,52,130,8
+END
+
+IDD_DIALOG_QUERY_FAKING_OWNERSHIP DIALOGEX 0, 0, 365, 134
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Warning : Overriding function already installed"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,158,113,50,14
+    LTEXT           "Select operations to do",IDC_STATIC,7,57,130,8
+    LTEXT           "Static",IDC_STATIC_PREFIX,7,7,351,46
+    CONTROL         "Apply these settings for all other multiple definitions",
+                    IDC_CHECK_TAKE_SAME_ACTION,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,92,99,181,10
+    CONTROL         "Keep existing overrinding function",IDC_RADIO_KEEP,
+                    "Button",BS_AUTORADIOBUTTON,17,84,125,10
+    CONTROL         "Replace existing overrinding function by the new one",
+                    IDC_RADIO_REPLACE,"Button",BS_AUTORADIOBUTTON,17,70,186,
+                    10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG_BREAK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 345
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_DIALOG_MEMORY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 462
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 247
+    END
+
+    IDD_DIALOG_REGISTERS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 143
+    END
+
+    IDD_DIALOG_DUMP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 118
+    END
+
+    IDD_DIALOG_CALL_STACK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 494
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 247
+    END
+
+    IDD_DIALOG_QUERY_MONITORING_OWNERSHIP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 359
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 129
+    END
+
+    IDD_DIALOG_QUERY_FAKING_OWNERSHIP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 358
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 127
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

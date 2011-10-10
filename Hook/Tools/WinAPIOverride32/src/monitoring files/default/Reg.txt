@@ -1,0 +1,51 @@
+advapi32.dll|RegCloseKey(HKEY hKey);|FailureIfNotNullRet
+advapi32.dll|RegConnectRegistryA(LPCSTR lpMachineName,HKEY hKey,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegConnectRegistryW(LPCWSTR lpMachineName,HKEY hKey,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegCreateKeyA(HKEY hKey,LPCSTR lpSubKey,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegCreateKeyW(HKEY hKey,LPCWSTR lpSubKey,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegCreateKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD Reserved, LPSTR lpClass,DWORD dwOptions,REGSAM samDesired,LPSECURITY_ATTRIBUTES lpSecurityAttributes,PHKEY phkResult,LPDWORD lpdwDisposition);|Out|FailureIfNotNullRet
+advapi32.dll|RegCreateKeyExW(HKEY hKey,LPCWSTR lpSubKey,DWORD Reserved, LPWSTR lpClass,DWORD dwOptions,REGSAM samDesired,LPSECURITY_ATTRIBUTES lpSecurityAttributes,PHKEY phkResult,LPDWORD lpdwDisposition);|Out|FailureIfNotNullRet
+advapi32.dll|RegDeleteKeyA(HKEY hKey,LPCSTR lpSubKey);|FailureIfNotNullRet
+advapi32.dll|RegDeleteKeyW(HKEY hKey,LPCWSTR lpSubKey);|FailureIfNotNullRet
+advapi32.dll|RegDeleteValueA(HKEY hKey,LPCSTR lpValueName);|FailureIfNotNullRet
+advapi32.dll|RegDeleteValueW(HKEY hKey,LPCWSTR lpValueName);|FailureIfNotNullRet
+advapi32.dll|RegDisablePredefinedCache();|FailureIfNotNullRet
+advapi32.dll|RegEnumKeyA(HKEY hKey,DWORD dwIndex,LPSTR lpName,DWORD cchName);|out|FailureIfNotNullRet
+advapi32.dll|RegEnumKeyW(HKEY hKey,DWORD dwIndex,LPWSTR lpName,DWORD cchName);|out|FailureIfNotNullRet
+advapi32.dll|RegEnumKeyExA(HKEY hKey,DWORD dwIndex,LPSTR lpName,LPDWORD lpcName,LPDWORD lpReserved,LPSTR lpClass,LPDWORD lpcClass,PFILETIME lpftLastWriteTime);|out|FailureIfNotNullRet
+advapi32.dll|RegEnumKeyExW(HKEY hKey,DWORD dwIndex,LPWSTR lpName,LPDWORD lpcName,LPDWORD lpReserved,LPWSTR lpClass,LPDWORD lpcClass,PFILETIME lpftLastWriteTime);|out|FailureIfNotNullRet
+advapi32.dll|RegEnumValueA(HKEY hKey,DWORD dwIndex,LPSTR lpValueName,LPDWORD lpcValueName,LPDWORD lpReserved,LPDWORD lpType,LPBYTE lpData,LPDWORD lpcbData);|out|FailureIfNotNullRet
+advapi32.dll|RegEnumValueW(HKEY hKey,DWORD dwIndex,LPWSTR lpValueName,LPDWORD lpcValueName,LPDWORD lpReserved,LPDWORD lpType,LPBYTE lpData,LPDWORD lpcbData);|out|FailureIfNotNullRet
+advapi32.dll|RegFlushKey(HKEY hKey);|FailureIfNotNullRet
+advapi32.dll|RegLoadKeyA(HKEY hKey,LPCSTR lpSubKey,LPCSTR lpFile);|FailureIfNotNullRet
+advapi32.dll|RegLoadKeyW(HKEY hKey,LPCWSTR lpSubKey,LPCWSTR lpFile);|FailureIfNotNullRet
+advapi32.dll|RegNotifyChangeKeyValue(HKEY hKey,BOOL bWatchSubtree,DWORD dwNotifyFilter,HANDLE hEvent,BOOL fAsynchronous);|FailureIfNotNullRet
+advapi32.dll|RegOpenCurrentUser(REGSAM samDesired,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegOpenKeyA(HKEY hKey,LPCSTR lpSubKey,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegOpenKeyW(HKEY hKey,LPCWSTR lpSubKey,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegOpenKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD ulOptions,REGSAM samDesired,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegOpenKeyExW(HKEY hKey,LPCWSTR lpSubKey,DWORD ulOptions,REGSAM samDesired,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegOpenUserClassesRoot(HANDLE hToken,DWORD dwOptions,REGSAM samDesired,PHKEY phkResult);|Out|FailureIfNotNullRet
+advapi32.dll|RegOverridePredefKey(HKEY hKey,HKEY hNewHKey);|FailureIfNotNullRet
+advapi32.dll|RegQueryInfoKeyA(HKEY hKey,LPSTR lpClass,LPDWORD lpcClass,LPDWORD lpReserved,LPDWORD lpcSubKeys,LPDWORD lpcMaxSubKeyLen,LPDWORD lpcMaxClassLen,LPDWORD lpcValues,LPDWORD lpcMaxValueNameLen,LPDWORD lpcMaxValueLen,LPDWORD lpcbSecurityDescriptor,PFILETIME lpftLastWriteTime);|out|FailureIfNotNullRet
+advapi32.dll|RegQueryInfoKeyW(HKEY hKey,LPWSTR lpClass,LPDWORD lpcClass,LPDWORD lpReserved,LPDWORD lpcSubKeys,LPDWORD lpcMaxSubKeyLen,LPDWORD lpcMaxClassLen,LPDWORD lpcValues,LPDWORD lpcMaxValueNameLen,LPDWORD lpcMaxValueLen,LPDWORD lpcbSecurityDescriptor,PFILETIME lpftLastWriteTime);|out|FailureIfNotNullRet
+advapi32.dll|RegQueryMultipleValuesA(HKEY hKey,PVALENT val_list,DWORD num_vals,LPSTR lpValueBuf,LPDWORD ldwTotsize);|InOut|FailureIfNotNullRet
+advapi32.dll|RegQueryMultipleValuesW(HKEY hKey,PVALENT val_list,DWORD num_vals,LPWSTR lpValueBuf,LPDWORD ldwTotsize);|InOut|FailureIfNotNullRet
+advapi32.dll|RegQueryValueA(HKEY hKey,LPCSTR lpSubKey,LPTSTR lpValue,PLONG lpcbValue);|out|FailureIfNotNullRet
+advapi32.dll|RegQueryValueW(HKEY hKey,LPCWSTR lpSubKey,LPTSTR lpValue,PLONG lpcbValue);|out|FailureIfNotNullRet
+advapi32.dll|RegQueryValueExA(HKEY hKey,LPCSTR lpValueName,LPDWORD lpReserved,LPDWORD lpType,LPBYTE lpData,LPDWORD lpcbData);|out|FailureIfNotNullRet
+advapi32.dll|RegQueryValueExW(HKEY hKey,LPCWSTR lpValueName,LPDWORD lpReserved,LPDWORD lpType,LPBYTE lpData,LPDWORD lpcbData);|out|FailureIfNotNullRet
+advapi32.dll|RegReplaceKeyA(HKEY hKey,LPCSTR lpSubKey,LPCSTR lpNewFile,LPCSTR lpOldFile);|FailureIfNotNullRet
+advapi32.dll|RegReplaceKeyW(HKEY hKey,LPCWSTR lpSubKey,LPCWSTR lpNewFile,LPCWSTR lpOldFile);|FailureIfNotNullRet
+advapi32.dll|RegRestoreKeyA(HKEY hKey,LPCSTR lpFile,DWORD dwFlags);|FailureIfNotNullRet
+advapi32.dll|RegRestoreKeyW(HKEY hKey,LPCWSTR lpFile,DWORD dwFlags);|FailureIfNotNullRet
+advapi32.dll|RegSaveKeyA(HKEY hKey,LPCSTR lpFile,LPSECURITY_ATTRIBUTES lpSecurityAttributes);|FailureIfNotNullRet
+advapi32.dll|RegSaveKeyW(HKEY hKey,LPCWSTR lpFile,LPSECURITY_ATTRIBUTES lpSecurityAttributes);|FailureIfNotNullRet
+advapi32.dll|RegSaveKeyExA(HKEY hKey,LPCSTR lpFile,LPSECURITY_ATTRIBUTES lpSecurityAttributes,DWORD Flags);|FailureIfNotNullRet
+advapi32.dll|RegSaveKeyExW(HKEY hKey,LPCWSTR lpFile,LPSECURITY_ATTRIBUTES lpSecurityAttributes,DWORD Flags);|FailureIfNotNullRet
+advapi32.dll|RegSetValueA(HKEY hKey,LPCSTR lpSubKey,DWORD dwType,LPCSTR lpData:PointedDataSize=Arg5,DWORD cbData);|FailureIfNotNullRet
+advapi32.dll|RegSetValueW(HKEY hKey,LPCWSTR lpSubKey,DWORD dwType,LPCWSTR lpData:PointedDataSize=Arg5,DWORD cbData);|FailureIfNotNullRet
+advapi32.dll|RegSetValueExA(HKEY hKey,LPCSTR lpValueName,DWORD Reserved,DWORD dwType,BYTE* lpData:PointedDataSize=Arg6,DWORD cbData);|FailureIfNotNullRet
+advapi32.dll|RegSetValueExW(HKEY hKey,LPCWSTR lpValueName,DWORD Reserved,DWORD dwType,BYTE* lpData:PointedDataSize=Arg6,DWORD cbData);|FailureIfNotNullRet
+advapi32.dll|RegUnLoadKeyA(HKEY hKey,LPCSTR lpSubKey);|FailureIfNotNullRet
+advapi32.dll|RegUnLoadKeyW(HKEY hKey,LPCWSTR lpSubKey);|FailureIfNotNullRet

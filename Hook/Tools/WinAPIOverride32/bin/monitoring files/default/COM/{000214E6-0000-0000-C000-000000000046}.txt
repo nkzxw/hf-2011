@@ -1,0 +1,28 @@
+;@InterfaceName=IShellFolder
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3| HRESULT IShellFolder::ParseDisplayName(IUnknown* pObject,HWND hwnd,LPBC pbc,LPOLESTR pszDisplayName,ULONG* pchEaten,LPITEMIDLIST* ppidl,ULONG* pdwAttributes);|out|FailureIfNegativeRet
+VTBLIndex=4| HRESULT IShellFolder::EnumObjects(IUnknown* pObject, HWND hwnd,SHCONTF grfFlags,IEnumIDList** ppenumIDList);|out|FailureIfNegativeRet
+
+;CLSID_ShellDesktop {00021400-0000-0000-C000-000000000046} ???
+VTBLIndex=5| HRESULT IShellFolder::BindToObject(IUnknown* pObject, LPCITEMIDLIST pidl,LPBC pbc,REFIID riid,void** ppv);|out|FailureIfNegativeRet |ObjectCreation(CLSIDValue={00021400-0000-0000-C000-000000000046}|REFIIDStackIndex=12|ObjectStackIndex=16)
+
+;CLSID_ShellDesktop {00021400-0000-0000-C000-000000000046} ???
+VTBLIndex=6| HRESULT IShellFolder::BindToStorage(IUnknown* pObject, LPCITEMIDLIST pidl,LPBC pbc,REFIID riid,void** ppv);|out|FailureIfNegativeRet |ObjectCreation(CLSIDValue={00021400-0000-0000-C000-000000000046}|REFIIDStackIndex=12|ObjectStackIndex=16)
+
+VTBLIndex=7| HRESULT IShellFolder::CompareIDs(IUnknown* pObject, LPARAM lParam,LPCITEMIDLIST pidl1,LPCITEMIDLIST pidl2);|FailureIfNegativeRet
+
+;CLSID_ShellDesktop {00021400-0000-0000-C000-000000000046} ???
+VTBLIndex=8| HRESULT IShellFolder::CreateViewObject(IUnknown* pObject, HWND hwndOwner,REFIID riid,void** ppv);|out|FailureIfNegativeRet |ObjectCreation(CLSIDValue={00021400-0000-0000-C000-000000000046}|REFIIDStackIndex=8|ObjectStackIndex=12)
+
+VTBLIndex=9| HRESULT IShellFolder::GetAttributesOf(IUnknown* pObject, UINT cidl,LPCITEMIDLIST* apidl,ULONG* rgfInOut);|out|FailureIfNegativeRet
+
+;CLSID_ShellDesktop {00021400-0000-0000-C000-000000000046} ???
+VTBLIndex=10|HRESULT IShellFolder::GetUIObjectOf(IUnknown* pObject, HWND hwndOwner,UINT cidl,LPCITEMIDLIST* apidl,REFIID riid,UINT* rgfReserved,void** ppv);|out|FailureIfNegativeRet |ObjectCreation(CLSIDValue={00021400-0000-0000-C000-000000000046}|REFIIDStackIndex=16|ObjectStackIndex=20)
+
+VTBLIndex=11|HRESULT IShellFolder::GetDisplayNameOf(IUnknown* pObject, LPCITEMIDLIST pidl,SHGDNF uFlags,STRRET* pName);|out|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IShellFolder::SetNameOf(IUnknown* pObject, HWND hwnd,LPCITEMIDLIST pidl,LPCOLESTR pszName,SHGDNF uFlags,LPITEMIDLIST* ppidlOut);|out|FailureIfNegativeRet
+
+

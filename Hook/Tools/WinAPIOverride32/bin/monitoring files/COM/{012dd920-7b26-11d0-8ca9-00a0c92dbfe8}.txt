@@ -1,0 +1,8 @@
+;@InterfaceName=IDockingWindow
+
+; include IOleWindow
+BaseIID={00000114-0000-0000-C000-000000000046}
+
+VTBLIndex=5|HRESULT IDockingWindow::ShowDW(IUnknown* pObject,BOOL fShow);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IDockingWindow::CloseDW(IUnknown* pObject,DWORD dwReserved);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IDockingWindow::ResizeBorderDW(IUnknown* pObject,LPCRECT prcBorder,IUnknown *punkToolbarSite,BOOL fReserved);|FailureIfNegativeRet

@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiConfigManager", "MultiConfigManager.vcproj", "{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		DebugUnicode = DebugUnicode
+		Release = Release
+		ReleaseUnicode = ReleaseUnicode
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.Debug.ActiveCfg = Debug|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.Debug.Build.0 = Debug|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.DebugUnicode.ActiveCfg = DebugUnicode|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.DebugUnicode.Build.0 = DebugUnicode|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.Release.ActiveCfg = Release|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.Release.Build.0 = Release|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.ReleaseUnicode.ActiveCfg = ReleaseUnicode|Win32
+		{F4EC2094-8775-4A1B-9D62-0834FBFE58FF}.ReleaseUnicode.Build.0 = ReleaseUnicode|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

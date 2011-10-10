@@ -1,0 +1,13 @@
+;dialog func
+user32.dll|DialogBoxParamA(HINSTANCE hInstance,LPCSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);|BlockingCall|FailureIfRetValue=0xFFFFFFFF
+user32.dll|DialogBoxParamW(HINSTANCE hInstance,LPCWSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);|BlockingCall|FailureIfRetValue=0xFFFFFFFF
+user32.dll|DialogBoxIndirectParamA(HINSTANCE hInstance,LPCDLGTEMPLATE hDialogTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);|BlockingCall|FailureIfRetValue=0xFFFFFFFF
+user32.dll|DialogBoxIndirectParamW(HINSTANCE hInstance,LPCDLGTEMPLATE hDialogTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);|BlockingCall|FailureIfRetValue=0xFFFFFFFF
+
+;window func
+user32.dll|CreateWindowExA(DWORD dwExStyle,LPCSTR lpClassName,LPCSTR lpWindowName,DWORD dwStyle,int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu,HINSTANCE hInstance,LPVOID lpParam);|FailureIfNullRet
+user32.dll|CreateWindowExW(DWORD dwExStyle,LPCWSTR lpClassName,LPCWSTR lpWindowName,DWORD dwStyle,int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu,HINSTANCE hInstance,LPVOID lpParam);|FailureIfNullRet
+user32.dll|ShowWindow(HWND hWnd,int nCmdShow);
+
+user32.dll|BOOL EndDialog(HWND hDlg,INT_PTR nResult);|FailureIfNullRet
+user32.dll|BOOL DestroyWindow(HWND hWnd);|FailureIfNullRet

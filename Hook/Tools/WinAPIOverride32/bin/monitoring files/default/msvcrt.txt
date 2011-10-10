@@ -1,0 +1,794 @@
+;      Monitoring file generated for exports table of msvcrt.dll v7.0.2600.1106 by MonitoringFileBuilder
+
+
+;Warning: Function ??0bad_cast@@QAE@ABQBD@Z has the same entry point as ??0bad_cast@@AAE@PBQBD@Z
+;Warning: Function ??1bad_typeid@@UAE@XZ has the same entry point as ??1__non_rtti_object@@UAE@XZ
+;Warning: Function ??4bad_cast@@QAEAAV0@ABV0@@Z has the same entry point as ??4__non_rtti_object@@QAEAAV0@ABV0@@Z
+;Warning: Function ??4bad_typeid@@QAEAAV0@ABV0@@Z has the same entry point as ??4__non_rtti_object@@QAEAAV0@ABV0@@Z
+;Warning: Function ??_Ebad_typeid@@UAEPAXI@Z has the same entry point as ??_E__non_rtti_object@@UAEPAXI@Z
+;Warning: Function ??_Gbad_typeid@@UAEPAXI@Z has the same entry point as ??_G__non_rtti_object@@UAEPAXI@Z
+;Warning: Function __CxxQueryExceptionSize can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function __CxxCallUnwindDtor will make your process crash
+;Warning: Function __argc can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function __argv will make your process crash
+;Warning: Function __lc_codepage can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function __lc_collate_cp will make your process crash
+;Warning: Function __p__iob has the same entry point as __iob_func
+;Warning: Function __setlc_active can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function __unguarded_readlc_active will make your process crash
+;Warning: Function __argv can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function __wargv will make your process crash
+;Warning: Function _adj_fpatan can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _adj_fptan will make your process crash
+;Warning: function _chkesp() may can't be hooked: It's size seems to be less than 5 bytes --> you have to do a manual checking 
+;Warning: Function _daylight can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _dstbias will make your process crash
+;Warning: Function _environ can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function __initenv will make your process crash
+;Warning: Function __wargv can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _environ will make your process crash
+;Warning: Function _osplatform can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _osver will make your process crash
+;Warning: Function __winitenv can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _pgmptr will make your process crash
+;Warning: Function _pctype can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _pwctype will make your process crash
+;Warning: Function _rotl has the same entry point as _lrotl
+;Warning: Function _rotr has the same entry point as _lrotr
+;Warning: Function _strdup has the same entry point as _mbsdup
+;Warning: Function _stricmp has the same entry point as _strcmpi
+;Warning: Function _timezone can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _daylight will make your process crash
+;Warning: Function _wcmdln can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _acmdln will make your process crash
+;Warning: Function _wenviron can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function __winitenv will make your process crash
+;Warning: Function __initenv can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _wenviron will make your process crash
+;Warning: Function _winminor can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function __argc will make your process crash
+;Warning: Function _winmajor can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _winminor will make your process crash
+;Warning: Function _winver can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _winmajor will make your process crash
+;Warning: Function _osver can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _winver will make your process crash
+;Warning: Function _pgmptr can't be hooked: It's size is less than 5 bytes.If you try to hook it, call to function _wpgmptr will make your process crash
+;Warning: Function getc has the same entry point as fgetc
+;Warning: Function labs has the same entry point as abs
+;Warning: Function ldiv has the same entry point as div
+;Warning: Function putc has the same entry point as fputc
+;Warning: Function strcat has the same entry point as _mbscat
+;Warning: Function strcpy has the same entry point as _mbscpy
+
+
+
+;public: __thiscall __non_rtti_object::__non_rtti_object(class __non_rtti_object)
+msvcrt.dll|??0__non_rtti_object@@QAE@ABV0@@Z(class __non_rtti_object)|DisplayName=__non_rtti_object::__non_rtti_object
+
+;public: __thiscall __non_rtti_object::__non_rtti_object(char const *)
+msvcrt.dll|??0__non_rtti_object@@QAE@PBD@Z(char const *)|DisplayName=__non_rtti_object::__non_rtti_object
+
+;private: __thiscall bad_cast::bad_cast(char const * const *)
+msvcrt.dll|??0bad_cast@@AAE@PBQBD@Z(char const * const *)|DisplayName=bad_cast::bad_cast
+
+;public: __thiscall bad_cast::bad_cast(char const *)
+;msvcrt.dll|??0bad_cast@@QAE@ABQBD@Z(char const *)|DisplayName=bad_cast::bad_cast
+
+;public: __thiscall bad_cast::bad_cast(class bad_cast)
+msvcrt.dll|??0bad_cast@@QAE@ABV0@@Z(class bad_cast)|DisplayName=bad_cast::bad_cast
+
+;public: __thiscall bad_cast::bad_cast(char const *)
+msvcrt.dll|??0bad_cast@@QAE@PBD@Z(char const *)|DisplayName=bad_cast::bad_cast
+
+;public: __thiscall bad_typeid::bad_typeid(class bad_typeid)
+msvcrt.dll|??0bad_typeid@@QAE@ABV0@@Z(class bad_typeid)|DisplayName=bad_typeid::bad_typeid
+
+;public: __thiscall bad_typeid::bad_typeid(char const *)
+msvcrt.dll|??0bad_typeid@@QAE@PBD@Z(char const *)|DisplayName=bad_typeid::bad_typeid
+
+;public: __thiscall exception::exception(char const *)
+msvcrt.dll|??0exception@@QAE@ABQBD@Z(char const *)|DisplayName=exception::exception
+
+;public: __thiscall exception::exception(class exception)
+msvcrt.dll|??0exception@@QAE@ABV0@@Z(class exception)|DisplayName=exception::exception
+
+;public: __thiscall exception::exception(void)
+msvcrt.dll|??0exception@@QAE@XZ(void)|DisplayName=exception::exception
+
+;public: virtual __thiscall __non_rtti_object::~__non_rtti_object(void)
+msvcrt.dll|??1__non_rtti_object@@UAE@XZ(void)|DisplayName=__non_rtti_object::~__non_rtti_object
+
+;public: virtual __thiscall bad_cast::~bad_cast(void)
+msvcrt.dll|??1bad_cast@@UAE@XZ(void)|DisplayName=bad_cast::~bad_cast
+
+;public: virtual __thiscall bad_typeid::~bad_typeid(void)
+;msvcrt.dll|??1bad_typeid@@UAE@XZ(void)|DisplayName=bad_typeid::~bad_typeid
+
+;public: virtual __thiscall exception::~exception(void)
+msvcrt.dll|??1exception@@UAE@XZ(void)|DisplayName=exception::~exception
+
+;public: virtual __thiscall type_info::~type_info(void)
+msvcrt.dll|??1type_info@@UAE@XZ(void)|DisplayName=type_info::~type_info
+
+;void * __cdecl operator new(unsigned int)
+msvcrt.dll|??2@YAPAXI@Z(unsigned int)|DisplayName=operator new
+
+;void __cdecl operator delete(void *)
+msvcrt.dll|??3@YAXPAX@Z(void *)|DisplayName=operator delete
+
+;public: class __non_rtti_object & __thiscall __non_rtti_object::operator=(class __non_rtti_object)
+msvcrt.dll|??4__non_rtti_object@@QAEAAV0@ABV0@@Z(class __non_rtti_object)|DisplayName=__non_rtti_object::operator=
+
+;public: class bad_cast & __thiscall bad_cast::operator=(class bad_cast)
+;msvcrt.dll|??4bad_cast@@QAEAAV0@ABV0@@Z(class bad_cast)|DisplayName=bad_cast::operator=
+
+;public: class bad_typeid & __thiscall bad_typeid::operator=(class bad_typeid)
+;msvcrt.dll|??4bad_typeid@@QAEAAV0@ABV0@@Z(class bad_typeid)|DisplayName=bad_typeid::operator=
+
+;public: class exception & __thiscall exception::operator=(class exception)
+msvcrt.dll|??4exception@@QAEAAV0@ABV0@@Z(class exception)|DisplayName=exception::operator=
+
+;public: int __thiscall type_info::operator==(class type_info)const 
+msvcrt.dll|??8type_info@@QBEHABV0@@Z(class type_info)const |DisplayName=type_info::operator==
+
+;public: int __thiscall type_info::operator!=(class type_info)const 
+msvcrt.dll|??9type_info@@QBEHABV0@@Z(class type_info)const |DisplayName=type_info::operator!=
+
+;const __non_rtti_object::`vftable'
+msvcrt.dll|??_7__non_rtti_object@@6B@()|DisplayName=__non_rtti_object::`vftable'
+
+;const bad_cast::`vftable'
+msvcrt.dll|??_7bad_cast@@6B@()|DisplayName=bad_cast::`vftable'
+
+;const bad_typeid::`vftable'
+msvcrt.dll|??_7bad_typeid@@6B@()|DisplayName=bad_typeid::`vftable'
+
+;const exception::`vftable'
+msvcrt.dll|??_7exception@@6B@()|DisplayName=exception::`vftable'
+
+;public: virtual void * __thiscall __non_rtti_object::`vector deleting destructor'(unsigned int)
+msvcrt.dll|??_E__non_rtti_object@@UAEPAXI@Z(unsigned int)|DisplayName=__non_rtti_object::`vector deleting destructor'
+
+;public: virtual void * __thiscall bad_cast::`vector deleting destructor'(unsigned int)
+msvcrt.dll|??_Ebad_cast@@UAEPAXI@Z(unsigned int)|DisplayName=bad_cast::`vector deleting destructor'
+
+;public: virtual void * __thiscall bad_typeid::`vector deleting destructor'(unsigned int)
+;msvcrt.dll|??_Ebad_typeid@@UAEPAXI@Z(unsigned int)|DisplayName=bad_typeid::`vector deleting destructor'
+
+;public: virtual void * __thiscall exception::`vector deleting destructor'(unsigned int)
+msvcrt.dll|??_Eexception@@UAEPAXI@Z(unsigned int)|DisplayName=exception::`vector deleting destructor'
+
+;public: void __thiscall bad_cast::`default constructor closure'(void)
+msvcrt.dll|??_Fbad_cast@@QAEXXZ(void)|DisplayName=bad_cast::`default constructor closure'
+
+;public: void __thiscall bad_typeid::`default constructor closure'(void)
+msvcrt.dll|??_Fbad_typeid@@QAEXXZ(void)|DisplayName=bad_typeid::`default constructor closure'
+
+;public: virtual void * __thiscall __non_rtti_object::`scalar deleting destructor'(unsigned int)
+msvcrt.dll|??_G__non_rtti_object@@UAEPAXI@Z(unsigned int)|DisplayName=__non_rtti_object::`scalar deleting destructor'
+
+;public: virtual void * __thiscall bad_cast::`scalar deleting destructor'(unsigned int)
+msvcrt.dll|??_Gbad_cast@@UAEPAXI@Z(unsigned int)|DisplayName=bad_cast::`scalar deleting destructor'
+
+;public: virtual void * __thiscall bad_typeid::`scalar deleting destructor'(unsigned int)
+;msvcrt.dll|??_Gbad_typeid@@UAEPAXI@Z(unsigned int)|DisplayName=bad_typeid::`scalar deleting destructor'
+
+;public: virtual void * __thiscall exception::`scalar deleting destructor'(unsigned int)
+msvcrt.dll|??_Gexception@@UAEPAXI@Z(unsigned int)|DisplayName=exception::`scalar deleting destructor'
+
+;void * __cdecl operator new[](unsigned int)
+msvcrt.dll|??_U@YAPAXI@Z(unsigned int)|DisplayName=operator new[]
+
+;void __cdecl operator delete[](void *)
+msvcrt.dll|??_V@YAXPAX@Z(void *)|DisplayName=operator delete[]
+
+; Unknown number of parameters
+msvcrt.dll|__uncaught_exception()
+
+;int (__cdecl*__cdecl _query_new_handler(void))(unsigned int)
+msvcrt.dll|?_query_new_handler@@YAP6AHI@ZXZ(unsigned int)|DisplayName=_query_new_handler
+
+;int __cdecl _query_new_mode(void)
+msvcrt.dll|?_query_new_mode@@YAHXZ(void)|DisplayName=_query_new_mode
+
+;int (__cdecl*__cdecl _set_new_handler(int (__cdecl*)(unsigned int)))(unsigned int)
+msvcrt.dll|?_set_new_handler@@YAP6AHI@ZP6AHI@Z@Z(unsigned int)|DisplayName=_set_new_handler
+
+;int __cdecl _set_new_mode(int)
+msvcrt.dll|?_set_new_mode@@YAHH@Z(int)|DisplayName=_set_new_mode
+
+;void (__cdecl*__cdecl _set_se_translator(void (__cdecl*)(unsigned int,struct _EXCEPTION_POINTERS *)))(unsigned int,struct _EXCEPTION_POINTERS *)
+msvcrt.dll|?_set_se_translator@@YAP6AXIPAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z(unsigned int,struct _EXCEPTION_POINTERS *)|DisplayName=_set_se_translator
+
+;public: int __thiscall type_info::before(class type_info) 
+msvcrt.dll|?before@type_info@@QBEHABV1@@Z(class type_info)|DisplayName=type_info::before
+
+;public: char const * __thiscall type_info::name(void)
+msvcrt.dll|?name@type_info@@QBEPBDXZ(void)|DisplayName=type_info::name
+
+;public: char const * __thiscall type_info::raw_name(void) 
+msvcrt.dll|?raw_name@type_info@@QBEPBDXZ(void)|DisplayName=type_info::raw_name
+
+;void (__cdecl*__cdecl set_new_handler(void (__cdecl*)(void)))(void)
+msvcrt.dll|?set_new_handler@@YAP6AXXZP6AXXZ@Z(void)|DisplayName=set_new_handler
+
+;void (__cdecl*__cdecl set_terminate(void (__cdecl*)(void)))(void)
+msvcrt.dll|?set_terminate@@YAP6AXXZP6AXXZ@Z(void)|DisplayName=set_terminate
+
+;void (__cdecl*__cdecl set_unexpected(void (__cdecl*)(void)))(void)
+msvcrt.dll|?set_unexpected@@YAP6AXXZP6AXXZ@Z(void)|DisplayName=set_unexpected
+
+;void __cdecl terminate(void)
+msvcrt.dll|?terminate@@YAXXZ(void)|DisplayName=terminate
+
+;void __cdecl unexpected(void)
+msvcrt.dll|?unexpected@@YAXXZ(void)|DisplayName=unexpected
+
+;public: virtual char const * __thiscall exception::what(void)
+msvcrt.dll|?what@exception@@UBEPBDXZ(void)|DisplayName=exception::what
+
+
+msvcrt.dll|int _access( const char *path, int mode )|FailureIfRetValue=-1
+msvcrt.dll|void _aligned_free( void *memblock)|Out
+msvcrt.dll|void * _aligned_malloc( size_t size, size_t alignment )
+msvcrt.dll|void * _aligned_offset_malloc( size_t size, size_t alignment, size_t offset)
+msvcrt.dll|void * _aligned_offset_realloc( void *memblock, size_t size, size_t alignment, size_t offset)|Out
+msvcrt.dll|void * _aligned_realloc( void *memblock, size_t size, size_t alignment)|Out
+msvcrt.dll|_amsg_exit(int RetErrNum)
+msvcrt.dll|_assert( booleanExpression )
+msvcrt.dll|_atodbl( const char *string )
+msvcrt.dll|_atoi64( const char *string )
+msvcrt.dll|_atoldbl(const char *string )
+msvcrt.dll|uintptr_t _beginthread( FARPROC pFunction,DWORD stack_size, void* arglist )|FailureIfRetValue=-1
+msvcrt.dll|_beginthreadex( void* security,DWORD stack_size,FARPROC pFunction, void* arglist,DWORD initflag,DWORD* pThreadID )|FailureIfRetValue=-1
+msvcrt.dll|void _c_exit( void )
+msvcrt.dll|double _cabs( _complex z )
+msvcrt.dll|void _cexit( void )
+msvcrt.dll|char * _cgets( char *buffer )|Out
+msvcrt.dll|_cgetws( char *buffer )|Out
+msvcrt.dll|_chdir(const char *dirname )|FailureIfRetValue=-1
+msvcrt.dll|int _chdrive( int drive )|FailureIfRetValue=-1
+msvcrt.dll|_chgsign(double x )
+msvcrt.dll|int _chmod( const char *filename, int pmode )|FailureIfRetValue=-1
+msvcrt.dll|int _chsize( int fd, long size )|FailureIfRetValue=-1
+msvcrt.dll|unsigned int _clearfp( void )
+msvcrt.dll|_close(int fd )|FailureIfRetValue=-1
+msvcrt.dll|_commit(int fd )|FailureIfRetValue=-1
+msvcrt.dll|unsigned int _control87( unsigned int new, unsigned int mask )
+msvcrt.dll|_controlfp( unsigned int new, unsigned int mask )
+msvcrt.dll|_copysign(double x, double y )
+msvcrt.dll|_cprintf(const char * format)
+msvcrt.dll|int _cputs( const char *string )|Out
+msvcrt.dll|_cputws( const char *string )|Out
+msvcrt.dll|int _creat( const char *filename, int pmode )|FailureIfRetValue=-1
+msvcrt.dll|int _cscanf( const char *format)  |FailureIfNullRet
+msvcrt.dll|_ctime64( const time_t *timer )|Out
+msvcrt.dll|int _cwait( int *termstat, int procHandle, int action )|Out
+msvcrt.dll|_cwprintf(const wchar * format)
+msvcrt.dll|_cwscanf( const char *format )  |FailureIfNullRet
+msvcrt.dll|int _dup( int fd )|FailureIfRetValue=-1
+msvcrt.dll|int _dup2( int handle1, int handle2 )|FailureIfRetValue=-1
+msvcrt.dll|char * _ecvt( double value, int count, int *dec, int *sign )|Out
+msvcrt.dll|void _endthread( void )
+msvcrt.dll|void _endthreadex( void )
+msvcrt.dll|int _eof( int handle )
+msvcrt.dll|intptr_t _execl( const char *cmdname, const char *arg0 )|FailureIfRetValue=-1
+msvcrt.dll|int _execle( const char *cmdname, const char *arg0 )|FailureIfRetValue=-1
+msvcrt.dll|intptr_t _execlp( const char *cmdname, const char *arg0 )|FailureIfRetValue=-1
+msvcrt.dll|intptr_t _execlpe( const char *cmdname, const char *arg0 )|FailureIfRetValue=-1
+msvcrt.dll|int _execv( const char *cmdname, const char *const *argv )|FailureIfRetValue=-1
+msvcrt.dll|int _execve( const char *cmdname, const char *const *argv, const char *const *envp )|FailureIfRetValue=-1
+msvcrt.dll|int _execvp( const char *cmdname, const char *const *argv )|FailureIfRetValue=-1
+msvcrt.dll|_execvpe(const char *cmdname, const char *const *argv, const char *const *envp )|FailureIfRetValue=-1
+msvcrt.dll|void _exit( int status )
+msvcrt.dll|void * _expand( void *memblock, size_t size )  |FailureIfNullRet
+msvcrt.dll|_fcloseall( FILE *stream )|Out
+msvcrt.dll|char * _fcvt( double value, int count, int *dec, int *sign )|Out
+msvcrt.dll|FILE * _fdopen( int handle, const char *mode )  |FailureIfNullRet
+msvcrt.dll|int _fgetchar( void )
+msvcrt.dll|wint_t _fgetwchar( void )
+msvcrt.dll|_filelength(int fd )|FailureIfRetValue=-1
+msvcrt.dll|__int64 _filelengthi64( int handle )|FailureIfRetValue=-1
+msvcrt.dll|int _fileno( FILE *stream )|Out
+msvcrt.dll|int _findclose( long handle )|FailureIfRetValue=-1
+msvcrt.dll|intptr_t _findfirst( const char *filespec, struct _finddata_t *fileinfo )|FailureIfRetValue=-1
+msvcrt.dll|_findfirst64( const char *filespec, struct _finddata_t *fileinfo )|FailureIfRetValue=-1
+msvcrt.dll|__int64 _findfirsti64( char *filespec, struct _finddata_t *fileinfo )|FailureIfRetValue=-1
+msvcrt.dll|int _findnext( intptr_t handle, struct _finddata_t *fileinfo )|FailureIfRetValue=-1
+msvcrt.dll|_findnext64( intptr_t handle, struct _finddata_t *fileinfo )|FailureIfRetValue=-1
+msvcrt.dll|_findnexti64( intptr_t handle, struct _finddata_t *fileinfo )|FailureIfRetValue=-1
+msvcrt.dll|int _finite( double x )
+msvcrt.dll|int _flushall( void )
+msvcrt.dll|_fmode(double x,double y)
+msvcrt.dll|_fpclass(double x)
+msvcrt.dll|int _fpieee_flt( unsigned long exc_code, struct _EXCEPTION_POINTERS *exc_info, int handler(_FPIEEE_RECORD *))|Out
+msvcrt.dll|void _fpreset( void )
+msvcrt.dll|int _fputchar( int c )
+msvcrt.dll|wint_t _fputwchar( wint_t c )
+msvcrt.dll|FILE * _fsopen( const char *filename, const char *mode, int shflag )  |FailureIfNullRet
+msvcrt.dll|int _fstat( int handle, struct _stat *buffer )|Out|FailureIfRetValue=-1
+msvcrt.dll|_fstat64( int fd, struct _stat *buffer )|Out|FailureIfRetValue=-1
+msvcrt.dll|__int64 _fstati64( int handle, struct _stat *buffer )|Out|FailureIfRetValue=-1
+msvcrt.dll|void _ftime( struct _timeb *timeptr )|Out
+msvcrt.dll|_ftime64( struct _timeb *timeptr )|Out
+msvcrt.dll|char * _fullpath( char *absPath, const char *relPath, size_t maxLength )|Out
+msvcrt.dll|int _futime( int handle, struct _utimbuf *filetime )|Out
+msvcrt.dll|_futime64( int fd, struct _utimbuf *filetime )|Out
+msvcrt.dll|char * _gcvt( double value, int digits, char *buffer )|Out
+msvcrt.dll|long _get_osfhandle( int fd )
+msvcrt.dll|int _getch( void )
+msvcrt.dll|int _getche( void )
+msvcrt.dll|char * _getcwd( char *buffer, int maxlen )|Out
+msvcrt.dll|char * _getdcwd( int drive, char *buffer, int maxlen )|Out
+msvcrt.dll|unsigned _getdiskfree( unsigned drive, struct _diskfree_t * driveinfo)|Out
+msvcrt.dll|int _getdrive( void )
+msvcrt.dll|unsigned long _getdrives()
+msvcrt.dll|int _getmaxstdio( void )
+msvcrt.dll|int _getmbcp( void )
+msvcrt.dll|int _getpid( void )
+msvcrt.dll|int _getw( FILE *stream )|Out
+msvcrt.dll|_getwch( void )
+msvcrt.dll|_getwche( void )
+msvcrt.dll|_getws( char *buffer )|Out
+msvcrt.dll|int _heapadd( void *memblock, size_t size )|Out
+msvcrt.dll|int _heapchk( void )
+msvcrt.dll|int _heapmin( void )
+msvcrt.dll|int _heapset( unsigned int fill )
+msvcrt.dll|int _heapwalk( _HEAPINFO *entryinfo )|Out
+msvcrt.dll|double _hypot( double x, double y )
+msvcrt.dll|_i64toa(INT64)
+msvcrt.dll|_i64tow(INT64)
+msvcrt.dll|int _inp( unsigned short port )
+msvcrt.dll|unsigned long _inpd( unsigned short port )
+msvcrt.dll|unsigned short _inpw( unsigned short port )
+msvcrt.dll|int _isatty( int handle )
+msvcrt.dll|int _ismbbalnum( unsigned int c )
+msvcrt.dll|int _ismbbalpha( unsigned int c )
+msvcrt.dll|int _ismbbkalnum( unsigned int c )
+msvcrt.dll|int _ismbbkana( unsigned int c )
+msvcrt.dll|int _ismbbkprint( unsigned int c )
+msvcrt.dll|int _ismbblead( unsigned int c )
+msvcrt.dll|_ismbbprint( void )
+msvcrt.dll|int _ismbbpunct( unsigned int c )
+msvcrt.dll|int _ismbbtrail( unsigned int c )
+msvcrt.dll|int _ismbcalnum( unsigned int c )
+msvcrt.dll|int _ismbcalpha( unsigned int c )
+msvcrt.dll|int _ismbcdigit( unsigned int c )
+msvcrt.dll|int _ismbcgraph( unsigned int c )
+msvcrt.dll|int _ismbchira( unsigned int c )
+msvcrt.dll|int _ismbckata( unsigned int c )
+msvcrt.dll|int _ismbcl0( unsigned int c )
+msvcrt.dll|int _ismbcl1( unsigned int c )
+msvcrt.dll|int _ismbcl2( unsigned int c )
+msvcrt.dll|int _ismbclegal( unsigned int c )
+msvcrt.dll|int _ismbclower( unsigned int c )
+msvcrt.dll|int _ismbcprint( unsigned int c )
+msvcrt.dll|int _ismbcpunct( unsigned int c )
+msvcrt.dll|int _ismbcspace( unsigned int c )
+msvcrt.dll|int _ismbcsymbol( unsigned int c )
+msvcrt.dll|int _ismbcupper( unsigned int c )
+msvcrt.dll|int _ismbslead( const unsigned char *string, const unsigned char *current )|Out
+msvcrt.dll|int _ismbstrail( const unsigned char *string, const unsigned char *current )|Out
+msvcrt.dll|int _isnan( double x )
+msvcrt.dll|_itoa(int)
+msvcrt.dll|_itow(int)
+msvcrt.dll|double _j0( double x )
+msvcrt.dll|_j1( double x )
+msvcrt.dll|_jn( double x )
+msvcrt.dll|int _kbhit( void )
+msvcrt.dll|void * _lfind( const void *key, const void *base, unsigned int *num, unsigned int width, FARPROC compare)|Out
+msvcrt.dll|_localtime64( const time_t *timer )|Out
+msvcrt.dll|int _locking( int handle, int mode, long nbytes )
+msvcrt.dll|void * _lsearch( const void *key, void *base, unsigned int *num, unsigned int width, FARPROC compare)|Out
+msvcrt.dll|long _lseek( int handle, long offset, int origin )
+msvcrt.dll|__int64 _lseeki64( int handle, __int64 offset, int origin )
+msvcrt.dll|char * _ltoa( long value, char *string, int radix )|Out
+msvcrt.dll|wchar_t * _ltow( long value, wchar_t *string, int radix )|Out
+msvcrt.dll|void _makepath( char *path, const char *drive, const char *dir, const char *fname, const char *ext )|Out
+msvcrt.dll|unsigned int _mbbtombc( unsigned int c )
+msvcrt.dll|int _mbbtype( unsigned char c, int type )
+msvcrt.dll|void _mbccpy( unsigned char *dest, const unsigned char *src )|Out
+msvcrt.dll|unsigned int _mbcjistojms( unsigned int c )
+msvcrt.dll|unsigned int _mbcjmstojis( unsigned int c )
+msvcrt.dll|size_t _mbclen( const unsigned char *c )|Out
+msvcrt.dll|unsigned int _mbctohira( unsigned int c )
+msvcrt.dll|_mbctokata( unsigned int c )
+msvcrt.dll|unsigned int _mbctolower( unsigned int c )
+msvcrt.dll|unsigned int _mbctombb( unsigned int c )
+msvcrt.dll|_mbctoupper( unsigned int c )
+msvcrt.dll|int _mbsbtype( const unsigned char *mbstr, size_t count )|Out
+!msvcrt.dll|unsigned char * _mbscat( unsigned char *strDestination, const unsigned char *strSource )|Out
+msvcrt.dll|unsigned char * _mbschr( const unsigned char *string, unsigned int c )|Out
+msvcrt.dll|_mbscmp(char *string1,char *string2)
+msvcrt.dll|_mbscoll(char *string1,char *string2)
+!msvcrt.dll|unsigned char * _mbscpy( unsigned char *strDestination, const unsigned char *strSource )|Out
+msvcrt.dll|size_t _mbscspn( const unsigned char *string, const unsigned char *strCharSet )|Out
+msvcrt.dll|_mbsdec(char *start,char *current)
+!msvcrt.dll|unsigned char * _mbsdup( const unsigned char *strSource )|Out
+msvcrt.dll|int _mbsicmp( const unsigned char *string1, const unsigned char_t *string2 )|Out
+msvcrt.dll|_mbsicoll(char *string1,char *string2)
+msvcrt.dll|unsigned char * _mbsinc( const unsigned char *current )|Out
+msvcrt.dll|size_t _mbslen( const unsigned char *string )|Out
+msvcrt.dll|unsigned char * _mbslwr( unsigned char *string )|Out
+msvcrt.dll|unsigned char * _mbsnbcat( unsigned char *dest, const unsigned char *src, size_t count )|Out
+msvcrt.dll|int _mbsnbcmp( const unsigned char *string1, const unsigned char* string2, size_t count )|Out
+msvcrt.dll|_mbsnbcnt(char* string, size_t count)
+msvcrt.dll|int _mbsnbcoll( const unsigned char *string1, const unsigned char string2, size_t count )|Out
+msvcrt.dll|unsigned char * _mbsnbcpy( unsigned char *dest, const unsigned char *src, size_t count )|Out
+msvcrt.dll|int _mbsnbicmp( const unsigned char *string1, const unsigned char *string2, size_t count )|Out
+msvcrt.dll|_mbsnbicoll( const unsigned char *string1, const unsigned char string2, size_t count )|Out
+msvcrt.dll|unsigned char * _mbsnbset( unsigned char *string, unsigned int c, size_t count )|Out
+msvcrt.dll|unsigned char * _mbsncat( unsigned char *strDest, const unsigned char *strSource, size_t count)|Out
+msvcrt.dll|_mbsnccnt(char* string, size_t count)
+msvcrt.dll|int _mbsncmp( const unsigned char *string1, const unsigned char* string2, size_t count )|Out
+msvcrt.dll|_mbsncoll(char *string1,char* string2, size_t count)
+msvcrt.dll|unsigned char * _mbsncpy( unsigned char *strDest, const unsigned char *strSource, size_t count )|Out
+msvcrt.dll|unsigned int _mbsnextc( const unsigned char *string )|Out
+msvcrt.dll|int _mbsnicmp( const unsigned char *string1, const unsigned char *string2, size_t count )|Out
+msvcrt.dll|_mbsnicoll( const char *string1, const char *string2, size_t count )|Out
+msvcrt.dll|unsigned char * _mbsninc( const unsigned char *string, size_t count )|Out
+msvcrt.dll|unsigned char * _mbsnset( unsigned char *string, unsigned int c, size_t count )|Out
+msvcrt.dll|unsigned char * _mbspbrk( const unsigned char*string, const unsigned char *strCharSet )|Out
+msvcrt.dll|int _mbsrchr( const unsigned char *string, unsigned int c )|Out
+msvcrt.dll|unsigned char * _mbsrev( unsigned char *string )|Out
+msvcrt.dll|unsigned char * _mbsset( unsigned char *string, unsigned int c )|Out
+msvcrt.dll|size_t _mbsspn( const unsigned char *string, const unsigned char *strCharSet )|Out
+msvcrt.dll|unsigned char * _mbsspnp( const unsigned char *string1,const unsigned char *string2 )|Out
+msvcrt.dll|_mbsstr(const char *string,const char *strSearch )
+msvcrt.dll|unsigned char * _mbstok( unsigned char*strToken, const unsigned char *strDelimit )|Out
+msvcrt.dll|size_t _mbstrlen( const char *string )|Out
+msvcrt.dll|unsigned char * _mbsupr( unsigned char *string )|Out
+msvcrt.dll|void * _memccpy( void *dest:PointedDataSize=Arg4, const void *src:PointedDataSize=Arg4, int c, size_t count )|Out
+msvcrt.dll|int _memicmp( const void *buf1:PointedDataSize=Arg3, const void *buf2:PointedDataSize=Arg3, size_t count )|Out
+msvcrt.dll|int _mkdir( const char *dirname )|Out
+msvcrt.dll|char * _mktemp( char *template )|Out
+msvcrt.dll|_mktime64( struct tm *timeptr )|Out
+msvcrt.dll|size_t _msize( void *memblock )|Out
+msvcrt.dll|double _nextafter( double x, double y )
+msvcrt.dll| _onexit( _onexit_t func )
+msvcrt.dll|int _open( const char *filename, int oflag [, int pmode] )|Out
+msvcrt.dll|_open_osfhandle(intptr_t osfhandle, int flags )
+msvcrt.dll|int _outp( unsigned short port, int databyte )
+msvcrt.dll|_outpd( unsigned short port, int databyte )
+msvcrt.dll|_outpw( unsigned short port, int databyte )
+msvcrt.dll|int _pclose( FILE *stream )|Out
+msvcrt.dll|int _pipe( int *phandles, unsigned int psize, int textmode )|Out
+msvcrt.dll|FILE * _popen( const char *command, const char *mode )|Out
+msvcrt.dll|int _putch( int c )
+msvcrt.dll|int _putenv( const char *envstring )|Out
+msvcrt.dll|int _putw( int binint, FILE *stream )|Out
+msvcrt.dll|_putwch( int c )
+msvcrt.dll|_putws( const char *string )|Out
+msvcrt.dll|int _read( int handle, void *buffer, unsigned int count )|Out
+msvcrt.dll|int _resetstkoflw( void )
+msvcrt.dll|int _rmdir( const char *dirname )|Out
+msvcrt.dll|int _rmtmp( void )
+!msvcrt.dll|unsigned int _rotl( unsigned int value, int shift )
+!msvcrt.dll|unsigned int _rotr( unsigned int value, int shift )
+msvcrt.dll|double _scalb( double x, long exp )
+msvcrt.dll|_scprintf(const char *format )
+msvcrt.dll|_scwprintf(const wchar_t *format)
+msvcrt.dll|void _searchenv( const char *filename, const char *varname, char *pathname )|Out
+msvcrt.dll|int _set_SSE2_enable( int flag)
+msvcrt.dll|int _set_sbh_threshold( size_t size )
+msvcrt.dll|_seterrormode(int modeval )
+msvcrt.dll|_setmaxstdio(int newmax )
+msvcrt.dll|int _setmbcp( int codepage )
+msvcrt.dll|_setmode(int handle,int mode )
+msvcrt.dll|int _snprintf( char *buffer, size_t count, const char *format)|Out
+msvcrt.dll|int _snscanf( const char * input, size_t length, const char * format)|Out
+msvcrt.dll|_snwprintf( char *buffer, size_t count, const char *format)|Out
+msvcrt.dll|_snwscanf( const char * input, size_t length, const char * format)|Out
+msvcrt.dll|int _sopen( const char *filename, int oflag, int shflag [, int pmode ] )|Out
+msvcrt.dll|intptr_t _spawnl( int mode, const char *cmdname, const char *arg0)|Out
+msvcrt.dll|_spawnle(int mode, const char *cmdname, const char *arg0)
+msvcrt.dll|int _spawnlp( int mode, const char *cmdname, const char *arg0)|Out
+msvcrt.dll|int _spawnlpe(int mode,const char *cmdname, const char *arg0)
+msvcrt.dll|int _spawnv( int mode, const char *cmdname, const char *const *argv )|Out
+msvcrt.dll|int _spawnve( int mode, const char *cmdname, const char *const *argv, const char *const *envp )|Out
+msvcrt.dll|int _spawnvp( int mode, const char *cmdname, const char *const *argv )|Out
+msvcrt.dll|intptr_t _spawnvpe( int mode, const char *cmdname, const char *const *argv, const char *const *envp )|Out
+msvcrt.dll|void _splitpath( const char *path, char *drive, char *dir, char *fname, char *ext )|Out
+msvcrt.dll|int _stat( const char *path, struct _stat *buffer )|Out
+msvcrt.dll|_stat64( const char *path, struct _stat *buffer )|Out
+msvcrt.dll|_stati64( const char *path, struct _stat *buffer )|Out
+msvcrt.dll|unsigned int _statusfp( void )
+!msvcrt.dll|_strcmpi(char *string1,char *string2 )
+msvcrt.dll|char * _strdate( char *datestr )|Out
+msvcrt.dll|char * _strdup( const char *strSource )|Out
+msvcrt.dll|char * _strerror( const char *strErrMsg )|Out
+msvcrt.dll|int _stricmp( const char *string1, const char *string2 )|Out
+msvcrt.dll|int _stricoll( const char *string1, const char *string2 )|Out
+msvcrt.dll|char * _strlwr( char *string )|Out
+msvcrt.dll|int _strncoll( const char *string1, const char *string2, size_t count )|Out
+msvcrt.dll|int _strnicmp( const char *string1, const char *string2, size_t count )|Out
+msvcrt.dll|_strnicoll(const char *string1,const char *string2, size_t count)
+msvcrt.dll|char * _strnset( char *string, int c, size_t count )|Out
+msvcrt.dll|char * _strrev( char *string )|Out
+msvcrt.dll|char * _strset( char *string, int c )|Out
+msvcrt.dll|char * _strtime( char *timestr )|Out
+msvcrt.dll|__int64 _strtoi64(const char *nptr, char **endptr, int base )
+msvcrt.dll|unsigned __int64 _strtoui64(const char *nptr, char **endptr, int base )
+msvcrt.dll|char * _strupr( char *string )|Out
+msvcrt.dll|void _swab( char *src, char *dest, int n )|Out
+msvcrt.dll|long _tell( int handle )
+msvcrt.dll|__int64 _telli64( int handle )
+msvcrt.dll|char * _tempnam( const char *dir, const char *prefix )|Out
+msvcrt.dll|_time64( time_t *timer )|Out
+msvcrt.dll|_tolower( int c )
+msvcrt.dll|_toupper( int c )
+msvcrt.dll|void _tzset( void )
+msvcrt.dll|char* _ui64toa(int value, char *string, int radix)
+msvcrt.dll|wchar_t * _ui64tow(unsigned __int64 value, wchar_t *string, int radix )
+msvcrt.dll|char * _ultoa( unsigned long value, char *string, int radix )|Out
+msvcrt.dll|_ultow( unsigned long value, char *string, int radix )|Out
+msvcrt.dll|int _umask( int pmode )
+msvcrt.dll|int _ungetch( int c )
+msvcrt.dll|_ungetwch( int c )
+msvcrt.dll|int _unlink( const char *filename )|Out
+msvcrt.dll|int _utime( const char *filename, struct _utimbuf *times )|Out
+msvcrt.dll|_utime64( const char *filename, struct _utimbuf *times )|Out
+msvcrt.dll|int _vscprintf( const char *format, va_list argptr )|Out
+msvcrt.dll|_vscwprintf( const char *format, va_list argptr )|Out
+msvcrt.dll|int _vsnprintf( char *buffer, size_t count, const char *format, va_list argptr )|Out
+msvcrt.dll|_vsnwprintf( char *buffer, size_t count, const char *format, va_list argptr )|Out
+msvcrt.dll|int _waccess( const wchar_t *path, int mode )|FailureIfRetValue=-1
+msvcrt.dll|_wasctime( const struct tm *timeptr )|Out
+msvcrt.dll|_wchdir( const char *dirname )|Out
+msvcrt.dll|int _wchmod( const wchar_t *filename, int pmode )|Out
+msvcrt.dll|int _wcreat( const wchar_t *filename, int pmode )|Out
+msvcrt.dll|wchar_t * _wcsdup( const wchar_t *strSource )|Out
+msvcrt.dll|wchar_t * _wcserror(int errnum )
+msvcrt.dll|int _wcsicmp( const wchar_t *string1, const wchar_t *string2 )|Out
+msvcrt.dll|int _wcsicoll( const wchar_t *string1, const wchar_t *string2 )|Out
+msvcrt.dll|wchar_t * _wcslwr( wchar_t *string )|Out
+msvcrt.dll|int _wcsncoll( const wchar_t *string1, const wchar_t *string2, size_t count )|Out
+msvcrt.dll|int _wcsnicmp( const wchar_t *string1, const wchar_t *string2, size_t count )|Out
+msvcrt.dll|_wcsnicoll( const char *string1, const char *string2, size_t count )|Out
+msvcrt.dll|wchar_t * _wcsnset( wchar_t *string, wchar_t c, size_t count )|Out
+msvcrt.dll|wchar_t * _wcsrev( wchar_t *string )|Out
+msvcrt.dll|wchar_t * _wcsset( wchar_t *string, wchar_t c )|Out
+msvcrt.dll|__int64 _wcstoi64( const char *nptr, char **endptr, int base )|Out
+msvcrt.dll|unsigned __int64 _wcstoui64( const wchar_t *nptr, wchar_t **endptr, int base )
+msvcrt.dll|wchar_t * _wcsupr( wchar_t *string )|Out
+msvcrt.dll|wchar_t * _wctime( const time_t *timer )|Out
+msvcrt.dll|_wctime64( const time_t *timer )|Out
+msvcrt.dll|int _wexecl( const wchar_t *cmdname, const wchar_t *arg0 )|Out
+msvcrt.dll|int _wexecle( const wchar_t *cmdname, const wchar_t *arg0 )|Out
+msvcrt.dll|_wexeclp( const char *cmdname, const char *arg0 )|Out
+msvcrt.dll|_wexeclpe( const char *cmdname, const char *arg0 )|Out
+msvcrt.dll|int _wexecv( const wchar_t *cmdname, const wchar_t *const *argv )|Out
+msvcrt.dll|int _wexecve( const wchar_t *cmdname, const wchar_t *const *argv, const wchar_t *const *envp )|Out
+msvcrt.dll|_wexecvp( const char *cmdname, const char *const *argv )|Out
+msvcrt.dll|_wexecvpe( const char *cmdname, const char *const *argv, const char *const *envp )|Out
+msvcrt.dll|_wfdopen( int fd, const char *mode )|Out
+msvcrt.dll|long _wfindfirst( wchar_t *filespec, struct _wfinddata_t *fileinfo )|Out
+msvcrt.dll|_wfindfirst64( const char *filespec, struct _finddata_t *fileinfo )|Out
+msvcrt.dll|__int64 _wfindfirsti64( wchar_t *filespec, struct _wfinddata_t *fileinfo )|Out
+msvcrt.dll|_wfindnext( intptr_t handle, struct _finddata_t *fileinfo )|Out
+msvcrt.dll|_wfindnext64( intptr_t handle, struct _finddata_t *fileinfo )|Out
+msvcrt.dll|_wfindnexti64( intptr_t handle, struct _finddata_t *fileinfo )|Out
+msvcrt.dll|_wfopen( const char *filename, const char *mode )|Out
+msvcrt.dll|_wfreopen( const char *path, const char *mode, FILE *stream )|Out
+msvcrt.dll|_wfsopen( const char *filename, const char *mode, int shflag )|Out
+msvcrt.dll|wchar_t * _wfullpath( wchar_t *absPath, const wchar_t *relPath, size_t maxLength )|Out
+msvcrt.dll|_wgetcwd( char *buffer, int maxlen )|Out
+msvcrt.dll|wchar_t * _wgetdcwd( int drive, wchar_t *buffer, int maxlen )|Out
+msvcrt.dll|wchar_t * _wgetenv( const wchar_t *varname )|Out
+msvcrt.dll|void _wmakepath( wchar_t *path, const wchar_t *drive, const wchar_t *dir, const wchar_t *fname, const wchar_t *ext )|Out
+msvcrt.dll|int _wmkdir( const wchar_t *dirname )|Out
+msvcrt.dll|wchar_t * _wmktemp( wchar_t *template )|Out
+msvcrt.dll|_wopen( const char *filename, int oflag [, int pmode] )|Out
+msvcrt.dll|void _wperror( const wchar_t *string )|Out
+msvcrt.dll|FILE * _wpopen( const wchar_t *command, const wchar_t *mode )|Out
+msvcrt.dll|int _wputenv( const wchar_t *envstring )|Out
+msvcrt.dll|int _wremove( const wchar_t *path )|Out
+msvcrt.dll|_wrename( const char *oldname, const char *newname )|Out
+msvcrt.dll|int _write( int fd, const void *buffer, unsigned int count )|Out
+msvcrt.dll|int _wrmdir( const wchar_t *dirname )|Out
+msvcrt.dll|void _wsearchenv( const wchar_t *filename, const wchar_t *varname, wchar_t *pathname )|Out
+msvcrt.dll|wchar_t * _wsetlocale( int category, const wchar_t *locale )|Out
+msvcrt.dll|int _wsopen( const wchar_t *filename, int oflag, int shflag [, int pmode ] )|Out
+msvcrt.dll|int _wspawnl( int mode, const wchar_t *cmdname, const wchar_t *arg0 )|Out
+msvcrt.dll|int _wspawnle( int mode, const wchar_t *cmdname, const wchar_t *arg0)|Out
+msvcrt.dll|int _wspawnlp( int mode, const wchar_t *cmdname, const wchar_t *arg0 )|Out
+msvcrt.dll|_wspawnlpe( int mode, const char *cmdname, const char *arg0)|Out
+msvcrt.dll|int _wspawnv( int mode, const wchar_t *cmdname, const wchar_t *const *argv )|Out
+msvcrt.dll|int _wspawnve( int mode, const wchar_t *cmdname, const wchar_t *const *argv, const wchar_t *const *envp )|Out
+msvcrt.dll|int _wspawnvp( int mode, const wchar_t *cmdname, const wchar_t *const *argv )|Out
+msvcrt.dll|_wspawnvpe( int mode, const char *cmdname, const char *const *argv, const char *const *envp )|Out
+msvcrt.dll|void _wsplitpath( const wchar_t *path, wchar_t *drive, wchar_t *dir, wchar_t *fname, wchar_t *ext )|Out
+msvcrt.dll|int _wstat( const wchar_t *path, struct _stat *buffer )|Out
+msvcrt.dll|_wstat64( const char *path, struct _stat *buffer )|Out
+msvcrt.dll|__int64 _wstati64( const wchar_t *path, struct _stat *buffer )|Out
+msvcrt.dll|wchar_t * _wstrdate( wchar_t *datestr )|Out
+msvcrt.dll|wchar_t * _wstrtime( wchar_t *timestr )|Out
+msvcrt.dll|int _wsystem( const wchar_t *command )|Out
+msvcrt.dll|wchar_t * _wtempnam( wchar_t *dir, wchar_t *prefix )|Out
+msvcrt.dll|wchar_t * _wtmpnam( wchar_t *string )|Out
+msvcrt.dll|_wtof( const char *string )|Out
+msvcrt.dll|_wtoi( const char *string )|Out
+msvcrt.dll|__int64 _wtoi64( wchar_t *string )|Out
+msvcrt.dll|_wtol( const char *string )|Out
+msvcrt.dll|_wunlink( const char *filename )|Out
+msvcrt.dll|_wutime( const char *filename, struct _utimbuf *times )|Out
+msvcrt.dll|_wutime64( const char *filename, struct _utimbuf *times )|Out
+msvcrt.dll|double _y0( double x )
+msvcrt.dll|_y1( double x )
+msvcrt.dll|_yn( double x )
+msvcrt.dll|abort(void)
+msvcrt.dll|abs(long n)
+msvcrt.dll|acos(double x)
+msvcrt.dll|char * asctime( const struct tm *timeptr )|Out
+msvcrt.dll|asin(double x)
+msvcrt.dll|atan(double x )
+msvcrt.dll|atan2( double y, double x )
+msvcrt.dll|int atexit( FARPROC func )|Out
+msvcrt.dll|double atof( const char *string )|Out
+msvcrt.dll|atoi( const char *string )|Out
+msvcrt.dll|atol( const char *string )|Out
+msvcrt.dll|void * bsearch( const void *key, const void *base, size_t num, size_t width, FARPROC compare )|Out
+msvcrt.dll|void * calloc( size_t num, size_t size )
+msvcrt.dll|ceil(double x)
+msvcrt.dll|void clearerr( FILE *stream )|Out
+msvcrt.dll|clock(void )
+msvcrt.dll|cos(double x)
+msvcrt.dll|cosh( double x )
+msvcrt.dll|char* ctime(const time_t *timer)
+msvcrt.dll|double difftime( time_t timer1, time_t timer0 )
+msvcrt.dll|div(int numer, int denom)
+msvcrt.dll|exit(int status )
+msvcrt.dll|exp(double x)
+msvcrt.dll|double fabs( double x )
+msvcrt.dll|int fclose( FILE *stream )|Out
+msvcrt.dll|int feof( FILE *stream )|Out
+msvcrt.dll|int ferror( FILE *stream )|Out
+msvcrt.dll|int fflush( FILE *stream )|Out
+!msvcrt.dll|int fgetc( FILE *stream )|Out
+msvcrt.dll|int fgetpos(FILE *stream,fpos_t *pos )|Out
+msvcrt.dll|char * fgets( char *string, int n, FILE *stream )|Out
+msvcrt.dll|fgetwc( FILE *stream )|Out
+msvcrt.dll|fgetws( char *string, int n, FILE *stream )|Out
+msvcrt.dll|double floor(double x)
+msvcrt.dll|double fmod( double x, double y )
+msvcrt.dll|FILE * fopen( const char *filename, const char *mode )|Out
+msvcrt.dll|int fprintf( FILE *stream, const char *format )|Out
+!msvcrt.dll|int fputc( int c, FILE *stream )|Out
+msvcrt.dll|int fputs( const char *string, FILE *stream )|Out
+msvcrt.dll|wint_t fputwc( wint_t c, FILE *stream )|Out
+msvcrt.dll|fputws( const char *string, FILE *stream )|Out
+msvcrt.dll|size_t fread( void *buffer, size_t size, size_t count, FILE *stream )|Out
+msvcrt.dll|free(void *memblock)
+msvcrt.dll|FILE * freopen( const char *path, const char *mode, FILE *stream )|Out
+msvcrt.dll|frexp(double x, int *expptr )
+msvcrt.dll|int fscanf( FILE *stream, const char *format)|Out
+msvcrt.dll|fseek(FILE *stream, long offset, int origin )
+msvcrt.dll|int fsetpos( FILE *stream, const fpos_t *pos )|Out
+msvcrt.dll|long ftell( FILE *stream )|Out
+msvcrt.dll|fwprintf( FILE *stream, const char *format)|Out
+msvcrt.dll|size_t fwrite( const void *buffer, size_t size, size_t count, FILE *stream )|Out
+msvcrt.dll|fwscanf( FILE *stream, const char *format )|Out
+msvcrt.dll|getc(FILE *stream)
+msvcrt.dll|getchar(void)
+msvcrt.dll|getenv(const char *varname )
+msvcrt.dll|gets(char *buffer)
+msvcrt.dll|wint_t getwc( FILE *stream )|Out
+msvcrt.dll|getwchar(void)
+msvcrt.dll|struct tm * gmtime( const time_t *timer )|Out
+msvcrt.dll|is_wctype(wint_t c, wctype_t desc )
+msvcrt.dll|int isalnum( int c )
+msvcrt.dll|int isalpha( int c )
+msvcrt.dll|int iscntrl( int c )
+msvcrt.dll|isdigit(int c )
+msvcrt.dll|int isgraph( int c )
+msvcrt.dll|int isleadbyte( int c )
+msvcrt.dll|islower(int c)
+msvcrt.dll|int isprint( int c )
+msvcrt.dll|int ispunct( int c )
+msvcrt.dll|int isspace( int c )
+msvcrt.dll|int isupper( int c )
+msvcrt.dll|iswalnum( int c )
+msvcrt.dll|int iswalpha( wint_t c )
+msvcrt.dll|int iswascii( wint_t c )
+msvcrt.dll|int iswcntrl( wint_t c )
+msvcrt.dll|int iswctype( wint_t c, wctype_t desc )
+msvcrt.dll|int iswdigit( wint_t c )
+msvcrt.dll|int iswgraph( wint_t c )
+msvcrt.dll|iswlower( int c )
+msvcrt.dll|iswprint( int c )
+msvcrt.dll|int iswpunct( wint_t c )
+msvcrt.dll|iswspace( int c )
+msvcrt.dll|iswupper( int c )
+msvcrt.dll|int iswxdigit( wint_t c )
+msvcrt.dll|int isxdigit( int c )
+!msvcrt.dll|long labs(long n)
+msvcrt.dll|ldexp(double x, int exp )
+!msvcrt.dll| ldiv( long int numer, long int denom )
+msvcrt.dll|struct lconv * localeconv( void )
+msvcrt.dll|localtime(const time_t *timer )
+msvcrt.dll|double log( double x )
+msvcrt.dll|double log10( double x )
+msvcrt.dll|longjmp(jmp_buf env, int value )
+msvcrt.dll|void * malloc( size_t size )
+msvcrt.dll|size_t mblen(const unsigned char *c)
+msvcrt.dll|size_t mbstowcs( wchar_t *wcstr, const char *mbstr, size_t count )
+msvcrt.dll|int mbtowc( wchar_t *wchar, const char *mbchar, size_t count )|Out
+msvcrt.dll|void * memchr( const void *buf:PointedDataSize=Arg3, int c, size_t count )|Out
+msvcrt.dll|int memcmp( const void *buf1:PointedDataSize=Arg3, const void *buf2:PointedDataSize=Arg3, size_t count )|Out
+msvcrt.dll|void * memcpy( void *dest:PointedDataSize=Arg3, const void *src:PointedDataSize=Arg3, size_t count )|Out
+msvcrt.dll|void * memmove( void *dest:PointedDataSize=Arg3, const void *src:PointedDataSize=Arg3, size_t count )|Out
+msvcrt.dll|void * memset( void *dest:PointedDataSize=Arg3, int c, size_t count )|Out
+msvcrt.dll|time_t mktime( struct tm *timeptr )|Out
+msvcrt.dll|modf(double x, double *intptr )
+msvcrt.dll|perror(char *string)
+msvcrt.dll|pow(double x, double y)
+msvcrt.dll|int printf( const char *format)|Out
+msvcrt.dll|putc(int c )
+msvcrt.dll|int putchar( int c )
+msvcrt.dll|puts(const char *string )
+msvcrt.dll|putwc(wchar_t c)
+msvcrt.dll|wint_t putwchar( wint_t c )
+msvcrt.dll|void qsort( void *base, size_t num, size_t width, FARPROC compare )|Out
+msvcrt.dll|raise(int sig )
+msvcrt.dll|int rand( void )
+msvcrt.dll|realloc( void * pv, ULONG cb)|Out
+msvcrt.dll|remove(const char *path)
+msvcrt.dll|rename( const char *oldname,const char *newname )
+msvcrt.dll|rewind(FILE *stream )
+msvcrt.dll|int scanf( const char *format)|Out |FailureIfNullRet
+msvcrt.dll|void setbuf( FILE *stream, char *buffer )|Out
+msvcrt.dll|char * setlocale( int category, const char *locale )|Out
+msvcrt.dll|int setvbuf( FILE *stream, char *buffer, int mode, size_t size )|Out
+msvcrt.dll|signal(int signal,FARPROC pFunc)
+msvcrt.dll|sin(double x )
+msvcrt.dll|double sinh( double x )
+msvcrt.dll|int sprintf( char *buffer, const char *format)|Out
+msvcrt.dll|double sqrt( double x )
+msvcrt.dll|void srand( unsigned int seed )
+msvcrt.dll|int sscanf( const char *buffer, const char *format )|Out
+msvcrt.dll|char * strcat( char *strDestination, const char *strSource )|Out
+msvcrt.dll|char * strchr( const char *string, int c ) |FailureIfNullRet
+msvcrt.dll|int strcmp( const char *string1, const char *string2 )|Out
+msvcrt.dll|strcoll(const char *string1, const char *string2 )
+msvcrt.dll|strcpy( char *strDestination, const char *strSource )|Out
+msvcrt.dll|size_t strcspn( const char *string, const char *strCharSet )|Out
+msvcrt.dll|char * strerror( int errnum )
+msvcrt.dll|size_t strftime( char *strDest, size_t maxsize, const char *format, const struct tm *timeptr )|Out
+msvcrt.dll|size_t strlen( const char *string )|Out
+msvcrt.dll|char * strncat( char *strDest, const char *strSource, size_t count )|Out
+msvcrt.dll|int strncmp( const char *string1, const char *string2, size_t count )|Out
+msvcrt.dll|char * strncpy( char *strDest, const char *strSource, size_t count )|Out
+msvcrt.dll|strpbrk( const char *string, const char *strCharSet)
+msvcrt.dll|strrchr( const char *string, int c) |FailureIfNullRet
+msvcrt.dll|strspn( const char *string, const char *strCharSet)
+msvcrt.dll|char * strstr( const char *string, const char *strCharSet ) |FailureIfNullRet
+msvcrt.dll|double strtod( const char *nptr, char **endptr )|Out
+msvcrt.dll|char * strtok( char *strToken, const char *strDelimit )|Out |FailureIfNullRet
+msvcrt.dll|long strtol( const char *nptr, char **endptr, int base )|Out
+msvcrt.dll|unsigned long strtoul( const char *nptr, char **endptr, int base )|Out
+msvcrt.dll|size_t strxfrm( char *strDest, const char *strSource, size_t count )|Out
+msvcrt.dll|int swprintf( wchar_t *buffer, const wchar_t *format )|Out
+msvcrt.dll|int swscanf( const wchar_t *buffer, const wchar_t *format )|Out
+msvcrt.dll|system(const char *command )
+msvcrt.dll|tan(double x )
+msvcrt.dll|tanh( double x )
+msvcrt.dll|time(time_t *timer)
+msvcrt.dll|FILE * tmpfile( void )
+msvcrt.dll|tmpnam( const char *dir, const char *prefix )|Out
+msvcrt.dll|int tolower(int c)
+msvcrt.dll|int toupper(int c)
+msvcrt.dll|int towlower( int c )
+msvcrt.dll|int towupper( int c )
+msvcrt.dll|int ungetc( int c, FILE *stream )|Out
+msvcrt.dll|ungetwc( int c, FILE *stream )|Out
+msvcrt.dll|int vfprintf( FILE *stream, const char *format, va_list argptr )|Out
+msvcrt.dll|vfwprintf( FILE *stream, const char *format, va_list argptr )|Out
+msvcrt.dll|vprintf(const char *format, va_list argptr)
+msvcrt.dll|int vsprintf( char *buffer, const char *format, va_list argptr )|Out
+msvcrt.dll|int vswprintf( wchar_t *buffer, const wchar_t *format, va_list argptr )|Out
+msvcrt.dll|vwprintf( const char *format, va_list argptr )|Out
+msvcrt.dll|wchar_t * wcscat( wchar_t *strDestination, const wchar_t *strSource )|Out
+msvcrt.dll|wchar_t * wcschr( const wchar_t *string, wint_t c ) |FailureIfNullRet
+msvcrt.dll|int wcscmp( const wchar_t *string1, const wchar_t *string2 )|Out
+msvcrt.dll|int wcscoll( const wchar_t *string1, const wchar_t *string2 )|Out
+msvcrt.dll|wchar_t * wcscpy( wchar_t *strDestination, const wchar_t *strSource )|Out
+msvcrt.dll|size_t wcscspn( const wchar_t *string, const wchar_t *strCharSet )|Out
+msvcrt.dll|size_t wcsftime( wchar_t *strDest, size_t maxsize, const wchar_t *format, const struct tm *timeptr )|Out
+msvcrt.dll|size_t wcslen( const wchar_t *string )|Out
+msvcrt.dll|wchar_t * wcsncat( wchar_t *strDest, const wchar_t *strSource, size_t count )|Out
+msvcrt.dll|int wcsncmp( const wchar_t *string1, const wchar_t *string2, size_t count )|Out
+msvcrt.dll|wchar_t * wcsncpy( wchar_t *strDest, const wchar_t *strSource, size_t count )|Out
+msvcrt.dll|wchar_t * wcspbrk( const wchar_t *string, const wchar_t *strCharSet )|Out
+msvcrt.dll|char * wcsrchr( const wchar_t *string, int c ) |FailureIfNullRet
+msvcrt.dll|size_t wcsspn( const wchar_t *string, const wchar_t *strCharSet )|Out
+msvcrt.dll|wchar_t * wcsstr( const wchar_t *string, const wchar_t *strCharSet ) |FailureIfNullRet
+msvcrt.dll|double wcstod( const wchar_t *nptr, wchar_t **endptr )|Out
+msvcrt.dll|wchar_t * wcstok( wchar_t *strToken, const wchar_t *strDelimit )|Out
+msvcrt.dll|long wcstol( const wchar_t *nptr, wchar_t **endptr, int base )|Out
+msvcrt.dll|wcstombs(char *mbstr, const wchar_t *wcstr, size_t count)
+msvcrt.dll|unsigned long wcstoul( const wchar_t *nptr, wchar_t **endptr, int base )|Out
+msvcrt.dll|size_t wcsxfrm( wchar_t *strDest, const wchar_t *strSource, size_t count )|Out
+msvcrt.dll|wctomb(char *mbchar, wchar_t wchar )
+msvcrt.dll|wprintf( const char *format )|Out
+msvcrt.dll|int wscanf( const wchar_t *format )|Out

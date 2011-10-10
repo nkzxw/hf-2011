@@ -1,0 +1,5 @@
+typedef struct _COORD 
+{
+  SHORT X;
+  SHORT Y;
+} COORD;

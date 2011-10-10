@@ -1,0 +1,42 @@
+Advapi32.dll|BOOL ChangeServiceConfigA(SC_HANDLE hService,DWORD dwServiceType,DWORD dwStartType,DWORD dwErrorControl,LPCSTR lpBinaryPathName,LPCSTR lpLoadOrderGroup,LPDWORD lpdwTagId,LPCSTR lpDependencies,LPCSTR lpServiceStartName,LPCSTR lpPassword,LPCSTR lpDisplayName);|FailureIfNullRet
+Advapi32.dll|BOOL ChangeServiceConfigW(SC_HANDLE hService,DWORD dwServiceType,DWORD dwStartType,DWORD dwErrorControl,LPCWSTR lpBinaryPathName,LPCWSTR lpLoadOrderGroup,LPDWORD lpdwTagId,LPCSTR lpDependencies,LPCWSTR lpServiceStartName,LPCWSTR lpPassword,LPCWSTR lpDisplayName);|FailureIfNullRet
+Advapi32.dll|BOOL ChangeServiceConfig2A(SC_HANDLE hService,DWORD dwInfoLevel,LPVOID lpInfo);|FailureIfNullRet
+Advapi32.dll|BOOL ChangeServiceConfig2W(SC_HANDLE hService,DWORD dwInfoLevel,LPVOID lpInfo);|FailureIfNullRet
+Advapi32.dll|BOOL CloseServiceHandle(SC_HANDLE hSCObject);|FailureIfNullRet
+Advapi32.dll|BOOL ControlService(SC_HANDLE hService, DWORD dwControl, LPSERVICE_STATUS lpServiceStatus);|FailureIfNullRet
+Advapi32.dll|SC_HANDLE CreateServiceA(SC_HANDLE hSCManager,LPCSTR lpServiceName,LPCSTR lpDisplayName,DWORD dwDesiredAccess,DWORD dwServiceType,DWORD dwStartType,DWORD dwErrorControl,LPCSTR lpBinaryPathName,LPCSTR lpLoadOrderGroup,LPDWORD lpdwTagId,LPCSTR lpDependencies,LPCSTR lpServiceStartName,LPCSTR lpPassword);|FailureIfNullRet
+Advapi32.dll|SC_HANDLE CreateServiceW(SC_HANDLE hSCManager,LPCWSTR lpServiceName,LPCWSTR lpDisplayName,DWORD dwDesiredAccess,DWORD dwServiceType,DWORD dwStartType,DWORD dwErrorControl,LPCWSTR lpBinaryPathName,LPCWSTR lpLoadOrderGroup,LPDWORD lpdwTagId,LPCSTR lpDependencies,LPCWSTR lpServiceStartName,LPCWSTR lpPassword);|FailureIfNullRet
+advapi32.dll|BOOL DeleteService( SC_HANDLE hService)|FailureIfNullRet
+Advapi32.dll|BOOL EnumServicesStatusA(SC_HANDLE hSCManager,DWORD dwServiceType,DWORD dwServiceState,LPENUM_SERVICE_STATUS lpServices,DWORD cbBufSize,LPDWORD pcbBytesNeeded,LPDWORD lpServicesReturned,LPDWORD lpResumeHandle);|out|FailureIfNullRet
+Advapi32.dll|BOOL EnumServicesStatusW(SC_HANDLE hSCManager,DWORD dwServiceType,DWORD dwServiceState,LPENUM_SERVICE_STATUS lpServices,DWORD cbBufSize,LPDWORD pcbBytesNeeded,LPDWORD lpServicesReturned,LPDWORD lpResumeHandle);|out|FailureIfNullRet
+Advapi32.dll|BOOL EnumServicesStatusExA(SC_HANDLE hSCManager,SC_ENUM_TYPE InfoLevel,DWORD dwServiceType,DWORD dwServiceState,LPBYTE lpServices,DWORD cbBufSize,LPDWORD pcbBytesNeeded,LPDWORD lpServicesReturned,LPDWORD lpResumeHandle,LPCSTR pszGroupName);|out|FailureIfNullRet
+Advapi32.dll|BOOL EnumServicesStatusExW(SC_HANDLE hSCManager,SC_ENUM_TYPE InfoLevel,DWORD dwServiceType,DWORD dwServiceState,LPBYTE lpServices,DWORD cbBufSize,LPDWORD pcbBytesNeeded,LPDWORD lpServicesReturned,LPDWORD lpResumeHandle,LPCWSTR pszGroupName);|out|FailureIfNullRet
+Advapi32.dll|BOOL GetServiceDisplayNameA(SC_HANDLE hSCManager,LPCSTR lpServiceName,LPSTR lpDisplayName,LPDWORD lpcchBuffer);|out|FailureIfNullRet
+Advapi32.dll|BOOL GetServiceDisplayNameW(SC_HANDLE hSCManager,LPCWSTR lpServiceName,LPWSTR lpDisplayName,LPDWORD lpcchBuffer);|out|FailureIfNullRet
+Advapi32.dll|BOOL GetServiceKeyNameA(SC_HANDLE hSCManager,LPCSTR lpDisplayName,LPSTR lpServiceName,LPDWORD lpcchBuffer);|out|FailureIfNullRet
+Advapi32.dll|BOOL GetServiceKeyNameW(SC_HANDLE hSCManager,LPCWSTR lpDisplayName,LPWSTR lpServiceName,LPDWORD lpcchBuffer);|out|FailureIfNullRet
+Advapi32.dll|SC_LOCK LockServiceDatabase(SC_HANDLE hSCManager);|FailureIfNullRet
+Advapi32.dll|SC_HANDLE OpenSCManagerA(LPCSTR lpMachineName,LPCSTR lpDatabaseName,DWORD dwDesiredAccess);|FailureIfNullRet
+Advapi32.dll|SC_HANDLE OpenSCManagerW(LPCWSTR lpMachineName,LPCWSTR lpDatabaseName,DWORD dwDesiredAccess);|FailureIfNullRet
+Advapi32.dll|SC_HANDLE OpenServiceA(SC_HANDLE hSCManager,LPCSTR lpServiceName,DWORD dwDesiredAccess);|FailureIfNullRet
+Advapi32.dll|SC_HANDLE OpenServiceW(SC_HANDLE hSCManager,LPCWSTR lpServiceName,DWORD dwDesiredAccess);|FailureIfNullRet
+Advapi32.dll|BOOL QueryServiceConfigA(SC_HANDLE hService,LPQUERY_SERVICE_CONFIG lpServiceConfig,DWORD cbBufSize,LPDWORD pcbBytesNeeded);|out|FailureIfNullRet
+Advapi32.dll|BOOL QueryServiceConfigW(SC_HANDLE hService,LPQUERY_SERVICE_CONFIG lpServiceConfig,DWORD cbBufSize,LPDWORD pcbBytesNeeded);|out|FailureIfNullRet
+Advapi32.dll|BOOL QueryServiceConfig2A(SC_HANDLE hService,DWORD dwInfoLevel,LPBYTE lpBuffer,DWORD cbBufSize,LPDWORD pcbBytesNeeded);|out|FailureIfNullRet
+Advapi32.dll|BOOL QueryServiceConfig2W(SC_HANDLE hService,DWORD dwInfoLevel,LPBYTE lpBuffer,DWORD cbBufSize,LPDWORD pcbBytesNeeded);|out|FailureIfNullRet
+Advapi32.dll|BOOL QueryServiceLockStatusA(SC_HANDLE hSCManager,LPQUERY_SERVICE_LOCK_STATUS lpLockStatus,DWORD cbBufSize,LPDWORD pcbBytesNeeded);|out|FailureIfNullRet
+Advapi32.dll|BOOL QueryServiceLockStatusW(SC_HANDLE hSCManager,LPQUERY_SERVICE_LOCK_STATUS lpLockStatus,DWORD cbBufSize,LPDWORD pcbBytesNeeded);|out|FailureIfNullRet
+Advapi32.dll|BOOL QueryServiceStatus(SC_HANDLE hService,LPSERVICE_STATUS lpServiceStatus);|out|FailureIfNullRet
+Advapi32.dll|BOOL QueryServiceStatusEx(SC_HANDLE hService,SC_STATUS_TYPE InfoLevel,LPBYTE lpBuffer,DWORD cbBufSize,LPDWORD pcbBytesNeeded);|out|FailureIfNullRet
+Advapi32.dll|SERVICE_STATUS_HANDLE RegisterServiceCtrlHandlerA(LPCSTR lpServiceName,LPHANDLER_FUNCTION lpHandlerProc);|FailureIfNullRet
+Advapi32.dll|SERVICE_STATUS_HANDLE RegisterServiceCtrlHandlerW(LPCWSTR lpServiceName,LPHANDLER_FUNCTION lpHandlerProc);|FailureIfNullRet
+Advapi32.dll|SERVICE_STATUS_HANDLE RegisterServiceCtrlHandlerExA(LPCSTR lpServiceName,LPHANDLER_FUNCTION_EX lpHandlerProc,LPVOID lpContext);|FailureIfNullRet
+Advapi32.dll|SERVICE_STATUS_HANDLE RegisterServiceCtrlHandlerExW(LPCWSTR lpServiceName,LPHANDLER_FUNCTION_EX lpHandlerProc,LPVOID lpContext);|FailureIfNullRet
+advapi32.dll|BOOL SetServiceBits( SERVICE_STATUS_HANDLE hServiceStatus, DWORD dwServiceBits, BOOL bSetBitsOn, BOOL bUpdateImmediately)|FailureIfNullRet
+advapi32.dll|BOOL SetServiceObjectSecurity( SC_HANDLE hService, SECURITY_INFORMATION dwSecurityInformation, PSECURITY_DESCRIPTOR lpSecurityDescriptor)|Out|FailureIfNullRet
+advapi32.dll|BOOL SetServiceStatus( SERVICE_STATUS_HANDLE hServiceStatus, LPSERVICE_STATUS lpServiceStatus)|Out|FailureIfNullRet
+advapi32.dll|BOOL StartServiceA( SC_HANDLE hService, DWORD dwNumServiceArgs, LPCTSTR* lpServiceArgVectors)|Out|FailureIfNullRet
+advapi32.dll|BOOL StartServiceCtrlDispatcherA( const SERVICE_TABLE_ENTRY* lpServiceTable)|Out|FailureIfNullRet
+advapi32.dll|BOOL StartServiceCtrlDispatcherW( const SERVICE_TABLE_ENTRY* lpServiceTable)|Out|FailureIfNullRet
+advapi32.dll|BOOL StartServiceW( SC_HANDLE hService, DWORD dwNumServiceArgs, LPCTSTR* lpServiceArgVectors)|Out|FailureIfNullRet
+advapi32.dll|BOOL UnlockServiceDatabase( SC_LOCK ScLock)|FailureIfNullRet

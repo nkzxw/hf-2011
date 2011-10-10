@@ -1,0 +1,7 @@
+;@InterfaceName=IClassFactory
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IClassFactory::CreateInstance(IUnknown* pObject,IUnknown* pUnkOuter,REFIID riid,void** ppvObject);|Out|FailureIfNegativeRet|ObjectCreation(CLSIDValue=CurrentObjectCLSID|REFIIDStackIndex=8|ObjectStackIndex=12)
+VTBLIndex=4|HRESULT IClassFactory::LockServer(IUnknown* pObject,BOOL fLock);|FailureIfNegativeRet

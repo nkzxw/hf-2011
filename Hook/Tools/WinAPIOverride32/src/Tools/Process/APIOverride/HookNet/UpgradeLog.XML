@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="HookNet">
+</Property><Property Name="Solution File" Value="E:\Work\winapioverride32\winapioverride32_src\Tools\Process\APIOverride\HookNet\HookNet.sln">
+</Property><Property Name="Date" Value="2011年10月10日">
+</Property><Property Name="Time" Value="13:35">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="HookNet.sln" Description="File successfully backed up as E:\Work\winapioverride32\winapioverride32_src\Tools\Process\APIOverride\HookNet\HookNet.sln.old">
+</Event><Event ErrorLevel="0" Project="HookNet" Source="HookNet.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="HookNet" Source="HookNet.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="HookNet.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="HookNet.sln" Description="Converted">
+</Event></UpgradeLog>

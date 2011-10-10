@@ -1,0 +1,17 @@
+typedef struct _DEBUG_EVENT 
+{
+  DWORD dwDebugEventCode;
+  DWORD dwProcessId;
+  DWORD dwThreadId;
+  union {
+    EXCEPTION_DEBUG_INFO Exception;
+    CREATE_THREAD_DEBUG_INFO CreateThread;
+    CREATE_PROCESS_DEBUG_INFO CreateProcessInfo;
+    EXIT_THREAD_DEBUG_INFO ExitThread;
+    EXIT_PROCESS_DEBUG_INFO ExitProcess;
+    LOAD_DLL_DEBUG_INFO LoadDll;
+    UNLOAD_DLL_DEBUG_INFO UnloadDll;
+    OUTPUT_DEBUG_STRING_INFO DebugString;
+    RIP_INFO RipInfo;
+  } u;
+} DEBUG_EVENT, *LPDEBUG_EVENT;

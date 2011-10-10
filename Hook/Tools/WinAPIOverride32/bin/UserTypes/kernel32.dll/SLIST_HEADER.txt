@@ -1,0 +1,8 @@
+typedef union _SLIST_HEADER {
+    ULONGLONG Alignment;
+    struct {
+        SINGLE_LIST_ENTRY Next;
+        WORD   Depth;
+        WORD   Sequence;
+    };
+} SLIST_HEADER, *PSLIST_HEADER;

@@ -1,0 +1,193 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040c04b0"
+        BEGIN
+            VALUE "FileDescription", "EmulatedRegistryEditor"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "EmulatedRegistryEditor"
+            VALUE "LegalCopyright", "Copyright (C) 2010 jacquelin.potier@free.fr"
+            VALUE "OriginalFilename", "EmulatedRegistryEditor"
+            VALUE "ProductName", "EmulatedRegistryEditor"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x40c, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_REGISTRY_EDITOR DIALOGEX 0, 0, 671, 350
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Emulated Registry Editor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Registries",IDC_STATIC,7,20,228,315
+    CONTROL         "",IDC_TREE_KEYS,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,11,30,219,234
+    LTEXT           "Remove selected key",IDC_STATIC,18,270,69,8
+    PUSHBUTTON      "Remove",IDC_BUTTON_REMOVE_SELECTED_KEY,177,267,50,14
+    GROUPBOX        "Modify selected Key / Add Sub Key",IDC_STATIC_GROUP_CHANGE_CURRENT_KEY,12,282,217,49
+    LTEXT           "Name",IDC_STATIC,20,298,31,8,NOT WS_GROUP
+    EDITTEXT        IDC_EDIT_KEY_NAME,61,296,110,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Modify",IDC_BUTTON_MODIFY_SELECTED_KEY,175,296,50,14
+    PUSHBUTTON      "Add",IDC_BUTTON_ADD_KEY,175,314,50,14
+    GROUPBOX        "Selected Key Values",IDC_STATIC,242,20,422,315
+    CONTROL         "",IDC_LIST_VALUES,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,247,31,411,233
+    LTEXT           "Remove selected values",IDC_STATIC,519,270,78,8
+    PUSHBUTTON      "Remove",IDC_BUTTON_REMOVE_SELECTED_VALUES,604,267,50,14
+    GROUPBOX        "Modify selected value / Add value",IDC_STATIC_GROUP_CHANGE_CURRENT_VALUE,248,282,411,49
+    LTEXT           "Name",IDC_STATIC,257,298,37,8,NOT WS_GROUP
+    EDITTEXT        IDC_EDIT_VALUE_NAME,293,295,144,14,ES_AUTOHSCROLL
+    LTEXT           "Type",IDC_STATIC,458,298,34,8
+    COMBOBOX        IDC_COMBO_VALUE_TYPE,500,296,99,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Content",IDC_STATIC,256,316,34,8,NOT WS_GROUP
+    EDITTEXT        IDC_EDIT_VALUE_CONTENT,293,313,305,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Modify",IDC_BUTTON_MODIFY_SELECTED_VALUE,604,294,50,14
+    PUSHBUTTON      "Add",IDC_BUTTON_ADD_VALUE,604,313,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG_REGISTRY_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 664
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 346
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_APP            ICON                    "icon_app.ico"
+IDI_ICON_KEY_NOT_EMULATED ICON                    "folder_nok.ico"
+IDI_ICON_KEY_EMULATED   ICON                    "folder_ok.ico"
+IDI_ICON_OPEN           ICON                    "open.ico"
+IDI_ICON_SAVE           ICON                    "save.ico"
+IDI_ICON_SAVE_AS        ICON                    "save_as.ico"
+IDI_ICON_COPY           ICON                    "copy.ico"
+IDI_ICON_REGISTRY_BINARY ICON                    "reg_bin.ico"
+IDI_ICON_REGISTRY_STRING ICON                    "reg_string.ico"
+IDI_ICON_EXPAND ICON                            "expand.ico"
+IDI_ICON_COLLAPSE ICON                          "collapse.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "EmulatedRegistryEditor.exe.manifest"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

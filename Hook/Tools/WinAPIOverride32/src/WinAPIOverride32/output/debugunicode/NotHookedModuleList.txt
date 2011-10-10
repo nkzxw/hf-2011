@@ -1,0 +1,56 @@
+;--------------------------------------------------------------------------
+;
+; use ; for comments
+; You can use * and ? as joker
+;
+; Special path shortcuts :
+;   - no path for winapioverride.exe path
+;   - <TargetDir> for hooked application path
+;   - <windir> for windows directory (typicaly c:\windows)
+;   - <system> for windows system directory (typicaly c:\windows\System32)
+;   - <ProgramFiles> for program files directory (typicaly C:\Program Files)
+;   - <ProgramFilesCommon> for program files common directory (typicaly C:\Program Files\Common)
+;
+; example 
+;       apioverride.dll
+;       <system>\kernel32.dll
+;       <windir>\WinSxS\*\COMCTL32.dll
+;
+;
+;--------------------------------------------------------------------------
+
+; dll used by Winapioverride 
+apioverride.dll
+hookcom.dll
+hooknet.dll
+
+; some standart dll
+<system>\ntdll.dll
+<system>\kernel32.dll
+<system>\USER32.dll
+<system>\GDI32.dll
+<system>\ADVAPI32.dll
+<system>\RPCRT4.dll
+<system>\comdlg32.dll
+<system>\SHLWAPI.dll
+<system>\msvcrt.dll
+<windir>\WinSxS\*\COMCTL32.dll
+<system>\SHELL32.dll
+<system>\PSAPI.DLL
+<system>\uxtheme.dll
+<system>\MSCTF.dll
+<system>\OLEAUT32.DLL
+<system>\OLE32.DLL
+<system>\appHelp.dll
+<system>\CLBCATQ.DLL
+<system>\COMRes.dll
+<system>\VERSION.dll
+<system>\SETUPAPI.dll
+<system>\ntshrui.dll
+<system>\ATL.DLL
+<system>\NETAPI32.dll
+<system>\USERENV.dll
+<system>\shdocvw.dll
+<system>\BROWSEUI.dll
+<system>\mshtml.dll
+<system>\urlmon.dll

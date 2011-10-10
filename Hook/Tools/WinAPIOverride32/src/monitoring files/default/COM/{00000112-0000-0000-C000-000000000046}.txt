@@ -1,0 +1,27 @@
+;@InterfaceName=IOleObject
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IOleObject::SetClientSite(IUnknown* pObject,IOleClientSite* pClientSite)|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IOleObject::GetClientSite(IUnknown* pObject,IOleClientSite** ppClientSite)|out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IOleObject::SetHostNames(IUnknown* pObject,LPCOLESTR szContainerApp,LPCOLESTR szContainerObj)|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IOleObject::Close(IUnknown* pObject,DWORD dwSaveOption)|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IOleObject::SetMoniker(IUnknown* pObject,DWORD dwWhichMoniker,IMoniker *pmk)|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IOleObject::GetMoniker(IUnknown* pObject,DWORD dwAssign,DWORD dwWhichMoniker,IMoniker** ppmk)|out|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IOleObject::InitFromData(IUnknown* pObject,IDataObject *pDataObject,BOOL fCreation,DWORD dwReserved)|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IOleObject::GetClipboardData(IUnknown* pObject,DWORD dwReserved,IDataObject** ppDataObject)|out|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IOleObject::DoVerb(IUnknown* pObject,LONG iVerb,LPMSG lpmsg,IOleClientSite* pActiveSite,LONG lindex,HWND hwndParent,LPCRECT lprcPosRect)|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IOleObject::EnumVerbs(IUnknown* pObject,IEnumOleVerb **ppEnumOleVerb)|out|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IOleObject::Update(IUnknown* pObject)|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IOleObject::IsUpToDate(IUnknown* pObject)|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IOleObject::GetUserClassID(IUnknown* pObject,CLSID *pClsid)|out|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IOleObject::GetUserType(IUnknown* pObject,DWORD dwFormOfType,LPOLESTR *pszUserType)|out|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IOleObject::SetExtent(IUnknown* pObject,DWORD dwDrawAspect,SIZEL* psizel)|FailureIfNegativeRet
+VTBLIndex=18|HRESULT IOleObject::GetExtent(IUnknown* pObject,DWORD dwDrawAspect,SIZEL* psizel)|out|FailureIfNegativeRet
+VTBLIndex=19|HRESULT IOleObject::Advise(IUnknown* pObject,IAdviseSink* pAdvSink,DWORD* pdwConnection)|FailureIfNegativeRet
+VTBLIndex=20|HRESULT IOleObject::Unadvise(IUnknown* pObject,DWORD dwConnection)|FailureIfNegativeRet
+VTBLIndex=21|HRESULT IOleObject::EnumAdvise(IUnknown* pObject,IEnumSTATDATA** ppenumAdvise)|out|FailureIfNegativeRet
+VTBLIndex=22|HRESULT IOleObject::GetMiscStatus(IUnknown* pObject,DWORD dwAspect,DWORD* pdwStatus)|out|FailureIfNegativeRet
+VTBLIndex=23|HRESULT IOleObject::SetColorScheme(IUnknown* pObject,LOGPALETTE* pLogpal)|FailureIfNegativeRet
+

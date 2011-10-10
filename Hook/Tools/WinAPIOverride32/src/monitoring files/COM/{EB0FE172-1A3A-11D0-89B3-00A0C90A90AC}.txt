@@ -1,0 +1,6 @@
+;@InterfaceName=IDeskBand
+
+; include IDockingWindow
+BaseIID={012dd920-7b26-11d0-8ca9-00a0c92dbfe8}
+
+VTBLIndex=8|HRESULT IDeskBand::GetBandInfo(IUnknown* pObject,DWORD dwBandID,DWORD dwViewMode,DESKBANDINFO *pdbi);|Out|FailureIfNegativeRet

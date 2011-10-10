@@ -1,0 +1,11 @@
+;@InterfaceName=IDirectDrawClipper
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT GetClipList(LPDIRECTDRAWCLIPPER lpDDClipper,LPRECT lpRect,LPRGNDATA lpClipList,LPDWORD lpdwSize);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT GetHWnd(LPDIRECTDRAWCLIPPER lpDDClipper,HWND* lphWnd);|out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT Initialize(LPDIRECTDRAWCLIPPER lpDDClipper,LPDIRECTDRAW lpDD,DWORD dwFlags);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IsClipListChanged(LPDIRECTDRAWCLIPPER lpDDClipper,BOOL* lpbChanged);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT SetClipList(LPDIRECTDRAWCLIPPER lpDDClipper,LPRGNDATA lpClipList,DWORD dwFlags);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT SetHWnd(LPDIRECTDRAWCLIPPER lpDDClipper,DWORD dwFlags,HWND hWnd);|FailureIfNegativeRet

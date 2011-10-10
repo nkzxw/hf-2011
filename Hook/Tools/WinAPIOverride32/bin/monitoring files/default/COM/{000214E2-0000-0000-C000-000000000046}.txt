@@ -1,0 +1,18 @@
+;@InterfaceName=IShellBrowser
+
+; include IOleWindow
+BaseIID={00000114-0000-0000-C000-000000000046}
+
+VTBLIndex=5| HRESULT IShellBrowser::InsertMenusSB(IUnknown* pObject, HMENU hmenuShared,LPOLEMENUGROUPWIDTHS lpMenuWidths);|Out|FailureIfNegativeRet
+VTBLIndex=6| HRESULT IShellBrowser::SetMenuSB(IUnknown* pObject, HMENU hmenuShared,HOLEMENU holemenuRes,HWND hwndActiveObject);|FailureIfNegativeRet
+VTBLIndex=7| HRESULT IShellBrowser::RemoveMenusSB(IUnknown* pObject, HMENU hmenuShared);|FailureIfNegativeRet
+VTBLIndex=8| HRESULT IShellBrowser::SetStatusTextSB(IUnknown* pObject, LPCOLESTR pszStatusText);|FailureIfNegativeRet
+VTBLIndex=9| HRESULT IShellBrowser::EnableModelessSB(IUnknown* pObject, BOOL fEnable);|FailureIfNegativeRet
+VTBLIndex=10| HRESULT IShellBrowser::TranslateAcceleratorSB(IUnknown* pObject, MSG *pmsg,WORD wID);|FailureIfNegativeRet
+VTBLIndex=11| HRESULT IShellBrowser::BrowseObject(IUnknown* pObject, LPCITEMIDLIST pidl,UINT wFlags);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IShellBrowser::GetViewStateStream(IUnknown* pObject, DWORD grfMode,IStream **ppStrm);|Out|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IShellBrowser::GetControlWindow(IUnknown* pObject, UINT id,HWND *phwnd);|Out|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IShellBrowser::SendControlMsg(IUnknown* pObject, UINT id,UINT uMsg,WPARAM wParam,LPARAM lParam,LRESULT *pret);|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IShellBrowser::QueryActiveShellView(IUnknown* pObject, IShellView **ppshv);|Out|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IShellBrowser::OnViewWindowActive(IUnknown* pObject, IShellView *pshv);|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IShellBrowser::SetToolbarItems(IUnknown* pObject, LPTBBUTTONSB lpButtons,UINT nButtons,UINT uFlags);|FailureIfNegativeRet

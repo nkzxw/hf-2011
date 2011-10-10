@@ -1,0 +1,9 @@
+;@InterfaceName=IShellView2
+
+; include IShellView
+BaseIID={000214E3-0000-0000-C000-000000000046}
+
+VTBLIndex=16|HRESULT IShellView2::GetView( IUnknown* pObject,SHELLVIEWID *pvid,ULONG uView);|Out|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IShellView2::CreateViewWindow2( IUnknown* pObject,LPSV2CVW2_PARAMS lpParams);|FailureIfNegativeRet
+VTBLIndex=18|HRESULT IShellView2::HandleRename( IUnknown* pObject,LPCITEMIDLIST pidlNew);|FailureIfNegativeRet
+VTBLIndex=19|HRESULT IShellView2::SelectAndPositionItem( IUnknown* pObject,LPCITEMIDLIST pidlItem,UINT uFlags,POINT *ppt);|FailureIfNegativeRet

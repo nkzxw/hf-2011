@@ -1,0 +1,7 @@
+;@InterfaceName=IProfferService
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IProfferService::ProfferService(IUnknown* pObject, REFGUID rguidService,IServiceProvider* psp,DWORD* pdwCookie);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IProfferService::RevokeService(IUnknown* pObject, DWORD dwCookie);|FailureIfNegativeRet

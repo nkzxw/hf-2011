@@ -1,0 +1,266 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_SHOW_METHODS_ADDRESS ICON                    "resource\\showaddress.ico"
+IDI_ICON_REMOTE_CALL    ICON                    "resource\\remotecall.ico"
+IDI_ICON_EDIT           ICON                    "resource\\Edit.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_SHOW_METHODS_ADDRESS DIALOGEX 0, 0, 454, 274
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Methods Address"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Configuration",IDC_STATIC,5,3,442,45
+    LTEXT           "CLSID or Prog Id",IDC_STATIC,14,16,54,8,NOT WS_GROUP
+    EDITTEXT        IDC_EDIT_CLSID,100,15,188,14,ES_AUTOHSCROLL
+    CONTROL         "Try IDispatch parsing",IDC_CHECK_TRY_IDISPATCH_PARSING,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,293,17,108,10
+    LTEXT           "IID or Interface name",IDC_STATIC,14,32,82,8
+    EDITTEXT        IDC_EDIT_IID,100,30,188,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Button1",IDC_BUTTON_EDIT_ASSOCIATED_IID_FILE,293,29,19,
+                    16,BS_ICON | BS_FLAT
+    DEFPUSHBUTTON   "OK",IDOK,393,30,50,14
+    CONTROL         "",IDC_TREE_METHODS_ADDRESS,"SysTreeView32",
+                    TVS_HASBUTTONS | TVS_HASLINES | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,5,52,442,184
+    PUSHBUTTON      "Save",IDC_BUTTON_SAVE,5,255,50,14
+    PUSHBUTTON      "Exit",IDCANCEL,397,255,50,14
+END
+
+IDD_DIALOG_COM_INTERACTION DIALOGEX 0, 0, 622, 334
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_FIXEDSYS | 
+    DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "COM Interaction"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Hooked Objects",IDC_STATIC,7,6,259,320
+    CONTROL         "",IDC_TREE_COM_INTERACTION,"SysTreeView32",
+                    TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | 
+                    TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,11,16,249,288
+    LTEXT           "Tree View Content",IDC_STATIC,86,310,62,8
+    PUSHBUTTON      "Save",IDC_BUTTON_SAVE,154,307,50,14
+    PUSHBUTTON      "Refresh",IDC_BUTTON_REFRESH,210,307,50,14
+    GROUPBOX        "Interaction",IDC_STATIC,271,6,344,320,WS_GROUP
+    GROUPBOX        "Object",IDC_STATIC,275,16,336,25
+    LTEXT           "Address",IDC_STATIC,285,27,27,8,NOT WS_GROUP
+    EDITTEXT        IDC_EDIT_OBJECT_ADDRESS,321,24,72,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "Property Page",IDC_BUTTON_PROPERTY_PAGE,551,24,55,14
+    GROUPBOX        "Interface",IDC_STATIC,275,43,336,59
+    LTEXT           "Interface",IDC_STATIC,285,55,31,8,NOT WS_GROUP
+    COMBOBOX        IDC_COMBO_INTERFACES,322,53,284,14,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Edit Associated Interface File",IDC_STATIC,341,69,103,8,
+                    NOT WS_GROUP
+    PUSHBUTTON      "Edit",IDC_BUTTON_EDIT_ASSOCIATED_IID_FILE,453,67,50,14
+    LTEXT           "Query New Interface",IDC_STATIC,285,87,69,8,NOT 
+                    WS_GROUP
+    EDITTEXT        IDC_EDIT_QUERY_NEW_INTERFACE,369,84,179,14,
+                    ES_AUTOHSCROLL
+    PUSHBUTTON      "Query",IDC_BUTTON_QUERY_NEW_INTERFACE,556,84,50,14
+    GROUPBOX        "Method",IDC_STATIC,275,104,336,67
+    CONTROL         "Use Function Name",IDC_RADIO_USE_FUNCTION_NAME,"Button",
+                    BS_AUTORADIOBUTTON,287,115,77,10
+    COMBOBOX        IDC_COMBO_METHODS,293,127,313,30,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Use VTBL Index (Warning 0 based index)",
+                    IDC_RADIO_USE_VTBL_INDEX,"Button",BS_AUTORADIOBUTTON,287,
+                    144,150,10
+    EDITTEXT        IDC_EDIT_VTBL_INDEX,443,141,22,14,ES_AUTOHSCROLL
+    CONTROL         "Don't auto add object pointer as first parameter (use this only for FUNC_STATIC methods)",
+                    IDC_CHECK_DONT_ADD_OBJECT_POINTER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,279,158,321,10
+    GROUPBOX        "Call",IDC_STATIC,276,173,335,151
+    LTEXT           "Enter parameters splitted by ','. See documentation ""COM / COM Interaction"" for parameters syntax.",
+                    IDC_STATIC,282,184,324,8
+    EDITTEXT        IDC_EDIT_CALL,280,195,326,14,ES_AUTOHSCROLL
+    CONTROL         "Do call in thread owner",
+                    IDC_CHECK_DO_CALL_IN_THREAD_OWNER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,280,213,102,10
+    CONTROL         "Show after call registers and Floating result",
+                    IDC_CHECK_REMOTE_CALL_SHOW_OUTPUT_REGISTERS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,280,225,155,10
+    LTEXT           "Call Timeout (in s)",IDC_STATIC,281,240,59,8
+    EDITTEXT        IDC_EDIT_REMOTE_CALL_TIMEOUT,352,237,42,14,
+                    ES_AUTOHSCROLL
+    GROUPBOX        "Registers Before Call",IDC_STATIC,280,256,328,49
+    LTEXT           "EAX",IDC_STATIC,288,289,14,8
+    EDITTEXT        IDC_EDIT_REMOTE_CALL_EAX,305,267,57,14,ES_AUTOHSCROLL
+    LTEXT           "EBX",IDC_STATIC,367,270,13,8
+    EDITTEXT        IDC_EDIT_REMOTE_CALL_EBX,385,267,57,14,ES_AUTOHSCROLL
+    LTEXT           "ECX",IDC_STATIC,448,270,14,8
+    EDITTEXT        IDC_EDIT_REMOTE_CALL_ECX,465,267,57,14,ES_AUTOHSCROLL
+    LTEXT           "EDX",IDC_STATIC,527,270,14,8
+    EDITTEXT        IDC_EDIT_REMOTE_CALL_EDX,546,267,57,14,ES_AUTOHSCROLL
+    LTEXT           "ESI",IDC_STATIC,288,271,12,8
+    EDITTEXT        IDC_EDIT_REMOTE_CALL_ESI,305,286,57,14,ES_AUTOHSCROLL
+    LTEXT           "EDI",IDC_STATIC,367,289,12,8
+    EDITTEXT        IDC_EDIT_REMOTE_CALL_EDI,385,286,57,14,ES_AUTOHSCROLL
+    LTEXT           "EFL",IDC_STATIC,448,289,12,8
+    EDITTEXT        IDC_EDIT_REMOTE_CALL_EFL,465,286,57,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Call",IDOK,557,307,50,14
+END
+
+IDD_DIALOG_REMOTE_CALL_RESULT DIALOGEX 0, 0, 256, 203
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MAXIMIZEBOX | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Remote Call Result"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Ok",IDOK,102,182,50,14
+    EDITTEXT        IDC_EDIT_REMOTE_CALL_RESULT,7,18,242,162,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+    LTEXT           "Remote call successfully done",IDC_STATIC,8,7,96,8
+END
+
+IDD_DIALOG_IDISPATCH_SELECTION DIALOGEX 0, 0, 449, 289
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST
+CAPTION "IDispatch Exposed Functions"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Select Functions to Monitor for Interface",IDC_STATIC,7,
+                    7,139,9
+    CONTROL         "",IDC_LIST_IDISPATCH,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,7,18,435,216
+    CONTROL         "Save Settings Under Following File",
+                    IDC_CHECK_SAVE_SETTINGS_UNDER_FILE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,238,128,10
+    EDITTEXT        IDC_EDIT_FILE_NAME,24,250,290,14,ES_AUTOHSCROLL
+    LTEXT           "(Interface Ix)",IDC_STATIC_INTERFACE_NAME,151,7,175,8
+    DEFPUSHBUTTON   "OK",IDOK,199,268,50,14
+    PUSHBUTTON      "Check All",IDC_BUTTON_CHECK_ALL,337,237,50,14
+    PUSHBUTTON      "Uncheck All",IDC_BUTTON_UNCHECK_ALL,392,237,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG_SHOW_METHODS_ADDRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 447
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 269
+    END
+
+    IDD_DIALOG_COM_INTERACTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 616
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 328
+    END
+
+    IDD_DIALOG_REMOTE_CALL_RESULT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 249
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 196
+    END
+
+    IDD_DIALOG_IDISPATCH_SELECTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 442
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 282
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

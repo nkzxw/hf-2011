@@ -1,0 +1,15 @@
+;@InterfaceName=IOleInPlaceFrame
+
+; include IOleWindow
+BaseIID={00000115-0000-0000-C000-000000000046}
+
+VTBLIndex=9|HRESULT IOleInPlaceFrame::InsertMenus(IUnknown* pObject,HMENU hmenuShared,LPOLEMENUGROUPWIDTHS lpMenuWidths);|FailureIfNegativeRet|Out
+VTBLIndex=10|HRESULT IOleInPlaceFrame::SetMenu(IUnknown* pObject,HMENU hmenuShared,HOLEMENU holemenu,HWND hwndActiveObject);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IOleInPlaceFrame::RemoveMenus(IUnknown* pObject,HMENU hmenuShared);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IOleInPlaceFrame::SetStatusText(IUnknown* pObject,LPCOLESTR pszStatusText);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IOleInPlaceFrame::EnableModeless(IUnknown* pObject,BOOL fEnable);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IOleInPlaceFrame::TranslateAccelerator(IUnknown* pObject,LPMSG lpmsg,WORD wID);|FailureIfNegativeRet
+
+
+
+

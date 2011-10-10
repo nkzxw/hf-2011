@@ -1,0 +1,17 @@
+;@InterfaceName=IOleInPlaceSite
+
+; include IOleWindow
+BaseIID={00000114-0000-0000-C000-000000000046}
+
+VTBLIndex=5|HRESULT IOleInPlaceSite::CanInPlaceActivate(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IOleInPlaceSite::OnInPlaceActivate(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IOleInPlaceSite::OnUIActivate(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IOleInPlaceSite::GetWindowContext(IUnknown* pObject,IOleInPlaceFrame **ppFrame,IOleInPlaceUIWindow **ppDoc,LPRECT lprcPosRect,LPRECT lprcClipRect,LPOLEINPLACEFRAMEINFO lpFrameInfo);|FailureIfNegativeRet|Out
+VTBLIndex=9|HRESULT IOleInPlaceSite::Scroll(IUnknown* pObject,SIZE scrollExtent);|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IOleInPlaceSite::OnUIDeactivate(IUnknown* pObject,BOOL fUndoable);|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IOleInPlaceSite::OnInPlaceDeactivate(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IOleInPlaceSite::DiscardUndoState(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IOleInPlaceSite::DeactivateAndUndo(IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IOleInPlaceSite::OnPosRectChange(IUnknown* pObject,LPCRECT lprcPosRect);|FailureIfNegativeRet
+
+

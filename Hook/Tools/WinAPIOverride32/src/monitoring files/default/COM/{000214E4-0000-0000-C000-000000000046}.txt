@@ -1,0 +1,8 @@
+;@InterfaceName=IContextMenu
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IContextMenu::QueryContextMenu(IUnknown* pObject,HMENU hmenu,UINT indexMenu,UINT idCmdFirst,UINT idCmdLast,UINT uFlags);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IContextMenu::InvokeCommand(IUnknown* pObject,LPCMINVOKECOMMANDINFO lpici);|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IContextMenu::GetCommandString(IUnknown* pObject,UINT_PTR idCmd,UINT uType,UINT* pwReserved,LPSTR pszName,UINT cchMax);|Out|FailureIfNegativeRet

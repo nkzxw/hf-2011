@@ -1,0 +1,1 @@
+ml.exe  /safeseh /c /Cx /coff safeseh.asm

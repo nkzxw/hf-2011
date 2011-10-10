@@ -1,0 +1,6 @@
+typedef struct _OUTPUT_DEBUG_STRING_INFO 
+{
+  LPSTR lpDebugStringData;
+  WORD fUnicode;
+  WORD nDebugStringLength;
+} OUTPUT_DEBUG_STRING_INFO, LPOUTPUT_DEBUG_STRING_INFO;

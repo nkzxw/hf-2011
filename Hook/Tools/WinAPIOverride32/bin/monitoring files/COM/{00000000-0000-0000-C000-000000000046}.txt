@@ -1,0 +1,5 @@
+;@InterfaceName=IUnknown
+
+!VTBLIndex=0|IUnknown::QueryInterface(IUnknown* pObject,IID* pIid,PVOID* ppInterface)|Out|FailureIfNegativeRet
+!VTBLIndex=1|IUnknown::AddRef(IUnknown* pObject);
+!VTBLIndex=2|IUnknown::Release(IUnknown* pObject);

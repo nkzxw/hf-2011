@@ -1,0 +1,9 @@
+;@InterfaceName=IServerSecurity
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IServerSecurity::QueryBlanket(IUnknown* pObject,DWORD* pAuthnSvc,DWORD* pAuthzSvc,OLECHAR** pServerPrincName,DWORD* pAuthnLevel,DWORD* pImpLevel,RPC_AUTHZ_HANDLE* pPrivs,DWORD* pCapabilities);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IServerSecurity::ImpersonateClient(IUnknown* pObject);|Out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IServerSecurity::RevertToSelf(IUnknown* pObject);|Out|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IServerSecurity::IsImpersonating (IUnknown* pObject);|Out|FailureIfNegativeRet

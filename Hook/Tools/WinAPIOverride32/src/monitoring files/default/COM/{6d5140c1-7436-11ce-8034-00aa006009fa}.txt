@@ -1,0 +1,6 @@
+;@InterfaceName=IServiceProvider
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IServiceProvider::QueryService(IUnknown* pObject,REFGUID guidService,REFIID riid,void **ppvObject)|Out|FailureIfNegativeRet |ObjectCreation(REFCLSIDStackIndex=4|REFIIDStackIndex=8|ObjectStackIndex=12)

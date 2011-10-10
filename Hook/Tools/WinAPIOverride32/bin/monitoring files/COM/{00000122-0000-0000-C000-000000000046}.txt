@@ -1,0 +1,9 @@
+;@InterfaceName=IDropTarget
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IDropTarget::DragEnter( IUnknown* pObject,IDataObject *pDataObj,DWORD grfKeyState,POINTL pt,DWORD *pdwEffect);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IDropTarget::DragOver( IUnknown* pObject,DWORD grfKeyState,POINTL pt,DWORD *pdwEffect);|Out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IDropTarget::DragLeave( IUnknown* pObject);|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IDropTarget::Drop( IUnknown* pObject,IDataObject *pDataObj,DWORD grfKeyState,POINTL pt,DWORD *pdwEffect);|Out|FailureIfNegativeRet

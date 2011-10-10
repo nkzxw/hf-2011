@@ -1,0 +1,7 @@
+;@InterfaceName=IShellPropSheetExt
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IShellPropSheetExt::AddPages(IUnknown* pObject,LPFNSVADDPROPSHEETPAGE pfnAddPage,LPARAM lParam);|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IShellPropSheetExt::ReplacePage(IUnknown* pObject,EXPPS uPageID,LPFNSVADDPROPSHEETPAGE pfnReplaceWith,LPARAM lParam);|FailureIfNegativeRet

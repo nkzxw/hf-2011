@@ -1,0 +1,13 @@
+;@InterfaceName=IPropertyUI
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IPropertyUI::ParsePropertyName(IUnknown* pObject,LPCWSTR pszName,FMTID* pfmtid,PROPID* ppid,ULONG* pchEaten);|Out|FailureIfNegativeRet
+VTBLIndex=4|HRESULT IPropertyUI::GetCannonicalName(IUnknown* pObject,REFFMTID fmtid, PROPID pid,LPWSTR pwszText, DWORD cchText);|Out|FailureIfNegativeRet
+VTBLIndex=5|HRESULT IPropertyUI::GetDisplayName(IUnknown* pObject,REFFMTID fmtid, PROPID pid, PROPERTYUI_NAME_FLAGS flags,LPWSTR pwszText, DWORD cchText);|Out|FailureIfNegativeRet
+VTBLIndex=6|HRESULT IPropertyUI::GetPropertyDescription(IUnknown* pObject,REFFMTID fmtid, PROPID pid,LPWSTR pwszText, DWORD cchText);|Out|FailureIfNegativeRet
+VTBLIndex=7|HRESULT IPropertyUI::GetDefaultWidth(IUnknown* pObject,REFFMTID fmtid, PROPID pid,ULONG* pcxChars);|Out|FailureIfNegativeRet
+VTBLIndex=8|HRESULT IPropertyUI::GetFlags(IUnknown* pObject,REFFMTID fmtid, PROPID pid,PROPERTYUI_FLAGS* pFlags);|Out|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IPropertyUI::FormatForDisplay(IUnknown* pObject,REFFMTID fmtid, PROPID pid, PROPVARIANT* pvar, PROPERTYUI_FORMAT_FLAGS flags,LPWSTR pwszText, DWORD cchText);|Out|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IPropertyUI::GetHelpInfo(IUnknown* pObject,REFFMTID fmtid, PROPID pid,LPWSTR pwszHelpFile, DWORD cch,UINT *puHelpID);|Out|FailureIfNegativeRet

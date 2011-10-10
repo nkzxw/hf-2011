@@ -1,0 +1,6 @@
+;@InterfaceName=IShellIcon
+
+; include IUnknown
+BaseIID={00000000-0000-0000-C000-000000000046}
+
+VTBLIndex=3|HRESULT IShellIcon::GetIconOf(IUnknown* pObject,LPCITEMIDLIST pidl, UINT flags, LPINT lpIconIndex);|Out|FailureIfNegativeRet

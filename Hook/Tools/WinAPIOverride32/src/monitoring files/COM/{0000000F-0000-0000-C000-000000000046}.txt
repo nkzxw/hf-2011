@@ -1,0 +1,20 @@
+;@InterfaceName=IMoniker
+
+;include IPersistStream
+BaseIID={00000109-0000-0000-C000-000000000046}
+
+VTBLIndex=8|HRESULT IMoniker::BindToObject(IBindCtx *pbc,IMoniker *pmkToLeft,REFIID riidResult,void **ppvResult);|Out|FailureIfNegativeRet
+VTBLIndex=9|HRESULT IMoniker::BindToStorage(IBindCtx *pbc,IMoniker *pmkToLeft,REFIID riid,void **ppvObj);|Out|FailureIfNegativeRet
+VTBLIndex=10|HRESULT IMoniker::Reduce(IBindCtx *pbc,DWORD dwReduceHowFar,IMoniker **ppmkToLeft,IMoniker **ppmkReduced);|Out|FailureIfNegativeRet
+VTBLIndex=11|HRESULT IMoniker::ComposeWith(IMoniker *pmkRight,BOOL fOnlyIfNotGeneric,IMoniker **ppmkComposite);|Out|FailureIfNegativeRet
+VTBLIndex=12|HRESULT IMoniker::Enum( BOOL fForward,IEnumMoniker **ppenumMoniker);|Out|FailureIfNegativeRet
+VTBLIndex=13|HRESULT IMoniker::IsEqual( IMoniker *pmkOtherMoniker);|FailureIfNegativeRet
+VTBLIndex=14|HRESULT IMoniker::Hash( DWORD *pdwHash);|Out|FailureIfNegativeRet
+VTBLIndex=15|HRESULT IMoniker::IsRunning( IBindCtx *pbc,IMoniker *pmkToLeft,IMoniker *pmkNewlyRunning);|FailureIfNegativeRet
+VTBLIndex=16|HRESULT IMoniker::GetTimeOfLastChange( IBindCtx *pbc,IMoniker *pmkToLeft,FILETIME *pFileTime);|Out|FailureIfNegativeRet
+VTBLIndex=17|HRESULT IMoniker::Inverse( IMoniker **ppmk);|Out|FailureIfNegativeRet
+VTBLIndex=18|HRESULT IMoniker::CommonPrefixWith( IMoniker *pmkOther,IMoniker **ppmkPrefix);|Out|FailureIfNegativeRet
+VTBLIndex=19|HRESULT IMoniker::RelativePathTo( IMoniker *pmkOther,IMoniker **ppmkRelPath);|Out|FailureIfNegativeRet
+VTBLIndex=20|HRESULT IMoniker::GetDisplayName( IBindCtx *pbc,IMoniker *pmkToLeft,LPOLESTR *ppszDisplayName);|Out|FailureIfNegativeRet
+VTBLIndex=21|HRESULT IMoniker::ParseDisplayName( IBindCtx *pbc,IMoniker *pmkToLeft,LPOLESTR pszDisplayName,ULONG *pchEaten,IMoniker **ppmkOut);|Out|FailureIfNegativeRet
+VTBLIndex=22|HRESULT IMoniker::IsSystemMoniker( DWORD *pdwMksys);|Out|FailureIfNegativeRet
