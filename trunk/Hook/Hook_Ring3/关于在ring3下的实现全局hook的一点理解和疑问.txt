@@ -1,0 +1,60 @@
+接触内核没多久，想练练手，决定实现一个类似屏幕取词的功能（学习目的，所以并不需要躲过AV），在网上查了不少资料，加上参考《rootkit:subverting the windows kernel》，总的来说在ring3下实现hook的方法有下面几种： 
+
+第一步是当然是注入到目标进程中。方法如，CreateRemoteThread，apc injection诸如此类（在ring3下，偶只能想到这两种了） 
+
+1. ring3 inline hook 
+基本思路就是通过VirtualProtect去掉内存保护，直接修改目标API的头为一个短跳转和长跳转，实现hook。 
+2. IAT hook 
+通过修改PE内存映像的IAT引入表，指向自己的函数实现 hook,个人认为和 inline hook一个属于数据段的hook一个属于代码段的。 
+3. SetHookEx 
+ms官方提供的全局hook方法，只能hook windows message，一开始我想采用这个方法，但是貌似不能实现api hook，只能得到鼠标的位置，应该市面上的屏幕取词工具是采用这个方法得到鼠标位置的。 
+
+以上的方法均有一个缺陷，就是一次只能hook一个进程，因为在ring3下进程拥有自己的内存空间，互不影响，粗略的想了一下，解决方案有以下几个，因为还没有落实到code，欢迎大牛拍砖或补充： 
+
+1. 修改注册表HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows\AppInit_DLLs 
+
+2. 遍历所有的进程，注入所有进程，但是有个很大的问题，如果hook后来创建的新进程？倒是可以在已hook的进程中开个新线程定时查询是否有新的进程被创建，这样的话，查询间隔太短，可能会拖慢系统的速度，太长的话，效果不明显。如果在ring3有类似PsSetImageLoadNotifyRoutine这样的东西就能解决，但是貌似此路不通。 
+
+3. Rootkits: Subvering the windows kernel的第四章介绍的hybrid hooking方法，但是貌似这个方法还是需要在ring0下的驱动配合，并不是纯ring3的方法。 
+
+
+还是ring0好啊。。。。
+
+
+
+4 Answers sorted by Votes Date Added
+0
+ skidrow January 2010 Permalink
+内核注入吧，在KnowDlls目录下面找一个目标的section，MAP到内存里面直接修改目标函数就可以了，这个是全局
+0
+ coderlee January 2010 Permalink
+SetWIndowHookEx(WH_GETMESSAGE, Proc, hMod, 0) 最后的參數是0 為全局hook 
+
+這個時候，hMod被注入到所有的進程中 
+
+static BOOL first = TRUE; 
+LRESULT CALLBACK Proc(int nCode, WPARAM wParam, LPARAM lParam) 
+{ 
+  if (first){ 
+  first = FALSE; 
+  xx 
+} 
+}
+0
+ c4pt0r January 2010 Permalink
+coderlee said:
+
+SetWIndowHookEx(WH_GETMESSAGE, Proc, hMod, 0) 最后的參數是0 為全局hook 
+
+這個時候，hMod被注入到所有的進程中 
+
+static BOOL first = TRUE; 
+.......
+
+
+
+这个貌似只能实现Message hook? 如果要进行api hook就不好使了吧
+0
+ zytt January 2010 Permalink
+通过IAT hook是可以的，关于如何处理新创建的进程的问题，可以同时hook LoadLibrary(Ex)，该方法在《Windows核心编程》里有讲解，并且有完整实现的代码。 
+不过hook只是一方面，屏幕取词还有一些很有意思的地方，先预祝lz取词愉快：）
