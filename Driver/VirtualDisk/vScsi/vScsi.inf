@@ -1,0 +1,59 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=SCSIAdapter
+ClassGuid={4d36e97b-e325-11ce-bfc1-08002be10318}
+Provider=%ZR%
+DriverVer=08/09/2011, 1.00.0000
+CatalogFile=vScsi.cat
+
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames.x86]
+1 = %DiskId1%,,,
+
+[SourceDisksNames.amd64]
+1 = %DiskId1%,,,
+
+[SourceDisksFiles.x86]
+vScsi.sys  = 1,\x86
+
+[SourceDisksFiles.amd64]
+vScsi.sys  = 1,\x64
+
+[Manufacturer]
+%ZR%=Standard, NTamd64
+
+[Standard]
+%vScsi.DeviceDesc%=vScsi_Device, root\vScsi
+
+[Standard.NTamd64]
+%vScsi.DeviceDesc%=vScsi_Device, root\vScsi
+
+[vScsi_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+vScsi.sys,,,2
+
+;-------------- Service installation
+[vScsi_Device.NT.Services]
+AddService = vScsi,%SPSVCINST_ASSOCSERVICE%, dev_Service_Inst
+
+; -------------- busenum driver install sections
+[dev_Service_Inst]
+DisplayName    = %dev.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START 
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\vScsi.sys
+LoadOrderGroup = Extended Base
+
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ZR = "ZR"
+DiskId1 = "vScsi Installation Disk #1"
+vScsi.DeviceDesc = "vScsi device"
+dev.SVCDESC = "vScsi driver"

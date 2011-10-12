@@ -1,0 +1,6 @@
+TARGETNAME=vScsi
+TARGETTYPE=DRIVER
+
+SOURCES=stdafx.cpp \
+	vScsi.cpp \
+	guid.c
