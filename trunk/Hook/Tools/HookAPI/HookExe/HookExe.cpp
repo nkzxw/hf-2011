@@ -10,8 +10,22 @@
 void injectCode ()
 {
 	char *pwchProsess = "mmc.exe";
-	char *pchDll = "E:\\Work\\HookAPI\\Debug\\HookDll.dll";
-	
+
+	char fullPath[MAX_PATH]; // MAX_PATH
+	GetModuleFileName (NULL,fullPath,MAX_PATH);
+
+	char* pchTempPath = fullPath; 
+	while(strchr(pchTempPath,'\\'))
+	{
+		 pchTempPath = strchr(pchTempPath,'\\');
+		 pchTempPath++;
+	}		 
+	*pchTempPath = '\0';
+
+	char pchDllPath[MAX_PATH];
+	sprintf(pchDllPath,_T("%s%s"),fullPath,"HookDll.dll");
+
+	char *pchDll = pchDllPath;
 
 	HANDLE hToken;
 	if (!OpenProcessToken (GetCurrentProcess (), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken))
