@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HookSrv", "HookSrv\HookSrv.vcproj", "{B300E334-0299-4BF9-A88E-A9591864D2F5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HookTool", "HookTool\HookTool.vcproj", "{D4768C12-47B0-4F96-A9C4-449EE2B4B408}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestApp", "TestApp\TestApp.vcproj", "{F9361ED0-0700-40CC-9798-8EF7E7ECA980}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B300E334-0299-4BF9-A88E-A9591864D2F5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B300E334-0299-4BF9-A88E-A9591864D2F5}.Debug|Win32.Build.0 = Debug|Win32
+		{B300E334-0299-4BF9-A88E-A9591864D2F5}.Release|Win32.ActiveCfg = Release|Win32
+		{B300E334-0299-4BF9-A88E-A9591864D2F5}.Release|Win32.Build.0 = Release|Win32
+		{D4768C12-47B0-4F96-A9C4-449EE2B4B408}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D4768C12-47B0-4F96-A9C4-449EE2B4B408}.Debug|Win32.Build.0 = Debug|Win32
+		{D4768C12-47B0-4F96-A9C4-449EE2B4B408}.Release|Win32.ActiveCfg = Release|Win32
+		{D4768C12-47B0-4F96-A9C4-449EE2B4B408}.Release|Win32.Build.0 = Release|Win32
+		{F9361ED0-0700-40CC-9798-8EF7E7ECA980}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F9361ED0-0700-40CC-9798-8EF7E7ECA980}.Debug|Win32.Build.0 = Debug|Win32
+		{F9361ED0-0700-40CC-9798-8EF7E7ECA980}.Release|Win32.ActiveCfg = Release|Win32
+		{F9361ED0-0700-40CC-9798-8EF7E7ECA980}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

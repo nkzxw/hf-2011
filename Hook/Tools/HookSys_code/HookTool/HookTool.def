@@ -1,0 +1,9 @@
+LIBRARY   HOOKTOOL
+
+
+SECTIONS
+	.HKT   Read Write Shared
+
+EXPORTS
+	InstallHook			@1 
+	GetMsgProc			@2
