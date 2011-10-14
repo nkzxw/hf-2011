@@ -1,0 +1,7 @@
+!INCLUDE $(NTMAKEENV)\makefile.def
+
+!if $(FREEBUILD)
+MSC_WARNING_LEVEL=/W1
+!else
+MSC_WARNING_LEVEL=/W3
+!endif

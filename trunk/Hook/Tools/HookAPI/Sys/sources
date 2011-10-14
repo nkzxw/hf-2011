@@ -1,0 +1,5 @@
+TARGETNAME=ProcessMonitor
+TARGETTYPE=DRIVER
+TARGETPATH=obj
+
+SOURCES=ProcessMonitor.c 
