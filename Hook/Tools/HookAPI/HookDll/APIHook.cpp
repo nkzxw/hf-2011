@@ -8,6 +8,10 @@
 
 #include <Psapi.h>
 
+/*
+* API Hook 的原理采用遍历进程的所有模块方式，再HOOK所有模块的IAT.
+*/
+
 //CAPIHook CAPIHook::sm_CreateProcessA  ("Kernel32.dll", "CreateProcessA",(PROC) CAPIHook::CreateProcessA);
 //CAPIHook CAPIHook::sm_CreateProcessW  ("Kernel32.dll", "CreateProcessW",(PROC) CAPIHook::CreateProcessW);
 
@@ -17,19 +21,23 @@ BOOL CAPIHook::ExcludeAPIHookMod = TRUE;
 LONG WINAPI InvalidReadExceptionFilter(PEXCEPTION_POINTERS pep);
 CAPIHook::CAPIHook(PSTR pszModName, PSTR pszFuncName, PROC pfnNew) 
 {
-	char baseName[20];
-	GetModuleBaseNameA(GetCurrentProcess(), NULL, baseName, 20);
-	if(stricmp(baseName, "mmc.exe") != 0)
-		return;
-
-	OutputDebugPrintf ("[HookAPI]: CAPIHook Enter.\n");
-
     m_pNext  = sm_pHead;    
     sm_pHead = this;        
 
     m_pszModName   = pszModName;
     m_pszFuncName  = pszFuncName;
     m_pfnNew      = pfnNew;
+
+	//
+	//由于services.msc 动态加载filemgmt.dll 库的时间延迟与程序启动
+	//所以加载时动态加载起来
+	//
+	HMODULE hModule = GetModuleHandleA("filemgmt.dll");
+    if(hModule == NULL)
+    {
+		OutputDebugPrintf ("[HookAPI]: LoadLibraryA filemgmt.dll.\n");
+        LoadLibraryA("filemgmt.dll");
+    }
 
     HMODULE hModuleCallee = GetModuleHandleA(pszModName);
     if(hModuleCallee == NULL)
@@ -111,6 +119,7 @@ void CAPIHook::ReplaceIATEntryInAllMods(
     for (BOOL fOk = Module32First(hSnapshot, &me); fOk; fOk = Module32Next(hSnapshot, &me)) 
     {
         if (me.hModule != hmodThisMod) 
+		//if (stricmp ("filemgmt.dll", me.szModule) == 0) 
         {
             ReplaceIATEntryInOneMod(pszModName, 
 									pfnCurrent, 
@@ -130,7 +139,7 @@ void CAPIHook::ReplaceIATEntryInOneMod(
 {
     ULONG ulSize;
 
-	OutputDebugPrintf ("[HookAPI]: ReplaceIATEntryInOneMod Enter.\n");
+	//OutputDebugPrintf ("[HookAPI]: ReplaceIATEntryInOneMod Enter.\n");
 
     PIMAGE_IMPORT_DESCRIPTOR pImportDesc = NULL;
     __try {
@@ -157,7 +166,7 @@ void CAPIHook::ReplaceIATEntryInOneMod(
     {
         PSTR pszModName = (PSTR) ((PBYTE) hmodCaller + pImportDesc->Name);
 		
-		OutputDebugPrintf ("[HookAPI]: Module Name = %s.\n", pszModName);
+		//OutputDebugPrintf ("[HookAPI]: Module Name = %s.\n", pszModName);
 
         if (lstrcmpiA(pszModName, pszModName) == 0) 
         {
@@ -183,7 +192,7 @@ void CAPIHook::ReplaceIATEntryInOneMod(
                         DWORD dwOldProtect;
                         if (VirtualProtect(ppfn, sizeof(pfnNew), PAGE_WRITECOPY,&dwOldProtect)) 
                         {
-							OutputDebugPrintf ("[HookAPI]: ReplaceIATEntryInOneMod Enter.\n");
+							//OutputDebugPrintf ("[HookAPI]: ReplaceIATEntryInOneMod Enter.\n");
 
                             WriteProcessMemory(GetCurrentProcess(), ppfn, &pfnNew, sizeof(pfnNew), NULL);
                             VirtualProtect(ppfn, sizeof(pfnNew), dwOldProtect, &dwOldProtect);
