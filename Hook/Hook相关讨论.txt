@@ -1,0 +1,215 @@
+64位系统的Detours:
+
+我假设读者已经非常熟悉detours，阅读此文只是为了增强对detours的理解以及为了实现x64 hook。有关detours原理部分不再多讲。
+
+X86 Kernel Hook
+早 些年，我把detours1.5移植到x86核心层，工作的不错，我一直用它来hook系统一些内部函数，有时候也用来hook IoCreateFile这类导出函数。让detours1.5在核心工作稳定并不是一件困难的事情。可能有些c/c++的麻烦，但是很快就可以解决。唯 一需要注意的地方是detours1.5用VirtualProtect来让内存READ_WRITE_EXECUTE，在核心层有2种方法，第一种是群 众所喜闻乐见的清除cr0，第二种是在核心层通过调用native api做VirtualProtect的事情。
+detours的方法对比import/export方法有一些很明显的好处，其最大的好处是可以用来hook内部函数。而且由于hook的方法是直接修改函数体，所以不管调用者怎么玩花样，都很难绕过hook。
+detours的缺点主要如下：
+1，detours x86无法hook小于5字节的函数
+2，detours x86需要一个完备的反汇编器和解释器，实际上detours代码中并不包含这个，因此，如果需要写一个函数阻止他人hook，可以这么写：
+  proc near
+      xor eax,eax
+      jeax 1
+      int 3
+      ... // do something
+    proc end
+注 意到这里的这个jmp，因为eax肯定为0，所以该int3不会被调用，而被detours过的代码则很可能走到int3上去了，为了让detours的 代码不走到int3，detours必须能够解析出前面3行代码的意思，并且修正jeax 1为jeax 1+(trampoline-function)。用类似的技术，也可以欺骗detours。
+3，detours x86无法处理如下函数：
+  proc near
+flag: ... // 函数前5个字节
+    .... //do something
+    jmp flag
+    .... // do something
+    proc end
+该函数执行体中有一个jmp，跳到前5个字节。可是被detours过之后，该函数的前5个字节被修改了，而且改成了jmp trampoline。为了能够让detours可以处理此操作，必须反汇编解析整个函数体，用2种所描述的方法修改jmp flag。
+
+综上述，detours思路很好，但是存在缺陷，要搞定这些缺陷，需要完整反汇编器。
+
+X64 Kernel Hook
+最近有一个需求要在x64下实现类似的hook模块，我找到了detours2.1，给MS发了email，MS的答复是，包含64bit的detours2.1，需要10000 USD。
+于是我就删掉了MS的email，开始自己动手来做这个事情了。我大致说一下原理和需要注意的地方。
+
+x64 hook和x86 hook的原理相似，都是修改原函数的首地址。不同的是，x64下不存在
+jmp 64_address这种指令，x86下要跨4G跳转，必须是jmp [64_address]，对应的汇编码不再是e9 xxxxxxxx，而是ff15 [xxxxxxxx]，其中xxxxxxxx保存的是一个64_address。注意xxxxxxxx依然是32位，所以，该内存也必须和 function处于同一个4G。
+
+这个限制对于普通的代码编译来说，并不存在太大的问题，因为很少有exe超过4G的。所以编译器生成的 代码依然使用e9 xxxxxxxx。对于import的dll来说，通常都是call [xxxxxxxx]，以前是这样，现在还是这样，不同的是，[xxxxxxxx]以前指向32位的地址，现在指向64位的地址。这样一来，dll加载的 位置和exe所在的位置不在同一个4G也没有关系了。
+
+对于detours来说，受上面所述特性影响的是，trampoline通常位于 heap memory/nonpaged pool，new_function位于我们自己所写代码的dll/driver中，old_function位于我们所需要hook的那个模块中。这里 面存在一个基本矛盾是，new_function通常和old_function分别处于2个不同dll或者.sys中，系统很可能把他们加载到了距离很 远的空间中，也即abs(new_function-old_function)>4G。这样一来，就无法使用e9 xxxxxxxx，而必须使用ff15 [xxxxxxxx]了，而且xxxxxxxx是一个32的偏移，所以[xxxxxxxx]还不能位于我们的dll/sys中。
+
+根据以上的分析，最后可以得出如下算法：
+1，找到需要hook的函数地址
+2， 解析从函数起始地址开始，至少6+8=14个字节的代码。代码不能断开。以上2个过程和detourx86一样，不同的是，detoursx86之需要 e9 xxxxxxxx，也就是说只需要5个字节，而我们必须用ff15 [xxxxxxxx]。如果函数体小于14个字节，这意味着该函书无法detours。
+不过函数体小于14字节多半是因为里面执行了一个call或者jmp，那么解析该代码，把函数起始地址设置为jmp之后的地址，重新进行2过程。
+3，把这14或者15，16...个字节拷贝到预先分配的一块内存中，我们叫它trampoline。
+4，把前6个字节改为ff15 [0]，也即ff15 00000000
+5，在随后的8个字节中保存new_function的起始地址
+6，修正trampoline中的14字节的代码，如果里面有jmp，call等跳转语句，修改偏移量，这时候通常又需要跨4G的跳转，那么按照上面的方法修改之，trampoline的字节数可能会增加。
+7，在trampoline的代码之后，插入ff15 [0]，并且在随后的8个字节中填充old_function+14。
+
+trampoline 可以预先分配一个100字节的buffer，初始化全部填充为nop，在进行7的时候，可以从trampoline的底部，也即100-14的位置开始填 入ff,15,00,00,00,00, 64_bit_old_function+14(15,16...)。
+
+以上算法的缺点和x86 detours的缺点一样，第一条为无法hook函数体小于14字节的函数。
+
+14个字节相当大，有时候这个缺陷不可忍受，为此，介绍一种更为肮脏的手段。
+
+代 码加载到内存中时，通常有很多废空间，也即，在这些空间中，只有nop，或者永远不会执行。用IDA可以找到这些空间。如果能够找到足够大到，以至于可以 保存一个64位地址的空间的话，那么可以只修改前5个字节为jmp [xxxxxxxx]，同时只拷贝5个字节到trampoline。trampoline的底部14个字节照旧。
+
+以上就是x64下的detours过程。
+
+有一个x64下需要注意的问题，vc8不支持x64下的_asm关键字，所以
+_asm{ 
+cli
+mov eax,cr0
+and eax,not 1000h
+mov cr0,eax }不能再用
+取而代之的是
+_disable();
+uint64 cr0=__readcr0();
+cr0 &= 0xfffffffffffeffff;
+__writecr0(cr0);
+当然还可以继续用native api，不过以上方法简洁而且为广大群众所喜闻乐见。有关于_disable等函数，请查阅新版msdn。
+
+至于IA64，我对此一无所知。
+
+顺便说几点：
+1，EM64T 的cpu上可以run win64os，但是，不知为何，vmware无法在EM64T的cpu上install/run win64os。而amd64 cpu上即便安装的是win32 os，也可以在其上的vmware里install/run win64os。
+2，softice已经停止开发，而且不支持x64，只有virtual模式才支持。鉴于其已经停止开发，建议大家都使用windbg。
+3，idapro 5.0反汇编x64的代码，错误百出，一团乱麻，基本上需要先U再C。
+
+因为14字节的限制太大，以至于始终觉得不爽。后来想到了一个解决方案。
+
+假设原函数 是old_func，新函数是new_func，那么分配trampoline的时候，用某些技术方法，限定分配出的内存和old_func在同一个 4G。可以通过VirtualAlloc实现，具体方法可以是多次改变第一个参数，调用VirtualAlloc，直到返回值不为NULL为止。
+
+这样一来，detours的逻辑改变为：
+
+1，首先把old_func的前5个字节拷贝到trampoline+14，然后修改为jmp offset，也即e9 trampoline-5-old
+2，trampoline的前6字节为ff15 [0],接下来的8个字节为new_func_address
+3，trampoline+14+5之后的5个字节为jmp (trampoline+14+5+5 - (old_func_addr+5))
+
+这样调用old的时候，会首先执行jmp offset到trampoline，trampoline又jmp到了new_func，new_func调用old的时候，会直接跳到trampoline+14处，执行原来的前5个字节，然后再jmp会原函数体。
+
+如此，一切都完美了 :)
+
+
+这文章是转载的?而且是翻译的过来的?
+好像有些地方说的不对吧..
+
+detours x86的第二点和第三点缺陷是怎么回事情?
+
+第二个部分怎么会跳到int3上去?
+确实detours里面只有反编译器没有解释执行的功能.但是这足够了...
+detours会修改前5个字节为一个jmp
+jmp过去了以后再jmp回到原来的函数里面并不一定是第5个字节开始的地址
+detours会分析前面5个字节里面的指令
+以指令为单位进行修改.而不是只是修改5个字节
+覆盖了的指令会被复制一份
+在跳转到原始函数之前
+被复制的那些指令先被执行
+并且它也保证不会jmp到一条指令的中间
+比如第二个例子
+
+hook以前的代码如果是
+old_func:
+      nop
+      nop
+      nop
+      nop                             ; 一共4个字节的nop
+      xor eax,eax                ;这个行会占2个字节 指令代码是0x33 0xc0
+      jz  skip_int3
+      int 3
+skip_int3:
+      nop
+
+hook以后的代码是
+old_func:
+    jmp hook_func       ; e9 xxxxxxxx
+    nop                           ; 注意这里有一个字节的nop,这里也许是cc(int 3),也是原始的0xc0要看版本
+
+hook_jmp:                 ; hook的代码执行完了会跳到这里来
+    jz skip_int3
+    int 3
+skip_int3:
+   nop
+
+hook_func:
+   pushad              ; 保存寄存器
+   pushf
+   [...........]
+   popf
+   popad                ; 恢复寄存器
+
+;这里是复制的原来的指令.
+   nop
+   nop
+   nop
+   nop                    ; 4个nop
+   xor eax,eax      ; 因为前面4个nop只有4个字节,而我们需要写5个字节所以这条指令也要复制
+   jmp hook_jmp; 跳回去,注意这个jmp并不修改eflags,所以接下来的jz一样会跳过int3
+
+如果你是想说开头5个字节里面有使用相对eip地址的指令
+那么detours也是会去修改这些指令字节的
+
+另外jeax是个什么指令?
+能直接根据eax跳转?
+我怎么记得只有ecx才有这种功能的?
+
+假设你想说的jeax就是jz
+那么
+    xor eax,eax 是2个字节
+    jz skip_int3 是2个字节
+    int 3 是1个字节
+skip_int3:
+    nop
+这里刚刚5个字节
+这5个字节被替换成一个jmp
+同时这5个字节将被复制到hook函数的末尾
+看起来是这样的
+
+  popad
+  xor eax,eax
+  jz adjust_addr
+  int 3
+
+adjust_addr:
+  jmp skip_int3 ;这就是原来函数里面的int 3指令后面那条指令的地址
+
+没问题...int 3是不会被执行的..
+
+第三点这里是有问题.但是不是你描述的这样吧?
+跳回到前5个字节的开头是没问题的.有问题的是跳回到这5个字节的中间
+
+这样的才有问题
+old_func:
+     nop
+error_addr:
+    nop
+    nop
+    nop
+    nop   ;这里开头5个nop会被修改成一个jmp
+
+    [.....]
+    jmp error_addr ;这里想要跳转到error_addr的地方.但这个地址是一条指令(被修改过的jmp)的中间
+    [....]
+    jmp old_func; 这里没问题..又会再执行一次hook的代码.不会有什么错误
+
+另外...上面的例子里面有些pushad/popad这些指令
+其实detours里面并没有这些指令
+因为detours本来只是面向c的..
+所以detours按照c的调用法则
+再调用你的hook函数之前
+并不为你保存eax,ecx,edx
+而其余的ebx,esi,edi,ebp也是按照c的调用法则该由你来负责保存和恢复的
+这里有个小问题就是fastcall使用ecx,edx来传递参数..
+不过detours其实只是破坏了eax的值..
+如果你去hook一个fastcall的函数..你需要保存恢复ecx和edx
+
+
+ring3的API HOOK:
+
+IAT Hook简单,可不需关注重入问题 
+inline hook相对比较复杂, 需要注意重入问题
+
+第一次写这种内存补丁一样的东西.开始怎么写都出错.字节码没有对齐..跳转地址算错.等等...后来用ida分析+od调试搞定.(头一次认认真真用od和ida...值得纪念)
+
+字节码没有对齐:

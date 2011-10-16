@@ -1,0 +1,90 @@
+发段简单的代码,让大家别为naked函数平衡堆栈烦恼Copy code
+#define PrefixNew    \
+{    \
+    _asm nop    \
+    _asm nop    \
+    _asm nop    \
+    _asm nop    \
+    _asm nop    \
+    _asm nop    \
+    _asm nop    \
+    _asm pushad    \
+    _asm pushfd    \
+    _asm push ebp    \
+    _asm mov ebp, esp    \
+    _asm sub esp, __LOCAL_SIZE    \
+    _asm mov ebx, ebp    \
+    _asm add ebx, 36    \
+    _asm add ebx, 8    \
+}
+
+#define SurfixNewNoTag        \
+{    \
+    _asm mov esp, ebp    \
+    _asm pop ebp    \
+    _asm popfd    \
+    _asm popad    \
+}
+
+#define SurfixNew    \
+{    \
+    _asm mov esp, ebp    \
+    _asm pop ebp    \
+    _asm popfd    \
+    _asm popad    \
+    _asm _emit 0xaa    \
+    _asm _emit 0xaa    \
+    _asm _emit 0xaa    \
+    _asm _emit 0xaa    \
+}
+
+
+inline hook中一般这么用:
+_declspec(naked) NewFunc()
+{
+        PrefixNew;
+        ...
+        if(符合拒绝条件)
+        {
+                  SurfixNewNoTag;
+
+                  _asm mov eax, X
+                  _asm ret X
+        }
+
+        SurfixNew;
+}
+
+这样做了以后[ebx]就是函数的第一个参数,[ebx+4]就是函数的第二个参数,依次类推.要注意如果原函数是fastcall时,ecx是第一个参数,edx是第二个参数,[ebx]就是第三个参数了,依次类推.因些取函数参数可以这样
+_declspec(naked) NewFunc()
+{
+        TYPE argument1;
+        TYPE arguemtn2;
+        .....
+
+      //最好在开始就把参数都取出来,因为后面ebx值可能会改变哦
+      //fastcall的可以参照这个啦
+        _asm
+        {
+              mov edi, [ebx]
+              mov argument1, edi
+              mov edi, [ebx+4]
+              mov argument2, edi
+              .......
+        }
+
+        PrefixNew;
+        ...
+        if(符合拒绝条件)
+        {
+                  SurfixNewNoTag;
+
+                  _asm mov eax, X
+                  _asm ret X
+        }
+
+        SurfixNew;
+}
+
+
+----------------------------------------
