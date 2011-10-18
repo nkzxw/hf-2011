@@ -1,0 +1,15 @@
+（1）     无法读写游戏进程的内存，是因为保护SSDT HOOK了NtOpenProcess,NtReadVirtualMemory,NtWriteVirtualMemory,当然还有一个NtTerminateProcess(这个有什么用？)。恢复或绕过去，大家就可以自由地读写它的数据了。 
+
+（2）     一打开OD，OD即卡住，是因为它inline HOOK了NtDebugActiveProcess, NtCreateDebugObject, NtWaitForDebugEvent, NtDebugContinue,这个用SSDT HOOK对抗inline HOOK即可，最好合理利用MHZX的资源，大家好好想一下。 
+
+（3）     如果你过了前两步，会发现OD虽然能打开，但是连游戏之外的程序也不能调试，一调即卡住，是因为DbgkpProcessDebugPortMutex被流氓了，这个就仁者见仁，智者见智了，我曾在别的贴子上见过有人用process explorer停住了驱动线程，方法是相当地挫啊！
+
+（4）     当上面的几步你过了，就会发现OD可以自由的调其他的程序，但不能附加游戏，是因为游戏的r3下共有五个HOOK，与调试相关的是ntdll! DbgBreakPoint, DbgUiIssueRemoteBreakin, DbgUiRemoteBreakin, DbgUserBreakPoint,还有一个可能与远程注入相关：kernel32! LoadLibraryExW。因为第一步过了，所以操作它的内存不成问题，这个很好解决，附加进去以后，按一下f8或f7，系统就会不动了，是因为中断1与中断3被接管了。条条大路通罗马，这个对抗其实不难。 
+
+（5）     当前四步完美解决后，在不登录游戏的情况下，附加游戏几分钟就会重启，大家要注意这个几分钟是什么意思，驱动在不停在检测游戏进程对象的debugport,这个我处理的好难，大家肯定有更好的办法。发张图片，大家看看我的操作系统是什么版本： 
+
+（6）     到第六步了，还是不登录游戏，一下断点游戏就会关闭，是因为驱动在不停地设置游戏线程对象的HideFromDebugger,不是调用ZwSetInformationThread,而是驱动不停地遍历游戏的线程对象，直接设置，大家想一下它是如何得到线程对象的即可。。。 
+
+（7）     这是倒数第二步，现在在不登录游戏的情况下，可以自由的调了，于是登录游戏，等不了几分钟，电脑就会重启，这个最郁闷，是因为驱动在检测系统中是否有debugobject的对象，用winhex打开pp_data0,也许会发现一些线索，这个好难，但也许很容易，我想了两天，头发快白了。当然保护还检测着游戏进程PEB的BeginDebugged标志，如果发现了也会重启的，这个好整，设置一下OD的插件即可！ 
+
+（8）     这是最后一步了，你在点击游戏时，到某一定时间，会弹一个严重错误的对话框，然后游戏就崩了，大家一定要把握住这个一定时间是什么意思，是怎么触发的，如果有必要可以一边看着表，一边试。
