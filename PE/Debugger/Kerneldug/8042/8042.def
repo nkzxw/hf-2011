@@ -1,0 +1,26 @@
+EXPORTS
+
+	;
+	; export all
+	;
+	
+	; i8042prt
+	I8042HookKeyboard
+
+	; 8042 functions
+	I8xDrainOutputBuffer
+	I8xGetBytePolled
+	I8xPutBytePolled
+	I8xGetByteAsynchronous
+	I8xSetupMouseCallack
+	
+	; Interrupts
+	GetVector
+	GetAPICValue
+	GetIOAPICIntVector
+	IoHookInterrupt
+	I8042HookKeyboardIsr
+	
+	; ISR
+	InterruptService
+	KeyboardISR

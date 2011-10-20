@@ -1,0 +1,27 @@
+EXPORTS
+	explode
+	RtlStringCopyWorkerA
+	RtlStringCopyWorkerW
+	RtlStringCopyExWorkerA	
+	RtlStringCopyExWorkerW	
+	RtlStringCopyNWorkerA	
+	RtlStringCopyNWorkerW	
+	RtlStringCopyNExWorkerA	
+	RtlStringCopyNExWorkerW	
+	RtlStringCatWorkerA	
+	RtlStringCatWorkerW	
+	RtlStringCatExWorkerA	
+	RtlStringCatExWorkerW	
+	RtlStringCatNWorkerA	
+	RtlStringCatNWorkerW	
+	RtlStringCatNExWorkerA	
+	RtlStringCatNExWorkerW	
+	RtlStringVPrintfWorkerA	
+	RtlStringVPrintfWorkerW	
+	RtlStringVPrintfExWorkerA	
+	RtlStringVPrintfExWorkerW	
+	RtlStringLengthWorkerA	
+	RtlStringLengthWorkerW	
+	hexchr
+	hextol
+	isstrhex

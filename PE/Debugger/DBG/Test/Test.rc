@@ -1,0 +1,222 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_TEST                ICON                    "Test.ico"
+IDI_SMALL               ICON                    "small.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDC_TEST MENU 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "打开",                          IDM_OPEN
+    END
+    POPUP "调试"
+    BEGIN
+        MENUITEM "开始",                          IDM_START
+        MENUITEM "继续等待",                        ID_GO
+        MENUITEM "反汇编",                         ID_DISASM
+        MENUITEM "查看内存",                        ID_MEM
+        MENUITEM "暂停",                          ID_PAUSE
+    END
+    POPUP "断点"
+    BEGIN
+        MENUITEM "普通断点",                        ID_NORMAL
+        MENUITEM "内存断点",                        ID_MEMORY
+        MENUITEM "硬件断点",                        ID_HARDWARE
+        MENUITEM "函数断点",                        ID_32776
+        MENUITEM "消息断点",                        ID_32777
+        MENUITEM "删除普通断点",                      ID_DELNORMAL
+        MENUITEM "删除硬件断点",                      ID_DELHARDWARE
+        MENUITEM "删除内存断点",                      ID_DELMEM
+        MENUITEM "查看所有普通断点",                    ID_SHOW
+    END
+    POPUP "帮助"
+    BEGIN
+        MENUITEM "关于",                          ID_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDC_TEST ACCELERATORS 
+BEGIN
+    "?",            IDM_ABOUT,              ASCII,  ALT
+    "/",            IDM_ABOUT,              ASCII,  ALT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 Test"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            128,IDC_STATIC,14,14,20,20
+    DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+    LTEXT           "Copyright (C) 2010 by Tweek",IDC_STATIC,42,26,114,8
+    LTEXT           "Test，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+END
+
+IDD_DIALOG1 DIALOGEX 0, 0, 205, 77
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,7,43,115,14,ES_AUTOHSCROLL
+    LTEXT           "请输入断点地址(十进制)",IDC_STATIC,7,14,123,8
+    PUSHBUTTON      "确定",ID_OK,148,41,50,14
+    PUSHBUTTON      "取消",ID_CLOSE,148,7,50,14
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 262, 132
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,73,45,116,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,73,72,116,14,ES_AUTOHSCROLL
+    LTEXT           "开始地址(十进制)",IDC_STATIC,7,49,62,8
+    LTEXT           "反汇编大小",IDC_STATIC,7,76,41,8
+    PUSHBUTTON      "确定",ID_OK,91,111,50,14
+    PUSHBUTTON      "关闭",ID_CLOSE,205,111,50,14
+    LTEXT           "地址请用十进制,反汇编大小不能超过1000,反汇编的开始地址需要对齐,即刚好是某个指令的开始",IDC_STATIC,41,18,184,21
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 198
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 70
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 255
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 125
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_APP_TITLE           "Test"
+    IDC_TEST                "TEST"
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
