@@ -1,0 +1,9 @@
+LIBRARY InstallHelper.dll
+
+EXPORTS
+	InstallDriver
+	InstallService
+	UninstallDriver
+	UninstallService
+	TerminateWehnTrust
+

@@ -1,0 +1,8 @@
+TARGETNAME=rainsafe
+TARGETTYPE=DRIVER
+TARGETPATH=obj
+
+
+INCLUDES=.\
+
+SOURCES = rainsafe.c

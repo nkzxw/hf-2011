@@ -1,0 +1,68 @@
+//{{NO_DEPENDENCIES}}
+// Microsoft Developer Studio generated include file.
+// Used by WehnTrust.rc
+//
+#define IDD_WEHNTRUST                   101
+#define IDD_ABOUT                       102
+#define IDD_STATUS                      103
+#define IDI_WEHNTRUST_ENABLED           104
+#define IDD_EXEMPTIONS                  104
+#define IDI_WEHNTRUST_DISABLED          105
+#define IDB_BANNER                      107
+#define IDD_ADDEDIT_EXEMPTION           109
+#define IDD_LICENSE                     111
+#define WEHNTRUST_TAB                   1000
+#define WEHNTRUST_BUTTON_CANCEL         1001
+#define WEHNTRUST_BUTTON_OK             1002
+#define WEHNTRUST_BUTTON_HELP           1003
+#define WEHNTRUST_BUTTON_APPLY          1004
+#define ABOUT_LABEL_ABOUT               1005
+#define STATUS_LABEL_STATISTICS         1007
+#define STATUS_LABEL_STAT_NUMRANDDLL    1008
+#define STATUS_LABEL_CONTROL            1012
+#define STATUS_CHECK_RANDDLL            1013
+#define STATUS_CHECK_RANDALLOC          1014
+#define STATUS_CHECK_TRAYICON           1016
+#define STATUS_LABEL_STAT_NUMEXEMPTDLL  1019
+#define STATUS_LABEL_STAT_NUMIMAGESET   1021
+#define STATUS_LABEL_STAT_NUMRANDALLOC  1022
+#define WEHNTRUST_BANNER                1023
+#define STATUS_LABEL_STAT_EXPPREV       1023
+#define EXEMPTIONS_BUTTON_ADD           1026
+#define EXEMPTIONS_BUTTON_REMOVE        1027
+#define EXEMPTIONS_BUTTON_FLUSH         1028
+#define EXEMPTIONS_DROPDOWN_SELECTION   1029
+#define EXEMPTIONS_LIST_APPLIED         1030
+#define EXEMPTIONS_BUTTON_EDIT          1033
+#define ADDEDIT_EXEMPTION_BUTTON_CANCEL 1034
+#define ADDEDIT_EXEMPTION_BUTTON_OK     1035
+#define ADDEDIT_EXEMPTION_CHECK_RANDALLOC 1036
+#define ADDEDIT_EXEMPTION_CHECK_RANDIMAGE 1037
+#define ADDEDIT_EXEMPTION_EDIT_PATH     1038
+#define ADDEDIT_EXEMPTION_BUTTON_FIND   1039
+#define ADDEDIT_EXEMPTION_LABEL_PATH    1040
+#define ADDEDIT_EXEMPTION_CHECK_NRE_SEH 1041
+#define ADDEDIT_EXEMPTION_CHECK_NRE_STACK 1042
+#define ADDEDIT_EXEMPTION_CHECK_NRE_FORMAT 1043
+#define LICENSE_LABEL_NAME              1044
+#define LICENSE_LABEL_CORPORATION       1045
+#define LICENSE_LABEL_KEY               1046
+#define LICENSE_EDIT_NAME               1047
+#define LICENSE_EDIT_CORPORATION        1048
+#define LICENSE_EDIT_KEY                1049
+#define LICENSE_BUTTON_OK               1050
+#define LICENSE_BUTTON_CANCEL           1051
+#define LICENSE_LABEL_SUMMARY           1052
+#define WEHNTRUST_BUTTON_LICENSE        1054
+#define STATUS_LABEL_LICENSE            1055
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_NEXT_RESOURCE_VALUE        110
+#define _APS_NEXT_COMMAND_VALUE         40001
+#define _APS_NEXT_CONTROL_VALUE         1056
+#define _APS_NEXT_SYMED_VALUE           101
+#endif
+#endif

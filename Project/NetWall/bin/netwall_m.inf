@@ -1,0 +1,65 @@
+; -- NETWALL_M.INF --
+;
+; NetWall Miniport INF file
+;
+; Copyright (c) 2002-2003, NetWall Technology Co.,Ltd.
+; ----------------------------------------------------------------------
+
+[Version]
+signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider   = %NetWall%
+DriverVer  = 03/27/2003,1.00.00.00
+
+[ControlFlags]
+ExcludeFromSelect = lf_netwallmp
+
+[DestinationDirs]
+DefaultDestDir=12
+; No files to copy 
+
+[Manufacturer]
+%NetWall% = NETWALL
+
+[NETWALL]
+%NetWallMP_Desc% = NetWallMP.ndi, lf_netwallmp
+
+[NetWallMP.ndi]
+Characteristics = 0x29 ;NCF_NOT_USER_REMOVABLE | NCF_VIRTUAL | NCF_HIDDEN
+CopyFiles = 
+
+[NetWallMP.ndi.Services]
+AddService = NetWall,0x2, NetWallMP.AddService
+
+
+[NetWallMP.AddService]
+DisplayName    = %NetWallMP_Desc%
+ServiceType    = 1 ;SERVICE_KERNEL_DRIVER
+StartType      = 3 ;SERVICE_DEMAND_START
+ErrorControl   = 1 ;SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\netwall.sys
+LoadOrderGroup = PNP_TDI
+LogStarted     = 0
+AddReg         = NetWallMP.AddService.AddReg
+
+
+[NetWallMP.AddService.AddReg]
+; ----------------------------------------------------------------------
+; Add any miniport-specific parameters here.  These are params that your
+; filter device is going to use.
+;
+;HKR, Parameters, ParameterName,  0x10000, "MultiSz", "Parameter", "Value"
+;HKR, Parameters, ParameterName2, 0x10001, 4
+
+[Strings]
+NetWall = "NetWall Technology Co.,Ltd."
+NetWallMP_Desc = "NetWall Miniport Driver"
+
+[SourceDisksNames]
+;None 
+
+[SourceDisksFiles]
+;None
+
+

@@ -1,0 +1,638 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "..\inc\resource.h"
+
+// Generated Help ID header file
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "..\inc\resource.hm"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "..\\inc\\resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\fire.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MAINFRAME           ICON                    "icon\\fire.ico"
+IDI_LED_GREEN           ICON                    "icon\\led_gree.ico"
+IDI_LED_RED             ICON                    "icon\\led_red.ico"
+IDI_LED_OFF             ICON                    "icon\\led_off.ico"
+IDI_ICON_PROTO          ICON                    "icon\\program.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CANCEL              BITMAP                  "icon\\cancel.bmp"
+IDB_OK                  BITMAP                  "icon\\ok.bmp"
+IDR_MAINFRAME           BITMAP                  "icon\\mainfram.bmp"
+IDB_BMP_BK              BITMAP                  "img1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  48, 48
+BEGIN
+    BUTTON      ID_Start
+    BUTTON      ID_STOP
+    BUTTON      ID_BLOCKALL
+    BUTTON      ID_ALLOWALL
+    SEPARATOR
+    BUTTON      ID_BLOCKPING
+    BUTTON      ID_TOOLS_BLOCKAPPLICATION
+    SEPARATOR
+    BUTTON      ID_TOOLS_PORTSCANNER
+    BUTTON      ID_APP_ABOUT
+    BUTTON      ID_BUTTON32798
+    BUTTON      ID_BUTTON32799
+    BUTTON      ID_BUTTON32800
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU 
+BEGIN
+    POPUP "PopUp"
+    BEGIN
+        MENUITEM "&About",                      ID_APP_ABOUT
+        MENUITEM "Minimize",                    ID_POPUP_MINIMIZE
+        MENUITEM "Maximize",                    ID_POPUP_MAXIMIZE
+        MENUITEM SEPARATOR
+        MENUITEM "&Shutdown Firewall",          ID_POPUP_EXIT
+    END
+END
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       ID_EXIT
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "&Port Scanner",               ID_TOOLS_PORTSCANNER
+        MENUITEM "&BlockApplication",           ID_TOOLS_BLOCKAPPLICATION
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "Visit &NetDefender Homepage", ID_HELP_VISITNETDEFENDERHOMEPAGE
+
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About fire...",              ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_SRCIP MENU 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "&My Machine",                 ID__SRCIPMYMACHINE
+        MENUITEM "&Any Machine",                ID__SRCIPANYMACHINE
+    END
+END
+
+IDR_MENU_DESTIP MENU 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "&My Machine",                 ID__DESTMYMACHINE
+        MENUITEM "&Any Machine",                ID__DESTANYMACHINE
+    END
+END
+
+IDR_MENU_SRC_PORT MENU 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "&Any Port",                   ID__ANYPORT
+        MENUITEM "FTP",                         ID__FTP
+        MENUITEM "ssh",                         ID__SSH
+        MENUITEM "Telnet",                      ID__TELNET32821
+        MENUITEM "SMTP",                        ID__SMTP
+        MENUITEM "DNS",                         ID__DNS
+        MENUITEM "boot DHCP",                   ID__BOOTP
+        MENUITEM "HTTP",                        ID__HTTP
+        MENUITEM "POP3",                        ID__POP3
+        MENUITEM "NNTP news",                   ID__NNTP
+        MENUITEM "NetBIOS name service nbtstat", 
+                                                ID__NETBIOSNAMESERVICENBTSTAT
+
+        MENUITEM "SOCKS",                       ID__SOCKS
+    END
+END
+
+IDR_MENU_DESTPORT MENU 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "&Any Port",                   ID__ANYPORT1
+        MENUITEM "FTP",                         ID__FTP1
+        MENUITEM "ssh",                         ID__SSH1
+        MENUITEM "Telnet",                      ID__TELNET328211
+        MENUITEM "SMTP",                        ID__SMTP1
+        MENUITEM "DNS",                         ID__DNS1
+        MENUITEM "boot DHCP",                   ID__BOOTP1
+        MENUITEM "HTTP",                        ID__HTTP1
+        MENUITEM "POP3",                        ID__POP31
+        MENUITEM "NNTP news",                   ID__NNTP1
+        MENUITEM "NetBIOS name service nbtstat", 
+                                                ID__NETBIOSNAMESERVICENBTSTAT1
+
+        MENUITEM "SOCKS",                       ID__SOCKS1
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP_FINDER,         VIRTKEY, CONTROL, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 213, 150
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "NetDefender 1.5 Beta 1"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+END
+
+IDD_FIRE_FORM DIALOGEX 0, 0, 345, 158
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "List1",IDC_LIST_RESULT,"SysListView32",LVS_REPORT | 
+                    LVS_AUTOARRANGE | WS_BORDER | WS_TABSTOP,14,34,318,88,0,
+                    HIDC_LIST_RESULT
+    PUSHBUTTON      "&Add New Rules",IDC_BUT_ADDRULE,7,130,69,21
+    PUSHBUTTON      "&Edit Rule",IDC_BUT_EDIT_RULE,101,130,56,21
+    PUSHBUTTON      "&Remove Rule",IDC_BUT_REMOVE_RULE,176,130,63,21
+    PUSHBUTTON      "Re-Register Rules",IDC_REREGISTER_RULE,263,130,75,21
+    PUSHBUTTON      "&Add New Rules",IDC_START,103,130,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "Block All",IDC_BLOCKALL,21,7,50,21,NOT WS_VISIBLE
+    PUSHBUTTON      "Block Ping",IDC_BLOCKPING,108,7,50,21,NOT WS_VISIBLE
+    PUSHBUTTON      "Allow All",IDC_ALLOWALL,187,7,50,21,NOT WS_VISIBLE
+    GROUPBOX        "",IDC_STATIC,7,15,331,111
+    LTEXT           "Below are the rules that are currently registered by Netdefender. ",
+                    IDC_STATIC_RULE,53,24,246,8
+END
+
+IDD_ADDRULE DIALOGEX 0, 0, 338, 186
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Add Rules"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_SADD,74,48,73,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "",IDC_BUT_SRCIP_PICKER,150,48,9,14
+    EDITTEXT        IDC_DADD,233,48,73,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "",IDC_BUT_DEST_IP_PICKER,310,48,9,14
+    EDITTEXT        IDC_SPORT,118,94,29,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "",IDC_BUT_SRC_PORT_PICKER,150,94,9,14
+    EDITTEXT        IDC_DPORT,277,94,29,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "",IDC_BUT_DEST_PORTPICKER,310,94,9,14
+    COMBOBOX        IDC_COMBO1,98,137,49,43,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO2,257,137,49,43,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "ADD &&&Save",IDC_ADDSAVE,176,162,60,20
+    PUSHBUTTON      "&Cancel",IDCANCEL,282,162,51,20
+    LTEXT           "ADD YOUR NEW RULES TO THIS DIALOG BOX",
+                    IDC_STATIC_ADD_NEW_RULE,59,5,189,8
+    GROUPBOX        "Apply this rule to",IDC_STATIC,4,16,329,140
+    GROUPBOX        "(IP Address Example, 192.168.0.122)",IDC_STATIC,11,31,
+                    313,40
+    LTEXT           "Source &Address :",IDC_STATIC_SRC_ADD,15,50,55,11
+    LTEXT           "&Destination Address:",IDC_STATIC_DEST_ADD,164,50,66,11
+    LTEXT           "D&estination Port :",IDC_STATIC_DEST_PORT,215,98,55,8
+    LTEXT           "Source &Port :",IDC_STATIC_SRC_PORT,69,98,43,8
+    GROUPBOX        "Enter Port No. (For exp : 80 , 1450)",IDC_STATIC,12,77,
+                    312,42
+    LTEXT           "Ac&tion :",IDC_STATIC_ACTION,67,138,25,8
+    LTEXT           "P&rotocol :",IDC_STATIC_PROTOCOL,219,138,32,8
+    LTEXT           "(Select the action to Allow or Block)",IDC_STATIC,29,
+                    125,113,8
+END
+
+IDD_PORTSCAN_FORM DIALOGEX 0, 0, 282, 228
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Port Scanner"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "IPAddress1",IDC_IP_ADDRESS,"SysIPAddress32",WS_TABSTOP,
+                    153,17,100,15
+    CONTROL         "Scan a &single port",IDC_RADIO_SINGLE,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,26,44,73,10
+    EDITTEXT        IDC_EDIT_SINGLE_PORT,113,40,25,14,ES_AUTOHSCROLL
+    CONTROL         "Scan a &range of ports",IDC_RADIO_RANGE,"Button",
+                    BS_AUTORADIOBUTTON,26,58,84,10
+    EDITTEXT        IDC_EDIT_SINGLE_PORT_FROM,113,56,25,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SINGLE_PORT_TO,158,56,25,14,ES_AUTOHSCROLL
+    LTEXT           "Number of attempts:",IDC_STATIC,39,73,64,8
+    EDITTEXT        IDC_EDIT_ATTEMPTS,113,72,25,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    DEFPUSHBUTTON   "&Start",IDC_BUTTON_SCAN,193,75,33,14
+    PUSHBUTTON      "St&op",IDC_BUTTON_STOP,229,75,33,14
+    CONTROL         "List2",IDC_LIST_RESULT,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_AUTOARRANGE | WS_BORDER | 
+                    WS_TABSTOP,9,108,260,85
+    GROUPBOX        "",IDC_STATIC,9,7,261,87
+    LTEXT           "IP address of the remote machine:",IDC_STATIC_IP,16,21,
+                    131,8
+    CONTROL         135,IDC_STATIC,"Static",SS_BITMAP | SS_SUNKEN,216,42,33,
+                    31
+    GROUPBOX        "",IDC_STATIC,18,34,172,56
+    LTEXT           "Result of scanning:",IDC_STATIC_SCAN_RESULT,12,98,88,8
+    CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",WS_BORDER | 
+                    0x1,10,196,260,14
+    LTEXT           "due",IDC_STATIC,142,58,13,8
+    LTEXT           "Static",IDC_STATUS_BAR,3,214,273,13,SS_SUNKEN | NOT 
+                    WS_GROUP
+END
+
+IDD_PROCESS_VIEW DIALOGEX 0, 0, 451, 201
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Running Applications"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,331,176,52,18
+    PUSHBUTTON      "Cancel",IDCANCEL,394,176,52,18
+    CONTROL         "",IDC_LIST_PROCESS_VIEW,"SysListView32",LVS_REPORT | 
+                    LVS_AUTOARRANGE | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,
+                    15,46,429,127,0,HIDC_LIST_PROCESS_VIEW
+    GROUPBOX        "Running Applications :",IDC_STATIC,16,5,428,34
+    LTEXT           "The Applications listed Below are those which are currently running on your system and trying to connect to network.",
+                    IDC_STATIC_RUN_APP,27,15,405,19
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,5,0,0
+ PRODUCTVERSION 1,5,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Get the Latest Version from http://programmerworld.net"
+            VALUE "CompanyName", "ProgrammerWorld.Net"
+            VALUE "FileDescription", "NetDefender a packet filtering based Firewall"
+            VALUE "FileVersion", "1, 5, 0, 0"
+            VALUE "InternalName", "NetDefender"
+            VALUE "LegalCopyright", "Copyright (C) 2007"
+            VALUE "LegalTrademarks", "Copyrighted to Sudhir Mangla"
+            VALUE "OriginalFilename", "Netdefender_Firewall.EXE"
+            VALUE "ProductName", "NetDefender"
+            VALUE "ProductVersion", "1, 5, 0, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_FIRE_FORM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 338
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 151
+    END
+
+    IDD_ADDRULE, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 333
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 182
+    END
+
+    IDD_PORTSCAN_FORM, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 276
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 227
+    END
+
+    IDD_PROCESS_VIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 444
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 194
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_ADDRULE DLGINIT
+BEGIN
+    IDC_COMBO1, 0x403, 6, 0
+0x4c41, 0x4f4c, 0x0057, 
+    IDC_COMBO1, 0x403, 5, 0
+0x4544, 0x594e, "\000" 
+    IDC_COMBO2, 0x403, 4, 0
+0x4354, 0x0050, 
+    IDC_COMBO2, 0x403, 4, 0
+0x4455, 0x0050, 
+    IDC_COMBO2, 0x403, 5, 0
+0x4349, 0x504d, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// JPG
+//
+
+ABOUT                   JPG                     "Logo.jpg"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "fire\n\nFire\n\n\nFire.Document\nFire Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Firewall"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+    ID_INDICATOR_ONLINELED  " "
+    ID_INDICATOR_OFFLINELED " "
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "About Dialog \nAbout Dialog showing information Netdefender developers"
+    ID_APP_EXIT             "Minimize to System Tray\nExit"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "List Help topics\nHelp Topics"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EXIT                 "Exit the Firewall \n Exit"
+    ID_HELP_CONTENTS        "Show the Documentation of the program\n Contents"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_BLOCKALL            "Block all the Traffic \n Block All Traffic"
+    IDC_BLOCKPING           "Block the Ping \n Block Ping"
+    IDC_ALLOWALL            "Allow all the Traffic to pass threw Firewall \n Allow All Traffic"
+END
+
+STRINGTABLE 
+BEGIN
+    CG_IDS_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
+END
+
+STRINGTABLE 
+BEGIN
+    ID_ICON                 "Port Scanner to scan the system for open ports \nPort Scanner to scan the this system or any other system for <b>open ports</b>"
+    ID_TOOLS_PORTSCANNER    "Port Scanner for scanning open port in a system \nPort Scanner to scan the this system or any other system for <b>open ports</b>"
+    ID_Start                "Start the Firewall \nStart the Netdefender"
+    ID_STOP                 "Stop the Firewall \nStop the Netdefender"
+    ID_BLOCKALL             "Block the All Network Traffic  \nBlock All the incoming and Outgoing Traffic"
+    ID_ALLOWALL             "Allow All Traffic to Pass Threw \nAllow All all incoming and Outgoing Traffic.<br>And disable all other firewall rules.<br><b>Note:</b> To re-enable the rules press the <b>Re-Register</b> Rules button"
+    ID_BLOCKPING            "Block the Ping Command \nBlock the Ping command"
+    ID_TOOLS_BLOCKAPPLICATION 
+                            "List of Applications Accessing Network\nShows the list of all the application that are currently trying to communicate with outside network."
+END
+
+STRINGTABLE 
+BEGIN
+    ID_HELP_VISITNETDEFENDERHOMEPAGE "Visit NetDefender Homepage"
+END
+
+STRINGTABLE 
+BEGIN
+    ID__FTPCOMMAND          "The most common attack  hackers/crackers looking for ""open anonymous"" FTP servers."
+    ID__SSH                 "TCP connections to this port might indicate a search for ssh, which has a few exploitable features."
+    ID__TELNET              "The intruder is looking for a remote login to UNIX. Most of the time intruders scan for this port simply to find out more about what operating system is being used. "
+    ID__SMTP                "Spammers are looking for SMTP servers that allow them to ""relay"" spam."
+    ID__DNS                 "DNS. Hackers/crackers may be attempting to do zone transfers (TCP), to spoof DNS (UDP)"
+    ID__BOOTP               "Bootp/DHCP over UDP. Firewalls hooked to DSL and cable-modem lines see a ton of these sent to the broadcast address 255.255.255.255."
+    ID__HTTP                "Web Server. Usually not blocked by Firewall."
+    ID__POP3                "POP3 is used by clients accessing e-mail on their servers."
+    ID__NNTP                "Network News Transfer Protocol, carries USENET traffic. "
+    ID__NETBIOSNAMESERVICENBTSTAT 
+                            "This is the most common item seen by firewall administrators and is perfectly normal. "
+    ID__SOCKS               "This protocol tunnels traffic through firewalls, allowing many people behind the firewall access to the Internet through a single IP address."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_COLORTOOLBAR        BITMAP                  "icon\\bitmaptoolbar.bmp"
+IDB_TOOLBARDISABLE      BITMAP                  "icon\\DisableToolbar.bmp"
+IDB_CLIENTICONS_EX      BITMAP                  "clienticex.bmp"
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\fire.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

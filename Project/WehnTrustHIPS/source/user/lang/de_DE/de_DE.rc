@@ -1,0 +1,168 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""..\\events\\events.rc""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Wehnus, Inc.\0"
+            VALUE "FileDescription", "Language Locale DLL (German)\0"
+            VALUE "FileVersion", "1, 0, 0, 0\0"
+            VALUE "InternalName", "WehnTrust\0"
+            VALUE "LegalCopyright", "Copyright © 2004-2005\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "de_DE.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "WehnTrust\0"
+            VALUE "ProductVersion", "1, 0, 0, 0\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRODUCT_NAME        "WehnTrust"
+    IDS_OK                  "&Ok"
+    IDS_CANCEL              "&Abbrechen"
+    IDS_START               "&Start"
+    IDS_STOP                "A&nhalten"
+    IDS_HELP                "&Hilfe"
+    IDS_WEHNTRUST_DIALOG_TITLE "WehnTrust"
+    IDS_ABOUT_BODY          "WehnTrust - Wenn Sie Windows vertrauen können müssen.\n\nCopyright (c) 2006 Wehnus, Inc. Alle Rechte vorbehalten.\nFür weitere Informationen, besuchen Sie bitte http://www.wehnus.com\n\nWindows is a registered trademark of the Microsoft Corporation."
+    IDS_STATISTICS          "Statistiken"
+    IDS_STAT_NUMRANDDLL     "Anzahl zufällig verlagerter DLLs: %d"
+    IDS_CONTROL             "Einstellungen"
+    IDS_STAT_NUMEXEMPTDLL   "Anzahl unveränderter DLLs: %d"
+    IDS_STAT_NUMIMAGESET    "Anzahl der Speicherblöcke: %d"
+    IDS_DRIVER_NOT_FOUND    "Der Gerätetreiber ist auf diesem Computer unsachgemäß installiert."
+    IDS_STATUS              "Status"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUT               "Info"
+    IDS_EXIT                "Beenden"
+    IDS_SYSTEM_UPDATED      "WehnTrust hat festgestellt, dass ein oder mehrere Systemdateien seit dem letzten Neustart verändert wurden. Die Änderungen wurden aktualisiert und werden nach dem nächsten Neustart aktiviert. Wollen Sie jetzt neu starten?"
+    IDS_SYSTEM_UPDATED_TITLE "Systemdateien wurden verändert"
+    IDS_CHECK_SYNC_FAIL_TITLE "Synchronisation fehlgeschlagen"
+    IDS_CHECK_SYNC_FAIL_BODY 
+                            "Ihre Systemeinstellungen konnten nicht in Einklang mit dem Treiber gebracht werden. Bitte wenden Sie sich an den technischen Support"
+    IDS_STAT_NUMRANDALLOC   "Anzahl zufällig vertauschter Speicherblöcke: %d"
+    IDS_RAND_ALLOC_TEXT     "Vertausche Speicherblöcke zufällig"
+    IDS_RAND_DLL_TEXT       "Vertausche DLLs zufällig"
+    IDS_APPLY               "Übernehmen"
+    IDS_EXEMPTIONS          "Ausnahmen"
+    IDS_APPLICATION_EXEMPTIONS "Ausgenommene Programme"
+    IDS_IMAGE_EXEMPTIONS    "Ausgenommene Programme und Bibliotheken"
+    IDS_ERROR_COULD_NOT_ADD_EXEMPTION 
+                            "Die Ausnahmeregel konnte nicht erstellt oder ver?ndert werden (Fehler %lu)"
+    IDS_NO_FILE_SELECTED    "Sie m?ssen mindestens eine Datei ausw?hlen."
+    IDS_ERROR_COULD_NOT_REMOVE_EXEMPTION 
+                            "Die Ausnahme konnte nicht entfernt werden (Fehler %lu)"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ERROR_COULD_NOT_FLUSH_EXEMPTIONS 
+                            "Die Ausnahmeregeln konnten nicht entfernt werden (Fehler %lu)"
+    IDS_DIRECTORY_EXEMPTIONS "Ausgenommene Verzeichnisse"
+    IDS_APPLICATION_PATH_TO_EXEMPT "Auszunehmende Programmdatei:"
+    IDS_DIRECTORY_PATH_TO_EXEMPT "Auszunehmender Verzeichnispfad:"
+    IDS_IMAGE_FILE_PATH_TO_EXEMPT "Pfad zu auszunehmender Datei:"
+    IDS_ADD_EXEMPTION       "Ausnahmeregel hinzuf?gen"
+    IDS_EDIT_EXEMPTION      "Ausnahmeregel bearbeiten"
+    IDS_SHOW_SYSTEM_TRAY_ICON "Im System Tray anzeigen"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "..\events\events.rc"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

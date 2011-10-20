@@ -1,0 +1,9 @@
+TARGETNAME=ozone
+TARGETTYPE=DRIVER
+
+TARGETPATH=.
+INCLUDES= $(BASEDIR)\inc;.
+
+TARGETLIBS=$(DDK_LIB_PATH)\tdi.lib
+
+SOURCES=driver.c file.c registry.c policy.c process.c pathproc.c hookproc.c learn.c misc.c section.c sysinfo.c event.c semaphore.c time.c network.c accessmask.c log.c job.c mutant.c port.c symlink.c timer.c token.c driverobj.c atom.c vdm.c i386.c procname.c userland.c debug.c media.c boprot.c dirobj.c

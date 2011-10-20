@@ -1,0 +1,515 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\NetWall Exe.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#include ""l.chs\\afxprint.rc""        // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\NetWall.ico"
+IDR_NETWALTYPE          ICON    DISCARDABLE     "res\\NetWallDoc.ico"
+IDI_ADAPTER_ICON        ICON    DISCARDABLE     "res\\Adapter.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDB_NETWALL_IMAGES      BITMAP  DISCARDABLE     "res\\Netwall.bmp"
+IDB_NETWALL_BITMAP      BITMAP  DISCARDABLE     "res\\netwalli.bmp"
+IDB_ADAPTER_BITMAP      BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_ADAPTER_OPEN
+    BUTTON      ID_ADAPTER_CLOSE
+    SEPARATOR
+    BUTTON      ID_ADAPTER_SETRULE
+    BUTTON      ID_ADAPTER_CLEARRULE
+    SEPARATOR
+    BUTTON      ID_RULE_ADD
+    BUTTON      ID_RULE_MODIFY
+    BUTTON      ID_RULE_DELETE
+    BUTTON      ID_RULE_DELETEALL
+    SEPARATOR
+    BUTTON      ID_LOG_START
+    BUTTON      ID_LOG_STOP
+    BUTTON      ID_LOG_LOAD
+    BUTTON      ID_LOG_PAUSE
+    BUTTON      ID_LOG_CONTINUE
+    BUTTON      ID_LOG_STOP_DISPLAY
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "适配器(&A)"
+    BEGIN
+        MENUITEM "打开(&O)\tCtrl+O",            ID_ADAPTER_OPEN
+        MENUITEM "关闭(&C)\tCtrl+C",            ID_ADAPTER_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "设置规则(&S)\tCtrl+S",        ID_ADAPTER_SETRULE
+        MENUITEM "清除规则(&L)\tCtrl+L",        ID_ADAPTER_CLEARRULE
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    POPUP "规则(&R)"
+    BEGIN
+        MENUITEM "添加一条规则(&A)",            ID_RULE_ADD
+        MENUITEM "修改一条规则(&M)",            ID_RULE_MODIFY
+        MENUITEM "删除一条规则(&D)",            ID_RULE_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "删除所有规则(&E)",            ID_RULE_DELETEALL
+    END
+    POPUP "日志(&L)"
+    BEGIN
+        MENUITEM "启动日志(&S)",                ID_LOG_START
+        MENUITEM "停止日志(&T)",                ID_LOG_STOP
+        MENUITEM SEPARATOR
+        MENUITEM "显示日志(&D)",                ID_LOG_LOAD
+        MENUITEM "暂停显示(&P)",                ID_LOG_PAUSE
+        MENUITEM "继续显示(&C)",                ID_LOG_CONTINUE
+        MENUITEM "停止显示(&O)",                ID_LOG_STOP_DISPLAY
+    END
+    POPUP "查看(&V)"
+    BEGIN
+        MENUITEM "工具栏(&T)",                  ID_VIEW_TOOLBAR
+        MENUITEM "状态栏(&S)",                  ID_VIEW_STATUS_BAR
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 NetWall 网络控制系统(&A)...", ID_APP_ABOUT
+    END
+END
+
+IDR_POPUP_RULE_LIST MENU DISCARDABLE 
+BEGIN
+    POPUP "_POPUP_"
+    BEGIN
+        MENUITEM "增加一条规则",                ID_RULE_ADD
+        MENUITEM "修改一条规则",                ID_RULE_MODIFY
+        MENUITEM "删除一条规则",                ID_RULE_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "删除所有规则",                ID_RULE_DELETEALL
+    END
+END
+
+IDR_POPUP_ADAPTER_VIEW MENU DISCARDABLE 
+BEGIN
+    POPUP "_POPUP_"
+    BEGIN
+        MENUITEM "打开适配器",                  ID_ADAPTER_OPEN
+        MENUITEM "关闭适配器",                  ID_ADAPTER_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "添加一条规则",                ID_RULE_ADD
+        MENUITEM "修改一条规则",                ID_RULE_MODIFY
+        MENUITEM "删除一条规则",                ID_RULE_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "删除所有规则",                ID_RULE_DELETEALL
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 212, 108
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 NetWall 网络控制系统"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "NetWall 网络控制系统",IDC_STATIC,55,11,85,8,SS_NOPREFIX
+    DEFPUSHBUTTON   "确定",IDOK,163,6,42,14,WS_GROUP
+    LTEXT           "1.00.00.01",IDC_API_VERSION,103,24,77,8
+    LTEXT           "版本号 : ",IDC_STATIC,55,24,36,8
+    LTEXT           "(C) 2002-2003 耐威技术",IDC_STATIC,48,41,147,8
+    LTEXT           "版权所有",IDC_STATIC,48,53,47,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,7,64,198,1
+    LTEXT           "警告：本程序受版权法及国际版权公约的保护。凡未",
+                    IDC_STATIC,20,69,185,8
+    LTEXT           "经授权而擅自复制本软件的部分或全部内容，将要承",
+                    IDC_STATIC,20,79,185,8
+    LTEXT           "担严厉的民事或刑事责任。",IDC_STATIC,19,90,186,8
+    ICON            IDR_MAINFRAME,IDC_STATIC,7,7,20,20
+END
+
+IDD_ADD_RULE_DIALOG DIALOG DISCARDABLE  0, 0, 217, 289
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "添加一条规则"
+FONT 9, "宋体"
+BEGIN
+    COMBOBOX        IDC_RULE_PROTOCOL,90,15,100,93,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_RULE_DIRECTION,90,28,100,68,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_RULE_ACTION,90,40,100,77,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "IPAddress1",IDC_SRC_START_IP,"SysIPAddress32",
+                    WS_TABSTOP,90,100,100,12
+    CONTROL         "IPAddress2",IDC_SRC_END_IP,"SysIPAddress32",WS_TABSTOP,
+                    90,114,100,12
+    EDITTEXT        IDC_SRC_START_PORT,90,126,100,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SRC_END_PORT,90,139,100,12,ES_AUTOHSCROLL
+    CONTROL         "IPAddress3",IDC_DST_START_IP,"SysIPAddress32",
+                    WS_TABSTOP,90,169,100,12
+    CONTROL         "IPAddress4",IDC_DST_END_IP,"SysIPAddress32",WS_TABSTOP,
+                    90,182,100,12
+    EDITTEXT        IDC_DST_START_PORT,90,195,100,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DST_END_PORT,90,208,100,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_RULE_MEMO,43,238,165,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确定(&O)",IDOK,97,272,50,12
+    PUSHBUTTON      "取消(&C)",IDCANCEL,159,272,50,12
+    CONTROL         "禁用",IDC_RULE_USE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,90,56,31,10
+    LTEXT           "起始地址 : ",IDC_STATIC,24,103,51,8
+    LTEXT           "终止地址 : ",IDC_STATIC,24,116,51,8
+    LTEXT           "起始端口 : ",IDC_STATIC,24,129,51,8
+    LTEXT           "终止端口 : ",IDC_STATIC,24,142,51,8
+    LTEXT           "起始地址 : ",IDC_STATIC,24,172,58,8
+    GROUPBOX        "源端网络范围",IDC_STATIC,19,90,184,65
+    LTEXT           "终止地址 : ",IDC_STATIC,24,185,58,8
+    GROUPBOX        "目的端网络范围",IDC_STATIC,19,160,184,65
+    LTEXT           "起始端口 : ",IDC_STATIC,24,198,58,8
+    LTEXT           "终止端口 : ",IDC_STATIC,24,211,58,8
+    LTEXT           "协议类型 : ",IDC_STATIC,24,18,43,8
+    LTEXT           "进出方向 : ",IDC_STATIC,24,31,43,8
+    LTEXT           "实施动作 : ",IDC_STATIC,24,44,43,8
+    LTEXT           "备注 : ",IDC_STATIC,10,240,28,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,11,255,198,1
+    LTEXT           "使用状态 : ",IDC_STATIC,24,57,43,8
+    GROUPBOX        "基本设置",IDC_STATIC,10,5,198,65
+    GROUPBOX        "网络设置",IDC_STATIC,10,76,198,155
+END
+
+IDD_VIEW_RULE_DIALOG DIALOGEX 0, 0, 250, 292
+STYLE WS_CHILD
+EXSTYLE WS_EX_CLIENTEDGE
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    LTEXT           "协议类型 : ",IDC_STATIC,34,68,43,8
+    LTEXT           "进出方向 : ",IDC_STATIC,34,81,43,8
+    LTEXT           "实施动作 : ",IDC_STATIC,34,94,43,8
+    LTEXT           "使用状态 : ",IDC_STATIC,34,107,43,8
+    GROUPBOX        "基本设置",IDC_STATIC,7,54,236,68
+    LTEXT           "Static",IDC_VIEW_RULE_PROTOCOL,101,68,108,10,SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_DIRECTION,101,81,108,10,SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_ACTION,101,94,108,10,SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_USE,101,107,108,10,SS_SUNKEN
+    LTEXT           "源起始地址 : ",IDC_STATIC,34,144,51,8
+    LTEXT           "源结束地址 : ",IDC_STATIC,34,157,51,8
+    LTEXT           "源起始端口 : ",IDC_STATIC,34,170,51,8
+    LTEXT           "源结束端口 : ",IDC_STATIC,34,183,51,8
+    LTEXT           "目的起始地址 : ",IDC_STATIC,34,216,58,8
+    GROUPBOX        "源端网络范围",IDC_STATIC,7,130,236,68
+    LTEXT           "目的结束地址 : ",IDC_STATIC,34,229,58,8
+    GROUPBOX        "目的端网络范围",IDC_STATIC,7,202,236,68
+    LTEXT           "目的起始端口 : ",IDC_STATIC,34,242,58,8
+    LTEXT           "目的结束端口 : ",IDC_STATIC,34,255,58,8
+    LTEXT           "备注 : ",IDC_STATIC,7,273,33,8
+    LTEXT           "Static",IDC_VIEW_RULE_MEMO,52,273,191,10,SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_SRCSTARTIP,101,142,108,10,
+                    SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_SRCENDIP,101,154,108,10,SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_SRCSTARTPORT,101,168,108,10,
+                    SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_SRCENDPORT,101,181,108,10,
+                    SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_DSTSTARTIP,101,216,108,10,
+                    SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_DSTENDIP,101,228,108,10,SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_DSTSTARTPORT,101,242,108,10,
+                    SS_SUNKEN
+    LTEXT           "Static",IDC_VIEW_RULE_DSTENDPORT,101,255,108,10,
+                    SS_SUNKEN
+    LTEXT           "适配器 : ",IDC_STATIC,42,10,36,8
+    LTEXT           "Static",IDC_ADAPTER,40,26,203,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,7,41,236,1
+    CONTROL         140,IDC_STATIC,"Static",SS_BITMAP,7,7,22,23
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "NetWall Exe Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "NetWall Exe\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2003\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "NetWall Exe.EXE\0"
+            VALUE "ProductName", "NetWall Exe 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 205
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 101
+    END
+
+    IDD_ADD_RULE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 10
+        RIGHTMARGIN, 208
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 284
+    END
+
+    IDD_VIEW_RULE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 285
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "NetWall Exe\n\nNetWal\n\n\nNetWallExe.Document\nNetWal Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "NetWall 网络控制系统"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+    IDP_SOCKETS_INIT_FAILED "Windows 套接口初始化失败."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "显示程序信息，版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "将活动的窗口分隔成窗格\n分隔"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n显隐工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n显隐状态栏"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "改变窗口大小"
+    AFX_IDS_SCMOVE          "改变窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小成图标"
+    AFX_IDS_SCMAXIMIZE      "把窗口放大到最大尺寸"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到先前的文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动的窗口并提示保存所有文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "把窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务表"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_API_VER_MISMATCH    "This NetWall aplication has detected an API version mismatch that may cause unpredictable effects.\n\nPlease install NetWall components with compatible API versions and try again."
+    IDS_MEMORY_NOT_ENOUGH   "There is insufficient memory in system. Plese close some application."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_ADAPTER_OPEN         "打开NetWall适配器\n打开适配器"
+    ID_ADAPTER_CLOSE        "关闭NetWall适配器\n关闭适配器"
+    ID_RULE_ADD             "添加一条规则\n添加规则"
+    ID_RULE_DELETE          "删除一条规则\n删除规则"
+    ID_RULE_DELETEALL       "删除所有规则\n删除所有规则"
+    ID_RULE_MODIFY          "修改一条规则\n修改规则"
+    ID_ADAPTER_SETRULE      "给打开的适配器设置规则\n设置规则"
+    ID_ADAPTER_CLEARRULE    "清除打开的适配器的规则\n清除规则"
+    ID_LOG_START            "启动内核日志服务\n启动日志服务"
+    ID_LOG_STOP             "关闭内核日志服务\n关闭日志服务"
+    ID_LOG_LOAD             "装载当前适配器的日志\n装载日志"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_LOG_PAUSE            "暂停显示日志\n暂停显示"
+    ID_LOG_CONTINUE         "继续显示日志\n继续显示"
+    ID_LOG_STOP_DISPLAY     "停止显示日志\n停止显示"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\NetWall Exe.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#include "l.chs\afxprint.rc"        // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

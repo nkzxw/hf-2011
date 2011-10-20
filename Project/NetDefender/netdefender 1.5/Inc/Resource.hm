@@ -1,0 +1,5 @@
+// Microsoft Visual C++ generated Help ID include file.
+// Used by fire.rc
+//
+#define HIDC_LIST_PROCESS_VIEW          0x80900408    // IDD_PROCESS_VIEW
+#define HIDC_LIST_RESULT                0x806503fc    // IDD_FIRE_FORM

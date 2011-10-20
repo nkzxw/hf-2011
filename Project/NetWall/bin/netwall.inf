@@ -1,0 +1,84 @@
+; -- NETWALL.INF --
+;
+; NetWall INF file
+;
+; Copyright (c) 2002-2003, NetWall Technology Co.,Ltd.
+; ----------------------------------------------------------------------
+
+[Version]
+Signature  = "$Windows NT$"
+Class      = NetService
+ClassGUID  = {4D36E974-E325-11CE-BFC1-08002BE10318}
+Provider   = %NetWall%
+DriverVer  = 03/27/2003,1.00.00.00
+
+
+[Manufacturer]
+%NetWall% = NETWALL
+
+[ControlFlags]
+
+[NETWALL]
+%NetWall_Desc% = NetWall.ndi, lf_netwall
+
+[NetWall.ndi]
+AddReg = NetWall.ndi.AddReg, NetWall.AddReg
+Characteristics = 0x410 ; NCF_FILTER(0x400) | NCF_NO_SERVICE(0x10) !!--Filter Specific--!!
+CopyFiles       = NetWall.CopyFiles.Sys, NetWall.CopyFiles.Inf
+
+; ----------------------------------------------------------------------
+; File copy
+;
+[SourceDisksNames]
+1=%DiskDescription%,"",,
+
+[SourceDisksFiles]
+netwall.sys=1
+netwall_m.inf=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+NetWall.CopyFiles.Sys   = 12   ; %windir%\System32\drivers
+NetWall.CopyFiles.Inf   = 17   ; %windir%\inf
+
+[NetWall.CopyFiles.Sys]
+netwall.sys,,,2
+
+[NetWall.CopyFiles.Inf]
+netwall_m.inf,,,2
+
+; ----------------------------------------------------------------------
+; Filter Install
+;
+[NetWall.ndi.AddReg]
+HKR, Ndi, HelpText, , %NetWall_HELP%
+
+; ----------------------------------------------------------------------
+; !!--Filter Specific--!!
+HKR, Ndi,            FilterClass,         , failover
+HKR, Ndi,            FilterDeviceInfFile, , netwall_m.inf
+HKR, Ndi,            FilterDeviceInfId,   , lf_netwallmp
+HKR, Ndi,            Service,             , NetWall
+HKR, Ndi\Interfaces, UpperRange,          , noupper
+HKR, Ndi\Interfaces, LowerRange,          , nolower
+HKR, Ndi\Interfaces, FilterMediaTypes,    , "ethernet, tokenring, fddi"
+;HKR,Ndi\params\BundleId,ParamDesc,	0     , "Bundle1"
+
+[NetWall.AddReg]
+; The following key is Required
+; The following key is NetWall specific
+HKR, Parameters, Param1, 0, 4
+
+[NetWall.Ndi.Remove.Services]
+    DelService = NetWall
+
+; ----------------------------------------------------------------------
+[Strings]
+NetWall = "NetWall Technology Co.,Ltd."
+DiskDescription = "NetWall Driver Disk"
+
+NetWall_Desc = "NetWall Driver"
+NetWall_HELP = "NetWall Driver"
+
+
+
