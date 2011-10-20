@@ -1,0 +1,14 @@
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x86\ManagedTarget.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x86\ManagedTarget.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\x86\Debug\ManagedTarget.Properties.Resources.resources
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\x86\Debug\ManagedTarget.csproj.GenerateResource.Cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\x86\Debug\ManagedTarget.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\x86\Debug\ManagedTarget.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\ManagedTarget.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\ManagedTarget.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\Debug\ManagedTarget.Properties.Resources.resources
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\Debug\ManagedTarget.csproj.GenerateResource.Cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\Debug\ManagedTarget.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Test\ManagedTarget\obj\Debug\ManagedTarget.pdb

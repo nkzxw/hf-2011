@@ -1,0 +1,10 @@
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\ProcMonInject.dll
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\ProcMonInject.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcMonInject\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcMonInject\obj\Debug\ProcMonInject.dll
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcMonInject\obj\Debug\ProcMonInject.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcMonInject\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Release\x64\ProcMonInject.dll
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Release\x64\ProcMonInject.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcMonInject\obj\Release\ProcMonInject.dll
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcMonInject\obj\Release\ProcMonInject.pdb
