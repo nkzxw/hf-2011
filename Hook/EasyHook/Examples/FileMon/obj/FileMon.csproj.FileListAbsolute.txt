@@ -1,0 +1,10 @@
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\FileMon.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\FileMon.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\FileMon\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\FileMon\obj\Debug\FileMon.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\FileMon\obj\Debug\FileMon.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\FileMon\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Release\x64\FileMon.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Release\x64\FileMon.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\FileMon\obj\Release\FileMon.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\FileMon\obj\Release\FileMon.pdb

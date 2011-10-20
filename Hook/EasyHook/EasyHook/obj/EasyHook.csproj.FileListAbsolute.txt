@@ -1,0 +1,10 @@
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\EasyHook.dll
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\EasyHook.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\EasyHook\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\EasyHook\obj\Debug\EasyHook.dll
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\EasyHook\obj\Debug\EasyHook.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\EasyHook\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Release\x64\EasyHook.dll
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Release\x64\EasyHook.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\EasyHook\obj\Release\EasyHook.dll
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\EasyHook\obj\Release\EasyHook.pdb

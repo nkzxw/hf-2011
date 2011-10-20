@@ -1,0 +1,14 @@
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\ProcessMonitor.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Debug\x64\ProcessMonitor.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Debug\ProcessMonitor.Form1.resources
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Debug\ProcessMonitor.csproj.GenerateResource.Cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Debug\ProcessMonitor.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Debug\ProcessMonitor.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Release\ProcessMonitor.Form1.resources
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Release\ProcessMonitor.csproj.GenerateResource.Cache
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Release\x64\ProcessMonitor.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Release\x64\ProcessMonitor.pdb
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Release\ProcessMonitor.exe
+C:\Users\Lynn\Documents\Visual Studio 2005\Projects\EasyHook\Examples\ProcessMonitor\obj\Release\ProcessMonitor.pdb
