@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Install", "Install\Install.vcproj", "{2EFC5733-9DE6-4804-9CD2-905780047BB4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PG2Disable", "PG2Disable\PG2Disable.vcproj", "{0FA18A85-FA4C-409D-9FAE-480F07EE061B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PG3Disable", "PG3Disable\PG3Disable.vcproj", "{FBD0F846-1AAE-4019-9ED2-11D725C99999}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EFC5733-9DE6-4804-9CD2-905780047BB4}.Debug|x64.ActiveCfg = Debug|x64
+		{2EFC5733-9DE6-4804-9CD2-905780047BB4}.Debug|x64.Build.0 = Debug|x64
+		{2EFC5733-9DE6-4804-9CD2-905780047BB4}.Release|x64.ActiveCfg = Release|x64
+		{2EFC5733-9DE6-4804-9CD2-905780047BB4}.Release|x64.Build.0 = Release|x64
+		{0FA18A85-FA4C-409D-9FAE-480F07EE061B}.Debug|x64.ActiveCfg = Debug|x64
+		{0FA18A85-FA4C-409D-9FAE-480F07EE061B}.Release|x64.ActiveCfg = Release|x64
+		{0FA18A85-FA4C-409D-9FAE-480F07EE061B}.Release|x64.Build.0 = Release|x64
+		{FBD0F846-1AAE-4019-9ED2-11D725C99999}.Debug|x64.ActiveCfg = Debug|x64
+		{FBD0F846-1AAE-4019-9ED2-11D725C99999}.Debug|x64.Build.0 = Debug|x64
+		{FBD0F846-1AAE-4019-9ED2-11D725C99999}.Release|x64.ActiveCfg = Release|x64
+		{FBD0F846-1AAE-4019-9ED2-11D725C99999}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
