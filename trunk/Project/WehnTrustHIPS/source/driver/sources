@@ -1,0 +1,26 @@
+TARGETNAME=baserand
+TARGETPATH=.
+TARGETTYPE=DRIVER
+
+C_DEFINES=$(C_DEFINES)
+
+USE_MAPSYM=1
+SOURCES=baserand.c  \
+        baserand.rc \
+        compat.c    \
+        custom.c    \
+        disasm.c    \
+        executive.c \
+		  exemption.c \
+        hooks.c     \
+        images.c    \
+        ioctl.c     \
+        layer.c     \
+        ldr.c       \
+        mapping.c   \
+		  nrer.c      \
+        process.c   \
+		  reg.c       \
+        rng.c       \
+        rtle.c      \
+        sha1.c      

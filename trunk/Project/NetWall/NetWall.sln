@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetWall Dll", "dll\NetWallIM\NetWall Dll.vcproj", "{7414B9DF-CAB2-410B-8FA4-CC9747D6C17E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetWall Exe", "exe\NetWallIM\NetWall Exe.vcproj", "{8A55451A-484A-47EB-A1F9-405A3E27E485}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7414B9DF-CAB2-410B-8FA4-CC9747D6C17E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7414B9DF-CAB2-410B-8FA4-CC9747D6C17E}.Debug|Win32.Build.0 = Debug|Win32
+		{7414B9DF-CAB2-410B-8FA4-CC9747D6C17E}.Release|Win32.ActiveCfg = Release|Win32
+		{7414B9DF-CAB2-410B-8FA4-CC9747D6C17E}.Release|Win32.Build.0 = Release|Win32
+		{8A55451A-484A-47EB-A1F9-405A3E27E485}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8A55451A-484A-47EB-A1F9-405A3E27E485}.Debug|Win32.Build.0 = Debug|Win32
+		{8A55451A-484A-47EB-A1F9-405A3E27E485}.Release|Win32.ActiveCfg = Release|Win32
+		{8A55451A-484A-47EB-A1F9-405A3E27E485}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

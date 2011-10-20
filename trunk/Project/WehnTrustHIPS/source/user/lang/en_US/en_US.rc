@@ -1,0 +1,184 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""..\\events\\events.rc""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,2
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Wehnus, Inc.\0"
+            VALUE "FileDescription", "Language Locale DLL (English)\0"
+            VALUE "FileVersion", "1, 0, 0, 2\0"
+            VALUE "InternalName", "WehnTrust\0"
+            VALUE "LegalCopyright", "Copyright © 2004-2005\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Lang.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "WehnTrust\0"
+            VALUE "ProductVersion", "1, 0, 0, 0\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRODUCT_NAME        "WehnTrust"
+    IDS_OK                  "&OK"
+    IDS_CANCEL              "&Cancel"
+    IDS_START               "&Start"
+    IDS_STOP                "S&top"
+    IDS_HELP                "&Help"
+    IDS_WEHNTRUST_DIALOG_TITLE "WehnTrust"
+    IDS_ABOUT_BODY          "WehnTrust -- When you need to trust Windows.\n\nCopyright (c) 2006 Wehnus, Inc.  All rights reserved.\nFor more information, please visit http://www.wehnus.com\n\nWindows is a registered trademark of the Microsoft Corporation."
+    IDS_STATISTICS          "Statistics"
+    IDS_STAT_NUMRANDDLL     "Randomized images: %d"
+    IDS_CONTROL             "Control"
+    IDS_STAT_NUMEXEMPTDLL   "Exempted images: %d"
+    IDS_STAT_NUMIMAGESET    "Image sets: %d"
+    IDS_DRIVER_NOT_FOUND    "The device driver is improperly installed on this machine."
+    IDS_STATUS              "Status"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUT               "About"
+    IDS_EXIT                "Exit"
+    IDS_SYSTEM_UPDATED      "WehnTrust has detected that one or more of your system files has changed since the last system boot.  These changes have been synchronized and will be applied after a reboot has occured.  Would you like to reboot now?"
+    IDS_SYSTEM_UPDATED_TITLE "System Files Have Changed"
+    IDS_CHECK_SYNC_FAIL_TITLE "Synchronization Failed"
+    IDS_CHECK_SYNC_FAIL_BODY 
+                            "Your system's environment could not be synchronized for the device driver.  Please contact technical support for help with this issue."
+    IDS_STAT_NUMRANDALLOC   "Randomized allocations: %d"
+    IDS_RAND_ALLOC_TEXT     "Randomize memory allocations"
+    IDS_RAND_DLL_TEXT       "Randomize DLLs"
+    IDS_APPLY               "&Apply"
+    IDS_EXEMPTIONS          "Exemptions"
+    IDS_APPLICATION_EXEMPTIONS "Application Exemptions"
+    IDS_IMAGE_EXEMPTIONS    "Image File Exemptions"
+    IDS_ERROR_COULD_NOT_ADD_EXEMPTION 
+                            "The exemption could not be added or updated (error %lu)"
+    IDS_NO_FILE_SELECTED    "You must select at least one file."
+    IDS_ERROR_COULD_NOT_REMOVE_EXEMPTION 
+                            "The exemption could not be removed (error %lu):\n\n%s"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ERROR_COULD_NOT_FLUSH_EXEMPTIONS 
+                            "The exemptions could not be flushed (error %lu)."
+    IDS_DIRECTORY_EXEMPTIONS "Directory Exemptions"
+    IDS_APPLICATION_PATH_TO_EXEMPT "Application executable path to exempt:"
+    IDS_DIRECTORY_PATH_TO_EXEMPT "Directory path to exempt:"
+    IDS_IMAGE_FILE_PATH_TO_EXEMPT "Image file path to exempt:"
+    IDS_ADD_EXEMPTION       "Add Exemption"
+    IDS_EDIT_EXEMPTION      "Edit Exemption"
+    IDS_SHOW_SYSTEM_TRAY_ICON "Show system tray icon"
+    IDS_DISABLE_RANDALLOC   "Disable memory allocation randomization"
+    IDS_DISABLE_RANDIMAGE   "Disable image file randomization"
+    IDS_DISABLE_NRE_SEH     "Disable SEH overwrite protection"
+    IDS_DISABLE_NRE_STACK   "Disable stack overflow detection"
+    IDS_DISABLE_NRE_FORMAT  "Disable format string protection"
+    IDS_STAT_EXPPREV        "Exploits prevented: %lu"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LICENSE_NAME        "Name:"
+    IDS_LICENSE_CORPORATION "Corporation:"
+    IDS_LICENSE_KEY         "Key:"
+    IDS_LICENSE_SUMMARY     "Please enter the commercial license information that was supplied to you by Wehnus:"
+    IDS_LICENSE_IS_FREE     "This product is licensed for non-commercial use."
+    IDS_LICENSE_TO_USER     "This product is licensed to: %s (%s)"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "..\events\events.rc"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

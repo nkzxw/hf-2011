@@ -1,0 +1,6 @@
+LIBRARY NRER.DLL
+EXPORTS 
+	NreInitialize
+	CreateSehValidationFrame
+	DispatchTable
+	NreExecutionFlags

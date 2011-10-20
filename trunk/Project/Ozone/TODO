@@ -1,0 +1,122 @@
+TODO:
+
+append only files can be achieved by making sure that offsets passed to writefile are not less than the total size of the file
+
+disable all non-TCP/IP / netbios protocols by default (with an additional option to enable)
+(connect to \Device\AFD disable non tcp/ip stuff) (\device\netbios)
+
+svchost.exe needs to be jailed by DLLs... each DLL will have its own policy
+
+policy_include: additional.policy
+
+add ability to deny logons to certain users
+
+add a "signature" rule.. LocalSystem execution of different processes (especially cmd.exe) should be logged and possibly denied?
+
+allow occasional rules to go through w/o logging? especially file & registry?
+
+investigate SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\IEXPLORE.EXE
+
+
+disable execution of certain applications based on their version (i.e. vulnerable IE) (from okena)
+add sniffer & non-ip protocol detection (from okena)
+COM/ActiveX interception
+support for application clauses (chapter 6)
+
+when creating an "exception" rule, MC can/should ask for whether the exception rule should be created on
+the selected agent only, all agents of a certain type or all agents of all types
+
+
+block debuggers
+
+non-GUI/system apps cannot use GUI calls?
+
+
+in server paranoid mode, allow only c:\program files\*.exe and c:\windows\*.exe to execute?
+trusted path execution (execution of binaries from non-trusted directories (i.e world-writable))
+(A trusted path is one that is inside is a root owned directory that is not group or world writable.)
+
+explorer option.. "Run process in a sandbox.." brings up a gui that asks whether to allow file, reg, network access?
+
+port to Itanium/AMD64
+
+see if we can take over the job of a buffer overflow security exception handler
+on win2k3 install custom BO exception handler that terminates a process
+
+need to be able to control access to all device drivers (is this already handled by intercepting createfile?) is there another way to obtain a handle to a kernel driver?
+disable modem access, etc
+
+raw devices of all (mounted?) filesystems should be read-only
+
+copy in all unicode strings, check them and then pass the kernel copies to the kernel to avoid race conditions?
+
+disable our driver if loading using LastKnownGood configuration (notify MC?)
+
+restrict reboot capability and certain programs only to interactive sessions?!
+
+add ability to load what programs are allowed to run? (sha1 hashes, signed binaries)
+
+investigate kernel32!CreateHardLink
+
+dll_all: log will also log all section rules since RULE_DLL will be converted to RULE_SECTION
+
+protect crypto keys
+
+use ZwQueryProcessInfo ProcessVmCounters to keep track of amount of allocated process memory (execution time can be limited using job objects?! memory limit too?)
+(or simply hijack malloc & free)
+
+device naming on terminal servers
+
+have a webpage which lists new vulnerabilities and whether our system would automatically protect against it
+
+deallocate allocated virtual memory that was used by AS randomization once the process is loaded and initialized (what about dynamically loaded DLLs)?
+
+create a policy check tool.. one of the things to lookout for is using "eq" and then specifying regex chars like * or ? in the filename
+
+interactive learning mode
+
+policy_ask user app should not run as an interative service but rather as a separate app running as a particular user
+
+IIS install should scan the registry for any known virtual roots and automatically add them to the policy.. same for other apps
+
+make sure that file-system protection cannot be subverted by accessing files by other means (\\127.0.0.1\share\file)
+
+per-group policy, per-user global policy
+
+
+network connect should be able to specify ports and not just ip addresses
+address eq "127.0.0.1:443" then permit
+address eq "0:443" then deny
+address eq "\\UNCpath\blah" then log
+address eq "www.porn.com:80" then deny
+
+
+new product idea: Solaris BSM-like auditing (http://www.securityfocus.com/infocus/1362) for Windows
+(compare to what audit logs native Windows Group/Security Policies can already generate)
+posix 1003e
+
+
+layers:
+
+desktop
+web server (iis, apache, netscape)
+database server (oracle, MS SQL / access, Sybase, DB2, Informix, Interbase, MySQL)
+terminal server
+mail server
+VPN server / remote access server
+
+dns server
+dhcp server
+wins server
+streaming media server
+domain controller
+file and print server
+(application server – websphere, BEA websphere)
+(collaboration server – IBM Lotus Domino)
+
+
+client policies:
+	email (outlook, outlook express, eudora, netscape)
+	browsers (IE, netscape, opera)
+	IM (aol, yahoo!, msn, icq)
+	others (ms office, napster)

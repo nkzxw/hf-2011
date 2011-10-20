@@ -1,0 +1,25 @@
+<ServiceData>
+	<FileName>WehnServ.exe</FileName>
+	<ServiceInstall>
+		<Id>WehnServ</Id>
+		<Name>WehnServ</Name>
+		<DisplayName>WehnTrust Monitor Service</DisplayName>
+		<ServiceType> ownprocess </ServiceType> 
+		<Interactive> no</Interactive>
+		<Start> auto </Start>  
+		<ErrorControl >normal</ErrorControl>
+		<Arguments></Arguments>
+		<Dependencies></Dependencies>
+		<Description >WehnTrust Monitor Service</Description>
+	</ServiceInstall>
+	<ServiceControl>
+		<Name>WehnServ</Name>
+		<Id>WehnServControl</Id>
+		<Start> install </Start>
+		<Stop> both </Stop>
+		<Arguments></Arguments>
+		<Remove>uninstall </Remove>  
+		<Wait> yes </Wait>
+	</ServiceControl>
+</ServiceData>
+
