@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SunDbg", "SunDbg.vcproj", "{1114FF07-5960-4251-9B42-4E08FF01844E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1114FF07-5960-4251-9B42-4E08FF01844E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1114FF07-5960-4251-9B42-4E08FF01844E}.Debug|Win32.Build.0 = Debug|Win32
+		{1114FF07-5960-4251-9B42-4E08FF01844E}.Release|Win32.ActiveCfg = Release|Win32
+		{1114FF07-5960-4251-9B42-4E08FF01844E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

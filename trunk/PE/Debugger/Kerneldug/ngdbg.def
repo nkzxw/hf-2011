@@ -1,0 +1,67 @@
+LIBRARY "ngdbg.sys"
+EXPORTS
+	BootStartUp
+	BootCleanUp
+
+	; mm
+	MmIsSystemAddressAccessable
+	LockMem
+	UnlockMem
+	
+	; ngdbg
+	GetMem
+	GetSharedData
+	FindBaseAndSize
+	
+	
+	; gui
+	GuiTextOut
+	GuiPrintf
+	
+	; gdi
+	;GdiSetPixel
+	;GdiGetPixel
+	;GdiLineTo
+	DisplayBuffer
+	xxxDrvCopyBits
+	CreateSurface
+	DeleteSurface
+	EngFastAttachProcess
+	EngFastDetachProcess
+	
+		
+	; dbgeng
+	DbgAddCcBreakpoint
+	DbgDelCcBreakpoint
+	GetKernelAddress
+	DbgDispatchException
+	TrapFrame ; var
+	DbgFreezeProcessors
+	DbgThawProcessors
+	
+	; worker
+	WR_ENTER_DEBUGGER
+	W32PrepareCall
+	W32ReleaseCall
+	
+	; kbd
+	KbdGetKeyPolled
+	KbdSetLeds
+	PutScanCode
+	KeybProcessUserInputLocked
+	KeybdScanCodeToAsciiCode
+	
+	; mouse
+	MouGetBytePolled
+	
+	; translated exports from 8042
+	I8xGetBytePolled
+	I8xPutBytePolled
+	I8xDrainOutputBuffer
+	I8xGetByteAsynchronous
+	GetVector
+	GetAPICValue
+	GetIOAPICIntVector
+	IoHookInterrupt
+
+	

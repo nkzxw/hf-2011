@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ngvid", "ngvid.vcproj", "{27A67058-A316-408D-BA5D-BFA39D24448F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A924EE01-4B68-47EB-873F-4066422AFB7E} = {A924EE01-4B68-47EB-873F-4066422AFB7E}
+		{2C6782B7-7BC3-48B9-AB1B-22064124516A} = {2C6782B7-7BC3-48B9-AB1B-22064124516A}
+		{18ECD6D1-12AC-4651-8C5D-AF3DCED89CBC} = {18ECD6D1-12AC-4651-8C5D-AF3DCED89CBC}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winstb", "winstb.vcproj", "{2C6782B7-7BC3-48B9-AB1B-22064124516A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "8042", "8042\8042.vcproj", "{A924EE01-4B68-47EB-873F-4066422AFB7E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vcrt", "vcrt\vcrt.vcproj", "{18ECD6D1-12AC-4651-8C5D-AF3DCED89CBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27A67058-A316-408D-BA5D-BFA39D24448F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27A67058-A316-408D-BA5D-BFA39D24448F}.Debug|Win32.Build.0 = Debug|Win32
+		{27A67058-A316-408D-BA5D-BFA39D24448F}.Release|Win32.ActiveCfg = Release|Win32
+		{27A67058-A316-408D-BA5D-BFA39D24448F}.Release|Win32.Build.0 = Release|Win32
+		{2C6782B7-7BC3-48B9-AB1B-22064124516A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2C6782B7-7BC3-48B9-AB1B-22064124516A}.Debug|Win32.Build.0 = Debug|Win32
+		{2C6782B7-7BC3-48B9-AB1B-22064124516A}.Release|Win32.ActiveCfg = Release|Win32
+		{2C6782B7-7BC3-48B9-AB1B-22064124516A}.Release|Win32.Build.0 = Release|Win32
+		{A924EE01-4B68-47EB-873F-4066422AFB7E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A924EE01-4B68-47EB-873F-4066422AFB7E}.Debug|Win32.Build.0 = Debug|Win32
+		{A924EE01-4B68-47EB-873F-4066422AFB7E}.Release|Win32.ActiveCfg = Release|Win32
+		{A924EE01-4B68-47EB-873F-4066422AFB7E}.Release|Win32.Build.0 = Release|Win32
+		{18ECD6D1-12AC-4651-8C5D-AF3DCED89CBC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{18ECD6D1-12AC-4651-8C5D-AF3DCED89CBC}.Debug|Win32.Build.0 = Debug|Win32
+		{18ECD6D1-12AC-4651-8C5D-AF3DCED89CBC}.Release|Win32.ActiveCfg = Release|Win32
+		{18ECD6D1-12AC-4651-8C5D-AF3DCED89CBC}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

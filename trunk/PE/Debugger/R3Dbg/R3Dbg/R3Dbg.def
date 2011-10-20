@@ -1,0 +1,29 @@
+; R3Dbg.def : Declares the module parameters for the DLL.
+
+LIBRARY      "R3Dbg"
+DESCRIPTION  'R3Dbg Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	CreateDbgProc					;创建被调试进程
+	SetDbgNamePath					;设置被调试程序路径
+	GetErr							;获取上次错误信息
+	SetBreakPointInfo				;设置要增加的断点信息
+	AddSoftBreak					;增加软断点
+	SetBreakNum						;设置要操作的断点编号
+	SetOpCode						;设置操作指令
+	GetAsmStr						;获取反汇编信息
+	GetIsPase						;获取程序运行状态
+	AddHeadBreak					;增加硬件断点
+	SetMemBreakInfo					;设置内存断点附加信息
+	AddMemBreak						;增加内存断点
+	SetIsPase						;设置程序运行状态
+	GetRegisterStr					;获取寄存器信息字符串
+	GetMemStr						;获取内存信息字符串
+	GetStackStr						;获取栈信息字符串
+	GetBreakStr						;获取断点信息字符串
+	OpCommend						;操作命令解析函数
+	SetPrProcess					;设置主控进程路径
+	GetOpCommend					;获取OpCommend函数地址
+	GetR3DbgHandle					;获取R3DBG.dll的模块句柄
+	GetR3ProcHandle					;获取被调试程序进程句柄
