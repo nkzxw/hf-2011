@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "osloader", "osloader\osloader.vcproj", "{C52A9C77-2FCD-4825-B2FA-0BD83C8046DE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "startup", "startup\startup.vcproj", "{7A2C4C82-AA01-405C-B83D-940FFF6E261C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C52A9C77-2FCD-4825-B2FA-0BD83C8046DE} = {C52A9C77-2FCD-4825-B2FA-0BD83C8046DE}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Checked|Win32 = Checked|Win32
+		Free|Win32 = Free|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C52A9C77-2FCD-4825-B2FA-0BD83C8046DE}.Checked|Win32.ActiveCfg = Checked|Win32
+		{C52A9C77-2FCD-4825-B2FA-0BD83C8046DE}.Checked|Win32.Build.0 = Checked|Win32
+		{C52A9C77-2FCD-4825-B2FA-0BD83C8046DE}.Free|Win32.ActiveCfg = Free|Win32
+		{C52A9C77-2FCD-4825-B2FA-0BD83C8046DE}.Free|Win32.Build.0 = Free|Win32
+		{7A2C4C82-AA01-405C-B83D-940FFF6E261C}.Checked|Win32.ActiveCfg = Checked|Win32
+		{7A2C4C82-AA01-405C-B83D-940FFF6E261C}.Checked|Win32.Build.0 = Checked|Win32
+		{7A2C4C82-AA01-405C-B83D-940FFF6E261C}.Free|Win32.ActiveCfg = Free|Win32
+		{7A2C4C82-AA01-405C-B83D-940FFF6E261C}.Free|Win32.Build.0 = Free|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = 
+	EndGlobalSection
+EndGlobal
