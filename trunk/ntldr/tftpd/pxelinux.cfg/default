@@ -1,0 +1,7 @@
+DEFAULT Windows
+TIMEOUT 50
+SERIAL 0 115200
+
+LABEL Windows
+	KERNEL NTLDR.krl
+	APPEND root=/dev/sda1 debugport=1394 channel=12 debugstop redirectport=com1 redirectbaudrate=115200 forcelba autoreboot
