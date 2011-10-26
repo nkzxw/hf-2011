@@ -1,0 +1,14 @@
+LIBRARY "NyxPlugin"
+EXPORTS
+OpenArchive
+OpenArchiveW
+ReadHeader
+ReadHeaderEx
+ProcessFile
+ProcessFileW
+CloseArchive
+SetChangeVolProc
+SetProcessDataProc
+CanYouHandleThisFile
+CanYouHandleThisFileW
+GetPackerCaps
