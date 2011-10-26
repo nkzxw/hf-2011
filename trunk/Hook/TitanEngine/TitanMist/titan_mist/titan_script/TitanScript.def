@@ -1,0 +1,16 @@
+LIBRARY "TitanScript"
+EXPORTS
+TitanDebuggingCallBack
+TitanRegisterPlugin
+TitanResetPlugin
+TitanReleasePlugin
+ScripterLoadFileA
+ScripterLoadFileW
+ScripterLoadBuffer
+ScripterResume
+ScripterPause
+ScripterAutoDebugA
+ScripterAutoDebugW
+ScripterSetLogCallback
+ScripterExecuteWithTitanMistA
+ScripterExecuteWithTitanMistW
