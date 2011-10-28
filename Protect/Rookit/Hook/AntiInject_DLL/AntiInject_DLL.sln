@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Anti", "AntiInject_DLL\AntiInject_DLL.vcproj", "{C776DEEF-6441-4B80-B62D-B67F5B7F3E15}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcproj", "{5662992D-62FB-4645-9701-2E185FEBDC8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C776DEEF-6441-4B80-B62D-B67F5B7F3E15}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C776DEEF-6441-4B80-B62D-B67F5B7F3E15}.Debug|Win32.Build.0 = Debug|Win32
+		{C776DEEF-6441-4B80-B62D-B67F5B7F3E15}.Release|Win32.ActiveCfg = Release|Win32
+		{C776DEEF-6441-4B80-B62D-B67F5B7F3E15}.Release|Win32.Build.0 = Release|Win32
+		{5662992D-62FB-4645-9701-2E185FEBDC8C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5662992D-62FB-4645-9701-2E185FEBDC8C}.Debug|Win32.Build.0 = Debug|Win32
+		{5662992D-62FB-4645-9701-2E185FEBDC8C}.Release|Win32.ActiveCfg = Release|Win32
+		{5662992D-62FB-4645-9701-2E185FEBDC8C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
