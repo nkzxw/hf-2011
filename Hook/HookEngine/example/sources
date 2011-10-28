@@ -1,0 +1,10 @@
+TARGETNAME=InlineHook
+TARGETPATH=.\obj
+TARGETTYPE=DRIVER
+
+TARGETLIBS=\
+		..\lib\$(O)\HookEngine.lib
+		
+SOURCES=\
+		InlineHook.c		
+       
