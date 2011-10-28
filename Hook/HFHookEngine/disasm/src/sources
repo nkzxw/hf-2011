@@ -1,0 +1,19 @@
+TARGETNAME=distorm
+
+TARGETPATH=..\..\lib\$(O)
+
+TARGETTYPE=LIBRARY
+
+C_DEFINES=$(C_DEFINES) -DUNICODE -D_UNICODE
+
+SOURCES=\
+    distorm.c \
+    decoder.c \
+    instructions.c	\
+    insts.c		\
+    mnemonics.c 	\
+    operands.c		\
+    prefix.c			\
+    textdefs.c		\
+    wstring.c			\
+    x86defs.c

@@ -1,0 +1,11 @@
+TARGETNAME=InlineHook
+TARGETPATH=.\obj
+TARGETTYPE=DRIVER
+
+TARGETLIBS=\
+		..\lib\$(O)\distorm.lib	
+		
+SOURCES=\
+		..\HookEngine\HookEngine.c	\
+		InlineHook.c		
+       
