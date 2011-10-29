@@ -1,0 +1,6 @@
+TARGETNAME=sysenter
+TARGETPATH=OBJ
+TARGETTYPE=DRIVER
+
+SOURCES=\
+			sysenter.c 	
