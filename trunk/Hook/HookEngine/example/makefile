@@ -5,3 +5,5 @@
 #
 
 !INCLUDE $(NTMAKEENV)\makefile.def
+
+MSC_WARNING_LEVEL=/W3

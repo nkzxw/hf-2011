@@ -3,8 +3,9 @@ TARGETPATH=.\obj
 TARGETTYPE=DRIVER
 
 TARGETLIBS=\
-		..\lib\$(O)\HookEngine.lib
+		..\lib\$(O)\HookEngine.lib	\
+		ext.obj
 		
 SOURCES=\
-		InlineHook.c		
+		InlineHook.c	
        

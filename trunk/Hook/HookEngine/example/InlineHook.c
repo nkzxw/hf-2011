@@ -5,7 +5,10 @@
 
 #include "../include/engine.h"
 
+extern void	AdjustStackCallPointer();
+
 HOOK_INFO  hi_NtCreateProcessEx;
+HOOK_INFO  hi_KeBugCheckEx;
 
 NTSYSAPI
 NTSTATUS
@@ -53,8 +56,15 @@ MyNtCreateProcessEx(
 {
 	NTSTATUS ntStatus = STATUS_SUCCESS;
 	
+	DbgPrint ("MyNtCreateProcessEx Entry.\n");
+	DbgPrint ("pOrigFunction is 0x%08x.\n", hi_NtCreateProcessEx.pOrigFunction);
+	DbgPrint ("pHookFunction is 0x%08x.\n", hi_NtCreateProcessEx.pHookFunction);
+	DbgPrint ("pTramFunction is 0x%08x.\n", hi_NtCreateProcessEx.pTramFunction);
+	
 	if (0 == hi_NtCreateProcessEx.pTramFunction)
 		return ntStatus;
+		
+	DbgPrint ("MyNtCreateProcessEx after.\n");
 		
 	ntStatus = ((LPFUN_NTCREATEPROCESSEX)(hi_NtCreateProcessEx.pTramFunction))(ProcessHandle,
 																																					DesiredAccess,
@@ -340,6 +350,79 @@ ULONG_PTR GetUnExportFunctionAddress  (
 		return Value;  
 } 
 
+static ULONG ThreadStartRoutineOffset = 0;
+
+typedef 
+VOID 
+(* LPFUN_KEBUGCHECKEX)(
+  __in  ULONG BugCheckCode,
+  __in  ULONG_PTR BugCheckParameter1,
+  __in  ULONG_PTR BugCheckParameter2,
+  __in  ULONG_PTR BugCheckParameter3,
+  __in  ULONG_PTR BugCheckParameter4
+	);
+
+VOID MyKeBugCheckEx(
+  __in  ULONG BugCheckCode,
+  __in  ULONG_PTR BugCheckParameter1,
+  __in  ULONG_PTR BugCheckParameter2,
+  __in  ULONG_PTR BugCheckParameter3,
+  __in  ULONG_PTR BugCheckParameter4)
+{
+    PUCHAR LockedAddress;
+    PCHAR  ReturnAddress;
+    PMDL   Mdl = NULL;
+
+
+    //
+    // Call the real KeBugCheckEx if this isn't the bug check code we're looking
+    // for.
+    //
+    if (BugCheckCode != 0x109)
+    {
+        DbgPrint(("Passing through bug check %.4x to %p.",
+                BugCheckCode,
+                hi_KeBugCheckEx.pTramFunction));
+
+				((LPFUN_KEBUGCHECKEX)(hi_KeBugCheckEx.pTramFunction))(BugCheckCode,
+																															BugCheckParameter1,
+																															BugCheckParameter2,
+																															BugCheckParameter3,
+																															BugCheckParameter4);
+    }
+    else
+    {
+    		//
+    		//ThreadStartRoutineOffset = nt!_ETHREAD + StartAddress
+    		//
+        PCHAR CurrentThread = (PCHAR)PsGetCurrentThread();
+        PVOID StartRoutine  = *(PVOID **)(CurrentThread + ThreadStartRoutineOffset);
+        PVOID StackPointer  = IoGetInitialStack();
+
+        DbgPrint(("Restarting the current worker thread %p at %p (SP=%p, off=%lu).",
+                PsGetCurrentThread(),
+                StartRoutine,
+                StackPointer,
+                ThreadStartRoutineOffset));
+
+        //
+        // Shift the stack pointer back to its initial value and call the routine.  We
+        // subtract eight to ensure that the stack is aligned properly as thread
+        // entry point routines would expect.
+        //
+        AdjustStackCallPointer(
+                (ULONG_PTR)StackPointer - 0x8,
+                StartRoutine,
+                NULL);
+    }
+
+    //
+    // In either case, we should never get here.
+    //
+    __debugbreak();
+}
+
+
 VOID OnUnload( IN PDRIVER_OBJECT DriverObject )
 {
 	UnInstallHook (&hi_NtCreateProcessEx);
@@ -357,12 +440,17 @@ NTSTATUS DriverEntry(
 																													0x0124a164);
 	*/
 	//ULONG_PTR ulNtCreateProcessEx = 0x805c5c32;
-	//ULONG_PTR ulNtCreateProcessEx = 0xfffff800012d32c0;
-	ULONG_PTR ulNtCreateProcessEx = 0x805c6c32;
-	
+	//ULONG_PTR ulNtCreateProcessEx = 0x805c6c32;
+	ULONG_PTR ulNtCreateProcessEx = 0xfffff800012d32c0;
+	ULONG_PTR ulKeBugCheckEx = 0x0000;
 	hi_NtCreateProcessEx.pOrigFunction = ulNtCreateProcessEx;
 	hi_NtCreateProcessEx.pHookFunction = (ULONG_PTR)((PCHAR)MyNtCreateProcessEx);
 	InstallHook (&hi_NtCreateProcessEx);
+
+	
+	hi_KeBugCheckEx.pOrigFunction = ulKeBugCheckEx;
+	hi_KeBugCheckEx.pHookFunction = (ULONG_PTR)((PCHAR)MyKeBugCheckEx);
+	InstallHook (&hi_KeBugCheckEx);
 	
   pDriverObject->DriverUnload = OnUnload;  
   																										   
