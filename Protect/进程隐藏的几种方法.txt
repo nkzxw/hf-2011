@@ -1,0 +1,8 @@
+1、调用RegisterServiceProcess函数
+2、HOOK ZwQuerySystemInformation（通过修改内核ntoskrnl的服务表结构体KeServiceDescriptorTable,计算机出ZwQuerySystemInformation的地址,
+然后替换成自己的MyZwQuerySystemInformation,然后断掉过滤要隐藏的进程名.）
+3、DKOM摘链（按照进程的ID找到进程的EPROCESS然后将样隐藏的进程的EPROCESS在链表中移除）
+4、用Detour Patching来修改NtQuerySystemInformation函数
+5、远程线程注入，提权注入到系统服务进程
+6、无驱动进入ring0，再在ring0下修改内核对象实现隐藏
+7、通过驱动加载.(通过用户空间程序获的进程ID，EPROCESS块 中FLINK和 PID的偏移量 ，传送给驱动程序，驱动程序修改链表隐藏进程。)
