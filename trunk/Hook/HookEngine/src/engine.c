@@ -113,12 +113,9 @@ JMP_ABS MakeAbstractJump(ULONG_PTR pToAddr)
 	JumpABS.opcode2 = 0x25;
 	
 #ifdef _WIN64
-	//JumpABS.reserved[4] = { 0x90 };
-	//RtlFillMemory((PCHAR)JumpABS.reserved[4], 4, 0);
-	JumpABS.reserved[0] = 0x0;
-	JumpABS.reserved[1] = 0x0;
-	JumpABS.reserved[2] = 0x0;
-	JumpABS.reserved[3] = 0x0;
+	JumpABS.reserved = 0x0;
+#else
+	JumpABS.reserved = (ULONG32)pToAddr;
 #endif //_WIN64
 
 	JumpABS.operand = pToAddr;
