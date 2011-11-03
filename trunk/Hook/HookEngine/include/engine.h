@@ -30,9 +30,7 @@ typedef struct _JMP_ABS
 {
 	unsigned char opcode1;
 	unsigned char opcode2;
-#ifdef _WIN64
-	unsigned char reserved[4];
-#endif 
+	ULONG32 reserved;
 	ULONG_PTR operand;
 }JMP_ABS, *PJMP_ABS;
 #pragma pack(pop)
