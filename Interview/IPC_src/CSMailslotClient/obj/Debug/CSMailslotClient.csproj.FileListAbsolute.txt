@@ -1,0 +1,5 @@
+E:\google\IPC_src\Visual Studio 2008\Debug\CSMailslotClient.exe
+E:\google\IPC_src\Visual Studio 2008\Debug\CSMailslotClient.pdb
+E:\google\IPC_src\Visual Studio 2008\CSMailslotClient\obj\Debug\ResolveAssemblyReference.cache
+E:\google\IPC_src\Visual Studio 2008\CSMailslotClient\obj\Debug\CSMailslotClient.exe
+E:\google\IPC_src\Visual Studio 2008\CSMailslotClient\obj\Debug\CSMailslotClient.pdb

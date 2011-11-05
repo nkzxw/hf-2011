@@ -1,0 +1,27 @@
+;--------------------------------------------------------------------
+;   Copyright (c) 2000  Microsoft Corporation
+;
+;Module:
+;   dbgexts.def
+;--------------------------------------------------------------------
+
+EXPORTS
+
+;--------------------------------------------------------------------
+; These are the extensions exported by dll
+;--------------------------------------------------------------------
+    unwindinfo
+    scoperecord
+    rtfn
+
+;--------------------------------------------------------------------
+;
+; these are the extension service functions provided for the debugger
+;
+;--------------------------------------------------------------------
+
+     DebugExtensionNotify
+     DebugExtensionInitialize
+     DebugExtensionUninitialize
+     KnownStructOutput
+     _EFN_Analyze
