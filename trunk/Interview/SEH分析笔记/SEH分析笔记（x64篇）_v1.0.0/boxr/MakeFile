@@ -1,0 +1,64 @@
+!include <Win32.Mak>
+
+PROJECT_NAME = boxr
+
+PROJECT_SUFFIX = dll
+
+
+
+INC_OPTIONS = /I"c:\Windbg\sdk\inc"
+LIB_OPTIONS = c:\Windbg\sdk\lib\i386\dbgeng.lib
+PROJECT_OBJ = $(OUTDIR)\dbgexts.obj	\
+              $(OUTDIR)\$(PROJECT_NAME).Res	\
+              $(OUTDIR)\exts.obj
+
+
+CC_DEF_OPTIONS = /nologo /WL /WX /EHsc /GS /Gy /RTCs /Zi /TP $(INC_OPTIONS)
+RC_DEF_OPTIONS = 
+LINK_OPTIONS = /DEBUG $(LIB_OPTIONS) /DLL /DEF:.\dbgexts.def
+
+
+!IFDEF NODEBUG
+CC_OPTIONS = $(CC_DEF_OPTIONS) /MT
+OUTDIR = Release
+!ELSE
+CC_OPTIONS = $(CC_DEF_OPTIONS) /MTd /D_DEBUG /D_DBG_
+OUTDIR = Debug
+!ENDIF
+
+
+TARGET_DIR = .
+TARGET_PATH = $(TARGET_DIR)\$(PROJECT_NAME).$(PROJECT_SUFFIX)
+
+all: $(OUTDIR) $(TARGET_DIR) $(TARGET_PATH)
+
+{..\Utility}.cpp{$(OUTDIR)}.obj:
+	@$(cc) $(cflags) $(cvars) $(cdebug) $(CC_OPTIONS) /Fo"$(OUTDIR)\\" /Fd"$(OUTDIR)\\" $**
+
+{..\Utility}.c{$(OUTDIR)}.obj:
+	@$(cc) $(cflags) $(cvars) $(cdebug) $(CC_OPTIONS) /Fo"$(OUTDIR)\\" /Fd"$(OUTDIR)\\" $**
+
+{.}.cpp{$(OUTDIR)}.obj:
+	@$(cc) $(cflags) $(cvars) $(cdebug) $(CC_OPTIONS) /Fo"$(OUTDIR)\\" /Fd"$(OUTDIR)\\" $**
+
+{.}.c{$(OUTDIR)}.obj:
+	@$(cc) $(cflags) $(cvars) $(cdebug) $(CC_OPTIONS) /Fo"$(OUTDIR)\\" /Fd"$(OUTDIR)\\" $**
+
+$(OUTDIR)\$(PROJECT_NAME).Res: $(PROJECT_NAME).Rc
+    @$(rc) $(rcflags) $(RC_OPTIONS) /nologo $(rcvars) /fo $(OUTDIR)\$(PROJECT_NAME).res $(PROJECT_NAME).Rc
+
+$(TARGET_PATH): $(PROJECT_OBJ)
+    @$(link) $(linkdebug) $(guiflags) $(LINK_OPTIONS) -out:$(TARGET_PATH) $(PROJECT_OBJ) $(guilibs) $(LIBS)
+
+$(OUTDIR) :
+	@if not exist "$(OUTDIR)/$(NULL)" mkdir $(OUTDIR)
+
+$(TARGET_DIR) :
+	@if not exist "$(TARGET_DIR)/$(NULL)" mkdir $(TARGET_DIR)
+
+#copy:
+#	@attrib -H -S -R -A ..\DestDir\$(PROJECT_NAME).$(PROJECT_SUFFIX)
+#	copy $(TARGET_PATH) ..\DestDir\$(PROJECT_NAME).$(PROJECT_SUFFIX)
+
+clean:
+	$(CLEANUP)
