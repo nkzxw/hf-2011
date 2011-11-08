@@ -1,0 +1,104 @@
+ FILEVXD
+
+ Timestamp is 37c5a9a1 (Thu Aug 26 16:54:57 1999)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00000760H .bss                    CODE
+ 0001:00000760 0000074cH _LDATA                  CODE
+ 0001:00000eac 00002c7aH _LTEXT                  CODE
+ 0002:00000000 00000004H ICRTTEXT                CODE
+ 0002:00000004 00000004H ICRTXXXX                CODE
+ 0002:00000008 0000003cH _IDATA                  CODE
+ 0002:00000044 00000018H _ITEXT                  CODE
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0001:00000000       _ExcludeFilters            00401000     <common>
+ 0001:00000100       _PrevIFSHookProc           00401100     <common>
+ 0001:00000104       _FilterMutex               00401104     <common>
+ 0001:00000108       _StoreMutex                00401108     <common>
+ 0001:00000120       _IncludeFilters            00401120     <common>
+ 0001:00000220       _FilterDef                 00401220     <common>
+ 0001:00000324       _HashMutex                 00401324     <common>
+ 0001:00000340       _errstring                 00401340     <common>
+ 0001:00000360       _HashTable                 00401360     <common>
+ 0001:00000760       _FilterOn                  00401760     filemon.OBJ
+ 0001:00000764       _NumIncludeFilters         00401764     filemon.OBJ
+ 0001:00000768       _NumExcludeFilters         00401768     filemon.OBJ
+ 0001:0000076c       _FreeEntries               0040176c     filemon.OBJ
+ 0001:00000770       _Store                     00401770     filemon.OBJ
+ 0001:00000774       _Sequence                  00401774     filemon.OBJ
+ 0001:00000778       _NumStore                  00401778     filemon.OBJ
+ 0001:0000077c       _MaxStore                  0040177c     filemon.OBJ
+ 0001:00000780       _TimeIsDuration            00401780     filemon.OBJ
+ 0001:00000788       _The_DDB                   00401788     filemon.OBJ
+ 0001:00000d3c       _VXD_SERVICE_TABLE_SIZE    00401d3c     cfMS540:vsvctab.obj
+ 0001:00000d3c       _VXD_SERVICE_TABLE         00401d3c     cfMS540:vsvctab.obj
+ 0001:00000dac       _LOCK__CTAB                00401dac     rtMS540:C002l.obj
+ 0001:00000eac       _ControlDispatcher         00401eac f   filemon.OBJ
+ 0001:00000edd       _MatchOkay                 00401edd f   filemon.OBJ
+ 0001:00000ef5       _MatchWithPattern          00401ef5 f   filemon.OBJ
+ 0001:00000f8b       _FilemonFreeStore          00401f8b f   filemon.OBJ
+ 0001:00000faf       _FilemonNewStore           00401faf f   filemon.OBJ
+ 0001:0000105d       _FilemonOldestStore        0040205d f   filemon.OBJ
+ 0001:00001081       _FilemonResetStore         00402081 f   filemon.OBJ
+ 0001:000010af       _UpdateStore               004020af f   filemon.OBJ
+ 0001:00001167       _FilemonHashCleanup        00402167 f   filemon.OBJ
+ 0001:000011c3       _FilemonStoreHash          004021c3 f   filemon.OBJ
+ 0001:000012a8       _FilemonFreeHashEntry      004022a8 f   filemon.OBJ
+ 0001:00001332       _ErrorString               00402332 f   filemon.OBJ
+ 0001:00001437       _FilemonFreeFilters        00402437 f   filemon.OBJ
+ 0001:00001496       _MakeFilterArray           00402496 f   filemon.OBJ
+ 0001:00001501       _FilemonUpdateFilters      00402501 f   filemon.OBJ
+ 0001:0000154a       _wstrlen                   0040254a f   filemon.OBJ
+ 0001:00001568       _FilemonGetProcess         00402568 f   filemon.OBJ
+ 0001:0000166d       _ApplyNameFilter           0040266d f   filemon.OBJ
+ 0001:000016ee       _ApplyFilters              004026ee f   filemon.OBJ
+ 0001:00001718       _FilemonConvertPath        00402718 f   filemon.OBJ
+ 0001:0000175a       _FilemonGetFullPath        0040275a f   filemon.OBJ
+ 0001:00001860       _FilemonHookProc           00402860 f   filemon.OBJ
+ 0001:00003055       _OnSysDynamicDeviceInit    00404055 f   filemon.OBJ
+ 0001:000030c9       _OnSysDynamicDeviceExit    004040c9 f   filemon.OBJ
+ 0001:000030e7       _OnW32Deviceiocontrol      004040e7 f   filemon.OBJ
+ 0001:0000326f       _LocalPMhandler            0040426f f   cfMS540:control.obj
+ 0001:00003279       _LocalV86handler           00404279 f   cfMS540:control.obj
+ 0001:00003283       _LocalControlDispatcher    00404283 f   cfMS540:control.obj
+ 0001:000032b8       _PM_Api_Handler            004042b8 f   cfMS540:pmapi.obj
+ 0001:000032bc       _V86_Api_Handler           004042bc f   cfMS540:v86api.obj
+ 0001:000032bd       _LOCK_vsprintf             004042bd f   rtMS540:C048l.obj
+ 0001:000032d5       _LOCK_sprintf              004042d5 f   rtMS540:C041l.obj
+ 0001:000032ee       _LOCK_strncpy              004042ee f   rtMS540:C028l.obj
+ 0001:00003315       _LOCK__stricmp             00404315 f   rtMS540:C032l.obj
+ 0001:00003356       _LOCK_dprintf              00404356 f   rtMS540:C042l.obj
+ 0001:0000335b       _LOCK__vsnprintf           0040435b f   rtMS540:C047l.obj
+ 0001:00003895       _LOCK_free                 00404895 f   rtMS540:C001l.obj
+ 0001:000038a6       _LOCK__ltoa                004048a6 f   rtMS540:C012l.obj
+ 0001:00003936       _LOCK__strupr              00404936 f   rtMS540:C025l.obj
+ 0001:0000395c       _LOCK__ultoa               0040495c f   rtMS540:C010l.obj
+ 0001:000039d2       _LOCK_malloc               004049d2 f   rtMS540:C043l.obj
+ 0001:000039e4       _LOCK__PageFree            004049e4 f   wr0MS940:VW058l.obj
+ 0001:000039ec       _LOCK_Wait_Semaphore@8     004049ec f   wr0MS940:VW003l.obj
+ 0001:00003a00       _LOCK__PageAllocate@40     00404a00 f   wr0MS940:VW061l.obj
+ 0001:00003a40       _LOCK_Signal_Semaphore@4   00404a40 f   wr0MS940:VW022l.obj
+ 0001:00003a50       _LOCK__HeapFree            00404a50 f   wr0MS940:VW110l.obj
+ 0001:00003a58       _LOCK__HeapAllocate        00404a58 f   wr0MS940:VW111l.obj
+ 0001:00003a60       _LOCK__SelectorMapFlat     00404a60 f   wr0MS940:VW040l.obj
+ 0001:00003a68       _LOCK_Get_Sys_VM_Handle@0  00404a68 f   wr0MS940:VW121l.obj
+ 0001:00003a78       _LOCK_Create_Semaphore@4   00404a78 f   wr0MS940:VW186l.obj
+ 0001:00003a8c       _LOCK_VTD_Get_Real_Time@8  00404a8c f   wr2MS940:VW518l.obj
+ 0001:00003aa4       _LOCK_VWIN32_GetCurrentProcessHandle 00404aa4 f   wr3MS940:VW812l.obj
+ 0001:00003aac       _LOCK_UniToBCSPath         00404aac f   wr3MS940:VW734l.obj
+ 0001:00003ad0       _LOCK_IFSMgr_RetHeap       00404ad0 f   wr3MS940:VW683l.obj
+ 0001:00003ad8       _LOCK_IFSMgr_GetHeap       00404ad8 f   wr3MS940:VW682l.obj
+ 0001:00003ae0       _LOCK_UniToBCS             00404ae0 f   wr3MS940:VW733l.obj
+ 0001:00003b08       _LOCK_IFSMgr_Get_DOSTime   00404b08 f   wr3MS940:VW676l.obj
+ 0001:00003b18       _LOCK_IFSMgr_InstallFileSystemApiHook 00404b18 f   wr3MS940:VW772l.obj
+ 0001:00003b20       _LOCK_IFSMgr_RemoveFileSystemApiHook 00404b20 f   wr3MS940:VW773l.obj
+ 0002:00000044       INITCRT                    00404c44     ICRTMS9.OBJ
+
+ entry point at        0000:00000000
+
+ Static symbols
+

@@ -1,0 +1,9 @@
+CompanyName	    =	"Mark Russinovich and Bryce Cogswell" 
+FileDescription =	"File Monitor VxD"
+FileVersion	    =	"Version 4.34" 
+InternalName	=	"FILEMON"
+LegalCopyright	= 	"Copyright \251 1996-2001, Mark Russinovich and Bryce Cogswell"
+OriginalFilename = 	"filemon.vxd"
+ProductName	    =	"Filemon"
+ProductVersion	= 	"Version 4.34"
+Translation	    =	0x409, 0x4E4

@@ -1,0 +1,11 @@
+TARGETNAME=filem
+!IF "$(NT4DDK)" != ""
+TARGETPATH=$(BASEDIR)\lib
+!ELSE
+TARGETPATH=obj
+!ENDIF
+TARGETTYPE=DRIVER
+
+SOURCES=filemon.c filemon.rc
+
+

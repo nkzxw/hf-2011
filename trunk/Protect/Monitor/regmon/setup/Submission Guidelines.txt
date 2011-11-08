@@ -1,0 +1,81 @@
+SUBMISSION GUIDELINES
+-----------------------
+
+1. Submitting your applications to be showcased on the Microsoft pick of the week and the WUGNET shareware Hall of fame is easy.  However, all the items required below =MUST= be completed or we can not showcase your application. Please follow the instructions very carefully.
+
+2. Before you begin, please look at either the Windows 98 or Windows NT current pick of the week at:
+
+	- For Windows 98:  http://www.wugnet.com/shareware/95-98map.html    
+	- For Windows NT:  http://www.wugnet.com/shareware/ntmap.html    
+
+3. Using these pages as visual examples, fill out all the fields below:
+
+===============================================
+- APPLICATION NAME:
+  Regmon
+
+- COMPANY NAME: 
+  Sysinternals
+
+- PRIMARY COMPANY WEB URL: 
+  www.sysinternals.com
+
+- POINT OF CONTACT NAME: 
+  Mark Russinovich
+
+- POINT OF CONTACT EMAIL ADDRESS: 
+  241 Hayden RD
+  Hollis, NH 03049
+
+- POINT OF CONTACT TELEPHONE NUMBER:
+  603-465-5597
+
+- PRODUCT URL (if different from primary company URL):
+  www.sysinternals.com/regmon.htm
+ 
+- APPLICATION DOWNLOAD URL(s) (maximum of three):
+  www.sysinternals.com/regmon.exe
+
+(Note:  This must be an .exe or .zip FTP URL that opens a browser download dialog box...no pointers to a web page)
+
+- FILE SIZE (in Kb or Mb):
+  800 Kb
+
+- PARAGRAPH 1 (limit to 100 words):
+
+Regmon will show you which applications are accessing your Registry, which keys they are accessing, and the Registry data that they are reading and writing - all in real-time. This advanced utility takes you one step beyond what static Registry tools can do, to let you see and understand exactly how programs use the Registry. With static tools you might be able to see what Registry values and keys changed. With Regmon you'll see how the values and keys changed.
+
+- PARAGRAPH 2 (limit to 100 words):
+
+Regmon's dynamic view of Registry access will help you zero in on problems related to misconfigured Registry settings and give you insight into the role the Registry plays as you use Windows NT. Its output window can be saved to a file for off-line viewing and it has full search capability. If you find that you're getting information overload, simply set up a filter for processes or Registry paths. If you want to edit a key or value you see in Regmon's output, just double-click and Regmon will take you there using Regedit.
+
+- FEATURES LIST (Limit to maximum of ten single lines.  IMPORTANT...paste in your ten (or fewer) lines over the following text...keeping one space between each <LI> and the beginning of each of your lines).  This allows me to copy/paste right into our db when creating your application page: 
+
+<UL>
+<LI> Display Registry accesses in real-time 
+<LI> Helps you track down misconfigured Registry keys 
+<LI> Provides an x-ray view of the way applications and Windows use the Registry 
+<LI> Powerful search and filter features make narrowing in on a problem a snap 
+<LI> Save traces to a file for off-line analysis 
+<LI> Jump to particular keys or values in Regedit for quick editing</UL>
+
+===============================================
+
+4. FRONT PAGE TEASER: On our home page (http://www.wugnet.com) is a short teaser about each showcased application for the current week, along with a link to it in our Shareware Hall of Fame.  Here we need a 40-50 word description of your application (ABSOLUTELY NO LONGER THAN 50 WORDS).  Remember, this description is used to entice people to go download your application, so make the words are compelling.
+
+TEASER COPY: 
+
+Easily see how applications and Windows access the Registry using the Regmon Registry Monitor. Regmon provides a real-time view of what keys and values are accessed, the data read and written, and it includes powerful filtering capability so that you can zoom in on the accesses that interest you. Debugging application Registry problems or system misconfiguration is a breeze with Regmon.
+
+5. SCREENSHOT (.GIF or .JPG) - MUST NOT exceed 500w x 300h (pixels): please name this image using the following convention:
+
+	screenshot.gif or screenshot.jpg
+	
+6. LINK TO WUGNET.COM: Enclosed is also a small graphic button depicting your application has been selected for this award.  We ask that you place this somewhere on your site, preferably on your awards page, if you have one.  Below is the HTML code you can use for this image and the hyperlink:
+
+<a href="http://www.wugnet.com/shareware/">
+<img src="spow.gif" width="114" height="41" border="0" alt="The WUGNET Shareware Hall of Fame"></a>
+
+7. When you've completed this form, .ZIP it, and the screen capture image file (screenshot.gif/jpg) into a file named SPOW.ZIP and email to Larry McJunkin (larrym@wugnet.com).
+
+IMPORTANT NOTE: It is YOUR responsibility to inform us of download URL changes, as well as changes to screenshots, or information on your application page.  In our Shareware halls of fame we list all picks, past and present, so if any of your application information changes this will result in broken links on your application's page.  Please send any such changes to webmaster@wugnet.com and we'll update your page.

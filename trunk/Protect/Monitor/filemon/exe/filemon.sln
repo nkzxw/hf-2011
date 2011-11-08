@@ -1,0 +1,10 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		DoSign = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

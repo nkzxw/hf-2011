@@ -1,0 +1,20 @@
+regsys.h(252) : error C2220: warning treated as error - no object file generated
+regsys.h(252) : error C4273: 'ProbeForWrite' : inconsistent dll linkage
+regsys.h(260) : error C2365: 'KeyNameInformation' : redefinition; previous definition was a 'enumerator'
+d:\winddk\2600\inc\ddk\wxp\ntddk.h(5556) : error see declaration of 'KeyNameInformation'
+regsys.h(260) : error C2086: 'KeyNameInformation' : redefinition
+regsys.h(260) : error see declaration of 'KeyNameInformation'
+regsys.h(261) : error C2365: 'KeyCachedInformation' : redefinition; previous definition was a 'enumerator'
+d:\winddk\2600\inc\ddk\wxp\ntddk.h(5557) : error see declaration of 'KeyCachedInformation'
+regsys.h(261) : error C2086: 'KeyCachedInformation' : redefinition
+regsys.h(261) : error see declaration of 'KeyCachedInformation'
+regsys.h(263) : error C2365: 'KeyFlagsInformation' : redefinition; previous definition was a 'enumerator'
+d:\winddk\2600\inc\ddk\wxp\ntddk.h(5560) : error see declaration of 'KeyFlagsInformation'
+regsys.h(263) : error C2086: 'KeyFlagsInformation' : redefinition
+regsys.h(263) : error see declaration of 'KeyFlagsInformation'
+regsys.h(265) : error C2011: '_KEY_NAME_INFORMATION' : 'struct' type redefinition
+d:\winddk\2600\inc\ddk\wxp\ntddk.h(5528) : error see declaration of '_KEY_NAME_INFORMATION'
+regsys.h(270) : error C2011: '_KEY_CACHED_INFORMATION' : 'struct' type redefinition
+d:\winddk\2600\inc\ddk\wxp\ntddk.h(5533) : error see declaration of '_KEY_CACHED_INFORMATION'
+regsys.h(282) : error C2011: '_KEY_FLAGS_INFORMATION' : 'struct' type redefinition
+d:\winddk\2600\inc\ddk\wxp\ntddk.h(5545) : error see declaration of '_KEY_FLAGS_INFORMATION'

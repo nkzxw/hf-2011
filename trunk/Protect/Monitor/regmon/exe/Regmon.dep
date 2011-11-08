@@ -1,0 +1,30 @@
+# Microsoft Developer Studio Generated Dependency File, included by Regmon.mak
+
+.\INSTDRV.C : \
+	".\REGMON.H"\
+	"d:\mssdk\include\basetsd.h"\
+	"d:\mssdk\include\guiddef.h"\
+	"d:\mssdk\include\propidl.h"\
+	"d:\mssdk\include\reason.h"\
+	"d:\mssdk\include\stralign.h"\
+	"d:\mssdk\include\tvout.h"\
+	"d:\mssdk\include\winefs.h"\
+	
+
+.\REGMON.C : \
+	".\IOCTLCMD.H"\
+	".\REGMON.H"\
+	"d:\mssdk\include\basetsd.h"\
+	"d:\mssdk\include\guiddef.h"\
+	"d:\mssdk\include\propidl.h"\
+	"d:\mssdk\include\reason.h"\
+	"d:\mssdk\include\stralign.h"\
+	"d:\mssdk\include\tvout.h"\
+	"d:\mssdk\include\winefs.h"\
+	
+
+.\REGMON.RC : \
+	".\cursor1.cur"\
+	".\Regmon.exe.manifest"\
+	".\toolbar.bmp"\
+	

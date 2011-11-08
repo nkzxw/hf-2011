@@ -1,0 +1,39 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: FILEMON - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x0 /fo".\Release/FILEMON.res" /d "NDEBUG" "E:\Src\Filemon\exe\FILEMON.RC"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~2\LOCALS~1\Temp\RSP7D.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /I "S:\mstools\include" /I "S:\ddk\inc32" /I "S:\vtd95\include" /I "..\dd" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D _WIN32_WINNT=0x400 /D "_MBCS" /Fo".\Release/" /Fd".\Release/" /FD /c 
+"E:\Src\Filemon\exe\FILEMON.C"
+"E:\Src\Filemon\exe\INSTDRV.C"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~2\LOCALS~1\Temp\RSP7D.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~2\LOCALS~1\Temp\RSP7E.tmp" with contents
+[
+comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /incremental:no /pdb:".\Release/Filemon.pdb" /machine:I386 /out:".\Release/Filemon.exe" /SUBSYSTEM:windows,4.0 
+.\Release\FILEMON.OBJ
+.\Release\INSTDRV.OBJ
+.\Release\FILEMON.res
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~2\LOCALS~1\Temp\RSP7E.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+FILEMON.C
+INSTDRV.C
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Filemon.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,24 @@
+!IF "$(DDK_TARGET_OS)" == "WinNET"
+
+#
+# This is a Windows .NET build that
+# uses the .NET Registry callback mechanism
+#
+TARGETPATH=obj
+TARGETNAME=Regswnet
+USER_C_FLAGS= /DWNET
+
+!ELSE
+
+#
+# This is an NT 4 build of the driver
+# that will run on NT 4, Win2K, and XP
+#
+TARGETNAME=Regsys
+TARGETPATH=$(BASEDIR)\lib
+!ENDIF
+
+TARGETTYPE=DRIVER
+TARGETLIBS=regmlib.lib ksecdd.lib
+
+SOURCES=regsys.c regsys.rc

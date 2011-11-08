@@ -1,0 +1,27 @@
+#include <windows.h>
+
+#define VER_DEBUG                   0
+#define VER_PRERELEASE              0
+#define VER_FILEFLAGSMASK           VS_FFI_FILEFLAGSMASK
+#define VER_FILEOS                  VOS_NT_WINDOWS32
+#define VER_FILEFLAGS               (VER_PRERELEASE|VER_DEBUG)
+
+#define VER_FILETYPE    VFT_DRV
+#define VER_FILESUBTYPE VFT2_DRV_SYSTEM
+
+#define VER_COMPANYNAME_STR         "Sysinternals - www.sysinternals.com"
+#define VER_PRODUCTNAME_STR         "Filemon for Windows NT/2K"
+#define VER_LEGALCOPYRIGHT_YEARS    "1996-2001"
+#define VER_LEGALCOPYRIGHT_STR      "Copyright (C) M. Russinovich and B. Cogswell " VER_LEGALCOPYRIGHT_YEARS
+#define VER_LEGALTRADEMARKS_STR     "Copyright (C) 1996-2001 Mark Russinovich and Bryce Cogswell"
+
+#define VER_PRODUCTVERSION          4,34,00,00
+#define VER_PRODUCTVERSION_STR      "4.34"
+#define VER_PRODUCTVERSION_W        (0x0434)
+#define VER_PRODUCTVERSION_DW       (0x0434)
+#define VER_FILEDESCRIPTION_STR     "Windows NT/2K File System Monitor"
+#define VER_INTERNALNAME_STR        "filemon.sys"
+#define VER_ORIGINALFILENAME_STR    "filemon.Sys"
+
+#include "common.ver"
+
