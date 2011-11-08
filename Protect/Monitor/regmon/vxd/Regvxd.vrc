@@ -1,0 +1,9 @@
+CompanyName		=	"Mark Russinovich and Bryce Cogswell" 
+FileDescription =	"Registry Monitor VxD"
+FileVersion		=	"Version 4.34" 
+InternalName	=	"REGMON"
+LegalCopyright	= 	"Copyright \251 1996-2002, Mark Russinovich and Bryce Cogswell"
+OriginalFilename = 	"regvxd.vxd"
+ProductName		=	"Regmon"
+ProductVersion	= 	"Version 4.34"
+Translation		=	0x409, 0x4E4

@@ -1,0 +1,7 @@
+TARGETNAME=monitor
+TARGETTYPE=driver
+
+C_DEFINES=$(C_DEFINES) -DUNICODE -D_UNICODE
+
+SOURCES=\
+    monitor.c 

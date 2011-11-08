@@ -1,0 +1,15 @@
+; This file is maintained by HCW. Do not modify this file directly.
+
+[OPTIONS]
+LCID=0x409 0x0 0x0 ; English (United States)
+REPORT=Yes
+CONTENTS=INTRO
+TITLE=Regmon for Windows NT/9x
+COPYRIGHT=Copyright (C) 1996-2000 Mark Russinovich and Bryce Cogswell
+HLP=..\exe\release\regmon.hlp
+
+[FILES]
+regmon.rtf
+
+[WINDOWS]
+main="",(296,111,489,642),20736,,(r14090240),f2

@@ -1,0 +1,12 @@
+# Microsoft Developer Studio Generated Dependency File, included by Filemon.mak
+
+.\FILEMON.C : \
+	".\filemon.h"\
+	".\IOCTLCMD.H"\
+	
+
+.\FILEMON.RC : \
+	".\appicon.ICO"\
+	".\cursor1.cur"\
+	".\Toolbar.bmp"\
+	
