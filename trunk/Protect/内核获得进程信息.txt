@@ -1,0 +1,13 @@
+1.获得进程名:
+win2000下直接用偏移0x1fc + PsGetCurrentProcess() 得到镜像名
+win2000以后用PsGetProcessImageFileName
+
+2.获得全路径
+win2000下获得EProcess->SectionHandle 
+ObReferenceObjectByHandle得到SectionObject
+SectionObject + 0x14得到SegmentObject
+SegmentObject 的一个域是BaseAddress(ControlArea)
+BaseAddress+0x24取到FileObject
+ObQueryNameString，取到全路径
+
+win2000后使用API ZwQueryInformationProcess->ProcessImageFileName取到全路径
