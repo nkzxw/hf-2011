@@ -1,0 +1,26 @@
+TdiFw now can use filter-hook driver in Win2k (XP, 2003) to get packets
+and check them against state table.
+
+How to enable it?
+
+"ipfilterdriver" driver must be started before "tdifw" service.
+
+1st way (manual):
+
+net start ipfilterdriver
+net stop tdifw
+net start tdifw
+
+2nd way (automatic):
+
+Change registry startup settings to "ipfilterdriver":
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IpFilterDriver
+
+Start=1
+Type=1
+
+and restart Windows.
+
+TdiFw can also use NDIS-hooking driver from ndis_fw project but it's not
+so stable solution.

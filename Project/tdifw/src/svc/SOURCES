@@ -1,0 +1,19 @@
+TARGETNAME=tdifw
+TARGETPATH=obj
+TARGETTYPE=PROGRAM
+
+TARGETLIBS=$(SDK_LIB_PATH)\wsock32.lib $(SDK_LIB_PATH)\Winmm.lib iphlpapi.lib
+USER_INCLUDES=..
+
+SOURCES=tdifw_svc.c main.c flt_rule.c
+UMTYPE=console
+386_STDCALL=0
+USE_MSVCRT=1
+
+!if "$(NTDEBUG)"=="ntsdnodbg"
+NTDEBUG=
+!endif
+
+!ifndef NTDEBUG
+NTDEBUG=retail
+!endif

@@ -1,0 +1,12 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\tdifw_drv]
+"Type"=dword:00000001
+"Start"=dword:00000002
+"ErrorControl"=dword:00000001
+"ImagePath"=hex(2):73,79,73,74,65,6d,33,32,5c,64,72,69,76,65,72,73,5c,74,64,69,\
+  66,77,5f,64,72,76,2e,73,79,73,00
+"DisplayName"="tdi_fw"
+"Group"="PNP_TDI"
+"DependOnService"=hex(7):54,63,70,69,70,00,00
+

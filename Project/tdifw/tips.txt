@@ -1,0 +1,24 @@
+TIPS: here some useful tips for working with TdiFw.
+
+---
+
+#1. Old tdifw log files can be deleted by regularly running a batch file
+with the following command in it. (Requires GNU tools "find" and "rm",
+available from http://unxutils.sourceforge.net/)
+
+C:\WINNT\system32\gfind.exe C:\WINNT\system32\LogFiles\tdifw -mtime +21 -exec "C:\WINNT\system32\rm.exe" "{}" ";"
+
+Two ways to run this batch file:
+
+- Windows AT service (e. g. once a day:
+    at 03:24 /every:mo,tu,we,th,fr,sa,su "...")
+- at each system boot: With AUTOSTRT, available from
+   http://thethin.net/download.cfm
+
+
+#2. Another tip: WinTail for real-time log file viewing
+(http://www.wintail.com/)
+
+---
+
+All tips by Thomas Henlich

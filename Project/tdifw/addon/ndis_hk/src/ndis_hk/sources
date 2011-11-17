@@ -1,0 +1,16 @@
+TARGETNAME=ndis_hk
+TARGETPATH=obj
+TARGETTYPE=DRIVER
+
+TARGETLIBS=$(DDK_LIB_PATH)\ndis.lib $(DDK_LIB_PATH)\tdi.lib
+
+USER_INCLUDES=..;$(NTMAKEENV)\..\src\network\inc
+
+#C_DEFINES=$(C_DEFINES) /DW2K_ONLY
+
+SOURCES=    adapters.c \
+			..\av.c \
+			filter.c \
+			hooked_fn.c \
+			ndis_hk.c \
+			..\memtrack.c \
