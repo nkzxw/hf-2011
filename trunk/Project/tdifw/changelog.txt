@@ -1,0 +1,172 @@
+2005-09-07
+  
+* drv\ev_recv.c: fixed bug with traffic count
+* drv\ev_conn.c: fixed serious error in tdi_event_connect(), memory leak removed
+- minor bugfixes in disp_conn.c, disp_sr.c
+
+2005-03-16
+- Multiple bugfixes
+
+2005-02-05
+
+- Fixes in disp_obj.c, ev_dg.c, obj_tbl.c
+
+2003-10-16:
+
+- fixes in drv\ev_recv.c
+* drv\conn_state.c: fixed SMP bug
+
+
+2003-09-22:
+
+New tdi_fw project maintainer is Ruslan Staritsin. If you have any
+questions ask him: iptables@mail.ru
+
+To reflect project maintainer change now the project's renamed to "TdiFw"
+
+
+2003-09-09: version 1.3.1 released!
+
+
+| This is the last version of tdi_fw provided by me. I want to stop
+| my working on this product. ([2003-09-22]: now the project has a new
+| maintainer; new site of project is under construction) 
+
+
+What's new?
+
+- traffic count abilites;
+- much better packet checking engine (see packet_engine.txt);
+- some changes in rule language:
+  - rule can have a name;
+  - "deny" is default action;
+  - you can specify "*" for IN/OUT or TCP/UDP/RawIP;
+- some changes in logging (see log_format.txt).
+
+
+This is changelog for version 1.3 of tdi_fw
+
+2003-07-14
+
+- Now can work with user-related rules! (see tdi_fw.conf for details)
+- Now can log LISTENing ports for processes.
+- Now can log UNSUCCESS for ALLOWed but unsuccessful outgoing connection.
+
+* drv\ev_dg.c: fixed buf with memory leak for incoming datagrams.
+
+
+2003-06-23
+
+* drv\filter.c: fixed bug with wrong size check of helper-service buffer;
+* drv\ev_dg.c: fixed bug with missing of SID information for incoming
+datagrams.
+
+
+2003-05-21: version 1.3 released
+
+
+What's new from version 1.2?
+
+- Now tdi_fw can log not only process but user name too!
+- Now tdi_fw can avoid 0.0.0.0 addresses in logs!
+- Now you can get list of listening ports and processes owning them by:
+   tdi_fw_svc listen
+- Now you can get list of open connections and processes owning them by:
+   tdi_fw_svc conn
+- Some bugs fixed (I hope new abilities contain less bugs then I fixed)
+
+- And for people who like scary experiments with their boxes: see
+.\packet_ability directory in tdi_fw.zip!
+
+Thanks to Jan, Blade for idea with "packet_ability" and all others who
+interested in this project
+
+
+---
+
+This is changelog for version 1.2 of tdi_fw
+
+2003-03-25
+
+minor fixes in driver;
+
+changes in rules language: new [_hosts_] section added; DNS resolving
+removed.
+
+2003-03-06
+
+- minor fixes:
+
+* drv\filter.c - bug in sanity checks for chain number;
+
+* svc\tdi_fw_svc.c - fixed process handles leak; now activating rule
+changes after adding all of the rules.
+
+Thanks to Suresh.
+
+* drv\obj_tbl.c - now you can almost safely unload filter driver when you
+use TDI hooking (very useful for debug). See bottom of debug.txt file.
+
+2003-01-21
+
+* now process name in tdi_fw.conf file can contain environment variables
+for example %SystemRoot%;
+
+* small fixes like: memory leak removed, more correct status value
+returned to TDI client when deny outgoing connection or datagram, now
+rules are working after the whole chain addidition, pid for outgoing
+connection and datagram taken from current pid not from creator of
+connection or address object.
+
+2002-12-05
+
+- New technique to track process startup and apply ruleset is implemented:
+* .\dll is deleted (don't need helper DLL)
+* see drv\filter.c, drv\pid_pname.c, svc\tdi_fw_svc.c for details
+* and comments to [_main_] section in tdi_fw.conf
+* now converting short filenames to long filenames
+
+Thanks to Andrey Kolishak, Thomas Henlich. 
+
+2002-11-11: version 1.2 released
+
+What's new from version 1.1?
+
+- New rules format with process related rules
+- New correct installation procedure for 2k
+
+Thanks to Thomas Henlich, Frank Elston, Andrey Kolishak, Roberto Larcher
+
+---
+
+This is changelog for version 1.1 of tdi_fw
+
+2002-09-24: version 1.1 released
+
+What's new from version 1.0?
+
+- A lot of bugs was fixed;
+- Experimental support of TDI hooking (see debug.txt);
+- Now the driver has user mode service for logging and ruleset parsing.
+
+2002-09-26
+
+* svc\tdi_fw_svc.c: support of keywords EVENTLOG_ALLOW, EVENTLOG_DENY,
+EVENTLOG_ERROR in rules file added
+
+* readme.txt, tdi_fw.conf: some changes related with new keywords
+
+* install_nt4.reg: bug with wrong DependOnService fixed
+
+Thanks to Thomas Henlich
+
+2002-10-04
+
+* drv\tdi_fw.c: fixed STUPID bug with IRP completion and IoCompletion
+hooking
+
+Thanks to Alex from NTNDIS forum and to Thomas Henlich again
+
+* drv\obj_tbl.*, svc\tdi_fw_svc.c: process name logging facility
+
+Thanks to Wordmonger from NTNDIS forum for this idea

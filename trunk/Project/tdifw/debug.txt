@@ -1,0 +1,50 @@
+DEBUGGING
+
+I advise you the next sequence of steps to debug this project.
+
+First compile driver and helper service as debug (checked build).
+
+To compile driver run Start->Programs->Development Kits->Windows 2000
+DDK->Checked Build Environment or something like this for Windows NT4. In
+console appeared change dir to directory where drivers sources are. For me 
+it's: cd \work\tdifw\drv
+
+And then enter: build
+
+To compile service you should create project in Visual Studio. In .\svc
+directory there're "makefile" and "sources" files so you can use "build"
+utility to build it. (but you have to change path to libraries in
+"sources" file)
+
+The next you have to debug it. To simplify it make bat-file with the next
+commands:
+
+1) load symbols for debugger (SoftICE for me)
+2) flush your discs' cache (I use SysInternals' sync utility)
+3) start tdifw_drv.sys driver by instdrv utility (from NT4 DDK)
+4) start tdifw.exe in debug mode
+5) unload tdifw_drv.sys driver after tdifw.exe will be completed (you can
+do it by pressing any key)
+
+For me it looks like this:
+
+nmsym /load drv\objchk\tdifw_drv.nms
+sync
+instdrv tdifw_drv c:\work\tdifw\drv\objchk\tdifw_drv.sys
+svc\debug\tdifw debug c:\winnt\system32\drivers\etc\tdifw.conf
+instdrv tdifw_drv remove
+
+
+TDI HOOKING
+
+New version of tdifw has ability of using TDI hooking as alternate
+technique to work. By default it's not supported. To enable it compile
+tdifw with USE_TDI_HOOKING macro defined. You can do it by uncommenting
+line in sources file.
+
+When you use TDI hooking you can almost safely unload TDI filter driver
+even when there are open connection and address objects exist. So I
+recomend you to use TDI hooking for debug.
+
+But TDI hooking implementation is still raw so don't use it in release
+build.

@@ -1,0 +1,4 @@
+DIRS= \
+     drv \
+     svc \
+     install

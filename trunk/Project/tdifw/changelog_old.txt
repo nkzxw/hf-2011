@@ -1,0 +1,71 @@
+This is changelog for version 1.0 of tdi_fw
+
+2002-06-11: Initial release
+
+2002-06-24
+
+* ev_conn.c: Fixed bug with wrong from and to addresses matches for 
+incoming connections. Very serious bug.
+
+* install_2k.reg: changed to work correctly with netbt
+
+* uninstall_*.reg: added
+
+* tdi_fw.conf: added sample rules for local network
+
+2002-06-27
+
+* disp_obj.c, filter.c, flt_rule.c, obj_tbl.c, tdi_fw.c: deleted
+unreferenced variables.
+
+Ready to posting on http://www.ntndis.com
+Thanks to Vadim Smirnov
+
+2002-06-28
+
+tdi_fw is now available at http://www.ntndis.com
+
+* ev_conn.c: fixed bug with STATUS_INSUFFICIENT_RESOURCES returned from
+original connect event handler; fixed bug with working under second
+filtering driver attached.
+
+2002-07-12
+
+* install_2k.bat: fixed bug with nonstandart tcpip and netbt Tag values.
+Now forces tcpip Tag to 4, tdi_fw Tag to 5 and netbt Tag to 6.
+
+2002-07-31
+
+* disp_obj.c: fixed bug in tdi_create_addrobj_complete with MDL cleanup
+for non success IRP status
+
+2002-08-05
+
+* filter.c, log.c: using NtCreateFile instead of ZwCreateFile to try to
+avoid strange BSOD in ntfs.sys in boot stage
+
+2002-08-08
+
+* dispatch.*, memtrack.*, tdi_fw.c: #ifdef _DEBUG replaced to more
+standart #if DBG
+
+2002-09-13 (friday 13th)
+
+* disp_obj.c: tdi_create_addrobj_complete can work
+at DISPATCH_LEVEL now
+
+Thanks to Andrey Kolishak
+
+* dispatch.h, events.h: some unused prototypes deleted
+
+2002-09-19
+
+* tdi_fw.c, obj_tbl.c, sources: have support of TDI hooking; unused by
+default; to use it uncomment define of USE_TDI_HOOKING in sources file
+
+Now I can call this version 1.01
+
+What's new from version 1.0?
+
+- A lot of bugs was fixed;
+- Experimental support of TDI hooking (see debug.txt).

@@ -1,0 +1,16 @@
+TARGETNAME=install
+TARGETPATH=obj
+TARGETTYPE=PROGRAM
+
+SOURCES=tdi_install.c
+UMTYPE=console
+386_STDCALL=0
+USE_MSVCRT=1
+
+!if "$(NTDEBUG)"=="ntsdnodbg"
+NTDEBUG=
+!endif
+
+!ifndef NTDEBUG
+NTDEBUG=retail
+!endif

@@ -1,0 +1,74 @@
+tdi_fw log format
+-----------------
+
+0. Application-related entries
+------------------------------
+
+PROCESS  <pid>  <process>  {<user>}
+- First time access of process to network
+
+LISTEN  TCP  <ip>:<port>  <process>  {<user>}
+- Set TCP port to LISTEN state
+
+NO_LISTEN  TCP  <ip>:<port>    {<user>}
+- Reset TCP port from LISTEN state
+
+
+I. Output of the rules (without NOLOG)
+--------------------------------------
+
+ALLOW[(<reason>)]|DENY  [<rule-name>]  TCP|UDP|RawIP  IN|OUT
+<ip-src>:<port>  <ip-dst>:<port>  [<size>]  <process>  {<user>} 
+
+
+ALLOW           - connection/datagram is allowed
+
+ALLOW(<reason>) - outgoing connection allowed but unsucceed by the reason
+  ALLOW(CANCELED) - canceled by user
+  ALLOW(RESET)    - reset by peer
+  ALLOW(TIMEOUT)  - timeout
+  ALLOW(UNREACH)  - destination host unreachable
+  ALLOW(ERR:xxx)  - some another reason
+
+DENY            - connection/datagram is denied
+
+
+<size>  - specified for datagrams only if COUNT is specified
+
+
+II. Output of packet engine
+---------------------------
+
+PACKET|BAD_PACKET  TCP(<state>)|UDP|ICMP  IN|OUT  <ip-src>:<port>
+<ip-dst>:<port>  [<size>]
+
+PACKET          - packet doesn't match state table (information message)
+BAD_PACKET      - incorrect packet (dropped)
+
+TCP states:
+
+  SYN_SENT
+  SYN_RCVD
+  ESTABLISHED(in)
+  ESTABLISHED(out)
+  FIN_WAIT1
+  FIN_WAIT2
+  TIME_WAIT
+  CLOSE_WAIT
+  LAST_ACK
+  CLOSED
+
+You can see TCP connections state by: tdi_fw_svc conn
+(don't forget also: tdi_fw_svc listen)
+
+
+III. Output of connection traffic counters
+------------------------------------------
+
+CLOSED  TCP  *  <ip-src>:<port>  <ip-dst>:<port>   <out>/<in>    {<user>}
+
+and on service stop:
+
+TRAFFIC  <total-out>/<total-in>  <counted-out>/<counted-in>
+
+see also end of "tdi_fw_svc conn" output

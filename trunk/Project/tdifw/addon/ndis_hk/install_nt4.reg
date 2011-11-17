@@ -1,0 +1,11 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ndis_hk]
+"Type"=dword:00000001
+"Start"=dword:00000002
+"ErrorControl"=dword:00000001
+"ImagePath"=hex(2):5c,53,79,73,74,65,6d,52,6f,6f,\
+  74,5c,53,79,73,74,65,6d,33,32,5c,64,72,\
+  69,76,65,72,73,5c,6e,64,69,73,5f,68,\
+  6b,2e,73,79,73,00
+"Group"="Streams Drivers"
