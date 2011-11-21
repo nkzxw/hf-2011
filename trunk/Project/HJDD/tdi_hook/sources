@@ -1,0 +1,16 @@
+!IF 0
+
+Copyright (C) Microsoft Corporation, 1997 - 1999
+
+Module Name:
+
+    sources.
+
+!ENDIF
+
+TARGETNAME=tdihook
+TARGETPATH=obj
+TARGETTYPE=DRIVER
+
+SOURCES= tdihook.c		\
+				 key_object.c
