@@ -1,0 +1,31 @@
+TARGETNAME=xpacket
+TARGETPATH=obj
+TARGETTYPE=DRIVER
+
+#TARGETLIBS=	$(DDK_LIB_PATH)\ntdll.lib	\
+#			$(DDK_LIB_PATH)\ndis.lib	
+
+MSC_WARNING_LEVEL=-W3 -WX
+
+MSC_OPTIMIZATION=/Odi
+
+INCLUDES=
+
+C_DEFINES= $(C_DEFINES) -DUNICODE -D_UNICODE
+C_DEFINES=$(C_DEFINES) -DNDIS50_MINIPORT=1
+C_DEFINES=$(C_DEFINES) -DNDIS50=1
+
+SOURCES = NtApi.c \
+		NdisHook.c \
+		BaseHook.c \
+		Process.c \
+		XPACKET.c \
+		xfilter.c \
+		packet.c	\
+		NetBios.c	\
+		MemoryAcl.c	\
+		PacketBuffer.c \
+		xfilter.rc
+	
+
+

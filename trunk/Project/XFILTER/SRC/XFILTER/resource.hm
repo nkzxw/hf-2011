@@ -1,0 +1,4 @@
+// Microsoft Developer Studio generated Help ID include file.
+// Used by xfilter.rc
+//
+#define HIDC_LIST_APP                   0x80e40463    // IDD_LOG_SUB

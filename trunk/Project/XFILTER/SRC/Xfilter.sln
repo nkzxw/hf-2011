@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TcpIpDog", "TcpIpDog\TcpIpDog.vcproj", "{C7FAD3B8-92CB-4B51-B8B3-90F2FDB4B173}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xfilter", "xfilter\xfilter.vcproj", "{702F600E-52D9-4D14-B7C9-51BAE5C73A85}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xpacket2k", "xpacket2k\xpacket2k.vcproj", "{A592E8A2-1EF2-4332-A5E2-190C1629B3FC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xpacket9x", "xpacket9x\xpacket9x.vcproj", "{A8E0CB47-3D29-4685-B532-10EAE1D0704D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7FAD3B8-92CB-4B51-B8B3-90F2FDB4B173}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C7FAD3B8-92CB-4B51-B8B3-90F2FDB4B173}.Debug|Win32.Build.0 = Debug|Win32
+		{C7FAD3B8-92CB-4B51-B8B3-90F2FDB4B173}.Release|Win32.ActiveCfg = Release|Win32
+		{C7FAD3B8-92CB-4B51-B8B3-90F2FDB4B173}.Release|Win32.Build.0 = Release|Win32
+		{702F600E-52D9-4D14-B7C9-51BAE5C73A85}.Debug|Win32.ActiveCfg = Debug|Win32
+		{702F600E-52D9-4D14-B7C9-51BAE5C73A85}.Debug|Win32.Build.0 = Debug|Win32
+		{702F600E-52D9-4D14-B7C9-51BAE5C73A85}.Release|Win32.ActiveCfg = Release|Win32
+		{702F600E-52D9-4D14-B7C9-51BAE5C73A85}.Release|Win32.Build.0 = Release|Win32
+		{A592E8A2-1EF2-4332-A5E2-190C1629B3FC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A592E8A2-1EF2-4332-A5E2-190C1629B3FC}.Debug|Win32.Build.0 = Debug|Win32
+		{A592E8A2-1EF2-4332-A5E2-190C1629B3FC}.Release|Win32.ActiveCfg = Release|Win32
+		{A592E8A2-1EF2-4332-A5E2-190C1629B3FC}.Release|Win32.Build.0 = Release|Win32
+		{A8E0CB47-3D29-4685-B532-10EAE1D0704D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A8E0CB47-3D29-4685-B532-10EAE1D0704D}.Debug|Win32.Build.0 = Debug|Win32
+		{A8E0CB47-3D29-4685-B532-10EAE1D0704D}.Release|Win32.ActiveCfg = Release|Win32
+		{A8E0CB47-3D29-4685-B532-10EAE1D0704D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
