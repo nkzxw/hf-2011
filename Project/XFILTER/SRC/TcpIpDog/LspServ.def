@@ -1,0 +1,11 @@
+LIBRARY			XFILTER
+
+DESCRIPTION		"Implements a layered service provider for TCP"
+
+SECTIONS	
+				.inidata	READ WRITE SHARED
+				.uinidata	READ WRITE SHARED
+
+EXPORTS   
+				WSPStartup
+				XfIoControl

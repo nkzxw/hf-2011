@@ -1,0 +1,47 @@
+代码变动说明：在代码变动处有日期标注，可以利用日期查找代码变动处。日期书写格式为：YYYY/MM/DD，比如：2002/08/21
+
+
+
+2002/08/11 对XPACKET.SYS源程序进行调整
+
+1. 控制 IRQL
+2. 启用得到完整的路径名
+
+
+2002/08/18 对 xfilter.exe 的 RegOpenKeyEx 参数进行变动
+
+1. 目的是为了在普通用户权限可以读取注册表
+
+
+2002/08/19 对XPACKET.sys的 MmMapLockedPages 调用进行修改
+
+1. 设置 MDL_MAPPING_CAN_FAIL 标志，MmMapLockedPages 将停止进行BugCheck。
+遇到错误时会返回 NULL，而不产生篮屏错误。
+2. 修改了 XPacketOpen, XPacketClose, XPacketCleanup, XPacketRead, XPacketWrite 函数的IRP处理。
+
+
+2002/08/20 对 xfilter.exe, xfilter.dll, xpacket.sys 和 xpacket.vxd 都进行了修改，目的是为了在处理共享内存结束时，首先释放共享内存在进程空间的映射，原来省略了这一步，造成了在XP下不稳定的因素之一。
+
+1. xfilter.exe add unmap memory before free memory
+2. xfilter.dll add unmap memory before process exit
+3. xfilter.sys add case of unmap memory.
+4. xfilter.vxd add case of unmap memory.
+
+2002/08/21 修改了 xfilter.exe xfilter.sys 和 xpacket.vxd
+
+1. 在 WindowsXp 下, 在网络配置变动时，系统会自动覆盖SPI配置，导致SPI截获失效，所以定时检查SPI配置是否被系统恢复，如果恢复就重新修改为自己的配置。
+2. 在局域网中，有时系统会自动恢复_OpenBlock的SendHandler等数据，导致封包截获实效，所以增加了定时检查机制，当系统自动恢复后，便重新恢复到HOOK状态，保证封包截获的有效性。
+3. 在 xpacket.sys 里, 增加了对 ReceivePacketHandler, SendPacketsHandler 和 NdisDeregisterProtocol 函数的HOOK。ReceivePacketHandler和SendPacketsHandler是为了适应NDIS使用不同的函数发送/接收数据，xpacket.sys都能处理。NdisDeregisterProtocol 是为了知道TCPIP协议何时被卸载。
+
+
+2002/08/26 修改了 xpacket.sys
+
+1. 在定时检查HOOK SEND是否被系统复位时，还有可能时被其它程序采用相同技术修改HOOK指针，如果是这种情况，则不能重新替换为自己的HOOK函数，这样会兰屏。最终结果是xpacket.sys与采用相同技术的程序有冲突，所以进行了程序的修改，消除了冲突。
+2. 停止了对XF_ReceivePacket和XF_SendPackets的过滤，因为没有出现使用这两个函数的情况，所以没有做过测试，安全起见，先不做过滤。
+
+2002/12/19 - 2002/12/20 修改了 xfilter.exe
+
+1. 将用户注册模块停用，改为调用费尔公共用户注册模块UserReg.exe
+2. 将在线检查最新版本停用，改为调用费尔公共在线升级模块FilUp.exe
+3. 将在线消息停用。用费尔公共消息模块FilMsg.exe代替。
+
