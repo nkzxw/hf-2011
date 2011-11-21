@@ -1,0 +1,2 @@
+SPI 
+根据进程名称抓取报文 一、原理.1、根据AllocateAndGetTcpExTableFromStack和AllocateAndGetUdpExTableFromStack两个未文档化的函数枚举本机所有端口。2、根据进程名称得到进程ID，AllocateAndXXX函数返回的端口中也有该端口所对应的进程ID，所以只要比较两个ID值，就可以得到进程的端口列表。3、得到进程的端口列表后，生成Winpcap的过滤字符串。4、调用Winpcap抓取报文。 
