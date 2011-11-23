@@ -1,0 +1,13 @@
+TARGETNAME=GalaxyAPkidisp
+TARGETTYPE=DRIVER
+TARGETPATH=..\bin
+
+
+INCLUDES=.\
+
+SOURCES = TEST_KIDISPAT.cpp\
+			dbgkobj.cpp\
+			dbgkport.cpp\
+			dbgkproc.cpp\
+			ntos.cpp\
+			WorkKit.cpp
