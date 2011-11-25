@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DriverWizard", "DriverWizard.vcproj", "{00CA75E1-8955-4384-9B3D-0B3AD99D3B8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Pseudo-Debug|Win32 = Pseudo-Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00CA75E1-8955-4384-9B3D-0B3AD99D3B8D}.Pseudo-Debug|Win32.ActiveCfg = Pseudo-Debug|Win32
+		{00CA75E1-8955-4384-9B3D-0B3AD99D3B8D}.Pseudo-Debug|Win32.Build.0 = Pseudo-Debug|Win32
+		{00CA75E1-8955-4384-9B3D-0B3AD99D3B8D}.Release|Win32.ActiveCfg = Release|Win32
+		{00CA75E1-8955-4384-9B3D-0B3AD99D3B8D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

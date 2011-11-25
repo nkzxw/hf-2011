@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EventSelectServer", "EventSelectServer.vcproj", "{A818E52B-2796-4CD8-A313-08E3BF9A0546}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A818E52B-2796-4CD8-A313-08E3BF9A0546}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A818E52B-2796-4CD8-A313-08E3BF9A0546}.Debug|Win32.Build.0 = Debug|Win32
+		{A818E52B-2796-4CD8-A313-08E3BF9A0546}.Release|Win32.ActiveCfg = Release|Win32
+		{A818E52B-2796-4CD8-A313-08E3BF9A0546}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
