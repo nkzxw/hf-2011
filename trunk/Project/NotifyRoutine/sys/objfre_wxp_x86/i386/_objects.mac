@@ -1,0 +1,16 @@
+
+
+386_OBJECTS=\
+ $(OBJ_PATH)\$O\driver.obj \
+
+
+
+
+
+# lowercased
+BASEDIR=d:\winddk\7600.16385.0
+OBJECT_ROOT=d:\winddk\7600.16385.0
+MAKEDIR_LOWERCASE=e:\notifyroutine\sys
+OBJ_PATH=e:\notifyroutine\sys
+CONCURRENT_MIDL=0
+CONCURRENT_MANIFEST_BUILD=0
