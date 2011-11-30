@@ -1,0 +1,7 @@
+FilterWnd.o: FilterWnd.c FilterWnd.h ../common/Assert.h \
+  ../common/FiltCond.h ../common/Types.h ../common/FiltReason.h \
+  ../common/FiltParam.h ../common/Filter.h ../common/FiltRule.h \
+  ../common/FiltCond.h ../common/FilterSet.h ../common/Filter.h \
+  FilterTools.h ../common/FiltReason.h ../common/FiltRule.h Language.h \
+  ProgPathDlg.h ../common/ProjectInfo.h Resources.h RuleDlg.h SpyServer.h \
+  ProcList.h ../common/Trace.h

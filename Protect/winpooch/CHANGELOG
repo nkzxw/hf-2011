@@ -1,0 +1,350 @@
+			Winpooch - Change log
+			*********************
+
+Author		Benoit Blanchon
+Date		21/04/2007
+Version		0.6.6
+Web site	http://www.winpooch.com/
+
+Winpooch 0.6.6
+--------------
+* Date : 21/04/2007
+* From version 0.6.5
+* Added compatibility with many kernel version (30 new builds).
+* Added rules for services.exe and explorer.exe, 
+  as suggested in bugs 1687722 and 1687725.
+  You have to reset filter to add it.
+* Minor bug fix: don't crash anymore if a language file can't be read.
+* Now includes libclamav 0.90.2
+* Now avoid calling ObpDereferenceObject when WhatchedObjects is locked.
+  I hope this will solve bug 1695488.
+	
+Winpooch 0.6.5
+--------------
+* Date : 17/03/2007
+* From version 0.6.4
+* Added compatibility with many kernel version (63 new builds)
+* Added a filter to detect modification on Windows firewall state.
+  You have to reset filter to add it.
+* Now includes libclamav 0.90.1
+
+Winpooch 0.6.4
+--------------
+* Date : 07/01/2007
+* From version 0.6.3
+* Added compatibility with many kernel version (24 new builds)
+* Bug fix: WatchObjs_Lock() used to always return STATUS_SUCCESS. 
+  This should fix bug 1622709.
+* Added a filter to allow csrss.exe to kill processes.
+  Added a filter to ask user before writing a .sys in system32.
+  You have to reset filter to add them.
+
+Winpooch 0.6.3
+--------------
+* Date : 15/12/2006
+* From version 0.6.2
+* Added compatibility with many kernel version (26 new builds)
+* Changed antivirus scanner cache.  Now implemented in kernel space.
+  This is much more efficient and memorize user choice when a virus is
+  detected.
+* Changed scanner cache window.
+* Added a hook on NtCreateUserProcess (only for Windows Vista).
+  This greatly improves Windows Vista support.
+* Added a button "Make a donation" to about window.
+* Don't report error anymore if ClamWin fails to open the file to scan.
+* Added simplified Chinese translation.
+* Added Czech translation.
+
+Winpooch 0.6.2 beta
+-------------------
+* Date : 03/11/2006
+* From version 0.6.1
+* Added reason Sys::KillProcess.
+* Added compatibility with many kernel version (36 new builds)
+* Added support of Windows Vista 32bits.
+  (Not fully supported: for now Winpooch doesn't catch process creation).
+* Restored a feature for branch 0.5: can now hook and unhook processes.
+* Now save configuration in registry each time a setting is changed.
+* Fixed BSOD due to ExFreePool(NULL).
+* Fixed BSOD occuring when running out of memory.
+* Fixed memory leak in Winpooch.sys.
+* Fixed wrong error codes returned by hooks on NtQueryValueKey and NtSetValueKey.
+* Bug fix: scanning pattern weren't updated correctly.
+* Bug fix: now closes app-link if an IRP is cancel.
+  This should fix system freeze at shutdown.
+* Bug fix: uninstaller now removes freshclam.log
+
+Winpooch 0.6.1 beta
+-------------------
+* Date : 01/10/2006
+* From version 0.6.0
+* Improved PE image reader so it can get the signature every time.
+* Improved kernel version detection. 
+  Now detection is only based on signature.
+  This will solve problem with different Windows kernels which 
+  have the same time-stamp.
+* Improved on-read file scan: now scan occurs while the handle to 
+  the file is closed.
+  This should fix many errors like "Unable to read file".
+* Disabled hard breakpoints.
+  This should solve unhandled exceptions (BSOD 0x0000008E).
+* Increased timeout values, they were to low to allow scanning big files.
+  Maybe I will increase them again later.
+* Added a command line option: "winpooch.exe report" generate an 
+  incompatibility report and exit.
+* Minor change: incompatibility report is now created in current directory.
+* Improved incompatibility report: now more readable and less confusing.
+* Added compatibility with many kernel version (40 new builds)
+* Included LibClamav 0.90.0 in automatic setup.
+  (LibClamav 0.88 was included with Winpooch 0.6.0).
+* Restored a feature from branch 0.5: Now it's possible to create a new 
+  rule directly from "ask" dialog.
+* Major bug fix: in many situations, the File::Read filter wasn't working.
+* Added many verifications to prevent from releasing a not-owned mutex.
+* Fixed the bug in IoCreateFile when the file doesn't exists
+  (many thanks to Virtual Black Fox).
+
+Winpooch 0.6.0 beta
+-------------------
+* Date : 25/08/2006
+* From version 0.5.7
+* Changed the whole spying system : now using kernel mode API hooking.
+* Merged most of the changes from version 0.5.7 to 0.5.10.
+* Added support for BitDefender antivirus.
+* Added support for Libclamav, this makes Winpooch a fully independant 
+  antivirus. (Thanks to Boguslaw Brandys for his help).
+  The virus signatures are automatically downloaded every 3 hours.
+* Added background antivirus scanning.
+* Added a new reason "Reg::QueryValue"
+* Tray icon animation can now be disabled.
+* Custom sounds can be used instead of default sounds.
+* Fixed scrolling problems in several windows (filters, rules, trusted files).
+* Corrected problem with relative path in clamwin.conf.
+* Corrected problem with spaces in language files.
+
+Winpooch 0.5.10
+---------------
+* Date : 02/02/2006
+* From version 0.5.9
+* Added a rule to protect Winpooch's folder.
+* Added icons for each reason in "filters" and "history" panels.
+* Added scroll bar to the main menu.
+* Added support for Kaspersky antivirus for workstation.
+* Added a cache for antivirus scanner.
+* Fixed file delete protection (bug 1376805).
+* Fixed issue with empty application window (bug 1424496).
+* Changed "ask" dialog : now displays a multiline description.
+
+Winpooch 0.5.9
+--------------
+* Date : 26/11/2005
+* From version 0.5.8
+* Fixed bugs 1362334 and 1362332.
+* Added Dutch translation from Jochem Jean van de Groep.
+
+Winpooch 0.5.8
+--------------
+* Date : 15/11/2005
+* From version 0.5.7
+* Added a hook on NtSetInformationFile so as to catch file moves.
+  This should fix bug 1355999.
+* Fixed the bug 1356402.
+* Corrected default filters.
+  This should fix bugs 1356000 and 1356736.
+* Added more conditions for File:Write.
+* Added filters for alt startup and common alt startup folders.
+* Only reset the default filter when reading filters from an older version.
+* Extended "Language" combo box in configuration windows
+  so as to make all languages visible.
+* Added Portuguese (Brazil) translation (thanks to Vitor Brock)
+
+Winpooch 0.5.7
+--------------
+* Date : 01/11/2005
+* From version 0.5.6
+* Corrected wildcard compare function (This should fix bug 1330362).
+* Allowed "Virus scan" on File:Read.
+* Removed hooks from advapi32.dll and kernel32.dll.
+  Added hooks into ntdll.dll.
+* Changed default filters.
+* Added instructions 0xB8 and 0xE9 (This should fix bug 1326507).
+* Added German and Turkish translations.
+
+Winpooch 0.5.6
+--------------
+* Date : 06/10/2005
+* From version 0.5.5
+* Added icons in "processes" window.
+* Added "sort" feature in "processes" window.
+* Add 'time' column in history window.
+* Corrected the bug that made types "Path" and "Wildacrds" identical.
+* Corrected an issue with "Unhook" : now prevent a process from being 
+  unhooked twice.
+* Corrected the bug with "Ask" and "Scan" : the file wasn't scanned.
+* Corrected the issue with program paths that contains spaces.
+* Corrected a bug that can make the calling process crash when using 
+  "feign" reaction to "Sys::Execute".
+* Corrected the issue with non-existing files : Sys::Execute on 
+  non-existing files are now rejected.
+
+Winpooch 0.5.5 beta
+-------------------
+* Date : 28/09/2005
+* From version 0.5.4
+* Added Polish and Hungarian translations.
+  (Italian translation is not complete)
+* Added sound (like in versions 0.4.x).
+* Added "history" menu with "Clear", "View Log" and 
+  "Create rule" items.
+* Added "process" menu with  "Kill", "Hook" and "Unhook" items.
+* Added the "Path" type for filters.
+* Added "Import filters" and "Export filters" in "Configuration" window.
+* Added "Reset filters" in "Configuration" window.
+* Moved "View log file" to the "history" window.
+* Added many default filters.
+* Added "Unhook" and "Kill" buttons to "ask" dialog.
+* Added a FAQ file in the package.
+* Improved user interface (many improvements).
+* Corrected the bug with MoveFileWithProgress.
+
+Winpooch 0.5.4 alpha
+--------------------
+* Date : 24/07/2005
+* From version 0.5.3
+* Added multi-language support.
+* Added French translation.
+* Now, you can force Winpooch to run on Windows 64.
+* Modified injection system, this may improve compatibility.
+* Corrected splash screen, now works with 16-bit color depth.
+* Corrected injection in suspended processes (W2K only)
+
+Winpooch 0.5.3 alpha
+--------------------
+* Date : 10/07/2005
+* From version 0.5.2
+* Added ClamWin antivirus support.
+* Added configuration window.
+* Added a default reaction when using the "ask" feature.
+* Added a button to create a filter in "ask" dialog.
+* Unhooking is faster.
+
+Winpooch 0.5.2 alpha
+--------------------
+* Date : 26/06/2005
+* From version 0.5.1
+* Added a splash screen.
+* Changed the way key are watched so as to prevent key pool 
+  from saturation.
+* Replace the three independant windows by a window with tabs.
+* Added a new tab to see which registry keys are opened.
+* Added a log file.
+
+Winpooch 0.5.1 alpha
+--------------------
+* Date : 17/06/2005
+* From version 0.5.0
+* Added "process discovery" : tries to hook processes created by
+  processes which are not hooked.
+* Added filter saving.
+* Many small changes.
+
+Winpooch 0.5.0 alpha
+--------------------
+* Date : 30/05/2005
+* From version 0.4.4
+* Almost everything changed.
+
+Winpooch 0.4.3
+--------------
+* Date : 10/03/2005
+* From version 0.4.2
+* Added German translation (Thanks to Kai Scheller).
+* Added many directory and keys to watch, please read README
+  (Thanks to Seather).
+* Changed "Last alerts" dialog, the text can be selected and copied.
+  (Thanks to Dorian)
+
+Winpooch 0.4.2
+--------------
+* Date : 13/02/2005
+* From version 0.4.1
+* Added Italian translation (Thanks to Andrea Vezzali)
+* Corrected bug 1101832 : "tray icon disappears".
+* Improved "auto check for update"
+
+Winpooch 0.4.1
+--------------
+* Date : 11/01/2005
+* From version 0.4.0
+* Added a registry watcher on ...\Winlogon\Notify 
+  (Thanks to Torsten Mohrin)
+* Corrected "Failed to init language module" at startup
+* Corrected uninstaller : it no more removes the Run key.
+  (Thanks to Torsten Mohrin)
+
+Winpooch 0.4.0
+--------------
+* Date : 09/01/2005
+* From version 0.3.2
+* Added multi-language support
+* Added French language pack
+* Added a watcher on system32/drivers/etc (Thanks to Torsten Mohrin)
+* Added configuration dialog box
+* Added automatic-check-for-updates feature
+* Added "Enable Poochy picture" option
+* Corrected relative path problem with Winpooch.log
+
+Winpooch 0.3.2
+--------------
+* Date : 22/12/2004
+* From version 0.3.1
+* Changed message when a file is renamed
+* Changed the "Last alerts" window, now it is resizable
+* Changed the "About" box
+* Added a filter to avoid sending the same alert several times
+
+Winpooch 0.3.1
+--------------
+* Date : 15/12/2004
+* From version 0.3.0
+* Fixed relative paths problems at Windows startup
+
+Winpooch 0.3.0
+--------------
+* Date : 14/12/2004
+* From version 0.2.2
+* Added advices in addition of alerts
+* Added the "Last alerts" window
+* Added the "Report a bug" menu item
+* The icon stay alerted until the user click on it
+  (useful is your are absent from the computer)
+* Winpooch is almost ready for translations
+* Removed "Start menu" from directory list
+	
+Winpooch 0.2.2
+--------------
+* Date : 29/11/2004
+* From version 0.2.1
+* Remove registry key : HKLM\System\CurrentControlSet
+
+Winpooch 0.2.1
+--------------
+* Date : 28/11/2004
+* From version 0.2.0
+* New icon for the application
+* New alert picture
+* Removed button in taskbar
+* Added registry keys (see README file)
+* Added menu item : "Go to Web site"
+
+Winpooch 0.2.0
+--------------
+* Date : 21/11/2004
+* From version 0.1.0
+* Winpooch now shutdown correctly at Windows shutdown.
+* New notification window : poochy with a balloon.
+
+Winpooch 0.1.0 
+--------------
+* Date : 11/11/2004
+* Initial release.

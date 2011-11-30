@@ -1,0 +1,33 @@
+
+
+386_OBJECTS=\
+ $(OBJ_PATH)\$O\driver.obj \
+ $(OBJ_PATH)\$O\drvfilter.obj \
+ $(OBJ_PATH)\$O\drvstatus.obj \
+ $(OBJ_PATH)\$O\disasm.obj \
+ $(OBJ_PATH)\$O\fileinfo.obj \
+ $(OBJ_PATH)\$O\hook.obj \
+ $(OBJ_PATH)\$O\hookcommon.obj \
+ $(OBJ_PATH)\$O\hookfile.obj \
+ $(OBJ_PATH)\$O\hookreg.obj \
+ $(OBJ_PATH)\$O\hooks.obj \
+ $(OBJ_PATH)\$O\hooksys.obj \
+ $(OBJ_PATH)\$O\link.obj \
+ $(OBJ_PATH)\$O\ntundoc.obj \
+ $(OBJ_PATH)\$O\procinfo.obj \
+ $(OBJ_PATH)\$O\proclist.obj \
+ $(OBJ_PATH)\$O\scancache.obj \
+ $(OBJ_PATH)\$O\systinfo.obj \
+ $(OBJ_PATH)\$O\watchedobjects.obj \
+
+
+
+
+
+# lowercased
+BASEDIR=d:\winddk\7600.16385.0
+OBJECT_ROOT=d:\winddk\7600.16385.0
+MAKEDIR_LOWERCASE=e:\google\winpooch\driver
+OBJ_PATH=e:\google\winpooch\driver
+CONCURRENT_MIDL=0
+CONCURRENT_MANIFEST_BUILD=0

@@ -1,0 +1,969 @@
+BUILD: Computing Include file dependencies:
+BUILD: Examining e:\google\winpooch\driver directory for files to compile.
+oacr invalidate root:x86chk /autocleanqueue
+1>Compiling and Linking e:\google\winpooch\driver *************
+1>'nmake.exe /nologo BUILDMSG=Stop. -i BUILD_PASS=PASS2 LINKONLY=1 NOPASS0=1 MAKEDIR_RELATIVE_TO_BASEDIR='
+1>e:\google\winpooch\driver: TARGETPATH is obj
+1>BUILDMSG: _NT_TARGET_VERSION SET TO WINXP
+1> D:\WinDDK\7600.16385.0\Bin\x86\oacr\oacrcl @e:\google\winpooch\driver\objchk_wxp_x86\i386\cl.rsp
+1>Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 15.00.30729.207 for 80x86
+1>Copyright (C) Microsoft Corporation.  All rights reserved.
+1>cl /Fo"e:\google\winpooch\driver\objchk_wxp_x86\i386/"
+1> /FC
+1> /Ii386
+1> /I.
+1> /I.\
+1> /Ie:\google\winpooch\driver\objchk_wxp_x86\i386
+1> /ID:\WinDDK\7600.16385.0\inc\api
+1> /ID:\WinDDK\7600.16385.0\inc\api
+1> /ID:\WinDDK\7600.16385.0\inc\ddk
+1> /ID:\WinDDK\7600.16385.0\inc\ddk
+1> /ID:\WinDDK\7600.16385.0\inc\crt
+1> /D_X86_=1
+1> /Di386=1
+1> /DSTD_CALL
+1> /DCONDITION_HANDLING=1
+1> /DNT_UP=1
+1> /DNT_INST=0
+1> /DWIN32=100
+1> /D_NT1X_=100
+1> /DWINNT=1
+1> /D_WIN32_WINNT=0x0501
+1> /DWINVER=0x0501
+1> /D_WIN32_IE=0x0603
+1> /DWIN32_LEAN_AND_MEAN=1
+1> /DDEVL=1
+1> /DDBG=1
+1> /D__BUILDMACHINE__=WinDDK
+1> /DFPO=0
+1> /D_DLL=1
+1> /DNDEBUG
+1> /DDEPRECATE_DDK_FUNCTIONS=1
+1> /DMSC_NOOPT
+1> /DNTDDI_VERSION=0x05010200
+1> /c
+1> /Zc:wchar_t-
+1> /Zl
+1> /Zp8
+1> /Gy
+1> /Gm-
+1> -cbstring
+1> /W3
+1> /Gz
+1> /hotpatch
+1> /EHs-c-
+1> /GR-
+1> /GF
+1> /GS
+1> /Zi
+1> /Od
+1> /Oi
+1> /Oy-
+1> /Zi
+1> /Fde:\google\winpooch\driver\objchk_wxp_x86\i386\
+1> /DKMDF_MAJOR_VERSION_STRING=01
+1> /DKMDF_MINOR_VERSION_STRING=009
+1> /wd4603
+1> /wd4627
+1> /typedil-
+1> /FID:\WinDDK\7600.16385.0\inc\api\warning.h
+1> .\driver.c .\drvfilter.c .\drvstatus.c .\disasm.c .\fileinfo.c .\hook.c .\hookcommon.c .\hookfile.c .\hookreg.c .\hooks.c .\hooksys.c .\link.c .\ntundoc.c .\procinfo.c .\proclist.c .\scancache.c .\systinfo.c .\watchedobjects.c 
+1>driver.c
+1>e:\google\winpooch\driver\driver.c(38) : fatal error C1083: Cannot open include file: 'ddk\ntddk.h': No such file or directory
+1>errors in directory e:\google\winpooch\driver
+1>e:\google\winpooch\driver\driver.c(38) : error C1083: Cannot open include file: 'ddk\ntddk.h': No such file or directory
+1>drvfilter.c
+1>e:\google\winpooch\driver\drvfilter.h(5) : fatal error C1083: Cannot open include file: 'FilterSet.h': No such file or directory
+1>e:\google\winpooch\driver\drvfilter.h(5) : error C1083: Cannot open include file: 'FilterSet.h': No such file or directory
+1>drvstatus.c
+1>e:\google\winpooch\driver\drvfilter.h(5) : fatal error C1083: Cannot open include file: 'FilterSet.h': No such file or directory
+1>e:\google\winpooch\driver\drvfilter.h(5) : error C1083: Cannot open include file: 'FilterSet.h': No such file or directory
+1>disasm.c
+1>e:\google\winpooch\driver\disasm.c(54) : fatal error C1083: Cannot open include file: 'Trace.h': No such file or directory
+1>e:\google\winpooch\driver\disasm.c(54) : error C1083: Cannot open include file: 'Trace.h': No such file or directory
+1>fileinfo.c
+1>e:\google\winpooch\driver\fileinfo.c(41) : fatal error C1083: Cannot open include file: 'ddk/ntapi.h': No such file or directory
+1>e:\google\winpooch\driver\fileinfo.c(41) : error C1083: Cannot open include file: 'ddk/ntapi.h': No such file or directory
+1>hook.c
+1>e:\google\winpooch\driver\hook.h(34) : error C2016: C requires that a struct or union has at least one member
+1>e:\google\winpooch\driver\hook.h(34) : error C2016: C requires that a struct or union has at least one member
+1>e:\google\winpooch\driver\hook.h(34) : error C2061: syntax error : identifier 'PBYTE'
+1>e:\google\winpooch\driver\hook.h(34) : error C2061: syntax error : identifier 'PBYTE'
+1>e:\google\winpooch\driver\hook.h(35) : error C2061: syntax error : identifier 'pHookFunc'
+1>e:\google\winpooch\driver\hook.h(35) : error C2061: syntax error : identifier 'pHookFunc'
+1>e:\google\winpooch\driver\hook.h(35) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(35) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(36) : error C2061: syntax error : identifier 'pStub'
+1>e:\google\winpooch\driver\hook.h(36) : error C2061: syntax error : identifier 'pStub'
+1>e:\google\winpooch\driver\hook.h(36) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(36) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(36) : error C3409: empty attribute block is not allowed
+1>e:\google\winpooch\driver\hook.h(36) : error C3409: empty attribute block is not allowed
+1>e:\google\winpooch\driver\hook.h(36) : error C2143: syntax error : missing ']' before 'constant'
+1>e:\google\winpooch\driver\hook.h(36) : error C2143: syntax error : missing ']' before 'constant'
+1>e:\google\winpooch\driver\hook.h(37) : error C2061: syntax error : identifier 'nStubSize'
+1>e:\google\winpooch\driver\hook.h(37) : error C2061: syntax error : identifier 'nStubSize'
+1>e:\google\winpooch\driver\hook.h(37) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(37) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(38) : error C2061: syntax error : identifier 'pHead'
+1>e:\google\winpooch\driver\hook.h(38) : error C2061: syntax error : identifier 'pHead'
+1>e:\google\winpooch\driver\hook.h(38) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(38) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(38) : error C3409: empty attribute block is not allowed
+1>e:\google\winpooch\driver\hook.h(38) : error C3409: empty attribute block is not allowed
+1>e:\google\winpooch\driver\hook.h(38) : error C2143: syntax error : missing ']' before 'constant'
+1>e:\google\winpooch\driver\hook.h(38) : error C2143: syntax error : missing ']' before 'constant'
+1>e:\google\winpooch\driver\hook.h(39) : error C2061: syntax error : identifier 'nHeadSize'
+1>e:\google\winpooch\driver\hook.h(39) : error C2061: syntax error : identifier 'nHeadSize'
+1>e:\google\winpooch\driver\hook.h(39) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(39) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(40) : error C2059: syntax error : '}'
+1>e:\google\winpooch\driver\hook.h(40) : error C2059: syntax error : '}'
+1>e:\google\winpooch\driver\hook.h(42) : error C2143: syntax error : missing ')' before '*'
+1>e:\google\winpooch\driver\hook.h(42) : error C2143: syntax error : missing ')' before '*'
+1>e:\google\winpooch\driver\hook.h(42) : error C2143: syntax error : missing '{' before '*'
+1>e:\google\winpooch\driver\hook.h(42) : error C2143: syntax error : missing '{' before '*'
+1>e:\google\winpooch\driver\hook.h(42) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hook.h(42) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hook.h(42) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(42) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(44) : error C2143: syntax error : missing ')' before '*'
+1>e:\google\winpooch\driver\hook.h(44) : error C2143: syntax error : missing ')' before '*'
+1>e:\google\winpooch\driver\hook.h(44) : error C2143: syntax error : missing '{' before '*'
+1>e:\google\winpooch\driver\hook.h(44) : error C2143: syntax error : missing '{' before '*'
+1>e:\google\winpooch\driver\hook.h(44) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hook.h(44) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hook.h(44) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(44) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.c(42) : fatal error C1083: Cannot open include file: 'ddk/ntapi.h': No such file or directory
+1>e:\google\winpooch\driver\hook.c(42) : error C1083: Cannot open include file: 'ddk/ntapi.h': No such file or directory
+1>hookcommon.c
+1>e:\google\winpooch\driver\proclist.h(30) : fatal error C1083: Cannot open include file: 'Filter.h': No such file or directory
+1>e:\google\winpooch\driver\proclist.h(30) : error C1083: Cannot open include file: 'Filter.h': No such file or directory
+1>hookfile.c
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2061: syntax error : identifier 'Hook_IoCreateFile'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2061: syntax error : identifier 'Hook_IoCreateFile'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2061: syntax error : identifier 'Hook_NtDeleteFile'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2061: syntax error : identifier 'Hook_NtDeleteFile'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2061: syntax error : identifier 'Hook_NtSetInformationFile'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2061: syntax error : identifier 'Hook_NtSetInformationFile'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2061: syntax error : identifier 'Hook_NtDeviceIoControlFile'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2061: syntax error : identifier 'Hook_NtDeviceIoControlFile'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2061: syntax error : identifier 'Hook_NtWriteFile'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2061: syntax error : identifier 'Hook_NtWriteFile'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2059: syntax error : 'type'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(318) : error C2061: syntax error : identifier 'CRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(318) : error C2061: syntax error : identifier 'CRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(318) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(318) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(319) : error C2061: syntax error : identifier 'PCRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(319) : error C2061: syntax error : identifier 'PCRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(319) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(319) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(320) : error C2061: syntax error : identifier 'LPCRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(320) : error C2061: syntax error : identifier 'LPCRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(320) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(320) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(322) : error C2061: syntax error : identifier 'CRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(322) : error C2061: syntax error : identifier 'CRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(322) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(322) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(323) : error C2061: syntax error : identifier 'PCRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(323) : error C2061: syntax error : identifier 'PCRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(323) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(323) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(324) : error C2061: syntax error : identifier 'LPCRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(324) : error C2061: syntax error : identifier 'LPCRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(324) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(324) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2061: syntax error : identifier 'SRWLOCK'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2061: syntax error : identifier 'SRWLOCK'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(419) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(419) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(426) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(426) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(433) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(433) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(440) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(440) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(447) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(447) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(454) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(454) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(461) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(461) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2061: syntax error : identifier 'CONDITION_VARIABLE'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2061: syntax error : identifier 'CONDITION_VARIABLE'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(474) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(474) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(481) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(481) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(488) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(488) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(497) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(497) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(507) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(507) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(554) : error C2061: syntax error : identifier 'LPLDT_ENTRY'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(554) : error C2061: syntax error : identifier 'LPLDT_ENTRY'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(554) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(554) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2306) : warning C4005: 'InterlockedExchangePointer' : macro redefinition
+1>warnings in directory e:\google\winpooch\driver
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2306) : warning C4005: 'InterlockedExchangePointer' : macro redefinition
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(12440) : see previous definition of 'InterlockedExchangePointer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2319) : error C2059: syntax error : '('
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2319) : error C2059: syntax error : '('
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2496) : warning C4005: 'InterlockedCompareExchangePointer' : macro redefinition
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2496) : warning C4005: 'InterlockedCompareExchangePointer' : macro redefinition
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(12396) : see previous definition of 'InterlockedCompareExchangePointer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2522) : error C2375: 'InitializeSListHead' : redefinition; different linkage
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2522) : error C2375: 'InitializeSListHead' : redefinition; different linkage
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(16657) : see declaration of 'InitializeSListHead'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2529) : error C2373: 'InterlockedPopEntrySList' : redefinition; different type modifiers
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2529) : error C2373: 'InterlockedPopEntrySList' : redefinition; different type modifiers
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(16878) : see declaration of 'InterlockedPopEntrySList'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2537) : error C2373: 'InterlockedPushEntrySList' : redefinition; different type modifiers
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2537) : error C2373: 'InterlockedPushEntrySList' : redefinition; different type modifiers
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(16885) : see declaration of 'InterlockedPushEntrySList'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2544) : error C2373: 'ExInterlockedFlushSList' : redefinition; different type modifiers
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2544) : error C2373: 'ExInterlockedFlushSList' : redefinition; different type modifiers
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(16869) : see declaration of 'ExInterlockedFlushSList'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2551) : error C2059: syntax error : '('
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2551) : error C2059: syntax error : '('
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2146: syntax error : missing ')' before identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2146: syntax error : missing ')' before identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2081: 'PMEMORY_BASIC_INFORMATION' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2081: 'PMEMORY_BASIC_INFORMATION' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2061: syntax error : identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2061: syntax error : identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2969) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2969) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2146: syntax error : missing ')' before identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2146: syntax error : missing ')' before identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2081: 'PMEMORY_BASIC_INFORMATION' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2081: 'PMEMORY_BASIC_INFORMATION' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2061: syntax error : identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2061: syntax error : identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : fatal error C1003: error count exceeds 100; stopping compilation
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C1003: error count exceeds 100; stopping compilation
+1>hookreg.c
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2061: syntax error : identifier 'Hook_NtSetValueKey'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2061: syntax error : identifier 'Hook_NtSetValueKey'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2061: syntax error : identifier 'Hook_NtQueryValueKey'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2061: syntax error : identifier 'Hook_NtQueryValueKey'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2061: syntax error : identifier 'Hooks_GetStubAddress'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2061: syntax error : identifier 'Hooks_GetStubAddress'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2061: syntax error : identifier 'Hooks_GetStubAddForJmp'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2061: syntax error : identifier 'Hooks_GetStubAddForJmp'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\proclist.h(30) : fatal error C1083: Cannot open include file: 'Filter.h': No such file or directory
+1>e:\google\winpooch\driver\proclist.h(30) : error C1083: Cannot open include file: 'Filter.h': No such file or directory
+1>hooks.c
+1>e:\google\winpooch\driver\hooks.h(58) : error C2061: syntax error : identifier 'Hooks_GetStubAddress'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2061: syntax error : identifier 'Hooks_GetStubAddress'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooks.h(58) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2061: syntax error : identifier 'Hooks_GetStubAddForJmp'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2061: syntax error : identifier 'Hooks_GetStubAddForJmp'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooks.h(60) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hook.h(34) : error C2016: C requires that a struct or union has at least one member
+1>e:\google\winpooch\driver\hook.h(34) : error C2016: C requires that a struct or union has at least one member
+1>e:\google\winpooch\driver\hook.h(34) : error C2061: syntax error : identifier 'PBYTE'
+1>e:\google\winpooch\driver\hook.h(34) : error C2061: syntax error : identifier 'PBYTE'
+1>e:\google\winpooch\driver\hook.h(35) : error C2061: syntax error : identifier 'pHookFunc'
+1>e:\google\winpooch\driver\hook.h(35) : error C2061: syntax error : identifier 'pHookFunc'
+1>e:\google\winpooch\driver\hook.h(35) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(35) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(36) : error C2061: syntax error : identifier 'pStub'
+1>e:\google\winpooch\driver\hook.h(36) : error C2061: syntax error : identifier 'pStub'
+1>e:\google\winpooch\driver\hook.h(36) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(36) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(36) : error C3409: empty attribute block is not allowed
+1>e:\google\winpooch\driver\hook.h(36) : error C3409: empty attribute block is not allowed
+1>e:\google\winpooch\driver\hook.h(36) : error C2143: syntax error : missing ']' before 'constant'
+1>e:\google\winpooch\driver\hook.h(36) : error C2143: syntax error : missing ']' before 'constant'
+1>e:\google\winpooch\driver\hook.h(37) : error C2061: syntax error : identifier 'nStubSize'
+1>e:\google\winpooch\driver\hook.h(37) : error C2061: syntax error : identifier 'nStubSize'
+1>e:\google\winpooch\driver\hook.h(37) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(37) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(38) : error C2061: syntax error : identifier 'pHead'
+1>e:\google\winpooch\driver\hook.h(38) : error C2061: syntax error : identifier 'pHead'
+1>e:\google\winpooch\driver\hook.h(38) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(38) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(38) : error C3409: empty attribute block is not allowed
+1>e:\google\winpooch\driver\hook.h(38) : error C3409: empty attribute block is not allowed
+1>e:\google\winpooch\driver\hook.h(38) : error C2143: syntax error : missing ']' before 'constant'
+1>e:\google\winpooch\driver\hook.h(38) : error C2143: syntax error : missing ']' before 'constant'
+1>e:\google\winpooch\driver\hook.h(39) : error C2061: syntax error : identifier 'nHeadSize'
+1>e:\google\winpooch\driver\hook.h(39) : error C2061: syntax error : identifier 'nHeadSize'
+1>e:\google\winpooch\driver\hook.h(39) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(39) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(40) : error C2059: syntax error : '}'
+1>e:\google\winpooch\driver\hook.h(40) : error C2059: syntax error : '}'
+1>e:\google\winpooch\driver\hook.h(42) : error C2143: syntax error : missing ')' before '*'
+1>e:\google\winpooch\driver\hook.h(42) : error C2143: syntax error : missing ')' before '*'
+1>e:\google\winpooch\driver\hook.h(42) : error C2143: syntax error : missing '{' before '*'
+1>e:\google\winpooch\driver\hook.h(42) : error C2143: syntax error : missing '{' before '*'
+1>e:\google\winpooch\driver\hook.h(42) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hook.h(42) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hook.h(42) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(42) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(44) : error C2143: syntax error : missing ')' before '*'
+1>e:\google\winpooch\driver\hook.h(44) : error C2143: syntax error : missing ')' before '*'
+1>e:\google\winpooch\driver\hook.h(44) : error C2143: syntax error : missing '{' before '*'
+1>e:\google\winpooch\driver\hook.h(44) : error C2143: syntax error : missing '{' before '*'
+1>e:\google\winpooch\driver\hook.h(44) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hook.h(44) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hook.h(44) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hook.h(44) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2061: syntax error : identifier 'Hook_NtSetValueKey'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2061: syntax error : identifier 'Hook_NtSetValueKey'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookreg.h(32) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2061: syntax error : identifier 'Hook_NtQueryValueKey'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2061: syntax error : identifier 'Hook_NtQueryValueKey'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookreg.h(35) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2061: syntax error : identifier 'Hook_IoCreateFile'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2061: syntax error : identifier 'Hook_IoCreateFile'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(30) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2061: syntax error : identifier 'Hook_NtDeleteFile'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2061: syntax error : identifier 'Hook_NtDeleteFile'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(45) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2061: syntax error : identifier 'Hook_NtSetInformationFile'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2061: syntax error : identifier 'Hook_NtSetInformationFile'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(47) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2061: syntax error : identifier 'Hook_NtDeviceIoControlFile'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2061: syntax error : identifier 'Hook_NtDeviceIoControlFile'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(50) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2061: syntax error : identifier 'Hook_NtWriteFile'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2061: syntax error : identifier 'Hook_NtWriteFile'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hookfile.h(61) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2061: syntax error : identifier 'Hook_NtCreateProcess'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2061: syntax error : identifier 'Hook_NtCreateProcess'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2061: syntax error : identifier 'Hook_NtCreateProcessEx'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2061: syntax error : identifier 'Hook_NtCreateProcessEx'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2061: syntax error : identifier 'Hook_NtCreateSection'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2061: syntax error : identifier 'Hook_NtCreateSection'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2061: syntax error : identifier 'Hook_PspTerminateProcess'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2061: syntax error : identifier 'Hook_PspTerminateProcess'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2061: syntax error : identifier 'Hook_NtTerminateProcess'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2061: syntax error : identifier 'Hook_NtTerminateProcess'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2061: syntax error : identifier 'Hook_ObpFreeObject_Win2K'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2061: syntax error : identifier 'Hook_ObpFreeObject_Win2K'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2091: function returns function
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2091: function returns function
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before 'constant'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before 'constant'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2091: function returns function
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2091: function returns function
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing '{' before 'constant'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing '{' before 'constant'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : '<Unknown>'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : '<Unknown>'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(6) : error C2061: syntax error : identifier 'Link_IsConnected'
+1>e:\google\winpooch\driver\link.h(6) : error C2061: syntax error : identifier 'Link_IsConnected'
+1>e:\google\winpooch\driver\link.h(6) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(6) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(6) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(6) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(8) : error C2146: syntax error : missing ')' before identifier 'pRequestData'
+1>e:\google\winpooch\driver\link.h(8) : error C2146: syntax error : missing ')' before identifier 'pRequestData'
+1>e:\google\winpooch\driver\link.h(8) : error C2061: syntax error : identifier 'pRequestData'
+1>e:\google\winpooch\driver\link.h(8) : error C2061: syntax error : identifier 'pRequestData'
+1>e:\google\winpooch\driver\link.h(8) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(8) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(8) : error C2059: syntax error : ','
+1>e:\google\winpooch\driver\link.h(8) : error C2059: syntax error : ','
+1>e:\google\winpooch\driver\link.h(10) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(10) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(20) : error C2061: syntax error : identifier 'Link_IsAppWaiting'
+1>e:\google\winpooch\driver\link.h(20) : error C2061: syntax error : identifier 'Link_IsAppWaiting'
+1>e:\google\winpooch\driver\link.h(20) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(20) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(20) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(20) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(22) : error C2061: syntax error : identifier 'Link_IsRequesting'
+1>e:\google\winpooch\driver\link.h(22) : error C2061: syntax error : identifier 'Link_IsRequesting'
+1>e:\google\winpooch\driver\link.h(22) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(22) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(22) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(22) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooks.c(46) : fatal error C1083: Cannot open include file: 'Trace.h': No such file or directory
+1>e:\google\winpooch\driver\hooks.c(46) : error C1083: Cannot open include file: 'Trace.h': No such file or directory
+1>hooksys.c
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2061: syntax error : identifier 'Hook_NtCreateProcess'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2061: syntax error : identifier 'Hook_NtCreateProcess'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(31) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2061: syntax error : identifier 'Hook_NtCreateProcessEx'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2061: syntax error : identifier 'Hook_NtCreateProcessEx'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(36) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2061: syntax error : identifier 'Hook_NtCreateSection'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2061: syntax error : identifier 'Hook_NtCreateSection'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(41) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2061: syntax error : identifier 'Hook_PspTerminateProcess'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2061: syntax error : identifier 'Hook_PspTerminateProcess'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(46) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2061: syntax error : identifier 'Hook_NtTerminateProcess'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2061: syntax error : identifier 'Hook_NtTerminateProcess'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(49) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2061: syntax error : identifier 'Hook_ObpFreeObject_Win2K'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2061: syntax error : identifier 'Hook_ObpFreeObject_Win2K'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(56) : error C2059: syntax error : 'type'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2091: function returns function
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2091: function returns function
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before 'constant'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing ')' before 'constant'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2091: function returns function
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2091: function returns function
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing '{' before 'constant'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2143: syntax error : missing '{' before 'constant'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : '<Unknown>'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : '<Unknown>'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\hooksys.h(60) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\drvfilter.h(5) : fatal error C1083: Cannot open include file: 'FilterSet.h': No such file or directory
+1>e:\google\winpooch\driver\drvfilter.h(5) : error C1083: Cannot open include file: 'FilterSet.h': No such file or directory
+1>link.c
+1>e:\google\winpooch\driver\link.h(6) : error C2061: syntax error : identifier 'Link_IsConnected'
+1>e:\google\winpooch\driver\link.h(6) : error C2061: syntax error : identifier 'Link_IsConnected'
+1>e:\google\winpooch\driver\link.h(6) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(6) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(6) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(6) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(8) : error C2146: syntax error : missing ')' before identifier 'pRequestData'
+1>e:\google\winpooch\driver\link.h(8) : error C2146: syntax error : missing ')' before identifier 'pRequestData'
+1>e:\google\winpooch\driver\link.h(8) : error C2061: syntax error : identifier 'pRequestData'
+1>e:\google\winpooch\driver\link.h(8) : error C2061: syntax error : identifier 'pRequestData'
+1>e:\google\winpooch\driver\link.h(8) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(8) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(8) : error C2059: syntax error : ','
+1>e:\google\winpooch\driver\link.h(8) : error C2059: syntax error : ','
+1>e:\google\winpooch\driver\link.h(10) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(10) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(20) : error C2061: syntax error : identifier 'Link_IsAppWaiting'
+1>e:\google\winpooch\driver\link.h(20) : error C2061: syntax error : identifier 'Link_IsAppWaiting'
+1>e:\google\winpooch\driver\link.h(20) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(20) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(20) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(20) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(22) : error C2061: syntax error : identifier 'Link_IsRequesting'
+1>e:\google\winpooch\driver\link.h(22) : error C2061: syntax error : identifier 'Link_IsRequesting'
+1>e:\google\winpooch\driver\link.h(22) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(22) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\link.h(22) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.h(22) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\link.c(44) : fatal error C1083: Cannot open include file: 'DrvInterface.h': No such file or directory
+1>e:\google\winpooch\driver\link.c(44) : error C1083: Cannot open include file: 'DrvInterface.h': No such file or directory
+1>ntundoc.c
+1>e:\google\winpooch\driver\ntundoc.h(29) : fatal error C1083: Cannot open include file: 'ddk/ntapi.h': No such file or directory
+1>e:\google\winpooch\driver\ntundoc.h(29) : error C1083: Cannot open include file: 'ddk/ntapi.h': No such file or directory
+1>procinfo.c
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(318) : error C2061: syntax error : identifier 'CRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(318) : error C2061: syntax error : identifier 'CRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(318) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(318) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(319) : error C2061: syntax error : identifier 'PCRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(319) : error C2061: syntax error : identifier 'PCRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(319) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(319) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(320) : error C2061: syntax error : identifier 'LPCRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(320) : error C2061: syntax error : identifier 'LPCRITICAL_SECTION'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(320) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(320) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(322) : error C2061: syntax error : identifier 'CRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(322) : error C2061: syntax error : identifier 'CRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(322) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(322) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(323) : error C2061: syntax error : identifier 'PCRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(323) : error C2061: syntax error : identifier 'PCRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(323) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(323) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(324) : error C2061: syntax error : identifier 'LPCRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(324) : error C2061: syntax error : identifier 'LPCRITICAL_SECTION_DEBUG'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(324) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(324) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2061: syntax error : identifier 'SRWLOCK'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2061: syntax error : identifier 'SRWLOCK'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(410) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(418) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(419) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(419) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(425) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(426) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(426) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(432) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(433) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(433) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(439) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(440) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(440) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(446) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(447) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(447) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(453) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(454) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(454) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2146: syntax error : missing ')' before identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2061: syntax error : identifier 'SRWLock'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(460) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(461) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(461) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2061: syntax error : identifier 'CONDITION_VARIABLE'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2061: syntax error : identifier 'CONDITION_VARIABLE'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(467) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(473) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(474) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(474) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(480) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(481) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(481) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(487) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(488) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(488) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(494) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(497) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(497) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2146: syntax error : missing ')' before identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2061: syntax error : identifier 'ConditionVariable'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(503) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(507) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(507) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(554) : error C2061: syntax error : identifier 'LPLDT_ENTRY'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(554) : error C2061: syntax error : identifier 'LPLDT_ENTRY'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(554) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(554) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2306) : warning C4005: 'InterlockedExchangePointer' : macro redefinition
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2306) : warning C4005: 'InterlockedExchangePointer' : macro redefinition
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(12440) : see previous definition of 'InterlockedExchangePointer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2319) : error C2059: syntax error : '('
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2319) : error C2059: syntax error : '('
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2496) : warning C4005: 'InterlockedCompareExchangePointer' : macro redefinition
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2496) : warning C4005: 'InterlockedCompareExchangePointer' : macro redefinition
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(12396) : see previous definition of 'InterlockedCompareExchangePointer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2522) : error C2375: 'InitializeSListHead' : redefinition; different linkage
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2522) : error C2375: 'InitializeSListHead' : redefinition; different linkage
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(16657) : see declaration of 'InitializeSListHead'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2529) : error C2373: 'InterlockedPopEntrySList' : redefinition; different type modifiers
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2529) : error C2373: 'InterlockedPopEntrySList' : redefinition; different type modifiers
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(16878) : see declaration of 'InterlockedPopEntrySList'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2537) : error C2373: 'InterlockedPushEntrySList' : redefinition; different type modifiers
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2537) : error C2373: 'InterlockedPushEntrySList' : redefinition; different type modifiers
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(16885) : see declaration of 'InterlockedPushEntrySList'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2544) : error C2373: 'ExInterlockedFlushSList' : redefinition; different type modifiers
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2544) : error C2373: 'ExInterlockedFlushSList' : redefinition; different type modifiers
+1> d:\winddk\7600.16385.0\inc\ddk\wdm.h(16869) : see declaration of 'ExInterlockedFlushSList'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2551) : error C2059: syntax error : '('
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2551) : error C2059: syntax error : '('
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2146: syntax error : missing ')' before identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2146: syntax error : missing ')' before identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2081: 'PMEMORY_BASIC_INFORMATION' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2081: 'PMEMORY_BASIC_INFORMATION' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2061: syntax error : identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2061: syntax error : identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2967) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2969) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2969) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2146: syntax error : missing ')' before identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2146: syntax error : missing ')' before identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2081: 'PMEMORY_BASIC_INFORMATION' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2081: 'PMEMORY_BASIC_INFORMATION' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2061: syntax error : identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2061: syntax error : identifier 'lpBuffer'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3091) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3093) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3093) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2146: syntax error : missing ')' before identifier 'HeapInformationClass'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2146: syntax error : missing ')' before identifier 'HeapInformationClass'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2081: 'HEAP_INFORMATION_CLASS' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2081: 'HEAP_INFORMATION_CLASS' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2061: syntax error : identifier 'HeapInformationClass'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2061: syntax error : identifier 'HeapInformationClass'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3236) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3239) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3239) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2146: syntax error : missing ')' before identifier 'HeapInformationClass'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2146: syntax error : missing ')' before identifier 'HeapInformationClass'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2081: 'HEAP_INFORMATION_CLASS' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2081: 'HEAP_INFORMATION_CLASS' : name in formal parameter list illegal
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2061: syntax error : identifier 'HeapInformationClass'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2061: syntax error : identifier 'HeapInformationClass'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2059: syntax error : ';'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3246) : error C2059: syntax error : ','
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3250) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(3250) : error C2059: syntax error : ')'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(4189) : error C2146: syntax error : missing ')' before identifier 'lpSelectorEntry'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(4189) : error C2146: syntax error : missing ')' before identifier 'lpSelectorEntry'
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(4189) : fatal error C1003: error count exceeds 100; stopping compilation
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(4189) : error C1003: error count exceeds 100; stopping compilation
+1>proclist.c
+1>e:\google\winpooch\driver\proclist.h(30) : fatal error C1083: Cannot open include file: 'Filter.h': No such file or directory
+1>e:\google\winpooch\driver\proclist.h(30) : error C1083: Cannot open include file: 'Filter.h': No such file or directory
+1>scancache.c
+1>e:\google\winpooch\driver\scancache.h(30) : fatal error C1083: Cannot open include file: 'ScanResult.h': No such file or directory
+1>e:\google\winpooch\driver\scancache.h(30) : error C1083: Cannot open include file: 'ScanResult.h': No such file or directory
+1>systinfo.c
+1>e:\google\winpooch\driver\systinfo.h(40) : error C2061: syntax error : identifier 'SystInfo_GetWindowsVersion'
+1>e:\google\winpooch\driver\systinfo.h(40) : error C2061: syntax error : identifier 'SystInfo_GetWindowsVersion'
+1>e:\google\winpooch\driver\systinfo.h(40) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\systinfo.h(40) : error C2059: syntax error : ';'
+1>e:\google\winpooch\driver\systinfo.h(40) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\systinfo.h(40) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\systinfo.c(41) : fatal error C1083: Cannot open include file: 'ddk/ntapi.h': No such file or directory
+1>e:\google\winpooch\driver\systinfo.c(41) : error C1083: Cannot open include file: 'ddk/ntapi.h': No such file or directory
+1>watchedobjects.c
+1>e:\google\winpooch\driver\watchedobjects.h(55) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\watchedobjects.h(55) : error C2143: syntax error : missing ')' before '('
+1>e:\google\winpooch\driver\watchedobjects.h(55) : error C2091: function returns function
+1>e:\google\winpooch\driver\watchedobjects.h(55) : error C2091: function returns function
+1>e:\google\winpooch\driver\watchedobjects.h(55) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\watchedobjects.h(55) : error C2059: syntax error : ')'
+1>e:\google\winpooch\driver\watchedobjects.h(59) : error C2085: 'WatchObjs_AddFromHandle' : not in formal parameter list
+1>e:\google\winpooch\driver\watchedobjects.h(59) : error C2085: 'WatchObjs_AddFromHandle' : not in formal parameter list
+1>e:\google\winpooch\driver\watchedobjects.h(61) : error C2085: 'WatchObjs_RemFromPointer' : not in formal parameter list
+1>e:\google\winpooch\driver\watchedobjects.h(61) : error C2085: 'WatchObjs_RemFromPointer' : not in formal parameter list
+1>e:\google\winpooch\driver\watchedobjects.h(66) : error C2085: 'WatchObjs_GetFromPointer' : not in formal parameter list
+1>e:\google\winpooch\driver\watchedobjects.h(66) : error C2085: 'WatchObjs_GetFromPointer' : not in formal parameter list
+1>e:\google\winpooch\driver\watchedobjects.h(68) : error C2061: syntax error : identifier '__attribute__'
+1>e:\google\winpooch\driver\watchedobjects.h(68) : error C2061: syntax error : identifier '__attribute__'
+1>e:\google\winpooch\driver\watchedobjects.c(45) : fatal error C1083: Cannot open include file: 'Trace.h': No such file or directory
+1>e:\google\winpooch\driver\watchedobjects.c(45) : error C1083: Cannot open include file: 'Trace.h': No such file or directory
+1>Generating Code...
+1> D:\WinDDK\7600.16385.0\Bin\x86\oacr\oacrlink /out:e:\google\winpooch\driver\objchk_wxp_x86\i386\winpooch.sys /machine:ix86 @e:\google\winpooch\driver\objchk_wxp_x86\i386\lnk.rsp
+1>Microsoft (R) Incremental Linker Version 9.00.30729.207
+1>Copyright (C) Microsoft Corporation.  All rights reserved.
+1>/MERGE:_PAGE=PAGE 
+1>/MERGE:_TEXT=.text 
+1>/SECTION:INIT,d 
+1>/OPT:REF 
+1>/OPT:ICF 
+1>/IGNORE:4198,4010,4037,4039,4065,4070,4078,4087,4089,4221 
+1>/INCREMENTAL:NO 
+1>/release 
+1>/NODEFAULTLIB 
+1>/WX 
+1>/debug 
+1>/debugtype:cv,fixup,pdata 
+1>/version:6.1 
+1>/osversion:6.1 
+1>/functionpadmin:5 
+1>/safeseh 
+1>/pdbcompress 
+1>/STACK:0x40000,0x1000 
+1>/driver 
+1>/base:0x10000 
+1>/align:0x80 /stub:d:\winddk\7600.16385.0\lib\wxp\stub512.com 
+1>/subsystem:native,5.01 
+1>/entry:GsDriverEntry@8 
+1>/out:e:\google\winpooch\driver\objchk_wxp_x86\i386\winpooch.sys 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\driver.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\drvfilter.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\drvstatus.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\disasm.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\fileinfo.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\hook.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\hookcommon.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\hookfile.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\hookreg.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\hooks.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\hooksys.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\link.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\ntundoc.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\procinfo.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\proclist.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\scancache.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\systinfo.obj 
+1>e:\google\winpooch\driver\objchk_wxp_x86\i386\watchedobjects.obj 
+1>d:\winddk\7600.16385.0\lib\wxp\i386\BufferOverflowK.lib 
+1>d:\winddk\7600.16385.0\lib\wxp\i386\ntoskrnl.lib 
+1>d:\winddk\7600.16385.0\lib\wxp\i386\hal.lib 
+1>d:\winddk\7600.16385.0\lib\wxp\i386\wmilib.lib 
+1>d:\winddk\7600.16385.0\lib\wxp\i386\sehupd.lib 
+1>LINK : fatal error LNK1181: cannot open input file 'e:\google\winpooch\driver\objchk_wxp_x86\i386\driver.obj'
+1>link : error LNK1181: cannot open input file 'e:\google\winpooch\driver\objchk_wxp_x86\i386\driver.obj'
