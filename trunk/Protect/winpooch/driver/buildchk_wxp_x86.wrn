@@ -1,0 +1,5 @@
+1>warnings in directory e:\google\winpooch\driver
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2306) : warning C4005: 'InterlockedExchangePointer' : macro redefinition
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2496) : warning C4005: 'InterlockedCompareExchangePointer' : macro redefinition
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2306) : warning C4005: 'InterlockedExchangePointer' : macro redefinition
+1>d:\winddk\7600.16385.0\inc\api\winbase.h(2496) : warning C4005: 'InterlockedCompareExchangePointer' : macro redefinition

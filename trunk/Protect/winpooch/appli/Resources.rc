@@ -1,0 +1,155 @@
+/******************************************************************/
+/*                                                                */
+/*  Winpooch : Windows Watchdog                                   */
+/*  Copyright (C) 2004-2005  Benoit Blanchon                      */
+/*                                                                */
+/*  This program is free software; you can redistribute it        */
+/*  and/or modify it under the terms of the GNU General Public    */
+/*  License as published by the Free Software Foundation; either  */
+/*  version 2 of the License, or (at your option) any later       */
+/*  version.                                                      */
+/*                                                                */
+/*  This program is distributed in the hope that it will be       */
+/*  useful, but WITHOUT ANY WARRANTY; without even the implied    */
+/*  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR       */
+/*  PURPOSE.  See the GNU General Public License for more         */
+/*  details.                                                      */
+/*                                                                */
+/*  You should have received a copy of the GNU General Public     */
+/*  License along with this program; if not, write to the Free    */
+/*  Software Foundation, Inc.,                                    */
+/*  675 Mass Ave, Cambridge, MA 02139, USA.                       */
+/*                                                                */
+/******************************************************************/
+
+#include "Resources.h"
+
+#include <windows.h>
+#include <commctrl.h>
+
+#include "BuildCount.h"
+#include "ProjectInfo.h"
+
+#define IMAGE	100
+
+IDI_APP				ICON	"../rsrc/appicon.ico"
+IDI_TRAY_IDLE0			ICON	"../rsrc/tray_idle0.ico"
+IDI_TRAY_IDLE1			ICON	"../rsrc/tray_idle1.ico"
+IDI_TRAY_IDLE2			ICON	"../rsrc/tray_idle2.ico"
+IDI_TRAY_IDLE3			ICON	"../rsrc/tray_idle3.ico"
+IDI_TRAY_IDLE4			ICON	"../rsrc/tray_idle4.ico"
+IDI_TRAY_ALERT0			ICON	"../rsrc/tray_alert0.ico"
+IDI_TRAY_ALERT1			ICON	"../rsrc/tray_alert1.ico"
+//IDI_TRAY_SCAN0		ICON	"../rsrc/tray_scan0.ico"
+//IDI_TRAY_SCAN1		ICON	"../rsrc/tray_scan1.ico"
+//IDI_TRAY_SCAN2		ICON	"../rsrc/tray_scan2.ico"
+IDI_DEFAULT			ICON	"../rsrc/default.ico"
+IDI_UNKNOWN			ICON	"../rsrc/unknown.ico"
+IDI_TOOL_ADD			ICON	"../rsrc/tool_add.ico"
+IDI_TOOL_REMOVE			ICON	"../rsrc/tool_remove.ico"
+IDI_TOOL_EDIT			ICON	"../rsrc/tool_edit.ico"
+IDI_TOOL_UP			ICON	"../rsrc/tool_up.ico"
+IDI_TOOL_DOWN			ICON	"../rsrc/tool_down.ico"
+IDI_COLUMN_UP			ICON	"../rsrc/column_up.ico"
+IDI_COLUMN_DOWN			ICON	"../rsrc/column_down.ico"
+IDI_STATE_UNKNOWN		ICON	"../rsrc/state_unknown.ico"
+IDI_STATE_FAILED		ICON	"../rsrc/state_failed.ico"
+IDI_STATE_DISABLED		ICON	"../rsrc/state_disabled.ico"
+IDI_STATE_HOOKED		ICON	"../rsrc/state_hooked.ico"
+IDI_REASON_FILE_READ		ICON	"../rsrc/reason_file_read.ico"
+IDI_REASON_FILE_WRITE		ICON	"../rsrc/reason_file_write.ico"
+IDI_REASON_NET_CONNECT		ICON	"../rsrc/reason_net_connect.ico"
+IDI_REASON_NET_LISTEN		ICON	"../rsrc/reason_net_listen.ico"
+IDI_REASON_REG_SETVALUE		ICON	"../rsrc/reason_reg_setvalue.ico"
+IDI_REASON_REG_QUERYVALUE	ICON	"../rsrc/reason_reg_setvalue.ico"
+IDI_REASON_SYS_EXECUTE		ICON	"../rsrc/reason_sys_execute.ico"
+IDI_REASON_SYS_KILLPROCESS	ICON	"../rsrc/reason_sys_killprocess.ico"
+IDI_CLOCK			ICON	"../rsrc/clock.ico"
+
+IDW_BARK		WAVE	"../rsrc/bark.wav"
+
+IDB_ASK			IMAGE	"../rsrc/AskDialog.png"
+IDB_VIRUS		IMAGE	"../rsrc/AskDialog.png"
+IDB_SPLASH		IMAGE	"../rsrc/splash.png"
+IDB_FILTERS		IMAGE	"../rsrc/filters.png"
+IDB_HISTORY		IMAGE	"../rsrc/history.png"
+IDB_PROCESSES		IMAGE	"../rsrc/processes.png"
+IDB_CONFIGURATION	IMAGE	"../rsrc/configuration.png"
+IDB_ABOUT		IMAGE	"../rsrc/about.png"
+IDB_SCANCACHE		IMAGE	"../rsrc/scancache.png"
+
+
+// Allow Windows XP visual styles
+// (disabled because of an issue with the ListView in the FilterWnd
+//CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "../rsrc/Winpooch.exe.manifest"
+
+
+/**
+ * Version informations
+ */
+1 VERSIONINFO
+FILEVERSION APPLICATION_VERSION_COMMA
+PRODUCTVERSION APPLICATION_VERSION_COMMA
+FILEFLAGSMASK 0x3fL
+FILEFLAGS  0x0L
+FILEOS VOS__WINDOWS32
+FILETYPE VFT_APP
+FILESUBTYPE 0x0L
+{	
+	BLOCK "StringFileInfo"
+	{
+		BLOCK "04090000"
+		{
+			VALUE "FileDescription", "Winpooch - Windows Watchdog"
+			VALUE "Comments", "Winpooch watch running program so as to detect spywares and trojans."
+			VALUE "FileVersion", APPLICATION_VERSION_STRING
+			VALUE "LegalCopyright", "Copyright 2004-2005"
+			VALUE "ProductName", APPLICATION_NAME
+			VALUE "ProductVersion", APPLICATION_VERSION_STRING
+			VALUE "InternalName", APPLICATION_NAME
+			VALUE "OriginalFilename", "Winpooch.exe"		
+			VALUE "SpecialBuild", "Build number : " STRINGIFY2(BUILD_COUNT) "\r\nBuild date : " __DATE__ "\r\n"
+		}
+	}
+
+	BLOCK "VarFileInfo"
+	{
+		// Language
+		//   0x0409 = U.S. English
+		// Character set 
+		//   1200 = Unicode
+		VALUE "Translation", 0x0409, 1200
+	}
+}
+
+DLG_PARAM DIALOG 12, 54, 250, 50
+STYLE WS_CHILD
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Type", IDT_TYPE, 2, 2, 40, 12
+    COMBOBOX        IDC_TYPE, 44, 2, 204, 80, CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Value", IDT_VALUE, 2, 18, 20, 12
+    EDITTEXT        IDC_VALUE, 44, 18, 204, 30, ES_MULTILINE | 
+                    ES_AUTOHSCROLL
+END
+
+
+
+DLG_PROGPATH DIALOG 12, 14, 212, 188
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Set program path"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Program path (can use wildcards)", IDT_PATH, 6, 6, 190, 10
+    EDITTEXT        IDC_PATH, 6, 18, 180, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "...", IDC_BROWSE, 186, 18, 20, 12
+    PUSHBUTTON      "OK", IDOK, 36, 168, 56, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 114, 168, 56, 14
+    CONTROL         "", IDC_PROCESSLIST, "SysListView32", LVS_REPORT | LVS_SORTASCENDING | WS_BORDER, 6, 38, 200, 124
+END
+
+#include "../rsrc/dlg_ask.dlg"
+#include "../rsrc/dlg_config.dlg"
+#include "../rsrc/dlg_rule.dlg"
+#include "../rsrc/dlg_virus.dlg"

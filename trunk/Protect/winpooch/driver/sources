@@ -1,0 +1,28 @@
+TARGETNAME=winpooch
+TARGETTYPE=DRIVER
+TARGETPATH=obj
+
+
+INCLUDES=.\;
+
+SOURCES =\
+	Driver.c \
+	DrvFilter.c \
+	DrvStatus.c \
+	Disasm.c \
+	FileInfo.c \
+	Hook.c \
+	HookCommon.c \
+	HookFile.c \
+	HookReg.c \
+	Hooks.c \
+	HookSys.c \
+	Link.c \
+	NtUndoc.c \
+	ProcInfo.c \
+	ProcList.c \
+	ScanCache.c \
+	SystInfo.c \
+	WatchedObjects.c
+		
+		

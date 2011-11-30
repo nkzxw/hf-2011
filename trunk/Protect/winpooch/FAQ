@@ -1,0 +1,191 @@
+			Winpooch - F.A.Q
+			****************
+
+Author		Benoit Blanchon
+Date		15/08/2006
+Web site	http://www.winpooch.com/
+
+
+1. Why does the main menu looks badly ?
+2. What is the "feign" reaction ?
+3. What is the difference between types "Path" and "Wildcards" ?
+4. How can I contribute to this project ?
+5. Where can I find help on Winpooch ?
+6. What if I use ProcessGuard ?
+7. Is Windows 64 supported ?
+8. What are the differences with another anti-spyware ?
+9. Can Winpooch slow down my computer ?
+10. Is Winpooch an ultimate security solution ?
+11. How can I uninstall Winpooch ?
+12. How can I compile Winpooch ?
+
+
+1. Why does the main menu looks badly ?
+=======================================
+
+This may be because of your display configuration.
+Are you using a 16-bits display ?
+If so, you should switch to 32-bits.
+Winpooch looks really better with a 32-bits resolution.
+
+
+2. What is the "feign" reaction ?
+=================================
+
+When Winpooch feigns an action, it simply tell the application that 
+the requested action has succeeded, but in reality no action is 
+performed.
+
+In programming terms, this means that Winpooch returns a value
+indicating no error but doesn't execute the real function.
+This is opposed to the "reject" feature : in this mode Winpooch
+returns a value indicating an error, which means that the calling
+programs knows that the function failed.
+
+In some cases, the "feign" reaction can be the same as "reject".
+
+
+3. What is the difference between types "Path" and "Wildcards" ?
+================================================================
+
+These two types are quite similar : you can use wildcards character
+(? and *) with both.
+The difference is that "Path" considers the parameter as a file path
+(ie it takes care of slashes) whereas "Wildcards" considers the 
+parameter a a plain characters string.
+
+This difference has the following effect : "Path" don't check 
+sub-directories whereas "Wildcards" check subdirectories.
+Is it clear ?
+
+No ? OK, let's take a simple example.
+You want to check the following pattern :
+"C:\Windows\*.dll"
+but you hesitate between "Path" and "Wildcards" types.
+With the "Path" type, you will only catch DLL files in the Windows
+directory, like C:\Windows\Hello.dll.
+With the "Wildcards" type, you will also catch DLL files in the
+sub-directories, like C:\Windows\System32\Hello.dll.
+
+
+4. How can I contribute to this project ?
+=========================================
+
+We are looking for :
+- translators 
+- testers
+- doc writers
+Please don't write to ask to contribute as a developer, we are not
+looking for developers.
+
+If you want to contribute as a translator or as a tester, please 
+register to the corresponding mailing list and post a request for help.
+
+If you are an experienced user of Winpooch, you can help new users
+by answering questions on the mailing list "Winpooch-users".
+
+Use this page to register to one or more list :
+http://sourceforge.net/mail/?group_id=122629
+
+
+5. Where can I find help on Winpooch ?
+======================================
+
+We know Winpooch lacks documentations.
+If you have a question about Winpooch and you can't find the answer in
+this FAQ, you can submit your question to the mailing list "Winpooch-users"
+at the address winpooch-users@lists.sourceforge.net
+
+
+6. What if I use ProcessGuard ?
+===============================
+
+ProcessGuard is a program that also use API hooking to spy programs.
+You need to configure ProcessGuard correctly to make Winpooch works
+properly. Set the following configuration for Winpooch.exe :
+- Uncheck "Protect this application from modification"
+- Check "Authorize this application to modify protected applications"
+
+Normally, Winpooch will detect ProcessGuard and display a warning
+the first time you run it.
+
+
+7. Is Windows 64 supported ?
+============================
+
+Only 32-bit versions of Windows are currently supported.
+Windows 64 will be supported in the future.
+
+
+8. What are the differences with another anti-spyware ?
+=======================================================
+
+Many anti-spywares work like an anti-virus : they scan the memory and
+hard drives and look for know signatures. When they recognize a signature,
+they consider the file to be a virus. This means that all signatures 
+have to be registered in a database. If a new virus is not yet registered
+in the database, it will not be detected.
+
+Winpooch uses a completely different approach : as a watchdog, it watches
+program and detect when a suspicious action is done. Winpooch uses filters
+so a to prevent dangerous actions : with default filters, most of the
+sensible points used by spywares are protected (mainly start-up techniques).
+
+That's why we recommend to use an anti-virus in addition to Winpooch.
+For a completely open-source security solution, you should consider to
+install ClamWin + Winpooch. You can configure Winpooch so it'll use
+ClamWin and scan every executable file before allowing it to run.
+
+We also advice you to install Winpooch on a healthy computer because
+Winpooch can easily prevent spywares and adwares from installing, but
+can't destroy them.
+
+
+9. Can Winpooch slow down my computer ?
+=======================================
+
+It's the drawback of any security system : they all slow down the computer.
+Winpooch can significantly slow functions it hooks, but we chose to hook
+only functions which are not time-critical.
+
+The impact of Winpooch on the computer speed depends on the filters you
+configured : the more rule there are, the slower the computer is.
+That's because Winpooch needs to check each rule one-by-one, so when they
+are many rule, it can be longer than when just a few rule have to be checked.
+
+If you use an antivirus with Winpooch, it will significantly slow down your
+computer (as with every antivirus) because files will be scanned on-the-fly.
+
+
+10. Is Winpooch an ultimate security solution ?
+===============================================
+
+Of course not !
+Winpooch can significantly improve the security of your system but there is
+no ultimate security solution.
+
+Since version 0.6.0, Winpooch become a real on-access (real-time) antivirus.
+This means that each time a file is read, it is scan by the antivirus.
+For now, there is no "on-write" scan, but only "on-read".
+
+To increase security, you should update Winpooch frequently.
+You should also update your antivirus.
+If you use the antivirus integrated to Winpooch, its database are updated
+automatically every 3 hours (of course if your internet access is working).
+
+
+11. How can I uninstall Winpooch ?
+==================================
+
+To uninstall Winpooch, you need to shut it down first.
+To do this, right-click on the tray icon and then click "shutdown".
+Now you can uninstall it by launching the uninstaller.
+
+
+12. How can I compile Winpooch ?
+================================
+
+To compile winpooch, you will need :
+- MinGW environment : http://www.mingw.org/
+- FreeImage library : http://freeimage.sourceforge.net/
+- Libclamav library : http://www.clamav.net/
