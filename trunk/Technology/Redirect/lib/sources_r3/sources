@@ -1,0 +1,11 @@
+TARGETNAME=reparse
+TARGETTYPE=PROGRAM
+
+USE_MSVCRT=1
+USE_MAPSYM=1
+
+SOURCES=reparse.cpp
+
+UMTYPE=console
+UMENTRY=main
+

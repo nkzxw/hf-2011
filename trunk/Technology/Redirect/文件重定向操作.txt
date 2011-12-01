@@ -1,0 +1,121 @@
+在文件系统过滤驱动的IRP_MJ_CREATE例程当中过滤所有向X盘的访问请求，将FileObject中的FileName改为c:\test_dir\...，然后返回STATUS_REPARSE，并且在Irp的IoStatus.Information置为IO_REPARES，应该就可以了。
+
+==================
+STATUS_REPARSE
+============
+DefineDosDevice
+
+=================
+sfilter的重定向操作的源码，大家帮忙看看
+
+PDEVICE_EXTENSION deviceExtension; 
+PDEVICE_OBJECT attachedDevice; 
+PIO_STACK_LOCATION irpSp = IoGetCurrentIrpStackLocation(Irp); 
+NTSTATUS status; 
+PFILE_OBJECT FileObject = irpSp->FileObject; 
+LARGE_INTEGER offset = irpSp->Parameters.Read.ByteOffset; 
+ULONG length = irpSp->Parameters.Read.Length; 
+WCHAR nameBuf[512]; 
+UNICODE_STRING name; 
+UNICODE_STRING sourceName; 
+UNICODE_STRING destinationName; 
+
+if(!(DeviceObject->DriverObject==FsDriverObject)) 
+{ 
+Irp->IoStatus.Status = STATUS_INVALID_DEVICE_REQUEST; 
+Irp->IoStatus.Information = 0; 
+status = Irp->IoStatus.Status; 
+IoCompleteRequest(Irp, IO_NO_INCREMENT); 
+return status; 
+} 
+
+
+deviceExtension = DeviceObject->DeviceExtension; 
+attachedDevice = deviceExtension->FileSystemDeviceObject; 
+
+if(deviceExtension->RealDeviceObject==NULL) 
+{ 
+IoSkipCurrentIrpStackLocation(Irp); 
+return IoCallDriver(attachedDevice,Irp); 
+} 
+
+
+RtlInitUnicodeString( &sourceName, L"\\\\globaluser.txt" ); 
+
+RtlInitEmptyUnicodeString(&name,nameBuf,512); 
+
+if (FileObject&&RtlCompareUnicodeString( &sourceName, &FileObject->FileName, TRUE ) == 0) 
+{ 
+
+RtlCopyUnicodeString(&name,&FileObject->FileName); 
+
+DbgPrint("File Name: %ws",(&name)->Buffer); 
+
+ExFreePool(FileObject->FileName.Buffer); 
+FileObject->FileName.Length = 0; 
+FileObject->FileName.MaximumLength = name.MaximumLength; 
+FileObject->FileName.Buffer=(PWCHAR)ExAllocatePool(NonPagedPool, name.MaximumLength); 
+
+RtlInitUnicodeString( &destinationName, L"\\\\??\\\\G:\\\\user\\\\globaluser.txt" ); 
+RtlCopyUnicodeString(&FileObject->FileName, &destinationName); 
+
+FileObject->FileName.Buffer[FileObject->FileName.Length/2] = UNICODE_NULL; 
+
+Irp->IoStatus.Status = STATUS_REPARSE; 
+Irp->IoStatus.Information = IO_REPARSE; 
+IoCompleteRequest( Irp, IO_NO_INCREMENT ); 
+
+
+return STATUS_REPARSE; 
+
+} 
+else 
+{ 
+IoSkipCurrentIrpStackLocation(Irp); 
+return IoCallDriver(attachedDevice,Irp); 
+} 
+
+这段代码添加在sfcreate中。现在可以实现同盘文件的重定向，例如，当发打开G:\\globaluser.txt的请求,实际打开的是G:\\user\\globaluser.txt 
+但将G:\\user\\globaluser.txt改为不同盘的文件时就显示“系统找不到指定路径”，应该是可以实现不同盘重定向操作的，大家帮帮忙。 
+另外一个问题：请问sfilter可不可以实现网络文件的重定向。 
+=======================
+这个代码是好使的。包括不同盘，网络盘。 
+上次的错误很幼稚，呵呵，我把目标目录设置为F:\\user\\globaluser.txt,而实际我在F盘建立的是F:\\usr\\globaluser.txt，所以就显示找不到指定路径了。 
+我现在在做查询目录的重解析，不知道哪位考虑过，给点建议呀。不知道能不能实现，正在瞎捣鼓。等我做出来了也把源码贴出来。 
+========================
+重定向如果是在ifs filter,可简单,改路径,如果不同符,fsd object也改一下也可以.
+============
+老大，你的意思是说：在不同一个盘的情况下，修改改一下Fsd object 就可以直接传给下一层文件系统了？
+========================
+22
+==============
+我可以把部分关键代码贴上来，让大家批评指正，程序比较长，我不能全贴，见谅。我又没说要你的Money:)，仍旧可以通过邮件找我。想一个星期学会FSD的开发，可能性不太大，除非你有很深DDK开发经历。有点泼冷水了，不过还是希望下面的代码能给你一点帮助。 
+
+DbgPrint((\"REPARSE in create:\")); 
+
+CUString CUTargetName(&AnsiSource.Buffer[2]); 
+CUTargetName=CUString(\"\\\\??\\\\C:\\\\user\")+CUTargetName; 
+
+#if DBG 
+ANSI_STRING filename; 
+RtlUnicodeStringToAnsiString( &filename, &(UNICODE_STRING)CUTargetName, TRUE ); 
+DbgPrint((\" \'%s\' \\n\",filename.Buffer)); 
+RtlFreeAnsiString(&filename); 
+#endif 
+
+ExFreePool(FileObject->FileName.Buffer); 
+FileObject->FileName.Length = 0; 
+FileObject->FileName.MaximumLength = ((UNICODE_STRING)CUTargetName).MaximumLength; 
+// and allocate fresh space 
+FileObject->FileName.Buffer=(PWCHAR)ExAllocatePool(NonPagedPool, ((UNICODE_STRING)CUTargetName).MaximumLength); 
+
+RtlCopyUnicodeString(&FileObject->FileName, (PUNICODE_STRING)&((UNICODE_STRING)CUTargetName)); 
+FileObject->FileName.Buffer[FileObject->FileName.Length/2] = UNICODE_NULL; 
+
+pIrp->IoStatus.Status = STATUS_REPARSE; 
+pIrp->IoStatus.Information = IO_REPARSE; 
+IoCompleteRequest( pIrp, IO_NO_INCREMENT ); 
+
+RtlFreeAnsiString(&AnsiSource); 
+
+return STATUS_REPARSE;
