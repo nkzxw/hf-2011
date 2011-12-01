@@ -1,0 +1,13 @@
+TARGETNAME=sfilter
+TARGETPATH=obj
+TARGETTYPE=DRIVER
+DRIVERTYPE=FS
+
+
+SOURCES=sfilter.c   \
+	create.c \
+	readwrite.c \
+	setquery.c \
+	cleanclose.c \
+        sfilter.rc
+
