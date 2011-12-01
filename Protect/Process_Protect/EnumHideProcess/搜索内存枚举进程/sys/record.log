@@ -1,0 +1,45 @@
+	ULONG	i;	
+	ULONG	result;		
+	
+	nProcessCount = 0;
+
+	for (i = 0x80000000 ;i<0x90000000;i+=4){
+		result = VALIDpage(i);
+		if (result == VALID){
+			if (*(PULONG)i == 0x7ffdf000){
+				if(IsaRealProcess(i)){
+					DbgPrint("EPROCESS: 0x%x  ",i-PEB_OFFSET);
+			//		getnAme(i);
+				}
+			}
+		}
+		else if(result == PTE_INVALID){
+			i -=4;
+			i += 0x1000;//4k
+		}		
+		else{
+			i-=4;
+			i+= 0x400000;//4mb
+		}
+	}
+	for (i = 0xf0000000 ;i<0xffbe0000;i+=4){
+		result = VALIDpage(i);
+		if (result == VALID){
+			if (*(PULONG)i == 0x7ffdf000){
+				if(IsaRealProcess(i)){
+					DbgPrint("EPROCESS: 0x%x  ",i-PEB_OFFSET);
+			//		getnAme(i);
+				}
+			}
+		}
+		else if(result == PTE_INVALID){
+			i -=4;
+			i += 0x1000;//4k
+		}
+		else{
+			i-=4;
+			i+= 0x400000;//4mb
+		}
+	}
+	DbgPrint("seArching finish \n");
+ 

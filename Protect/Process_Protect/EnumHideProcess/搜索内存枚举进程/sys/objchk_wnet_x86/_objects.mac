@@ -1,0 +1,28 @@
+MUI_386_OBJECTS= \
+    $(_OBJ_DIR)\i386\resource.res
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\resource.res \
+    $(_OBJ_DIR)\i386\processenum.obj
+
+MUI_IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\resource.res
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\resource.res \
+    $(_OBJ_DIR)\ia64\processenum.obj
+
+MUI_AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\resource.res
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\resource.res \
+    $(_OBJ_DIR)\amd64\processenum.obj
+
+MUI_ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\resource.res
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\resource.res \
+    $(_OBJ_DIR)\arm\processenum.obj
+

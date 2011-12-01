@@ -1,0 +1,5 @@
+TARGETNAME=safepsenum
+TARGETPATH=obj
+TARGETTYPE=DRIVER
+SOURCES=processenum.c \
+	resource.rc
