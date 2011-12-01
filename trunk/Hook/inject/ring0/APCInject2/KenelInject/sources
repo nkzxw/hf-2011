@@ -1,0 +1,8 @@
+TARGETNAME=KernelInject
+TARGETTYPE=DRIVER
+TARGETPATH=OBJ
+
+INCLUDES=$(BASEDIR)\inc;\
+         $(BASEDIR)\inc\ddk;\
+
+SOURCES=KernelInject.cpp\
