@@ -1,0 +1,44 @@
+新建项目配置 check //必选
+(一)C/C++属性设置
+   常规选项卡
+1调试信息格式(C7兼容(/Z7) //可选
+2警告等级    （2级(/W2)  //可选
+3将警告视为错误 (是(/wx)  //可选
+   优化选项卡
+1优化(禁用/Od)          //可选
+  预处理器
+    预处理器定义：WIN32=100;_X86_=1;WINVER=0x501;DBG=1   //必选
+  代码生成
+    启用最小重新生成：否   //可选
+    基本运行时检查：默认值 //可选
+	    运行时库：多线程调试(/MTd) 或 多线程(/MT)  //建议选
+	    缓冲区安全检查：否   //可选
+	 (可避免出现 LINK : error LNK2001: 无法解析外部符号 __security_cookie)
+  高级
+	 调用约定 __stdcall(/Gz)   //必选
+	链接器
+ 常规：
+ 输出文件：$(OutDir)\$(ProjectName).sys //必选
+ 启用增量链接：否(/INCREMENTAL:NO) //建议选上
+	
+忽略导入库：是 //可选 ( 设置为此值时，必须在附加库目录中加：D:\WINDDK\3790.1830\lib\wxp\i386 ，这样项目就不会依赖IDE环境的设置 )   否 ( 设置为此值时，将依赖 IDE 的环境的相关设置 )
+ 输入：
+附加依赖项ntoskrnl.lib Hal.lib wdm.lib wdmsec.lib wmilib.lib ndis.lib MSVCRT.LIB LIBCMT.LIB //必选其12
+//NT式驱动 ntoskrnl.lib  WDM式驱动  wdm.lib ( HalXXX函数在Hal.lib，WmiXXX函数在 wmilib.lib ，NdisXXX函数在 ndis.lib ) ( 必要时需要增加微软的标准库 MSVCRT.LIB MSVCRTD.LIB(调试库) LIBCMT.LIBIBCMTD.LIB(调试库) ) ( 如果源码中有 source 文件，那么该文件的 TARGETLIBS 字段会列出该项目需要的库 )
+    忽略所有默认库：是(/NODEFAULTLIB)
+    
+ 调试：
+    生成调试信息 是(/DEBUG) //可选
+    生成映像文件：是(/MAP)  //可选
+    映像文件名：$(TargetDir)$(TargetName).map //可选
+  系统(System)：
+    子系统:控制台(/SUBSYSTEM:CONSOLE) //必选
+    堆栈保留大小：4194304 //可选
+    堆栈提交大小：4096    //可选
+    高级：
+    入口点：DriverEntry   //必选
+    设置校验和：是(/RELEASE) //可选
+    基址：0x10000          //建议选上
+  命令行”->附加选项：
+	     添加开关：/SECTION:INIT,D /IGNORE:4078 //建议填上
+	      可以避免以下错误提示      LINK : warning LNK4078: 找到多个“INIT”节，它们具有不同的属性(E2000020)      LINK : error LNK2001: 无法解析的外部符号__load_config_used
