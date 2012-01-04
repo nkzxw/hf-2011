@@ -1,0 +1,110 @@
+卷 WorkShop 的文件夹 PATH 列表
+
+F:.
+│  BypassAntiDebug.dsw
+│  BypassAntiDebug.ncb
+│  BypassAntiDebug.opt
+│  BypassAntiDebug.positions
+│  BypassAntiDebug2.ncb
+│  BypassAntiDebug2.opt
+│  ko.txt
+│  工程说明.txt
+│  
+├─bin
+│  └─i386
+│          dbghelp.dll
+│          GalaxyAP.exe
+│          GalaxyAPhookPort.sys
+│          GalaxyAPkidisp.sys
+│          symsrv.dll
+│          
+├─GalaxyAP
+│  │  commhdr.h
+│  │  GalaxyAP.aps
+│  │  GalaxyAP.clw
+│  │  GalaxyAP.cpp
+│  │  GalaxyAP.dsp
+│  │  GalaxyAP.h
+│  │  GalaxyAP.plg
+│  │  GalaxyAP.rc
+│  │  GalaxyAPDlg.cpp
+│  │  GalaxyAPDlg.h
+│  │  GalaxyApMGR.cpp
+│  │  GalaxyApMGR.h
+│  │  loadDriver.cpp
+│  │  loadDriver.h
+│  │  ReadMe.txt
+│  │  Resource.h
+│  │  StdAfx.cpp
+│  │  StdAfx.h
+│  │  symMgr.cpp
+│  │  symMgr.h
+│  │  
+│  └─res
+│          GalaxyAP.ico
+│          GalaxyAP.rc2
+│          Thumbs.db
+│          
+├─HookPortBypass
+│      buildchk_wxp_x86.log
+│      buildchk_wxp_x86.wrn
+│      buildfre_wxp_x86.log
+│      buildfre_wxp_x86.wrn
+│      comhdr.h
+│      comstruct.h
+│      ddkbuild.bat
+│      HookPort.cpp
+│      HookPort.h
+│      HookPortBypass.cpp
+│      HookPortBypass.dsp
+│      HookPortBypass.dsw
+│      HookPortBypass.h
+│      HookPortBypass.ncb
+│      HookPortBypass.opt
+│      HookPortBypass.plg
+│      HookPortBypass.positions
+│      Loader.cpp
+│      Loader.h
+│      makefile
+│      myDriverLoader.cpp
+│      myDriverLoader.h
+│      my_build.bat
+│      pe.h
+│      sources
+│      
+└─TEST_KIDISPAT
+        buildchk_wnet_x86.log
+        buildchk_wnet_x86.wrn
+        buildchk_wxp_x86.log
+        buildchk_wxp_x86.wrn
+        buildfre_wxp_x86.log
+        commhdr.h
+        dbgk.h
+        dbgkobj.cpp
+        dbgkp.h
+        dbgkport.cpp
+        dbgkproc.cpp
+        ddkbuild.bat
+        makefile
+        my_build.bat
+        newstruct.h
+        ntdbg.h
+        ntddk.h
+        ntifs.h
+        ntos.cpp
+        ntos.h
+        ntpsapi.h
+        pebteb.h
+        sources
+        TEST_KIDISPAT.cpp
+        TEST_KIDISPAT.dsp
+        TEST_KIDISPAT.dsw
+        TEST_KIDISPAT.h
+        TEST_KIDISPAT.ncb
+        TEST_KIDISPAT.opt
+        TEST_KIDISPAT.plg
+        TEST_KIDISPAT.positions
+        wdm.h
+        WorkKit.cpp
+        WorkKit.h
+        

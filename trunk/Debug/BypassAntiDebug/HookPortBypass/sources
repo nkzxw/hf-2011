@@ -1,0 +1,16 @@
+TARGETNAME=GalaxyAPhookPort
+TARGETTYPE=DRIVER
+TARGETPATH=..\bin
+
+
+
+TARGETLIBS=$(DDK_LIB_PATH)\ntoskrnl.lib
+
+INCLUDES=.\
+
+
+SOURCES = HookPortBypass.cpp\
+		  HookPort.cpp\
+		  Loader.cpp\
+		  myDriverLoader.cpp\
+
