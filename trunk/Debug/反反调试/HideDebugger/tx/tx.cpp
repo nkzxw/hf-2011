@@ -25,6 +25,7 @@ typedef struct _INBUF
 
 #define MAX_MODULE_COUNT		400
 #define MAX_THREAD_COUNT		400
+
 typedef struct _LoadedModule
 {
 	LPVOID lpModuleBase;			//模块的载入后的基地址
@@ -39,8 +40,6 @@ typedef struct _THREAD
 
 	DWORD dwDRXSave[6];
 }THREAD;
-
-
 
 //DWORD gdwEOP = 0;					//exe  的 eop地址
 //BYTE gcbEOPValue = 0;				//exe 的eop处的字节
@@ -67,19 +66,16 @@ int int3 = 0;
 
 BOOL gbAutodebugging = FALSE;
 
-
 BOOL bExit = FALSE;
 HANDLE g_hDrvMonitorThread = NULL;
 HANDLE hDevice = NULL;
-
 
 DWORD gdrx[4] = {0,0,0,0};			//dr1 = pKiUserExceptionDispatcher, dr2 = pZwContinue
 DWORD gdr7 = 0;
 
 
-
-const THREAD* GetThreadFromTID(DWORD dwThreadId);
 //当前线程
+const THREAD* GetThreadFromTID(DWORD dwThreadId);
 const THREAD* GetThread(CONTEXT* con)
 {
 	memset(con, 0, sizeof(CONTEXT));
@@ -137,8 +133,8 @@ BOOL WriteMemory(LPVOID pAddr, LPVOID pData, int nSize)
 
 void HardBPSetDR7(DWORD* dr7, 
 				  int i,	 //0,1,2,3
-				  int ewr, //0,1,3		-1 = clear
-				  int len) //0,1,3
+				  int ewr,	 //0,1,3		-1 = clear
+				  int len)   //0,1,3
 {
 	if(ewr == 0)
 		len = 0;
@@ -243,9 +239,6 @@ void DeleteHardBP(int i)
 	}
 }
 
-
-
-
 /*
 DWORD GetEntryPointAddrByHandle(IN const HANDLE hFile, IN const DWORD dwImgBase, OUT DWORD* pdwRawImgBase)
 {
@@ -302,12 +295,11 @@ DWORD GetEntryPointAddr(LPCTSTR lpsExeName, const DWORD dwImgBase)
 }
 */
 
-
-
-
-
-
-void AddThread(DWORD dwThreadID, HANDLE hThreadHandle, BOOL bCreateProcess)
+void AddThread(
+	DWORD dwThreadID, 
+	HANDLE hThreadHandle, 
+	BOOL bCreateProcess
+	)
 {
 	for(int i=0; i<MAX_THREAD_COUNT; i++)
 	{
@@ -362,7 +354,9 @@ void AddThread(DWORD dwThreadID, HANDLE hThreadHandle, BOOL bCreateProcess)
 	}
 }
 
-void DbgExitThread(DWORD dwThreadId)
+void DbgExitThread(
+	DWORD dwThreadId
+	)
 {
 	for(int i=0; i<MAX_THREAD_COUNT; i++)
 	{
@@ -377,7 +371,9 @@ void DbgExitThread(DWORD dwThreadId)
 	}
 }
 
-const THREAD* GetThreadFromTID(DWORD dwThreadId)
+const THREAD* GetThreadFromTID(
+	DWORD dwThreadId
+	)
 {
 	for(int i=0; i<MAX_THREAD_COUNT; i++)
 	{
@@ -389,7 +385,11 @@ const THREAD* GetThreadFromTID(DWORD dwThreadId)
 	return NULL;
 }
 
-void AddModule(LPVOID lpModBase, char* pszModPath, int nModsize)
+void AddModule(
+	LPVOID lpModBase, 
+	char* pszModPath, 
+	int nModsize
+	)
 {
 
 	for(int i=0; i<MAX_MODULE_COUNT; i++)
@@ -596,20 +596,15 @@ BOOL GetFileNameFromHandle(IN HANDLE hFile, OUT TCHAR* pszFilename)
 
               if (uNameLen < MAX_PATH) 
               {
-                bFound = _tcsnicmp(pszFilename, szName, 
-                    uNameLen) == 0;
+				bFound = _tcsnicmp(pszFilename, szName, 
+				uNameLen) == 0;
 
-                if (bFound) 
-                {
-                  // Reconstruct pszFilename using szTemp
-                  // Replace device path with DOS path
-                  TCHAR szTempFile[MAX_PATH];
-                  _stprintf(szTempFile,
-                            TEXT("%s%s"),
-                            szDrive,
-                            pszFilename+uNameLen);
-                  _tcsncpy(pszFilename, szTempFile, MAX_PATH);
-                }
+				if (bFound) 
+				{
+					TCHAR szTempFile[MAX_PATH];
+					_stprintf(szTempFile,TEXT("%s%s"),szDrive, pszFilename + uNameLen);
+					_tcsncpy(pszFilename, szTempFile, MAX_PATH);
+				}
               }
             }
 
@@ -655,11 +650,11 @@ void DbgDllLoad(DEBUG_EVENT de, HANDLE hProcess)
 	}
 	else
 	{
-		char rawstr[MAX_PATH*2] = {0};
-		ReadMemory((LPVOID)dwAddr, sizeof(rawstr), rawstr);
-
 		if(de.u.LoadDll.fUnicode)
 		{
+			WCHAR rawstr[MAX_PATH] = {0};
+			ReadMemory((LPVOID)dwAddr, sizeof(WCHAR) * MAX_PATH, rawstr);
+
 			WideCharToMultiByte(CP_ACP, 0x400, rawstr, 
 								-1, 
 								dststr, 
@@ -669,6 +664,10 @@ void DbgDllLoad(DEBUG_EVENT de, HANDLE hProcess)
 		}
 		else
 		{
+			char rawstr[MAX_PATH * 2] = {0};
+			ReadMemory((LPVOID)dwAddr, sizeof(rawstr), rawstr);
+
+			memset (dststr, 0, MAX_PATH * 2);
 			strcpy(dststr, rawstr);
 		}
 	}
@@ -790,7 +789,16 @@ BOOL IsVistaOrLater()
 	DWORD v = GetVersion();
 	return ((BYTE)v) >= 6;
 }
- 
+
+DWORD GetSSDTNum(const char* pszAPI)
+{
+	HMODULE hMod = GetModuleHandle("ntdll.dll");
+	BYTE* p = (BYTE*)GetProcAddress(hMod, pszAPI);
+	if(p == NULL)
+		return 0;
+
+	return *(DWORD*)(p+1);
+}
 
 void HideNtGlobalFlag()
 {
@@ -820,10 +828,6 @@ void HideNtGlobalFlag()
 	}
 }
 
-
-
-
-
 DWORD DbgExp(DEBUG_EVENT* pDebugEvt, DWORD dwExpCode, DWORD dwExpAddr)
 {
 	DWORD dwRet = DBG_CONTINUE;
@@ -836,9 +840,9 @@ DWORD DbgExp(DEBUG_EVENT* pDebugEvt, DWORD dwExpCode, DWORD dwExpAddr)
 			Hide_DebugFlag();
 			HideNtGlobalFlag();
 
-			printf("DebugFlag and NtGlobalFlag hided\n");
+			OutputDebugStringA("DebugFlag and NtGlobalFlag hided\n");
 			
-		//	SetBPAtEOP();		
+			//SetBPAtEOP();		
 
 			SetHardBPAt_KiUserExceptionDispatcher();
 
@@ -853,7 +857,10 @@ DWORD DbgExp(DEBUG_EVENT* pDebugEvt, DWORD dwExpCode, DWORD dwExpAddr)
 		}*/
 		else
 		{
-			printf("dwExpCode = 0x%08X, dwExpAddr = 0x%08X\n", dwExpCode, dwExpAddr);
+			char buf[256];
+			memset (buf, 0, 256);
+			sprintf (buf, "dwExpCode = 0x%08X, dwExpAddr = 0x%08X\n", dwExpCode, dwExpAddr);
+			OutputDebugStringA (buf);
 
 			dwRet = DBG_EXCEPTION_NOT_HANDLED;
 			if(pDebugEvt->u.Exception.dwFirstChance == 0)
@@ -974,6 +981,37 @@ DWORD DbgExp(DEBUG_EVENT* pDebugEvt, DWORD dwExpCode, DWORD dwExpAddr)
 	return dwRet;
 }
 
+ULONG __stdcall DriverMontorThread(LPVOID pParam)
+{
+	BYTE outbuff[0x200];
+	DWORD dwRet;
+	
+	while(!bExit)
+	{
+		memset(outbuff, 0, sizeof(outbuff));
+		DeviceIoControl((HANDLE)pParam,
+						IOCTL_GETSTR,
+						NULL,
+						0,
+						outbuff,
+						sizeof(outbuff), 
+						&dwRet,
+						NULL);
+
+		if(outbuff[0] != 0)
+		{
+			char buf[512];
+			memset (buf, 0, 512);	
+			sprintf (buf, "Outbuf is [%s].\n", outbuff);
+			OutputDebugStringA (buf);
+		}
+
+		Sleep(50);
+	}
+
+	return 0;
+}
+
 void DeleteService(char* servicename)
 {
 	SC_HANDLE scm = OpenSCManager(0, 0, SC_MANAGER_ALL_ACCESS); 
@@ -1038,45 +1076,6 @@ BOOL InstallDriver(char* path, char* servicename)
 
 	return bSuc;
 } 
-
-DWORD GetSSDTNum(const char* pszAPI)
-{
-	HMODULE hMod = GetModuleHandle("ntdll.dll");
-	BYTE* p = (BYTE*)GetProcAddress(hMod, pszAPI);
-	if(p == NULL)
-		return 0;
-
-	return *(DWORD*)(p+1);
-}
-
-
-ULONG __stdcall DriverMontorThread(LPVOID pParam)
-{
-	BYTE outbuff[0x200];
-	DWORD dwRet;
-	
-	while(!bExit)
-	{
-		memset(outbuff, 0, sizeof(outbuff));
-		DeviceIoControl((HANDLE)pParam,
-			IOCTL_GETSTR,
-			NULL,
-			0,
-			outbuff,
-			sizeof(outbuff), 
-			&dwRet,
-			NULL);
-
-		if(outbuff[0] != 0)
-		{
-			printf("%s\n", outbuff);
-		}
-
-		Sleep(50);
-	}
-
-	return 0;
-}
 
 void LoadDriver(DWORD dwPID)
 {	
@@ -1146,14 +1145,13 @@ void LoadDriver(DWORD dwPID)
 
 }
 
-
-
 void RaisePrivilege(BOOL bRaise)
 {
 	TOKEN_PRIVILEGES tkp;
 	HANDLE hToken;
 	if (!OpenProcessToken(GetCurrentProcess(),TOKEN_ADJUST_PRIVILEGES|TOKEN_QUERY,&hToken))
 		return;
+
 	LookupPrivilegeValue(NULL,SE_DEBUG_NAME,&tkp.Privileges[0].Luid);
 	tkp.PrivilegeCount = 1;
 	tkp.Privileges[0].Attributes = bRaise ? SE_PRIVILEGE_ENABLED : SE_PRIVILEGE_ENABLED_BY_DEFAULT;
@@ -1166,57 +1164,51 @@ void RaisePrivilege(BOOL bRaise)
 
 int main(int argc, char* argv[])
 {
-
-	if(argc != 2)
-	{
-		printf("本工具用于监视目标程序的反调试\n");
-		printf("usage: %s exe_path\n", argv[0]);
+	if(argc != 2){
+		OutputDebugStringA("本工具用于监视目标程序的反调试\n");
 		return 0;
 	}
 
 	RaisePrivilege(TRUE);
 
 	CreateEvent(NULL, FALSE, FALSE, "5ed66a99-5bad-4528-8bc3-f5ed067b2e19");
-	if(GetLastError() == ERROR_ALREADY_EXISTS)
-	{
-		printf("already running.\n");
+	if(GetLastError() == ERROR_ALREADY_EXISTS){
+		OutputDebugStringA("already running.\n");
 		return 0;
 	}
 
+	//
+	// 初始化模块结构和线程结构
+	//
 	int i;
-
 	g_Modules = new LoadedModule[MAX_MODULE_COUNT];
 	for(i=0; i<MAX_MODULE_COUNT; i++)
 	{
 		g_Modules[i].lpModuleBase = NULL;
 	}
+
 	g_Threads = new THREAD[MAX_THREAD_COUNT];
-	for(i=0; i<MAX_THREAD_COUNT; i++)
+	for(i=0; i< MAX_THREAD_COUNT; i++)
 	{
 		g_Threads[i].dwThreadID = 0;
 		g_Threads[i].hThread = NULL;
 	}
 
 
-	//调试启动
+	//
+	//启动调试进程
+	//
 	PROCESS_INFORMATION pinfo={0};
 	STARTUPINFO startInfo = {0};
 	startInfo.cb = sizeof(STARTUPINFO);
 	startInfo.dwFlags = STARTF_USESHOWWINDOW;
 	startInfo.wShowWindow = STARTF_USESHOWWINDOW;
 	
-	if(!CreateProcess(argv[1],
-		NULL, 
-		NULL,
-		NULL,
-		TRUE,
-		DEBUG_ONLY_THIS_PROCESS|DEBUG_PROCESS,
-		NULL,
-		NULL,
-		&startInfo,
-		&pinfo))
+	if(!CreateProcess(argv[1],NULL, NULL, NULL,TRUE,
+					DEBUG_ONLY_THIS_PROCESS|DEBUG_PROCESS,
+					NULL,NULL,&startInfo,&pinfo))
 	{
-		printf("CreateProcess error\n");
+		OutputDebugStringA("CreateProcess error\n");
 		return 0;
 	}
 
@@ -1237,7 +1229,7 @@ int main(int argc, char* argv[])
 				lpBaseOfImage = (DWORD)dbgEvt.u.CreateProcessInfo.lpBaseOfImage;
 				lpEndOfImage = lpBaseOfImage + GetEXEModuleSize(dbgEvt.u.CreateProcessInfo.hFile, argv[1]);
 				AddThread(dbgEvt.dwThreadId, dbgEvt.u.CreateProcessInfo.hThread, TRUE);
-			//	gdwEOP = GetEntryPointAddr(argv[1], (DWORD)lpBaseOfImage);
+				//gdwEOP = GetEntryPointAddr(argv[1], (DWORD)lpBaseOfImage);
 				DWORD dwTEB = (DWORD)dbgEvt.u.CreateProcessInfo.lpThreadLocalBase;
 				gdwPEB = GetPEBFromTEB(dwTEB);
 				
