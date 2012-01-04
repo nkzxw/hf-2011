@@ -306,6 +306,7 @@ void __stdcall EnableMemoryProction(void)
 	}
 }
 
+
 NTSTATUS __stdcall HookZwQueryInformationProcess(
 													__in       HANDLE ProcessHandle,
 													__in       PROCESSINFOCLASS ProcessInformationClass,
@@ -316,13 +317,25 @@ NTSTATUS __stdcall HookZwQueryInformationProcess(
 {
 	NTSTATUS status = RealZwQueryInformationProcess(ProcessHandle, ProcessInformationClass, ProcessInformation, ProcessInformationLength, ReturnLength);
 
-	if(gdwPID == (DWORD)PsGetCurrentProcessId() && ProcessInformationClass == ProcessDebugPort && ProcessInformation != NULL)
+  /*
+  ProcessDebugPort: Retrieves a DWORD_PTR value that is the port number of the debugger for the process. 
+  									A nonzero value indicates that the process is being run under the control of a ring 3 debugger.
+  */
+  
+	if(gdwPID == (DWORD)PsGetCurrentProcessId() && 
+		ProcessInformationClass == ProcessDebugPort &&
+		ProcessInformation != NULL)
 	{
 		DbgPrint("HookZwQueryInformationProcess\n");
 		*(DWORD*)ProcessInformation = 0;
 
 		SendMsg("ZwQueryInformationProcess(ProcessDebugPort)");
 	}
+	
+	/*
+	 	CheckRemoteDebuggerPresent
+	 	IsDebuggerPresent  
+	*/
 
 	return status;
 }
@@ -384,12 +397,11 @@ NTSTATUS __stdcall HookZwSetInformationThread(
 												 __in  ULONG ThreadInformationLength
 												 )
 {
-	if(ThreadInformationClass == ThreadHideFromDebugger && gdwPID == (DWORD)PsGetCurrentProcessId())
+	if(ThreadInformationClass == ThreadHideFromDebugger 
+		&& gdwPID == (DWORD)PsGetCurrentProcessId())
 	{
 		DbgPrint("HookZwSetInformationThread\n");
-
 		SendMsg("ZwSetInformationThread(ThreadHideFromDebugger)");
-
 		return STATUS_SUCCESS;
 	}
 	return RealZwSetInformationThread(ThreadHandle, ThreadInformationClass, ThreadInformation, ThreadInformationLength);
@@ -943,7 +955,10 @@ BOOL  InlineHook()
 }
 */
 
-NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING RegistryPath )
+NTSTATUS DriverEntry(
+	IN PDRIVER_OBJECT DriverObject, 
+	IN PUNICODE_STRING RegistryPath 
+	)
 {	
 	NTSTATUS		ntStatus;
 	UNICODE_STRING	uniDeviceName;
@@ -959,28 +974,27 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING Registry
 	memset(gstrinfo, 0, sizeof(gstrinfo));
 
 	//hook 
-
 	ServiceTable = KeServiceDescriptorTable;
 
 	if(!gbHooked)
 	{
-//		InlineHook();
-
+		//InlineHook();
+		
 		RealZwQueryInformationProcess = SYSCALL( ZwQueryInformationProcess );
 		RealZwQueryObject             = SYSCALL( ZwQueryObject );
 		RealZwSetInformationThread    = SYSCALL( ZwSetInformationThread );
-	//	RealZwWaitForSingleObject     = SYSCALL( ZwWaitForSingleObject);
-	//	RealZwOpenProcess             = SYSCALL( ZwOpenProcess);
+		//RealZwWaitForSingleObject     = SYSCALL( ZwWaitForSingleObject);
+		//RealZwOpenProcess             = SYSCALL( ZwOpenProcess);
 		
-		DbgPrint("driver loaded.\n");
+		KdPrint(("driver loaded.\n"));
 		
 		DisableMemoryProction();
 		
 		SYSCALL( ZwQueryInformationProcess ) = (PVOID) HookZwQueryInformationProcess;
 		SYSCALL( ZwQueryObject)              = (PVOID) HookZwQueryObject;
 		SYSCALL( ZwSetInformationThread)     = (PVOID) HookZwSetInformationThread;
-	//	SYSCALL( ZwWaitForSingleObject)      = (PVOID) HookZwWaitForSingleObject;
-	//	SYSCALL( ZwOpenProcess)              = (PVOID) HookZwOpenProcess;
+		//SYSCALL( ZwWaitForSingleObject)      = (PVOID) HookZwWaitForSingleObject;
+		//SYSCALL( ZwOpenProcess)              = (PVOID) HookZwOpenProcess;
 		
 		EnableMemoryProction();
 
@@ -989,13 +1003,13 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING Registry
 
 	
 	ntStatus = IoCreateDevice(DriverObject, 
-		0, 
-		&uniDeviceName,
-		FILE_DEVICE_UNKNOWN, 
-		0,
-		TRUE,
-		&pDeviceObject);
-	if(! NT_SUCCESS(ntStatus))
+														0, 
+														&uniDeviceName,
+														FILE_DEVICE_UNKNOWN, 
+														0,
+														TRUE,
+														&pDeviceObject);
+	if(!NT_SUCCESS(ntStatus))
 	{
 		return ntStatus;
 	}

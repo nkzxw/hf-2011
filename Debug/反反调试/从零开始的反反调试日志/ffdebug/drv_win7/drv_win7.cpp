@@ -219,7 +219,7 @@ NTSTATUS DriverEntry(
     IN PUNICODE_STRING      RegistryPath
     )
 {
-	KdPrint(("==== DriverEntry ====")) ;
+		KdPrint(("==== DriverEntry ====")) ;
 
     PDEVICE_OBJECT pdoDeviceObj = 0;
     NTSTATUS status = STATUS_UNSUCCESSFUL;
