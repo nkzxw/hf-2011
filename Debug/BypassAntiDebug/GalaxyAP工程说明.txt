@@ -1,0 +1,71 @@
+1.GalaxyAP	应用程序
+2。HookPortBypass	重加载内核（包括nt和win32k）
+3。TEST_KIDISPAT	自分发异常（主要来源WRK）
+
+
+这套GalaxyAP工程主要实现了：
+1。重加载内核（借助 hookport思路配合peloader）
+2.自实现异常分发的几个主要函数
+3。自创建debugobject，使用另一个object
+3。也使用了另一个fastmute
+4。自己发现吧。。。
+
+有问题到http://hi.baidu.com/zhouws1011/blog反馈下吧
+
+
+实现了HOOK框架，只需要按下面填写即可
+//////////////////////////////////////////////
+//这是为了HOOK原来的ntos，转到新的os中
+VOID (WINAPI *DUMMYFUCK )(IN  PVOID   Object);
+// VOID (WINAPI *PspUserThreadStartup )(IN  PVOID   Object);
+// VOID (WINAPI *PspSystemThreadStartup )(IN  PVOID   Object);
+
+
+HX_DYNC_FUNCTION dync_Old2New[]={
+			DECL_DYNCFUN_HOOK_Old2New(PspUserThreadStartup),
+				DECL_DYNCFUN_HOOK_Old2New(PspSystemThreadStartup),
+				DECL_DYNCFUN_HOOK_Old2New(ObCloseHandle),
+				DECL_DYNCFUN_HOOK_Old2New(PspProcessDelete),
+				DECL_DYNCFUN_HOOK_Old2New(pIofCallDriver),
+				DECL_DYNCFUN_HOOK_Old2New(KiTrap03),
+				DECL_DYNCFUN_HOOK_Old2New(ObpCreateHandle),	//为了跳过ObCheckObjectAccess
+/*
+				kd> dps nt!pIofCallDriver l8
+				8054c400  804eedc8 nt!IopfCallDriver		//就搞这个。归类到fengyue驱动去	
+				8054c404  804f12c0 nt!IopfCompleteRequest
+				8054c408  804f0a00 nt!IopAllocateIrpPrivate
+				8054c40c  804ef0e6 nt!IopFreeIrp
+				8054c410  00000000
+8054c414  00000000
+*/
+	//	DECL_DYNCFUN_HOOK_Old2New(KeStackAttachProcess),
+	//	DECL_DYNCFUN_HOOK_Old2New(KeAttachProcess),
+		
+		};
+
+
+//这个需要另外HOOK的函数 ，old os 中的，把这些不经过hookport的转到自己的实现中
+HX_DYNC_FUNCTION dync_funs_hook[]={
+				DECL_DYNCFUN_HOOK(DbgkCreateThread),
+				DECL_DYNCFUN_HOOK(DbgkExitThread),
+				DECL_DYNCFUN_HOOK(DbgkExitProcess),
+				DECL_DYNCFUN_HOOK(DbgkMapViewOfSection),
+				DECL_DYNCFUN_HOOK(DbgkpMarkProcessPeb),
+
+	//	DECL_DYNCFUN_HOOK(NtCreateDebugObject),
+		DECL_DYNCFUN_HOOK(DbgkForwardException),
+
+//		DECL_DYNCFUN_HOOK(KiDispatchException),		
+		//使用强大的特征码直接patch KiDispatchException中比较debugport部分
+		//s -b 804d8000 806ce100 64 A1 24 01 00 00 8B 40  44 39 B8 BC 00 00 00
+		};
+//这是实现自己分发函数需要用到的
+HX_DYNC_FUNCTION dync_funs[]={
+		DECL_DYNCFUN(KeUserExceptionDispatcher),
+		DECL_DYNCFUN(KeI386XMMIPresent),
+		DECL_DYNCFUN(PsImageNotifyEnabled),
+		DECL_DYNCFUN(PsNtDllPathName),
+		DECL_DYNCFUN(KeFeatureBits),
+		DECL_DYNCFUN(PsSystemDllBase),
+		DECL_DYNCFUN(PsGetNextProcess),
+		DECL_DYNCFUN(PsGetNextProcessThread),
