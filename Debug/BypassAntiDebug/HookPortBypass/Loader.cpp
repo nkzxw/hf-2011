@@ -1,6 +1,5 @@
 #include "comhdr.h"
 
-
 CKl_HookModule::CKl_HookModule(PVOID base /* = NULL */) : m_base((char*)base)
 {    
     if ( m_base )
@@ -22,21 +21,21 @@ CKl_HookModule::CKl_HookModule(PCHAR ModuleName)
 #ifndef USER_MODE
 
 PVOID
-CKl_HookModule::GetBase(char* ModuleName)
+CKl_HookModule::GetBase(
+	char* ModuleName
+	)
 {
     PSYSTEM_INFO_DRIVERS	pInfoBuff = NULL;
-    ULONG					dwBuffSize;
-    BOOLEAN					bNotenough;
-    ULONG                   ModuleNameLength = (ULONG)strlen ( ModuleName );
+    ULONG	dwBuffSize;
+    BOOLEAN	bNotenough;
+    ULONG	ModuleNameLength = (ULONG)strlen ( ModuleName );
    
-
-    PVOID                   ModuleBase = NULL;
-    ULONG                   ModuleSize = 0;
+    PVOID	ModuleBase = NULL;
+    ULONG	ModuleSize = 0;
         
     dwBuffSize  = 0x8000;	// Exactly as it is in NTDLL.DLL
     bNotenough  = TRUE;
-    
-
+   
     while( bNotenough )
     {
         if ( dwBuffSize > 0x8000 * 20 ) // Too much, hopeless :(
@@ -154,17 +153,18 @@ CKl_HookModule::isPE()
     if ( m_base )
     {
         PIMAGE_DOS_HEADER pDosHeader  = (PIMAGE_DOS_HEADER)m_base;
-        
     }
     
     return false;
 }
 
 ULONG
-CKl_HookModule::GetModuleSize(PVOID ModuleBase)
+CKl_HookModule::GetModuleSize(
+		PVOID ModuleBase
+		)
 {
-    PIMAGE_DOS_HEADER       pDosHeader  = (PIMAGE_DOS_HEADER)ModuleBase;
-    PIMAGE_NT_HEADERS       pNTHeader   = (PIMAGE_NT_HEADERS)( (PCHAR)ModuleBase + pDosHeader->e_lfanew );
+    PIMAGE_DOS_HEADER	pDosHeader  = (PIMAGE_DOS_HEADER)ModuleBase;
+    PIMAGE_NT_HEADERS	pNTHeader = (PIMAGE_NT_HEADERS)( (PCHAR)ModuleBase + pDosHeader->e_lfanew );
     
     return pNTHeader->OptionalHeader.SizeOfImage;
 }
@@ -193,8 +193,7 @@ CKl_HookModule::GetExportByName( char* fName )
         ordinals    = (WORD*)  ( m_base + (DWORD_PTR)exportDir->AddressOfNameOrdinals );
 
         name        = (DWORD *) ( m_base + (DWORD_PTR)exportDir->AddressOfNames );
-        
-        
+       
         for ( DWORD i = exportDir->Base; i < exportDir->NumberOfFunctions; ++i ) 
         {
             if  ( functions[i] == 0 )   // Skip over gaps in exported function
