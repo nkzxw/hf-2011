@@ -1,0 +1,773 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU2 MENU 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "打开(&O)...\tSTR+O",          40001
+        MENUITEM "附着到进程(&A)...\tSTR+A",    40031
+        MENUITEM "最近打开的文件(E&)",          40028, GRAYED
+        MENUITEM "重新扫描模块(&M)\tSTR+M",     ID_SCAN_MODULES
+        MENUITEM "重新打开(&R)\tSTR+R",         40011
+        MENUITEM "停止捕获(&S)\tSTR+S",         40007
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&x)\tSTR+Q",             40002
+    END
+    POPUP "查看(&V)"
+    BEGIN
+        MENUITEM "清空列表(&C)\tSTR+C",         40003
+        MENUITEM "列表自动滚动(&A)\tSTR+A",     40005
+        MENUITEM "保存列表(&S)...\tSTR+L",      40006
+        MENUITEM "在列表中查找(&E)...\tSTR+F",  40017
+        MENUITEM "查找下一个(&G)\tF3",          40018
+        MENUITEM SEPARATOR
+        MENUITEM "窗口置顶(&H)\tSTR+T",         40008
+    END
+    POPUP "操作(&A)"
+    BEGIN
+        MENUITEM "脱壳(&D)...\tSTR+P",          40012
+        MENUITEM "设置断点(&X)...\tSTR+B",      40013
+        MENUITEM "设置硬断点(&B)...\tALT+B",    40027
+        MENUITEM "查看寄存器(&V)...\tF5",       40019
+        MENUITEM "内存窗口(&M)...\tSTR+M",      40020
+        MENUITEM "查看PE信息 (&V)...\tF6",      40023
+        MENUITEM "显示进程模块(&O)...\tF10",    40022
+        MENUITEM "修改堆栈...\tF4",             40024, GRAYED
+        MENUITEM "修改API返回值(&I)\tALT+M",    40029
+        MENUITEM SEPARATOR
+        MENUITEM "继续所有线程(&R)\tSTR+1",     40014
+        MENUITEM "挂起所有线程(&S)\tSTR+0",     40015
+    END
+    POPUP "选项(&O)"
+    BEGIN
+        MENUITEM "设置选项(&S)...\tF1",         104
+    END
+    POPUP "插件(&P)"
+    BEGIN
+        MENUITEM "没有发现插件!",               40025
+    END
+    MENUITEM "关于",                        40004
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_OPTIONS DIALOGEX 0, 0, 378, 329
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "选项"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    PUSHBUTTON      "确定",ID_OK,321,7,50,14,NOT WS_TABSTOP,WS_EX_STATICEDGE
+    PUSHBUTTON      "取消",ID_CANCEL,321,23,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    CONTROL         "显示调试信息 (dlls, exceptions, ...)",IDC_SHOWDEBUG,
+                    "Button",BS_AUTOCHECKBOX,7,69,191,9
+    CONTROL         "不报告这些API:",IDC_IGNOREAPI,"Button",BS_AUTOCHECKBOX,
+                    8,164,132,8
+    LISTBOX         IDC_APILIST,7,212,145,42,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL
+    CONTROL         "调试时将窗口置于左上角",IDC_MOVEWIN,"Button",
+                    BS_AUTOCHECKBOX,7,60,203,9
+    PUSHBUTTON      "+",IDC_ADDAPI,137,183,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "-",IDC_DELETEAPI,137,198,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    CONTROL         "不报告这些模块中的API:",IDC_IGNORETODLL,"Button",
+                    BS_AUTOCHECKBOX,8,87,154,8
+    PUSHBUTTON      "+",IDC_ADDTODLL,122,106,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "-",IDC_DELETETODLL,137,106,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    LISTBOX         IDC_TODLLLIST,7,119,146,36,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL
+    CONTROL         "忽略调试异常",IDC_HANDLEEXCEPT,"Button",BS_AUTOCHECKBOX,
+                    7,32,113,9
+    EDITTEXT        IDC_CMDLINESTR,7,269,260,12,ES_AUTOHSCROLL | NOT 
+                    WS_TABSTOP
+    CONTROL         "程序启动时的命令行参数:",IDC_CMDLINE,"Button",
+                    BS_AUTOCHECKBOX,7,259,201,8
+    CONTROL         "产生调试中断时停止",IDC_DEBUGBREAK,"Button",
+                    BS_AUTOCHECKBOX,7,41,92,9
+    CONTROL         "显示 API 参数(请在ApiDef目录添加)",IDC_APIPARAMS,"Button",
+                    BS_AUTOCHECKBOX,166,25,145,8
+    GROUPBOX        "保存输出到...",IDC_STATIC,7,285,262,24
+    CONTROL         "...GUI",IDC_GUIOUTPUT,"Button",BS_AUTOCHECKBOX,15,293,
+                    35,10
+    CONTROL         "...文件(路径为本程序路径):",IDC_FILEOUTPUT,"Button",
+                    BS_AUTOCHECKBOX,64,295,115,10
+    EDITTEXT        IDC_OUTPUTFILENAME,181,293,83,12,ES_AUTOHSCROLL | NOT 
+                    WS_TABSTOP
+    CONTROL         "显示 API 返回值",IDC_SHOWAPIRET,"Button",
+                    BS_AUTOCHECKBOX,166,16,114,8
+    CONTROL         "在入口处中断",IDC_STOPATENTRY,"Button",BS_AUTOCHECKBOX,
+                    7,50,107,8
+    CONTROL         "断点触发时自动弹出设置断点窗口",IDC_DLGONBPM,"Button",
+                    BS_AUTOCHECKBOX,7,15,145,9
+    CONTROL         "注册Shell扩展",IDC_SHELLEXTENSION,"Button",
+                    BS_AUTOCHECKBOX,7,312,133,9
+    COMBOBOX        IDC_EDITAPI,34,198,99,64,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
+                    CBS_SORT | WS_VSCROLL
+    CONTROL         "只报告这些API:",IDC_ONLYAPI,"Button",BS_AUTOCHECKBOX,8,
+                    172,134,8
+    CONTROL         "只报告这些模块中的API:",IDC_JUSTTODLL,"Button",
+                    BS_AUTOCHECKBOX,8,97,153,8
+    CONTROL         "显示事件的进程ID",IDC_SHOWTIDS,"Button",BS_AUTOCHECKBOX,
+                    7,24,92,8
+    CONTROL         "创建进程时调试进程",IDC_DEBUGPROCESS,"Button",
+                    BS_AUTOCHECKBOX,7,7,117,8
+    CONTROL         "显示 API 调用",IDC_SHOWAPICALLS,"Button",
+                    BS_AUTOCHECKBOX,166,7,114,8
+    CONTROL         "不报告来自这些模块的API调用:",IDC_IGNOREFROMDLL,"Button",
+                    BS_AUTOCHECKBOX | NOT WS_VISIBLE,165,79,168,8
+    CONTROL         "报告来自这些模块的API调用:",IDC_JUSTFROMDLL,"Button",
+                    BS_AUTOCHECKBOX,165,88,165,8
+    CONTROL         "Don't report calls from these regions:",
+                    IDC_IGNOREREGION,"Button",BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE,166,165,162,8
+    EDITTEXT        IDC_EDITREGIONBEGIN,166,192,46,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE | NOT WS_TABSTOP
+    PUSHBUTTON      "+",IDC_ADDREGION,281,192,14,12,NOT WS_VISIBLE | NOT 
+                    WS_TABSTOP,WS_EX_STATICEDGE
+    PUSHBUTTON      "-",IDC_DELETEREGION,297,192,14,12,NOT WS_VISIBLE | NOT 
+                    WS_TABSTOP,WS_EX_STATICEDGE
+    CONTROL         "Just report calls from these regions:",IDC_JUSTREGION,
+                    "Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE,166,175,161,8
+    EDITTEXT        IDC_EDITREGIONEND,231,192,46,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE | NOT WS_TABSTOP
+    LTEXT           "~",IDC_STATIC,217,195,8,8,NOT WS_VISIBLE
+    LISTBOX         IDC_FROMDLLLIST,165,119,145,37,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "+",IDC_ADDFROMDLL,279,106,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "-",IDC_DELETEFROMDLL,295,106,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    COMBOBOX        IDC_EDITFROMDLL,165,106,112,64,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL
+    COMBOBOX        IDC_EDITAPIDLL,34,183,99,64,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL
+    LTEXT           "模块:",IDC_STATIC,7,184,25,8
+    LTEXT           "Api:",IDC_STATIC,7,198,25,8
+    LISTBOX         IDC_REGIONLIST,166,204,145,51,LBS_NOINTEGRALHEIGHT | NOT 
+                    WS_VISIBLE | WS_VSCROLL | WS_HSCROLL
+    CONTROL         "Stop before API calls",IDC_STOPAPICALLS,"Button",
+                    BS_AUTOCHECKBOX | NOT WS_VISIBLE,166,42,125,8
+    CONTROL         "Stop after API return",IDC_STOPAPIRET,"Button",
+                    BS_AUTOCHECKBOX | NOT WS_VISIBLE,166,51,125,8
+    COMBOBOX        IDC_EDITTODLL,7,106,112,64,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL
+    LTEXT           "注意：来自主模块的API调用总是被报告的",IDC_STATIC,166,
+                    97,190,8
+END
+
+IDD_DUMP DIALOGEX 0, 0, 144, 86
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "脱壳进程"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    CONTROL         "完全脱壳",IDC_DUMPFULL,"Button",BS_AUTORADIOBUTTON,7,7,
+                    45,10
+    CONTROL         "修复段",IDC_FIXSECTIONS,"Button",BS_AUTOCHECKBOX,18,18,
+                    54,10
+    CONTROL         "部分脱壳 (hex)",IDC_DUMPPARTIAL,"Button",
+                    BS_AUTORADIOBUTTON,7,43,118,10
+    EDITTEXT        IDC_VA,39,54,40,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_DUMPSIZE,39,68,40,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    PUSHBUTTON      "脱壳",ID_DUMPDLG_DUMP,87,7,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "取消",ID_DUMPDLG_CANCEL,87,68,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    LTEXT           "地址:",IDC_STATIC,15,55,24,8
+    LTEXT           "大小:",IDC_STATIC,15,68,23,8
+    CONTROL         "附加原始输入表",IDC_PASTEORGIT,"Button",BS_AUTOCHECKBOX,
+                    18,28,99,10
+END
+
+IDD_BP DIALOGEX 0, 0, 192, 191
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "设置断点"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    PUSHBUTTON      "确定",ID_BPDLG_OK,135,10,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "取消",ID_BPDLG_CANCEL,135,26,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "设置断点",ID_SETBPS,9,71,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    GROUPBOX        "设置内存断点：",IDC_STATIC,4,7,124,82
+    GROUPBOX        "设置API断点",IDC_STATIC,4,90,124,96
+    LISTBOX         IDC_TRAPAPILIST,7,139,117,40,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "+",IDC_ADDTRAPAPI,92,106,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "-",IDC_DELETETRAPAPI,108,106,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDITBPX,34,19,56,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    LISTBOX         IDC_BPXLIST,7,33,117,36,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "+",IDC_ADDBPX,92,19,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "-",IDC_DELETEBPX,108,19,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    LTEXT           "地址：",IDC_STATIC,10,21,23,8
+    COMBOBOX        IDC_EDITTRAPAPI,29,105,61,62,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL
+    CONTROL         "恢复后",IDC_RESTOREBP,"Button",BS_AUTOCHECKBOX,65,71,55,
+                    8
+    LTEXT           "执行",IDC_STATIC,77,79,32,8
+    EDITTEXT        IDC_EDITTRAPDLL,30,122,88,12,ES_AUTOHSCROLL | NOT 
+                    WS_TABSTOP
+    LTEXT           "Dll:",IDC_STATIC,13,123,15,8
+    LTEXT           "Api:",IDC_STATIC,14,106,14,8
+END
+
+IDD_SEARCH DIALOGEX 0, 0, 223, 79
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "查找"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    LTEXT           "查找:",IDC_STATIC,6,8,36,8
+    EDITTEXT        IDC_SEARCHSTRING,45,6,107,12,ES_AUTOHSCROLL
+    CONTROL         "...从当前行开始",IDC_SEARCHCURPOS,"Button",
+                    BS_AUTORADIOBUTTON,12,55,107,10
+    CONTROL         "...整个列表",IDC_SEARCHWHOLELIST,"Button",
+                    BS_AUTORADIOBUTTON,12,45,70,10
+    GROUPBOX        "查找范围...",IDC_STATIC,6,35,147,35
+    CONTROL         "区分大小写",IDC_CASESENSITIVE,"Button",BS_AUTOCHECKBOX,
+                    6,23,61,10
+    PUSHBUTTON      "确定",ID_DOSEARCH,163,4,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "取消",ID_CANCELSEARCH,163,20,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+END
+
+IDD_REGS DIALOGEX 0, 0, 181, 153
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "修改寄存器"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    PUSHBUTTON      "确定",ID_SAVEREGS,128,5,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "取消",ID_CANCELREGSDLG,128,20,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    COMBOBOX        IDC_THREADLIST,10,14,101,58,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL
+    GROUPBOX        "寄存器:",IDC_STATIC,4,40,173,98
+    LTEXT           "EBX",IDC_STATIC,11,65,15,8
+    LTEXT           "ECX",IDC_STATIC,11,78,15,8
+    LTEXT           "EDX",IDC_STATIC,11,93,16,8
+    LTEXT           "ESI",IDC_STATIC,11,106,12,8
+    LTEXT           "EDI",IDC_STATIC,11,120,13,8
+    LTEXT           "ESP",IDC_STATIC,96,52,15,8
+    LTEXT           "EBP",IDC_STATIC,96,65,15,8
+    LTEXT           "EIP",IDC_STATIC,96,79,12,8
+    EDITTEXT        IDC_REGEAX,39,50,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_REGEBX,39,63,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_REGECX,39,76,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    LTEXT           "EAX",IDC_STATIC,11,52,15,8
+    EDITTEXT        IDC_REGEDX,39,90,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_REGESI,39,103,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_REGEDI,39,116,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_REGESP,123,50,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_REGEBP,123,63,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_REGEIP,123,76,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    GROUPBOX        "线程 ID:",IDC_STATIC,4,2,116,32
+    LTEXT           "",IDC_REGDLGSTATUS,4,140,173,10,0,WS_EX_STATICEDGE
+    LTEXT           "Flags",IDC_STATIC,95,118,27,8
+    EDITTEXT        IDC_REGFLAGS,123,116,46,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+END
+
+IDD_IMPORTS DIALOGEX 0, 0, 180, 161
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "输入表"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    CONTROL         "Tree1",IDC_IMPTREE,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS,1,1,178,159,WS_EX_CLIENTEDGE
+END
+
+IDD_MODULES DIALOGEX 0, 0, 321, 113
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "进程模块"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    CONTROL         "List1",IDC_MODULELIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_BORDER,0,0,321,113,WS_EX_CLIENTEDGE
+END
+
+IDD_PEEDITOR DIALOGEX 0, 0, 296, 119
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "PE 信息 - "
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    LTEXT           "入口点:",IDC_STATIC,4,4,35,8
+    LTEXT           "加载地址:",IDC_STATIC,4,17,50,8
+    LTEXT           "大小:",IDC_STATIC,3,31,43,8
+    LTEXT           "段对齐:",IDC_STATIC,4,44,60,8
+    LTEXT           "文件对齐:",IDC_STATIC,4,57,46,8
+    LTEXT           "子系统:",IDC_STATIC,130,5,37,8
+    LTEXT           "段个数:",IDC_STATIC,130,18,62,8
+    LTEXT           "特征:",IDC_STATIC,130,31,49,8
+    GROUPBOX        "目录表相对地址:",IDC_STATIC,3,73,228,42
+    LTEXT           "输入表:",IDC_STATIC,11,86,42,8
+    LTEXT           "输出表:",IDC_STATIC,11,99,43,8
+    LTEXT           "资源:",IDC_STATIC,123,86,34,8
+    LTEXT           "重定位表:",IDC_STATIC,123,98,37,8
+    EDITTEXT        IDC_PE_ENTRYPOINT,67,3,45,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_PE_IMAGEBASE,67,16,45,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_PE_SIZEOFIMAGE,67,29,45,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_PE_SECTIONALIGN,67,42,45,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_PE_FILEALIGN,67,55,45,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_PE_SUBSYSTEM,197,3,33,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_PE_NUMBEROFSECTIONS,197,16,33,12,ES_RIGHT | 
+                    ES_UPPERCASE | ES_AUTOHSCROLL | ES_READONLY | NOT 
+                    WS_TABSTOP
+    EDITTEXT        IDC_PE_CHARAC,197,29,33,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    PUSHBUTTON      "段列表",ID_SECTIONTABLE,129,53,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "输入表",ID_IMPORTTABLE,182,53,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_PE_IMPORTTABLE,61,84,45,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_PE_EXPORTTABLE,61,98,45,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_PE_RESOURCES,168,84,45,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_PE_RELOCATION,168,98,45,12,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    PUSHBUTTON      "确定",ID_PE_OK,239,4,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+END
+
+IDD_SECTIONTABLE DIALOGEX 0, 0, 318, 74
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "段表"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    CONTROL         "List1",IDC_SECTIONLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL,0,0,317,74,WS_EX_CLIENTEDGE
+END
+
+IDD_STACKMOD DIALOGEX 0, 0, 152, 137
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "修改堆栈 - 0x"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    CONTROL         "List1",IDC_STACKLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL,1,1,149,120,WS_EX_CLIENTEDGE
+    LTEXT           "新值:",IDC_STATIC,2,125,38,8
+    EDITTEXT        IDC_NEWSTACKVALUE,43,123,55,13,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_BORDER | NOT WS_TABSTOP,
+                    WS_EX_CLIENTEDGE
+    PUSHBUTTON      "修改",IDC_SAVESTACKCHANGE,102,123,26,13,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+END
+
+IDD_BPM DIALOGEX 0, 0, 223, 108
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "设置 BPM"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    GROUPBOX        "DrX 信息",IDC_STATIC,3,1,154,93
+    LTEXT           "线程：",IDC_STATIC,10,15,26,8
+    COMBOBOX        IDC_BPMTHREAD,38,13,65,60,CBS_DROPDOWNLIST | WS_VSCROLL
+    EDITTEXT        IDC_BPM0ADDR,35,31,51,13,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    CONTROL         "[1]",IDC_BPM0ON,"Button",BS_AUTOCHECKBOX,7,33,24,10,
+                    WS_EX_RIGHT
+    PUSHBUTTON      "设置 DrX",ID_SETBPMS,166,5,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "关闭",ID_BPMDLG_OK,166,20,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_BPMSTATUS,3,97,154,10,0,WS_EX_STATICEDGE
+    COMBOBOX        IDC_BPM0TYPE,90,31,54,44,CBS_DROPDOWNLIST | WS_VSCROLL
+    EDITTEXT        IDC_BPM1ADDR,35,45,51,13,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    CONTROL         "[2]",IDC_BPM1ON,"Button",BS_AUTOCHECKBOX,7,47,24,10,
+                    WS_EX_RIGHT
+    COMBOBOX        IDC_BPM1TYPE,90,45,54,44,CBS_DROPDOWNLIST | WS_VSCROLL
+    EDITTEXT        IDC_BPM2ADDR,35,59,51,13,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    CONTROL         "[3]",IDC_BPM2ON,"Button",BS_AUTOCHECKBOX,7,61,24,10,
+                    WS_EX_RIGHT
+    COMBOBOX        IDC_BPM2TYPE,90,59,54,44,CBS_DROPDOWNLIST | WS_VSCROLL
+    EDITTEXT        IDC_BPM3ADDR,35,73,51,13,ES_RIGHT | ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    CONTROL         "[4]",IDC_BPM3ON,"Button",BS_AUTOCHECKBOX,7,75,24,10,
+                    WS_EX_RIGHT
+    COMBOBOX        IDC_BPM3TYPE,90,73,54,44,CBS_DROPDOWNLIST | WS_VSCROLL
+END
+
+IDD_APIRETMOD DIALOGEX 0, 0, 230, 122
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "修改 API 返回值"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    LTEXT           "API:",IDC_STATIC,9,17,14,8
+    LTEXT           "新返回值",IDC_STATIC,8,29,57,8
+    EDITTEXT        IDC_NEWRETURNVALUE,66,27,62,12,ES_UPPERCASE | 
+                    ES_AUTOHSCROLL | NOT WS_TABSTOP
+    CONTROL         "List1",IDC_MARLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS,7,42,153,73,
+                    WS_EX_CLIENTEDGE
+    PUSHBUTTON      "+",IDC_ADDMAR,130,27,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "-",IDC_DELETEMAR,146,27,14,12,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    GROUPBOX        "API 返回值修改",IDC_STATIC,3,1,164,119
+    PUSHBUTTON      "确定",ID_MAR_OK,174,5,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "取消",ID_MAR_CANCEL,174,21,50,14,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    COMBOBOX        IDC_MAR_API,66,13,94,81,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
+                    CBS_SORT | WS_VSCROLL
+    CONTROL         "激活",IDC_MARON,"Button",BS_AUTOCHECKBOX,176,110,46,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_OPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 371
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 321
+    END
+
+    IDD_DUMP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 137
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 82
+    END
+
+    IDD_BP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 187
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 186
+    END
+
+    IDD_SEARCH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 216
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 72
+    END
+
+    IDD_REGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 174
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 146
+    END
+
+    IDD_IMPORTS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 154
+    END
+
+    IDD_MODULES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 314
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 106
+    END
+
+    IDD_PEEDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 289
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 112
+    END
+
+    IDD_SECTIONTABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 311
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 67
+    END
+
+    IDD_STACKMOD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 145
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 130
+    END
+
+    IDD_BPM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 216
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 101
+    END
+
+    IDD_APIRETMOD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 115
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// 德语(德国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "SS.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+TOOLBAR                 BITMAP                  "toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCEL ACCELERATORS 
+BEGIN
+    "0",            ID_SUSPENDALL,          VIRTKEY, CONTROL, NOINVERT
+    "1",            ID_CONTINUEDEBUG,       VIRTKEY, CONTROL, NOINVERT
+    "A",            ID_AUTOSCROLL,          VIRTKEY, CONTROL, NOINVERT
+    "B",            ID_SETBPX,              VIRTKEY, CONTROL, NOINVERT
+    "B",            ID_SETBPM,              VIRTKEY, ALT, NOINVERT
+    "C",            ID_CLEARLIST,           VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_SEARCH,              VIRTKEY, CONTROL, NOINVERT
+    "L",            ID_SAVETOFILE,          VIRTKEY, CONTROL, NOINVERT
+    "M",            ID_MEMSERVER,           VIRTKEY, CONTROL, NOINVERT
+    "M",            ID_ACTION_MAR,          VIRTKEY, ALT, NOINVERT
+    "O",            ID_OPEN,                VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_DUMP,                VIRTKEY, CONTROL, NOINVERT
+    "Q",            40002,                  VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_RESTARTDEBUG,        VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_STOPDEBUG,           VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_TOPMOST,             VIRTKEY, CONTROL, NOINVERT
+    VK_F1,          ID_OPTION,              VIRTKEY, NOINVERT
+    VK_F10,         ID_SHOWMODULES,         VIRTKEY, NOINVERT
+    VK_F3,          ID_SEARCHAGAIN,         VIRTKEY, NOINVERT
+    VK_F4,          ID_APISTACKMOD,         VIRTKEY, NOINVERT
+    VK_F5,          ID_VIEWREGS,            VIRTKEY, NOINVERT
+    VK_F6,          ID_SHOWPEINFO,          VIRTKEY, NOINVERT
+END
+
+#endif    // 德语(德国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// 英语(美国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...\tSTR+O",             ID_OPEN
+        MENUITEM "&Attach...\tSTR+A",           ID_ATTACH
+        MENUITEM "R&eopen",                     ID_FILE_REOPEN, GRAYED
+        MENUITEM "&Restart debugging\tSTR+R",   ID_RESTARTDEBUG
+        MENUITEM "&Stop debugging\tSTR+S",      ID_STOPDEBUG
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit\tSTR+Q",                40002
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Clear list\tSTR+C",          ID_CLEARLIST
+        MENUITEM "&Autoscroll list\tSTR+A",     ID_AUTOSCROLL
+        MENUITEM "&Save list...\tSTR+L",        ID_SAVETOFILE
+        MENUITEM "S&earch in list...\tSTR+F",   ID_SEARCH
+        MENUITEM "Search a&gain\tF3",           ID_SEARCHAGAIN
+        MENUITEM SEPARATOR
+        MENUITEM "&Hold window on the top\tSTR+T", ID_TOPMOST
+    END
+    POPUP "&Action"
+    BEGIN
+        MENUITEM "&Dump process...\tSTR+P",     ID_DUMP
+        MENUITEM "Set BP&X...\tSTR+B",          ID_SETBPX
+        MENUITEM "Set &BPM...\tALT+B",          ID_SETBPM
+        MENUITEM "&View registers...\tF5",      ID_VIEWREGS
+        MENUITEM "Start &Memory Server...\tSTR+M", ID_MEMSERVER
+        MENUITEM "PE &Viewer...\tF6",           ID_SHOWPEINFO
+        MENUITEM "Show Process M&odules...\tF10", ID_SHOWMODULES
+        MENUITEM "Modify API Stack...\tF4",     ID_APISTACKMOD, GRAYED
+        MENUITEM "Mod&ify API return value\tALT+M", ID_ACTION_MAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Resume all threads\tSTR+1",  ID_CONTINUEDEBUG
+        MENUITEM "&Suspend all threads\tSTR+0", ID_SUSPENDALL
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&Set options...\tF1",         ID_OPTION
+    END
+    POPUP "&PlugIns"
+    BEGIN
+        MENUITEM "No plugins found !",          ID_NOPLUGINS
+    END
+    MENUITEM "About",                       ID_ABOUT
+END
+
+#endif    // 英语(美国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
