@@ -1,0 +1,5 @@
+
+LIBRARY APISnoop
+EXPORTS
+  TrappedApiCall
+  RetTrapProc
