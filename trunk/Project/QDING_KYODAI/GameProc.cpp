@@ -49,17 +49,30 @@ void InitChessInfo()
 
 void InitNetChessInfo(int x, int y)
 {
-	g_ChessInfo.caption = "QQ游戏 - 连连看角色版";
-	g_ChessInfo.lpQPBase = (LPVOID)0x0012A480;
-	g_ChessInfo.lpQZBase = (LPVOID)0x0012E04C; //0x00115CDC
+	//获取当前系统版本
+	OSVERSIONINFO osvi;
+	osvi.dwOSVersionInfoSize = sizeof(osvi);
+	if (!GetVersionEx(&osvi)){
+		OutputDebugStringA ("GetVersionEx Failed.\r\n");
+	}
 
+	g_ChessInfo.caption = "QQ游戏 - 连连看角色版";
+
+	if (osvi.dwMajorVersion >= 6) {
+		g_ChessInfo.lpQPBase = (LPVOID)0x0012A444;
+		g_ChessInfo.lpQZBase = (LPVOID)0x0012E010; //0x00115CA0
+	}
+	else {
+		g_ChessInfo.lpQPBase = (LPVOID)0x0012A480;
+		g_ChessInfo.lpQZBase = (LPVOID)0x0012E04C; //0x00115CDC
+	}
 	g_ChessInfo.width = 31;
 	g_ChessInfo.height = 35;
 	g_ChessInfo.x_offset = 24;
 	g_ChessInfo.y_offset = 192;
 
-	g_ChessInfo.start_xoffset = 660;  //测试按钮 x = 740;  //开始按钮 x = 660;  
-	g_ChessInfo.start_yoffset = 565;  //测试按钮 y = 565;  //开始按钮 y = 565;
+	g_ChessInfo.start_xoffset = x;  //测试按钮 x = 740;  //开始按钮 x = 660;  
+	g_ChessInfo.start_yoffset = y;  //测试按钮 y = 565;  //开始按钮 y = 565;
 }
 
 BOOL EnablePrivilege ()
