@@ -399,7 +399,7 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 			>
 			<File
-				RelativePath="ClientIOCP.cpp"
+				RelativePath=".\ClientUpdate.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -480,7 +480,7 @@
 			Filter="h;hpp;hxx;hm;inl"
 			>
 			<File
-				RelativePath=".\ClientIOCP.h"
+				RelativePath=".\ClientUpdate.h"
 				>
 			</File>
 			<File
