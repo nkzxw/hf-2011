@@ -7,6 +7,7 @@
 #include <winsock2.h>
 
 #include "ClientUpdate.h"
+#include "IniFile.h"
 
 inline
 void 
@@ -26,12 +27,64 @@ OutputDebugPrintf(
 	LeaveCriticalSection(&g_csConsole);
 }
 
+inline 
+void ScanInstallDir(
+    LPCSTR path,
+	PIOCP_FILE_INFO c_FileInfo
+	)
+{
+	HANDLE Handle;
+	WIN32_FIND_DATAA fData;
+	
+	Handle = FindFirstFileA(path, &fData);
+
+	if (Handle == INVALID_HANDLE_VALUE)
+		return;
+
+	do {
+		if (fData.cFileName[0] == '.' )
+			continue;
+
+		if (fData.dwFileAttributes == FILE_ATTRIBUTE_DIRECTORY) {
+			char chPath[MAX_PATH];
+			memset (chPath, MAX_PATH, 0);
+			sprintf (chPath, "%s\\%s", path, fData.cFileName);
+			ScanInstallDir(chPath, c_FileInfo);
+		}
+		else{
+			bool bExits = false;
+			for (int i = 0; i < c_FileInfo->count; i++)
+			{
+				//fData.cFileName;
+			}
+		}
+
+	}while(FindNextFileA(Handle,&fData));
+
+	if (Handle)
+		FindClose(Handle);
+}
+
+void TestIni (LPCSTR path)
+{
+	CIniFile IniFile;
+	if ( FALSE == IniFile.SetPath (path)){
+		return;
+	}
+	
+	int num;
+	IniFile.GetAllSections (&num);
+}
+
 int 
 main(
 	int argc, 
 	char* argv[]
 	)
 {
+	 TestIni ("E:\\google\\Project\\QHMUpdate\\version.ini");
+	 return 0;
+
      WSADATA wsaData;     
      int nResult = WSAStartup(MAKEWORD(2,2), &wsaData);
      if (NO_ERROR != nResult){
@@ -98,7 +151,6 @@ CreateSocket(
 {
      struct sockaddr_in ServerAddress;
      struct hostent *Server;
-     char szConsole[MAX_BUFFER_LEN];
 
      *pSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);     
      if (INVALID_SOCKET == *pSocket) {
@@ -135,7 +187,6 @@ WorkerThread(
 {
 	ThreadInfo *pThreadInfo = (ThreadInfo*)lpParam;
 
-	char szConsole[MAX_BUFFER_LEN];
 	char szTemp[MAX_BUFFER_LEN];
 	IOCP_FILE_INFO FileInfo;
 
@@ -264,3 +315,33 @@ ClientWaitForMultipleObjects(
 	VirtualFree( lpInner, 0, MEM_RELEASE ); 
 	return dwResult; 
 } 
+
+void 
+WriteIni (
+	)
+{
+	int nAge = 12; 
+	char *strName="张三"; 	
+	char strTemp[MAX_PATH];
+	memset (strTemp, 0, MAX_PATH);
+	
+	WritePrivateProfileString("Info","Name",strName,"./student.ini"); 
+	sprintf (strTemp, "%d", nAge); 
+	WritePrivateProfileString("Info","Age",strTemp,"./student.ini");
+	WritePrivateProfileString("Info","Sex","男","./student.ini");
+	WritePrivateProfileString("Record","Male","女","./student.ini");
+}
+
+void 
+ReadIni (
+	)
+{
+	int nStudAge; 
+	char strStudName[MAX_PATH];
+	GetPrivateProfileString("Info","Name","默认姓名", strStudName, MAX_PATH, "./student.ini"); 
+	nStudAge = GetPrivateProfileInt("Info","Age",10,"./student.ini"); 
+
+	char strAge[256];
+	memset (strAge, 0, 256);
+	sprintf(strAge, "%d", nStudAge);	
+}

@@ -78,4 +78,14 @@ ClientWaitForMultipleObjects(
 	DWORD dwMilliseconds 
 	) ;
 
+/*
+* 写INI配置文件
+*/
+void WriteIni ();
+
+/*
+* 读INI配置文件
+*/ 
+void ReadIni ();
+
 #endif //_CLIENT_IOCP_H_

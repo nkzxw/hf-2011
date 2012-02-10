@@ -435,6 +435,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\IniFile.cpp"
+				>
+			</File>
+			<File
 				RelativePath="StdAfx.cpp"
 				>
 				<FileConfiguration
@@ -481,6 +485,10 @@
 			>
 			<File
 				RelativePath=".\ClientUpdate.h"
+				>
+			</File>
+			<File
+				RelativePath=".\IniFile.h"
 				>
 			</File>
 			<File
