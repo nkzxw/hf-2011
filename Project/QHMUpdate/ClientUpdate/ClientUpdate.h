@@ -1,6 +1,8 @@
 #ifndef _CLIENT_IOCP_H_
 #define _CLIENT_IOCP_H_
 
+#include "..\Common\common.h"
+
 #define MAX_BUFFER_LEN 256
 #define PORT 12345
 #define ADDR "192.168.30.141"
@@ -8,29 +10,6 @@
 CRITICAL_SECTION g_csConsole; //When threads write to console we need mutual exclusion
 
 #define TRANS_FILE_LENGTH 1024*1024
-
-#define FILE_COUNT 32
-typedef struct _IOCP_FILE_INFO
-{
-	char version[32]; //更新版本
-	char name[FILE_COUNT][MAX_PATH]; //更新文件的二维数组
-	int size[FILE_COUNT]; //更新文件的大小
-	WIN32_FILE_ATTRIBUTE_DATA data[FILE_COUNT];
-	int count; //更新文件的数量
-	
-	struct _IOCP_FILE_INFO ()
-	{
-		memset (version, 0, 32);
-		for (int i = 0; i < FILE_COUNT; i++){
-			memset (name[i], 0, MAX_PATH);
-		}
-		for (int j = 0; j < FILE_COUNT; j++){
-			size[j] = 0;
-		}
-
-		count = 0;
-	}
-}IOCP_FILE_INFO, *PIOCP_FILE_INFO;
 
 struct ThreadInfo
 {

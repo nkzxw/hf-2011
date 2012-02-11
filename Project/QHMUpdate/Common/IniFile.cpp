@@ -48,13 +48,14 @@ DWORD
 CIniFile::GetKeyValue(
 	LPCSTR strSection, 
 	LPCSTR strKey,
-	LPSTR lpKeyValue)   
+	LPSTR lpKeyValue,
+	DWORD size)   
 {   
 	return GetPrivateProfileString((LPCTSTR)strSection,   
 					  (LPCTSTR)strKey,   
 					   "",
 					   lpKeyValue,   
-					   strlen(lpKeyValue),   
+					   size,   
 					   (LPCTSTR)m_strPath);
 }   
    
