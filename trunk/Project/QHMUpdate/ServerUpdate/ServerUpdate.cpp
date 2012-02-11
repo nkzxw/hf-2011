@@ -12,23 +12,7 @@
 #include "ServerUpdate.h"
 #include "..\Common\IniFile.h"
 
-inline
-void 
-OutputDebugPrintf(
-	TCHAR *szFormat, ...
-	)
-{
-	EnterCriticalSection(&g_csConsole);
-
-	va_list args;
-	va_start(args, szFormat);
-
-	vprintf(szFormat, args );
-
-	va_end(args);
-
-	LeaveCriticalSection(&g_csConsole);
-}
+CIniFile IniFile;
 
 inline 
 void ScanUpdateDir(
@@ -39,8 +23,11 @@ void ScanUpdateDir(
 {
 	HANDLE Handle;
 	WIN32_FIND_DATAA fData;
-	
-	Handle = FindFirstFileA(path, &fData);
+
+	char chPath[MAX_PATH];
+	memset (chPath, 0, MAX_PATH);
+	sprintf (chPath, "%s\\*.*", path);
+	Handle = FindFirstFileA(chPath, &fData);
 
 	if (Handle == INVALID_HANDLE_VALUE)
 		return;
@@ -50,10 +37,10 @@ void ScanUpdateDir(
 			continue;
 
 		if (fData.dwFileAttributes == FILE_ATTRIBUTE_DIRECTORY) {
-			char chPath[MAX_PATH];
-			memset (chPath, MAX_PATH, 0);
-			sprintf (chPath, "%s\\%s", path, fData.cFileName);
-			ScanUpdateDir(chPath, c_FileInfo, s_FileInfo);
+			char newPath[MAX_PATH];
+			memset (newPath, MAX_PATH, 0);
+			sprintf (newPath, "%s\\%s", path, fData.cFileName);
+			ScanUpdateDir(newPath, c_FileInfo, s_FileInfo);
 		}
 		else{
 			bool bExits = false;
@@ -61,15 +48,50 @@ void ScanUpdateDir(
 			{
 				if (stricmp (c_FileInfo->name[i], fData.cFileName) == 0)
 				{
+					bExits = true;
+
 					//检查路径下的文件是否需要更新
 					//比对文件的创建时间
-					bExits = true;
+					char chFile[MAX_PATH];
+					memset (chFile, 0, MAX_PATH);
+					sprintf (chFile, "%s\\%s", path, fData.cFileName);
+					HANDLE hFile = CreateFile(chFile,GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
+					if (INVALID_HANDLE_VALUE != hFile){
+						WIN32_FILE_ATTRIBUTE_DATA data; 
+						GetFileAttributesExA (chFile, GetFileExInfoStandard, &data);
+						if (c_FileInfo->data[i].ftLastWriteTime.dwHighDateTime == data.ftLastWriteTime.dwHighDateTime &&
+							c_FileInfo->data[i].ftLastWriteTime.dwLowDateTime == data.ftLastWriteTime.dwLowDateTime)
+						{
+							CloseHandle (hFile);
+							break;
+						}
+						else {
+							DWORD dwFileSize = GetFileSize (hFile, NULL);
+							s_FileInfo->size[i] = dwFileSize;
+							memcpy(s_FileInfo->name[s_FileInfo->count], chFile, strlen (chFile));
+							s_FileInfo->count++;
+						}
+						CloseHandle (hFile);
+					}
 				}
 			}
 			
 			//如果服务端存在文件，客户端不存在，则加入到更新结构中。
 			if (!bExits)
 			{
+				char chFile[MAX_PATH];
+				memset (chFile, 0, MAX_PATH);
+				sprintf (chFile, "%s\\%s", path, fData.cFileName);
+				HANDLE hFile = CreateFile(chFile,GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
+				if (INVALID_HANDLE_VALUE != hFile){
+					GetFileAttributesExA (chFile, GetFileExInfoStandard, &s_FileInfo->data[s_FileInfo->count]);
+					DWORD dwFileSize = GetFileSize (hFile, NULL);
+					s_FileInfo->size[s_FileInfo->count] = dwFileSize;
+					memcpy(s_FileInfo->name[s_FileInfo->count], chFile, strlen (chFile));
+					s_FileInfo->count++;
+
+					CloseHandle (hFile);
+				}
 			}
 		}
 
@@ -87,6 +109,18 @@ main(
 {     
 	if (false == Initialize()){
 		return 1;
+	}
+
+	char chPath[MAX_PATH];
+	memset (chPath, 0, MAX_PATH);
+	GetCurrentPath (chPath);
+	char chVerFile[MAX_PATH];
+	memset (chVerFile, 0, MAX_PATH);
+	sprintf (chVerFile, "%s\%s", chPath, "update.ini");
+
+	if (FALSE == IniFile.SetPath (chVerFile)){
+		OutputDebugPrintf ("IniFile Error.\r\n");
+		return 0;
 	}
 	
 	SOCKET ListenSocket; 
@@ -323,8 +357,8 @@ WorkerThread(
 			
 		case OP_WRITE:
 			{
-				char szBuffer[MAX_BUFFER_LEN];
-				pClientContext->GetBuffer(szBuffer);
+				IOCP_FILE_INFO NewFileInfo;
+				pClientContext->GetBuffer((char *)&NewFileInfo);
 			
 				pClientContext->SetOpCode(OP_READ);		
 				pClientContext->m_nTotalBytes = dwBytesTransfered;
@@ -333,22 +367,42 @@ WorkerThread(
 				
 				dwFlags = 0;
 
-
 				//检测客户端版本号,验证更新的文件
+				char chVersion[32];
+				memset (chVersion, 0, 32);
+				memcpy (chVersion, NewFileInfo.version, 32);
+				trim(chVersion, '.');
+				int cVersion = atoi (chVersion);
+				
+				IniFile.GetKeyValue ("QHMUpdate", "version", FileInfo.version, 32);
+				memset (chVersion, 0, 32);
+				memcpy (chVersion, FileInfo.version, 32);
+				trim(chVersion, '.');
+				int sVersion = atoi(chVersion);
 
-				//发送更新文件信息
-				FileInfo.count = 1;
-				memcpy (FileInfo.version, "153.0.0", strlen("153.0.0"));
-				for (int i = 0; i < FileInfo.count; i++) 
-				{
-					memcpy(FileInfo.name[i], "E:\\IFS.c", strlen("E:\\IFS.c"));
-					HANDLE hFile = CreateFile(FileInfo.name[i],GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
-					if (hFile != INVALID_HANDLE_VALUE) 
-					{
-						DWORD dwFileSize = GetFileSize (hFile, NULL);
-						FileInfo.size[i] = dwFileSize;
-						CloseHandle (hFile);
-					}
+				if (sVersion > cVersion){		
+					//发送更新文件信息
+					//FileInfo.count = 1;
+					//for (int i = 0; i < FileInfo.count; i++) 
+					//{
+					//	memcpy(FileInfo.name[i], "E:\\IFS.c", strlen("E:\\IFS.c"));
+					//	HANDLE hFile = CreateFile(FileInfo.name[i],GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
+					//	if (hFile != INVALID_HANDLE_VALUE) 
+					//	{
+					//		DWORD dwFileSize = GetFileSize (hFile, NULL);
+					//		FileInfo.size[i] = dwFileSize;
+					//		CloseHandle (hFile);
+					//	}
+					//}
+
+					char chPath[MAX_PATH];
+					memset (chPath, 0, MAX_PATH);
+					GetCurrentPath (chPath);
+					char chUpdate[MAX_PATH];
+					memset (chUpdate, 0, MAX_PATH);
+					sprintf (chUpdate, "%s\\%s", chPath, "QHMUpdate");
+					ScanUpdateDir (chUpdate, &NewFileInfo, &FileInfo);
+
 				}
 
 				DWORD dwReadSize;

@@ -6,26 +6,12 @@
 #include <string.h>
 #include <winsock2.h>
 
+//#include "mswsock.h"
+
 #include "ClientUpdate.h"
 #include "..\Common\IniFile.h"
 
-inline
-void 
-OutputDebugPrintf(
-	TCHAR *szFormat, ...
-	)
-{
-	EnterCriticalSection(&g_csConsole);
-
-	va_list args;
-	va_start(args, szFormat);
-
-	vprintf(szFormat, args );
-
-	va_end(args);
-
-	LeaveCriticalSection(&g_csConsole);
-}
+CIniFile IniFile;
 
 inline 
 void ScanInstallDir(
@@ -36,7 +22,10 @@ void ScanInstallDir(
 	HANDLE Handle;
 	WIN32_FIND_DATAA fData;
 	
-	Handle = FindFirstFileA(path, &fData);
+	char chPath[MAX_PATH];
+	memset (chPath, 0, MAX_PATH);
+	sprintf (chPath, "%s\\*.*", path);
+	Handle = FindFirstFileA(chPath, &fData);
 
 	if (Handle == INVALID_HANDLE_VALUE)
 		return;
@@ -46,23 +35,42 @@ void ScanInstallDir(
 			continue;
 
 		if (fData.dwFileAttributes == FILE_ATTRIBUTE_DIRECTORY) {
-			char chPath[MAX_PATH];
-			memset (chPath, MAX_PATH, 0);
-			sprintf (chPath, "%s\\%s", path, fData.cFileName);
-			ScanInstallDir(chPath, c_FileInfo);
+			char newPath[MAX_PATH];
+			memset (newPath, MAX_PATH, 0);
+			sprintf (newPath, "%s\\%s", path, fData.cFileName);
+			ScanInstallDir(newPath, c_FileInfo);
 		}
 		else{
 			bool bExits = false;
-			for (int i = 0; i < c_FileInfo->count; i++)
-			{
-				//fData.cFileName;
-			}
-		}
+	
+			//fData.cFileName;
+			char chFile[MAX_PATH];
+			memset (chFile, 0, MAX_PATH);
+			sprintf (chFile, "%s\\%s", path, fData.cFileName);
+			HANDLE hFile = CreateFile(chFile,GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
+			if (INVALID_HANDLE_VALUE != hFile){
+				DWORD dwFileSize = GetFileSize (hFile, NULL);
+				c_FileInfo->size[c_FileInfo->count] = dwFileSize;
+				GetFileAttributesExA (chFile, GetFileExInfoStandard, &c_FileInfo->data[c_FileInfo->count]);
 
+				memcpy(c_FileInfo->name[c_FileInfo->count], fData.cFileName, strlen (fData.cFileName));
+				c_FileInfo->count++;
+
+				CloseHandle (hFile);
+			}	
+		}
 	}while(FindNextFileA(Handle,&fData));
 
 	if (Handle)
 		FindClose(Handle);
+}
+
+void 
+ParseUpdateFile (
+	PIOCP_FILE_INFO c_FileInfo
+	)
+{
+
 }
 
 int 
@@ -79,12 +87,9 @@ main(
      
      InitializeCriticalSection(&g_csConsole);
      
-     char szBuffer[MAX_BUFFER_LEN];
      int nNoOfThreads = 0;
      int nNoOfSends = 0;
-     
-     strcpy(szBuffer, "科技型中小企业技术创新基金项目----申请资料（XML数据库）");
-      
+           
 	 nNoOfThreads = 1;
      nNoOfSends = 1;
      
@@ -93,13 +98,26 @@ main(
 	 if (NULL == pThreadInfo){
 		 //TODO
 	 }
+
+	//初始化Version.ini文件
+	char chPath[MAX_PATH];
+	memset (chPath, 0, MAX_PATH);
+	GetCurrentPath (chPath);
+	char chVerFile[MAX_PATH];
+	memset (chVerFile, 0, MAX_PATH);
+	sprintf (chVerFile, "%s\\%s", chPath, "version.ini");
+
+	if (FALSE == IniFile.SetPath (chVerFile)){
+		OutputDebugPrintf ("IniFile Error.\r\n");
+		return 0;
+	}
      
      bool bConnectedSocketCreated = false;     
      DWORD nThreadID;
-	 int ii = 0;
-     for (ii; ii < nNoOfThreads; ii++)
+	 int i = 0;
+     for (i; i < nNoOfThreads; i++)
      {
-         bConnectedSocketCreated = CreateSocket(&(pThreadInfo[ii].m_Socket), ADDR, PORT); 
+         bConnectedSocketCreated = CreateSocket(&(pThreadInfo[i].m_Socket), ADDR, PORT); 
          if (!bConnectedSocketCreated)
          {
                delete[] p_hThreads;
@@ -109,16 +127,15 @@ main(
                return 1;
           }
           
-          pThreadInfo[ii].m_nNoOfSends = nNoOfSends;
-          pThreadInfo[ii].m_nThreadNo = ii+1;
-          sprintf(pThreadInfo[ii].m_szBuffer, "Thread %d - %s", ii+1, szBuffer);
-          p_hThreads[ii] = CreateThread(0, 0, WorkerThread, (void *)(&pThreadInfo[ii]), 0, &nThreadID);
+          pThreadInfo[i].m_nNoOfSends = nNoOfSends;
+          pThreadInfo[i].m_nThreadNo = i+1;
+          p_hThreads[i] = CreateThread(0, 0, WorkerThread, (void *)(&pThreadInfo[i]), 0, &nThreadID);
      }
      
 	 ClientWaitForMultipleObjects(nNoOfThreads, p_hThreads, TRUE, INFINITE);
-     for (ii = 0; ii < nNoOfThreads; ii++)
+     for (i = 0; i < nNoOfThreads; i++)
      {
-          closesocket(pThreadInfo[ii].m_Socket);
+          closesocket(pThreadInfo[i].m_Socket);
      }
 
 	 delete[] p_hThreads;
@@ -173,7 +190,6 @@ WorkerThread(
 {
 	ThreadInfo *pThreadInfo = (ThreadInfo*)lpParam;
 
-	char szTemp[MAX_BUFFER_LEN];
 	IOCP_FILE_INFO FileInfo;
 
 	int nBytesSent = 0;
@@ -181,10 +197,22 @@ WorkerThread(
      
 	for (int ii = 0; ii < pThreadInfo->m_nNoOfSends; ii++)
 	{
-		//发送版本号到服务端
-		memcpy(&(FileInfo.version), "152.0.1", strlen ("152.0.1"));
-		nBytesSent = send(pThreadInfo->m_Socket, FileInfo.version, sizeof (FileInfo.version), 0);
+		char chVersion[32];
+		memset (chVersion, 0, 32);
+		IniFile.GetKeyValue ("QHMUpdate", "version", chVersion, 32);
 
+		//发送版本号到服务端
+		memcpy(&(FileInfo.version), chVersion, strlen (chVersion));
+
+		char chPath[MAX_PATH];
+		memset (chPath, 0, MAX_PATH);
+		GetCurrentPath (chPath);
+		char chClient[MAX_PATH];
+		memset (chClient, 0, MAX_PATH);
+		sprintf (chClient, "%s\\%s", chPath, "QHMClient");
+		ScanInstallDir (chClient, &FileInfo);
+
+		nBytesSent = send(pThreadInfo->m_Socket, (char *)&FileInfo, sizeof (IOCP_FILE_INFO), 0);
 		if (SOCKET_ERROR == nBytesSent) 
 		{
 		   //TODO

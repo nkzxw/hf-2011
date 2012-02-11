@@ -1,6 +1,8 @@
 #ifndef _SERVER_IOCP_H_
 #define _SERVER_IOCP_H_
 
+#include "..\Common\common.h"
+
 #define OP_READ     0
 #define OP_WRITE    1
 #define PORT		12345
@@ -19,29 +21,6 @@ CRITICAL_SECTION g_csClientList;
 
 HANDLE g_hIOCompletionPort = NULL;
 
-#define FILE_COUNT 32
-typedef struct _IOCP_FILE_INFO
-{
-	char version[32]; //更新版本
-	char name[FILE_COUNT][MAX_PATH]; //更新文件的二维数组
-	int size[FILE_COUNT]; //更新文件的大小
-	WIN32_FILE_ATTRIBUTE_DATA data[FILE_COUNT]; //文件的属性信息
-	int count; //更新文件的数量
-	
-	struct _IOCP_FILE_INFO ()
-	{
-		memset (version, 0, 32);
-		for (int i = 0; i < FILE_COUNT; i++){
-			memset (name[i], 0, MAX_PATH);
-		}
-		for (int j = 0; j < FILE_COUNT; j++){
-			size[j] = 0;
-		}
-
-		count = 0;
-	}
-}IOCP_FILE_INFO, *PIOCP_FILE_INFO;
-
 //保存客户度相关信息
 class CClientContext  
 {
@@ -53,7 +32,7 @@ public:
 	int               m_nSentBytes;
 	
 	SOCKET            m_Socket;  
-	char              m_szBuffer[MAX_BUFFER_LEN];
+	char              m_szBuffer[sizeof (IOCP_FILE_INFO)];
 	int               m_nOpCode; 
 	
 	void SetOpCode(int n){
@@ -73,19 +52,19 @@ public:
 	}
 	
 	void SetBuffer(char *szBuffer){
-		strcpy(m_szBuffer, szBuffer);
+		memcpy(m_szBuffer, szBuffer, sizeof (IOCP_FILE_INFO));
 	}
 	
 	void GetBuffer(char *szBuffer){
-		strcpy(szBuffer, m_szBuffer);
+		memcpy(szBuffer, m_szBuffer, sizeof (IOCP_FILE_INFO));
 	}
 	
 	void ZeroBuffer(){
-		ZeroMemory(m_szBuffer, MAX_BUFFER_LEN);
+		ZeroMemory(m_szBuffer, sizeof (IOCP_FILE_INFO));
 	}
 	
-	void SetWSABUFLength(int nLength){
-		m_wbuf.len = nLength;
+	void SetWSABUFLength(){
+		m_wbuf.len = sizeof (IOCP_FILE_INFO);
 	}
 	
 	int GetWSABUFLength(){
@@ -95,7 +74,7 @@ public:
 	void ResetWSABUF(){
 		ZeroBuffer();
 		m_wbuf.buf = m_szBuffer;
-		m_wbuf.len = MAX_BUFFER_LEN;
+		m_wbuf.len = sizeof (IOCP_FILE_INFO);
 	}
 
 	CClientContext()
@@ -103,10 +82,10 @@ public:
 		ZeroMemory(&m_ol, sizeof(OVERLAPPED));
 		m_Socket =  SOCKET_ERROR;
 		
-		ZeroMemory(m_szBuffer, MAX_BUFFER_LEN);
+		ZeroMemory(m_szBuffer, sizeof (IOCP_FILE_INFO));
 		
 		m_wbuf.buf = m_szBuffer;
-		m_wbuf.len = MAX_BUFFER_LEN;
+		m_wbuf.len = sizeof (IOCP_FILE_INFO);
 		
 		m_nOpCode = 0;
 		m_nTotalBytes = 0;

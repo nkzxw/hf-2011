@@ -33,7 +33,7 @@ public:
 	/*
 	* Key 增,删,获得操作。
 	*/ 
-	DWORD GetKeyValue(LPCSTR strSection, LPCSTR strKey, LPSTR lpKeyValue);  
+	DWORD GetKeyValue(LPCSTR strSection, LPCSTR strKey, LPSTR lpKeyValue, DWORD size);  
 	BOOL SetKeyValue(LPCSTR strSection, LPCSTR strKey, LPCSTR strKeyValue); 
 	BOOL DeleteKey(LPCSTR strSection, LPCSTR strKey); 
 
