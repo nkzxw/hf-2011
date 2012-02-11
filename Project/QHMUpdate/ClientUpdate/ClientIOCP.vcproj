@@ -435,7 +435,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\IniFile.cpp"
+				RelativePath="..\Common\IniFile.cpp"
 				>
 			</File>
 			<File
@@ -488,7 +488,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\IniFile.h"
+				RelativePath="..\Common\IniFile.h"
 				>
 			</File>
 			<File

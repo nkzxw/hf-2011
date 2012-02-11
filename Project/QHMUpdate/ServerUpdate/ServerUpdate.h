@@ -9,9 +9,9 @@
 
 #define MAX_BUFFER_LEN 256
 
-HANDLE g_hShutdownEvent = NULL;
-HANDLE g_hWorkerThreads[MAX_WORKER_THREADS];
-HANDLE g_hAcceptThread = NULL;
+HANDLE	g_hShutdownEvent = NULL;
+HANDLE	g_hWorkerThreads[MAX_WORKER_THREADS];
+HANDLE	g_hAcceptThread = NULL;
 WSAEVENT	g_hAcceptEvent;
 
 CRITICAL_SECTION g_csConsole; 

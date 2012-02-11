@@ -96,6 +96,7 @@ CIniFile::GetAllSections(
 	int *pNum)   
 {   
 #define BUF_SIZE 65536
+	memset (m_Sections, 0, MAX_ALLSECTIONS * sizeof (INI_SECTION));
 
 	char buf[BUF_SIZE];   
 	memset(buf, 0, BUF_SIZE);   
@@ -144,12 +145,11 @@ CIniFile::GetAllKeysOfSection(
 void 
 CIniFile::DeleteAllSections()   
 {   
-	int nSecNum;    
-	LPCSTR strArrSection;    
+	int nSecNum;       
 	GetAllSections(&nSecNum);    
 	for(int i=0; i<nSecNum; i++)    
 	{    
-		WritePrivateProfileString((LPCTSTR)strArrSection[i],   
+		WritePrivateProfileString(m_Sections[i].chSection,   
 								NULL,   
 								NULL,   
 								(LPCTSTR)m_strPath);          
@@ -158,10 +158,10 @@ CIniFile::DeleteAllSections()
 
 BOOL
 CIniFile::SetSectionValue(
-	LPCSTR lpAppName, 
+	LPCSTR lpSecName, 
 	LPCSTR lpString)
 {
-	return WritePrivateProfileSection (lpAppName, 
+	return WritePrivateProfileSection (lpSecName, 
 									lpString, 
 									m_strPath);
 }
@@ -169,14 +169,55 @@ CIniFile::SetSectionValue(
 
 DWORD 
 CIniFile::GetSectionValue (
-	LPCTSTR lpAppName,
+	LPCTSTR lpSecName,
 	LPTSTR lpReturnedString,
-	DWORD nSize,
-	LPCTSTR lpFileName
+	DWORD nSize
 	)
 {
-	return GetPrivateProfileSection(lpAppName,
+	return GetPrivateProfileSection(lpSecName,
 							  lpReturnedString,
 							  nSize,
-							  lpFileName);
+							  m_strPath);
+}
+
+
+void TestIni (LPCSTR path)
+{
+#define BUF_SIZE 65536
+
+	CIniFile IniFile;
+	if ( FALSE == IniFile.SetPath (path)){
+		return;
+	}
+	
+	//Test Function GetAllSections;
+	int num;
+	PINI_SECTION pSection = IniFile.GetAllSections (&num);
+
+	//Test Funciton GetAllKeysOfSection.
+	for (int i = 0; i < num; i++)
+	{
+		char *pch = pSection[i].chSection;
+		
+		char buf[BUF_SIZE];
+		memset (buf, 0, BUF_SIZE);
+		BOOL bRet = IniFile.GetSectionValue (pch, buf, BUF_SIZE);
+		
+		INI_KEY keys[MAX_ALLKEYS];
+		memset (keys, 0, sizeof (INI_KEY) * MAX_ALLKEYS);
+		int iNum = IniFile.GetAllKeysOfSection (pch, keys);
+	}
+
+	//Test Function SetSectionValue 
+	BOOL bRet = IniFile.SetSectionValue ("New Section", "2222");
+	if (!bRet){
+		printf ("Error = %d.\r\n", GetLastError ());
+	}
+
+	//Test Function DeleteSection
+	bRet = IniFile.DeleteSection ("New Section");
+	if (!bRet){
+		printf ("Error = %d.\r\n", GetLastError ());
+	}
+
 }
