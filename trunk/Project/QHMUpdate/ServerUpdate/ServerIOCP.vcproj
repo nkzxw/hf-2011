@@ -399,6 +399,10 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 			>
 			<File
+				RelativePath="..\Common\IniFile.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ServerUpdate.cpp"
 				>
 				<FileConfiguration
@@ -479,6 +483,10 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl"
 			>
+			<File
+				RelativePath="..\Common\IniFile.h"
+				>
+			</File>
 			<File
 				RelativePath=".\ServerUpdate.h"
 				>

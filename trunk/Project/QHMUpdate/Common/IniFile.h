@@ -40,8 +40,8 @@ public:
 	/*
 	* Section 增,删,获得操作。
 	*/
-	DWORD GetSectionValue (LPCTSTR lpAppName, LPTSTR lpReturnedString, DWORD nSize, LPCTSTR lpFileName);
-	BOOL SetSectionValue (LPCSTR lpAppName, LPCSTR lpString);
+	DWORD GetSectionValue (LPCTSTR lpSecName, LPTSTR lpReturnedString, DWORD nSize);
+	BOOL SetSectionValue (LPCSTR lpSecName, LPCSTR lpString);
 	BOOL DeleteSection(LPCSTR strSection); 
 
 	PINI_SECTION GetAllSections(int *pNum);   

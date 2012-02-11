@@ -7,7 +7,7 @@
 #include <winsock2.h>
 
 #include "ClientUpdate.h"
-#include "IniFile.h"
+#include "..\Common\IniFile.h"
 
 inline
 void 
@@ -65,26 +65,12 @@ void ScanInstallDir(
 		FindClose(Handle);
 }
 
-void TestIni (LPCSTR path)
-{
-	CIniFile IniFile;
-	if ( FALSE == IniFile.SetPath (path)){
-		return;
-	}
-	
-	int num;
-	IniFile.GetAllSections (&num);
-}
-
 int 
 main(
 	int argc, 
 	char* argv[]
 	)
 {
-	 TestIni ("E:\\google\\Project\\QHMUpdate\\version.ini");
-	 return 0;
-
      WSADATA wsaData;     
      int nResult = WSAStartup(MAKEWORD(2,2), &wsaData);
      if (NO_ERROR != nResult){
@@ -315,33 +301,3 @@ ClientWaitForMultipleObjects(
 	VirtualFree( lpInner, 0, MEM_RELEASE ); 
 	return dwResult; 
 } 
-
-void 
-WriteIni (
-	)
-{
-	int nAge = 12; 
-	char *strName="张三"; 	
-	char strTemp[MAX_PATH];
-	memset (strTemp, 0, MAX_PATH);
-	
-	WritePrivateProfileString("Info","Name",strName,"./student.ini"); 
-	sprintf (strTemp, "%d", nAge); 
-	WritePrivateProfileString("Info","Age",strTemp,"./student.ini");
-	WritePrivateProfileString("Info","Sex","男","./student.ini");
-	WritePrivateProfileString("Record","Male","女","./student.ini");
-}
-
-void 
-ReadIni (
-	)
-{
-	int nStudAge; 
-	char strStudName[MAX_PATH];
-	GetPrivateProfileString("Info","Name","默认姓名", strStudName, MAX_PATH, "./student.ini"); 
-	nStudAge = GetPrivateProfileInt("Info","Age",10,"./student.ini"); 
-
-	char strAge[256];
-	memset (strAge, 0, 256);
-	sprintf(strAge, "%d", nStudAge);	
-}

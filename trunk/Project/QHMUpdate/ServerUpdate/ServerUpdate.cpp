@@ -10,6 +10,7 @@
 #include "mswsock.h"
 
 #include "ServerUpdate.h"
+#include "..\Common\IniFile.h"
 
 inline
 void 
@@ -27,6 +28,55 @@ OutputDebugPrintf(
 	va_end(args);
 
 	LeaveCriticalSection(&g_csConsole);
+}
+
+inline 
+void ScanUpdateDir(
+    LPCSTR path,
+	PIOCP_FILE_INFO c_FileInfo,
+	PIOCP_FILE_INFO s_FileInfo
+	)
+{
+	HANDLE Handle;
+	WIN32_FIND_DATAA fData;
+	
+	Handle = FindFirstFileA(path, &fData);
+
+	if (Handle == INVALID_HANDLE_VALUE)
+		return;
+
+	do {
+		if (fData.cFileName[0] == '.' )
+			continue;
+
+		if (fData.dwFileAttributes == FILE_ATTRIBUTE_DIRECTORY) {
+			char chPath[MAX_PATH];
+			memset (chPath, MAX_PATH, 0);
+			sprintf (chPath, "%s\\%s", path, fData.cFileName);
+			ScanUpdateDir(chPath, c_FileInfo, s_FileInfo);
+		}
+		else{
+			bool bExits = false;
+			for (int i = 0; i < c_FileInfo->count; i++)
+			{
+				if (stricmp (c_FileInfo->name[i], fData.cFileName) == 0)
+				{
+					//检查路径下的文件是否需要更新
+					//比对文件的创建时间
+					bExits = true;
+				}
+			}
+			
+			//如果服务端存在文件，客户端不存在，则加入到更新结构中。
+			if (!bExits)
+			{
+			}
+		}
+
+	}while(FindNextFileA(Handle,&fData));
+
+	if (Handle)
+		FindClose(Handle);
 }
 
 int 
@@ -112,9 +162,9 @@ Initialize(
 	DWORD nThreadID;
 	SYSTEM_INFO SystemInfo;
 	GetSystemInfo(&SystemInfo);
-	for (int ii = 0; ii < SystemInfo.dwNumberOfProcessors * 2; ii++)
+	for (int j = 0; j < SystemInfo.dwNumberOfProcessors * 2; j++)
 	{
-		g_hWorkerThreads[ii] = CreateThread(0, 0, WorkerThread, (void *)(ii+1), 0, &nThreadID);
+		g_hWorkerThreads[j] = CreateThread(0, 0, WorkerThread, (void *)(j+1), 0, &nThreadID);
 	}
 	
 	return true;
@@ -204,7 +254,6 @@ AcceptConnection(
 	DWORD dwBytes = 0;		
 	int nBytesRecv = WSARecv(pClientContext->GetSocket(), &pClientContext->m_wbuf, 1, 
 		&dwBytes, &dwFlags, &pClientContext->m_ol, NULL);
-	
 	if ((SOCKET_ERROR == nBytesRecv) && 
 		(WSA_IO_PENDING != WSAGetLastError()))
 	{
@@ -256,36 +305,18 @@ WorkerThread(
 		switch (pClientContext->GetOpCode())
 		{
 		case OP_READ:
-			{
-				pClientContext->m_nSentBytes += dwBytesTransfered;
-				if(pClientContext->m_nSentBytes < pClientContext->m_nTotalBytes)
+			{				
+				pClientContext->SetOpCode(OP_WRITE);
+				pClientContext->ResetWSABUF();
+				
+				dwFlags = 0;
+				nBytesRecv = WSARecv(pClientContext->GetSocket(), &pClientContext->m_wbuf, 1, 
+					&dwBytes, &dwFlags, &pClientContext->m_ol, NULL);				
+				if ((SOCKET_ERROR == nBytesRecv) && 
+					(WSA_IO_PENDING != WSAGetLastError()))
 				{
-					pClientContext->SetOpCode(OP_READ);				
-					pClientContext->m_wbuf.buf += pClientContext->m_nSentBytes;
-					pClientContext->m_wbuf.len = pClientContext->m_nTotalBytes - pClientContext->m_nSentBytes;
-					
-					dwFlags = 0;
-					nBytesSent = WSASend(pClientContext->GetSocket(), &pClientContext->m_wbuf, 1, 
-						&dwBytes, dwFlags, &pClientContext->m_ol, NULL);
-					if ((SOCKET_ERROR == nBytesSent) && 
-						(WSA_IO_PENDING != WSAGetLastError()))
-					{
-						RemoveFromClientList(pClientContext);
-					}
-				}
-				else{
-					pClientContext->SetOpCode(OP_WRITE);
-					pClientContext->ResetWSABUF();
-					
-					dwFlags = 0;
-					nBytesRecv = WSARecv(pClientContext->GetSocket(), &pClientContext->m_wbuf, 1, 
-						&dwBytes, &dwFlags, &pClientContext->m_ol, NULL);				
-					if ((SOCKET_ERROR == nBytesRecv) && 
-						(WSA_IO_PENDING != WSAGetLastError()))
-					{
-						//TODO
-						RemoveFromClientList(pClientContext);
-					}
+					//TODO
+					RemoveFromClientList(pClientContext);
 				}
 			}
 			break;
