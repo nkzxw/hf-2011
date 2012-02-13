@@ -107,6 +107,8 @@ main(
 	char *argv[]
 )
 {     
+	//InitContextNode ();
+
 	if (false == Initialize()){
 		return 1;
 	}
@@ -159,7 +161,7 @@ main(
 	g_hAcceptThread = CreateThread(0, 0, AcceptThread, (void *)ListenSocket, 0, &nThreadID);
 	while(!_kbhit())
 	{
-		::Sleep(30000);  //switch to some other thread
+		::Sleep(100);  //switch to some other thread
 	}
 	
 	closesocket(ListenSocket);
@@ -327,14 +329,14 @@ WorkerThread(
 			break;
 		}
 
+		pClientContext = (CClientContext *)lpContext;
+
 		if ((FALSE == bReturn) || 
 			((TRUE == bReturn) && (0 == dwBytesTransfered)))
 		{
 			RemoveFromClientList(pClientContext);
 			continue;
 		}
-
-		pClientContext = (CClientContext *)lpContext;
 
 		switch (pClientContext->GetOpCode())
 		{
@@ -373,27 +375,17 @@ WorkerThread(
 				memcpy (chVersion, NewFileInfo.version, 32);
 				trim(chVersion, '.');
 				int cVersion = atoi (chVersion);
+				if (0 == cVersion)
+					continue;
 				
 				IniFile.GetKeyValue ("QHMUpdate", "version", FileInfo.version, 32);
 				memset (chVersion, 0, 32);
 				memcpy (chVersion, FileInfo.version, 32);
 				trim(chVersion, '.');
 				int sVersion = atoi(chVersion);
-
+				
 				if (sVersion > cVersion){		
 					//发送更新文件信息
-					//FileInfo.count = 1;
-					//for (int i = 0; i < FileInfo.count; i++) 
-					//{
-					//	memcpy(FileInfo.name[i], "E:\\IFS.c", strlen("E:\\IFS.c"));
-					//	HANDLE hFile = CreateFile(FileInfo.name[i],GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
-					//	if (hFile != INVALID_HANDLE_VALUE) 
-					//	{
-					//		DWORD dwFileSize = GetFileSize (hFile, NULL);
-					//		FileInfo.size[i] = dwFileSize;
-					//		CloseHandle (hFile);
-					//	}
-					//}
 
 					char chPath[MAX_PATH];
 					memset (chPath, 0, MAX_PATH);
@@ -414,6 +406,8 @@ WorkerThread(
 				nBytesSent = WSASend(pClientContext->GetSocket(), &wsFileInfo, 1, 
 					&dwReadSize, dwFlags, &pClientContext->m_ol, NULL);
 				
+				delete []wsFileInfo.buf;
+
 				if ((SOCKET_ERROR == nBytesSent) && (WSA_IO_PENDING != WSAGetLastError()))
 				{
 					RemoveFromClientList(pClientContext);
@@ -436,6 +430,8 @@ WorkerThread(
 						nBytesSent = WSASend(pClientContext->GetSocket(), &wsFile, 1, 
 							&dwReadSize, dwFlags, &pClientContext->m_ol, NULL);
 						
+						delete []wsFile.buf;
+
 						if ((SOCKET_ERROR == nBytesSent) && (WSA_IO_PENDING != WSAGetLastError()))
 						{
 							RemoveFromClientList(pClientContext);
@@ -460,7 +456,11 @@ AddToClientList(
 	)
 {
 	EnterCriticalSection(&g_csClientList);
-	g_ClientContext.push_back(pClientContext);	
+	
+	//PCONTEXT_LINK_NODE newNode = AllocContextNode (pClientContext);
+	//InsertContextNode (newNode);
+	
+	g_ClientContext.push_back(pClientContext);
 	LeaveCriticalSection(&g_csClientList);
 }
 
@@ -476,13 +476,17 @@ RemoveFromClientList(
 	{
 		if (pClientContext == *IterClientContext)
 		{
-			g_ClientContext.erase(IterClientContext);
 			CancelIo((HANDLE)(pClientContext->GetSocket()));
 			closesocket(pClientContext->GetSocket());
+
+			g_ClientContext.erase(IterClientContext);
 			delete pClientContext;
+			pClientContext = NULL;
 			break;
 		}
 	}
+
+	//RemoveContextNode (pClientContext);
 	
 	LeaveCriticalSection(&g_csClientList);
 }
@@ -501,6 +505,8 @@ void CleanClientList(
 	}
 	
 	g_ClientContext.clear();
+
+	//ClearContextNode ();
 	
 	LeaveCriticalSection(&g_csClientList);
 }

@@ -90,7 +90,7 @@ main(
      int nNoOfThreads = 0;
      int nNoOfSends = 0;
            
-	 nNoOfThreads = 1;
+	 nNoOfThreads = 10;
      nNoOfSends = 1;
      
      HANDLE *p_hThreads = new HANDLE[nNoOfThreads];

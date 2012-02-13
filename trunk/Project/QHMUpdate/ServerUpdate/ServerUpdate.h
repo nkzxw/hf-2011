@@ -93,6 +93,143 @@ public:
 	}
 };
 
+/*
+typedef struct _CONTEXT_LINK_NODE
+{
+	CClientContext *context; 
+	struct _CONTEXT_LINK_NODE *next;
+	struct _CONTEXT_LINK_NODE *prev;
+
+	struct _CONTEXT_LINK_NODE ()
+	{
+		next = NULL;
+		prev = NULL;
+		context = NULL;
+	}
+}CONTEXT_LINK_NODE, *PCONTEXT_LINK_NODE;
+
+PCONTEXT_LINK_NODE g_ClientContext;
+
+void
+InitContextNode ()
+{
+	g_ClientContext = (PCONTEXT_LINK_NODE)malloc (sizeof (CONTEXT_LINK_NODE));
+	g_ClientContext->next = NULL;
+	g_ClientContext->prev = NULL;
+	g_ClientContext->context = NULL;	
+}
+
+PCONTEXT_LINK_NODE 
+AllocContextNode (
+	CClientContext *context
+	)
+{
+	PCONTEXT_LINK_NODE pNode = (PCONTEXT_LINK_NODE)malloc (sizeof (CONTEXT_LINK_NODE));
+	pNode->next = NULL;
+	pNode->prev = NULL;
+	pNode->context = context;
+
+	return pNode;
+}
+
+void 
+FreeContextNode (
+	PCONTEXT_LINK_NODE node
+	)
+{
+	if (NULL == node)
+		return;
+
+	if (NULL != node->context){
+		delete node->context;
+		node->context = NULL;
+	}
+
+	free(node);
+	node = NULL;
+}
+
+void 
+InsertContextNode (
+	PCONTEXT_LINK_NODE node
+	)
+{
+	if (NULL == g_ClientContext ||
+		g_ClientContext->next == g_ClientContext->prev)
+	{
+		g_ClientContext->next = node;
+		g_ClientContext->prev = node;
+		node->prev = g_ClientContext;
+		node->next = g_ClientContext;
+	}
+
+	g_ClientContext->next = node;
+	node->next = g_ClientContext->next;
+	node->prev = g_ClientContext;
+}
+
+void 
+RemoveContextNode (
+	CClientContext *context
+	)
+{
+	if (NULL == g_ClientContext)
+		return;
+
+	if (g_ClientContext->next == g_ClientContext ||
+		g_ClientContext->prev == g_ClientContext)
+	{
+		if (g_ClientContext->next = g_ClientContext)
+		{
+			FreeContextNode (g_ClientContext);
+			g_ClientContext = NULL;
+		}
+		else {
+			PCONTEXT_LINK_NODE tmpNode = g_ClientContext;
+			g_ClientContext = g_ClientContext->next;
+			FreeContextNode (tmpNode);
+			tmpNode = NULL;
+		}
+	}
+	
+	PCONTEXT_LINK_NODE newNode = g_ClientContext->next;
+	while (newNode != g_ClientContext)
+	{
+		if (newNode->context == context)
+		{
+			newNode->prev->next = newNode->next;
+			newNode->next->prev = newNode->prev;
+			FreeContextNode (newNode);
+			newNode = NULL;
+			break;
+		}
+	}
+}
+
+void 
+ClearContextNode ()
+{
+	if (NULL == g_ClientContext)
+		return;
+
+	if (g_ClientContext->next == g_ClientContext ||
+		g_ClientContext->prev == g_ClientContext)
+	{
+		FreeContextNode (g_ClientContext);
+		g_ClientContext =	NULL;
+	}
+
+	PCONTEXT_LINK_NODE delNode = g_ClientContext;
+	while (delNode)
+	{
+		PCONTEXT_LINK_NODE tmpNode = delNode;
+		delNode = delNode->next;
+		FreeContextNode (tmpNode);
+		tmpNode = NULL;
+	}
+}
+*/
+
 std::vector<CClientContext *> g_ClientContext;
 
 /*
