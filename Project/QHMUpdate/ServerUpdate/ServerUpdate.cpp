@@ -438,6 +438,8 @@ WorkerThread(
 						}
 					}
 				}
+
+				//更新配置文件
 			
 			}
 			break;

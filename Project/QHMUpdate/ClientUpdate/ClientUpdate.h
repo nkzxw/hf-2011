@@ -7,6 +7,8 @@
 #define PORT 12345
 #define ADDR "192.168.30.141"
 
+#define UPDATE "update"
+
 CRITICAL_SECTION g_csConsole; //When threads write to console we need mutual exclusion
 
 #define TRANS_FILE_LENGTH 1024*1024
