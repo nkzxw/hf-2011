@@ -70,7 +70,20 @@ ParseUpdateFile (
 	PIOCP_FILE_INFO c_FileInfo
 	)
 {
+	char chPath[MAX_PATH];
+	memset (chPath, 0, MAX_PATH);
+	GetCurrentPath (chPath);
 
+	char chUpdate[MAX_PATH];
+	memset (chUpdate, 0, MAX_PATH);
+	sprintf (chUpdate, "%s\\%s", chPath, UPDATE);
+	ScanInstallDir (chUpdate, c_FileInfo);
+
+	for (int i = 0; i < c_FileInfo->count; i++)
+	{
+		//判断文件是否为sys 文件
+		//CopyFile ();
+	}
 }
 
 int 
@@ -98,6 +111,18 @@ main(
 	 if (NULL == pThreadInfo){
 		 //TODO
 	 }
+
+	//检查更新路径是否存在
+	WIN32_FIND_DATA fData;
+	HANDLE hHandle = FindFirstFile ("update", &fData);
+	if (INVALID_HANDLE_VALUE == hHandle){
+		BOOL bRet = CreateDirectory (UPDATE, NULL);
+		if (!bRet)
+		{
+			OutputDebugPrintf ("CreateDirectory Error = %d.\r\n", GetLastError ());
+		}
+	}
+	FindClose (hHandle);
 
 	//初始化Version.ini文件
 	char chPath[MAX_PATH];
@@ -243,7 +268,7 @@ WorkerThread(
 
 			char newFile[MAX_PATH];
 			memset (newFile, 0, MAX_PATH);
-			sprintf (newFile, "%d_%s", pThreadInfo->m_nThreadNo, chFilePath);
+			sprintf (newFile, "%s\\%d_%s", UPDATE, pThreadInfo->m_nThreadNo, chFilePath);
 			HANDLE hFile = CreateFile(newFile,GENERIC_WRITE,FILE_SHARE_WRITE,0,CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL,0); 
 			if(hFile != INVALID_HANDLE_VALUE) 
 			{ 
@@ -265,6 +290,7 @@ WorkerThread(
 			SetFileTime (hFile, &(FileInfo.data[i].ftCreationTime), &(FileInfo.data[i].ftLastAccessTime), &(FileInfo.data[i].ftLastWriteTime));
 			SetFileAttributes (newFile, FileInfo.data[i].dwFileAttributes);
 			CloseHandle (hFile);
+			delete []szInfo;
 		}
 	}
 	

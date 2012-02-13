@@ -264,7 +264,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="odbc32.lib odbccp32.lib ws2_32.lib"
-				OutputFile=".\Release/ServerIOCP.exe"
+				OutputFile="..\Release/ServerIOCP.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				ProgramDatabaseFile=".\Release/ServerIOCP.pdb"
