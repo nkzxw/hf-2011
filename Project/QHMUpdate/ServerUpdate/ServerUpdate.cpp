@@ -18,8 +18,8 @@ inline
 void ScanUpdateDir(
     LPCSTR path,
 	PIOCP_FILE_INFO c_FileInfo,
-	PIOCP_FILE_INFO s_FileInfo
-	)
+	PIOCP_FILE_INFO s_FileInfo,
+	LPCSTR relativePath)
 {
 	HANDLE Handle;
 	WIN32_FIND_DATAA fData;
@@ -40,7 +40,16 @@ void ScanUpdateDir(
 			char newPath[MAX_PATH];
 			memset (newPath, MAX_PATH, 0);
 			sprintf (newPath, "%s\\%s", path, fData.cFileName);
-			ScanUpdateDir(newPath, c_FileInfo, s_FileInfo);
+
+			char chRelativePath[MAX_PATH];
+			memset (chRelativePath, 0, MAX_PATH);
+			if (NULL == relativePath) {
+				sprintf (chRelativePath, "%s", fData.cFileName);
+			}
+			else {
+				sprintf (chRelativePath, "%s\\%s", relativePath, fData.cFileName);
+			}
+			ScanUpdateDir(newPath, c_FileInfo, s_FileInfo, chRelativePath);
 		}
 		else{
 			bool bExits = false;
@@ -68,6 +77,15 @@ void ScanUpdateDir(
 						else {
 							DWORD dwFileSize = GetFileSize (hFile, NULL);
 							s_FileInfo->size[i] = dwFileSize;
+							
+							//记录更新文件的相对根目录的相对路径
+							memset (chFile, 0, MAX_PATH);
+							if (NULL == relativePath) {
+								sprintf (chFile, "%s", fData.cFileName);
+							}
+							else {
+								sprintf (chFile, "%s\\%s", relativePath, fData.cFileName);
+							}
 							memcpy(s_FileInfo->name[s_FileInfo->count], chFile, strlen (chFile));
 							s_FileInfo->count++;
 						}
@@ -87,6 +105,15 @@ void ScanUpdateDir(
 					GetFileAttributesExA (chFile, GetFileExInfoStandard, &s_FileInfo->data[s_FileInfo->count]);
 					DWORD dwFileSize = GetFileSize (hFile, NULL);
 					s_FileInfo->size[s_FileInfo->count] = dwFileSize;
+
+					//记录更新文件的相对根目录的相对路径
+					memset (chFile, 0, MAX_PATH);
+					if (NULL == relativePath) {
+						sprintf (chFile, "%s", fData.cFileName);
+					}
+					else {
+						sprintf (chFile, "%s\\%s", relativePath, fData.cFileName);
+					}
 					memcpy(s_FileInfo->name[s_FileInfo->count], chFile, strlen (chFile));
 					s_FileInfo->count++;
 
@@ -377,6 +404,13 @@ WorkerThread(
 				int cVersion = atoi (chVersion);
 				if (0 == cVersion)
 					continue;
+
+				char chPath[MAX_PATH];
+				memset (chPath, 0, MAX_PATH);
+				GetCurrentPath (chPath);
+				char chUpdate[MAX_PATH];
+				memset (chUpdate, 0, MAX_PATH);
+				sprintf (chUpdate, "%s\\%s", chPath, "QHMUpdate");
 				
 				IniFile.GetKeyValue ("QHMUpdate", "version", FileInfo.version, 32);
 				memset (chVersion, 0, 32);
@@ -386,14 +420,7 @@ WorkerThread(
 				
 				if (sVersion > cVersion){		
 					//发送更新文件信息
-
-					char chPath[MAX_PATH];
-					memset (chPath, 0, MAX_PATH);
-					GetCurrentPath (chPath);
-					char chUpdate[MAX_PATH];
-					memset (chUpdate, 0, MAX_PATH);
-					sprintf (chUpdate, "%s\\%s", chPath, "QHMUpdate");
-					ScanUpdateDir (chUpdate, &NewFileInfo, &FileInfo);
+					ScanUpdateDir (chUpdate, &NewFileInfo, &FileInfo, NULL);
 
 				}
 
@@ -416,8 +443,11 @@ WorkerThread(
 				//发送更新文件
 				for (int i = 0; i < FileInfo.count; i++) 
 				{
-					HANDLE hFile = CreateFile(FileInfo.name[i],GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
-					GetFileAttributesExA (FileInfo.name[i], GetFileExInfoStandard, &FileInfo.data[i]);
+					char chTmpFile[MAX_PATH];
+					memset (chTmpFile, 0, MAX_PATH);
+					sprintf (chTmpFile, "%s\\%s", chUpdate, FileInfo.name[i]);
+					HANDLE hFile = CreateFile(chTmpFile,GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
+					GetFileAttributesExA (chTmpFile, GetFileExInfoStandard, &FileInfo.data[i]);
 					if (hFile != INVALID_HANDLE_VALUE) 
 					{
 						WSABUF wsFile;
