@@ -1,0 +1,46 @@
+当驱动被分层以后，他们被注册到一个chain中，IRP会在这个chain中传递，从最上面，到最下面，再回到最上面
+为适应这种体制，IRP的结构的大小是不固定的，大体结构如下：
+--------------------
+| IRP header |
+--------------------
+|IO_STACK_LOCATION |<-----lowest driver stack location #index1
+--------------------
+|IO_STACK_LOCATION |<-----next higher stack location #index2
+--------------------
+|IO_STACK_LOCATION |<-----topmost driver stack location #index3
+--------------------
+也就是说，chain的最顶层的驱动，对应的IO_STACK_LOCATION是在最下面
+
+IRP头中存放着当前驱动对应的IO_STACK_LOCATION的索引，是从1开始的，不是从0开始
+同时，也保存着当前驱动对应的IO_STACK_LOCATION的地址
+
+最上面的驱动处理完这个IRP后，调用IoCallDriver,这会使索引减1，地址也修正为下一个IO_STACK_LOCATION的地址，
+然后IRP被交给下一个Driver处理，
+
+而IoSkipCurrentIrpStackLocation宏的作用就是使IO_STACK_LOCATION指针少前进一步
+而IoCallDriver函数会使IO_STACK_LOCATION指针向前一步，的结果就是IO_STACK_LOCATION指针不变
+
+当下一个驱动程序的派遣例程调用IoGetCurrentIrpStackLocation时，它将收到与我们正使
+用的完全相同的IO_STACK_LOCATION指针，因此，它所处理的将是同一个请求(相同的主副功
+能代码)以及相同的参数。
+
+
+#define IoCopyCurrentIrpStackLocationToNext( Irp ) { /   
+    PIO_STACK_LOCATION __irpSp;        /   
+    PIO_STACK_LOCATION __nextIrpSp;    /   
+    __irpSp = IoGetCurrentIrpStackLocation( (Irp) );     /   
+    __nextIrpSp = IoGetNextIrpStackLocation( (Irp) );    /   
+    RtlCopyMemory(__nextIrpSp, __irpSp, FIELD_OFFSET(IO_STACK_LOCATION, CompletionRoutine)); /     
+    __nextIrpSp->Control = 0; }  
+
+#define IoSkipCurrentIrpStackLocation(_Irp) \
+{ \
+  (_Irp)->CurrentLocation++; \
+  (_Irp)->Tail.Overlay.CurrentStackLocation++; \
+}
+
+
+#define IoGetNextIrpStackLocation(_Irp) \
+{ \
+  ((_Irp)->CurrentLocation-1); 
+}
