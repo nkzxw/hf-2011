@@ -1,0 +1,36 @@
+TARGETNAME=FileFlt
+TARGETTYPE=DRIVER
+DRIVERTYPE=FS
+
+!IF "$(DDK_TARGET_OS)"=="WinXP"
+TARGETNAME=FileFlt_WinXP
+!ELSEIF "$(DDK_TARGET_OS)"=="WinNET"
+TARGETNAME=FileFlt_WinNET
+!ELSEIF "$(DDK_TARGET_OS)"=="WinLH"
+TARGETNAME=FileFlt_WinLH
+!ELSEIF "$(DDK_TARGET_OS)"=="Win7"
+TARGETNAME=FileFlt_Win7
+!ENDIF
+
+TARGETNAME=SwapBuffers
+
+#TARGETPATH=..\..\..\bin\sys
+
+#INCLUDES=..\..\..\include
+
+TARGETLIBS= $(TARGETLIBS) \
+            $(IFSKIT_LIB_PATH)\fltMgr.lib
+
+C_DEFINES=$(C_DEFINES) -D_WIN2K_COMPAT_SLIST_USAGE
+
+SOURCES=fileflt.c   \
+	 filter.c \
+	 sifs.c \
+	 help.c \
+	 context.c \
+	 task.c \
+	 read_write.c \
+	 crypto.c \
+	 module.c \
+        fileflt.rc
+
