@@ -1,0 +1,146 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 576, 412
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "NTFS文件名硬盘快搜"
+MENU IDR_MENU2
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,39,129,371,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,450,129,126,12,ES_AUTOHSCROLL
+    LTEXT           "扩展名：",IDC_STATIC_EXT,415,131,32,8
+    LTEXT           "文件名：",IDC_STATIC_EXT2,6,131,32,8
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | LVS_OWNERDATA | WS_BORDER,0,143,283,96
+    PUSHBUTTON      "添加指定目录",IDC_BTN_ADDDIR,12,12,56,12,NOT WS_VISIBLE
+    PUSHBUTTON      "删除指定目录",IDC_BTN_DELDIR,12,33,56,12,NOT WS_VISIBLE
+    CONTROL         "",IDC_LIST_FILTER,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | NOT WS_VISIBLE | WS_BORDER | WS_TABSTOP,79,104,484,95
+    CONTROL         "隐藏",IDC_CHECK_ATTR_HIDDEN,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,239,75,28,10
+    CONTROL         "系统",IDC_CHECK_ATTR_SYSTEM,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,278,75,28,10
+    PUSHBUTTON      "过  滤  【设置后按此按钮进行结果过滤】",IDC_BTN_FILTER,105,2,319,17,BS_MULTILINE | NOT WS_VISIBLE
+    CONTROL         "指定文件大小：",IDC_CHECK_SIZE,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,105,22,72,10
+    COMBOBOX        IDC_COMBO_SIZELEFT,179,20,57,30,CBS_DROPDOWNLIST | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_SIZE,239,21,56,13,ES_AUTOHSCROLL | NOT WS_VISIBLE,WS_EX_RIGHT
+    CONTROL         "指定文件(夹)日期：",IDC_CHECK_DATE,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,105,39,85,10
+    COMBOBOX        IDC_COMBO_DATATYPE,193,37,106,30,CBS_DROPDOWNLIST | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_TIME_PRE,"SysDateTimePick32",DTS_RIGHTALIGN | NOT WS_VISIBLE | WS_TABSTOP,263,53,58,15
+    CONTROL         "在此前：",IDC_RADIO_PRE,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE | WS_GROUP,220,57,42,10
+    CONTROL         "在此后：",IDC_RADIO_POS,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,115,57,41,10
+    CONTROL         "在之间：",IDC_RADIO_MID,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,325,56,40,10
+    CONTROL         "",IDC_TIME_POS,"SysDateTimePick32",DTS_RIGHTALIGN | NOT WS_VISIBLE | WS_TABSTOP,157,54,58,15
+    CONTROL         "",IDC_TIME_MID1,"SysDateTimePick32",DTS_RIGHTALIGN | NOT WS_VISIBLE | WS_TABSTOP,367,45,58,15
+    CONTROL         "",IDC_TIME_MID2,"SysDateTimePick32",DTS_RIGHTALIGN | NOT WS_VISIBLE | WS_TABSTOP,367,63,58,15
+    COMBOBOX        IDC_COMBO_SIZERIGHT,297,20,56,30,CBS_DROPDOWNLIST | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "普通",IDC_CHECK_ATTR_NORMAL,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,197,75,28,10
+    PUSHBUTTON      "删除所有目录",IDC_BTN_DELALLDIR,12,54,56,12,NOT WS_VISIBLE
+    PUSHBUTTON      "勾选全盘",IDC_BTN_CHECKALLDRI,12,74,56,12,NOT WS_VISIBLE
+    CONTROL         "指定文件(夹)属性：",IDC_CHECK_ATTR,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,105,75,85,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU 
+BEGIN
+    POPUP "目录过滤选项"
+    BEGIN
+        MENUITEM "添加指定目录",                      IDR_ADD_DIR
+        MENUITEM "删除指定目录",                      IDR_DEL_DIR
+        MENUITEM "删除所有目录",                      IDR_DELALLDIR
+        MENUITEM "勾选全盘",                        IDR_CHECKALLDRIVER
+    END
+END
+
+IDR_MENU2 MENU 
+BEGIN
+    POPUP "搜索选项(&S)"
+    BEGIN
+        MENUITEM "字母区分大小写(&C)",                 IDM_CASE
+        MENUITEM "搜索文件夹(&D)",                   IDM_SEARCH_DIR, CHECKED
+        MENUITEM "搜索文件(&F)",                    IDM_SEARCH_FILE, CHECKED
+    END
+    MENUITEM "展开目录设置(&M)",                  IDM_DIR_SETTING
+    MENUITEM "展开过滤选项(&G)",                  40029
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "使用说明(&S)",                    IDM_DIRECTOION
+        MENUITEM "关于(&A)",                      IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// ZISORT
+//
+
+IDR_ZISORT4             ZISORT                  "zi_sort.dat"
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
