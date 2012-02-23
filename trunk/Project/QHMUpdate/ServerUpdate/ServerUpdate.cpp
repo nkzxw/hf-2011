@@ -11,6 +11,7 @@
 
 #include "ServerUpdate.h"
 #include "..\Common\IniFile.h"
+#include "..\Common\installService.h"
 
 CIniFile IniFile;
 
@@ -128,80 +129,6 @@ void ScanUpdateDir(
 		FindClose(Handle);
 }
 
-int 
-main(
-	int argc, 
-	char *argv[]
-)
-{     
-	//InitContextNode ();
-
-	if (false == Initialize()){
-		return 1;
-	}
-
-	char chPath[MAX_PATH];
-	memset (chPath, 0, MAX_PATH);
-	GetCurrentPath (chPath);
-	char chVerFile[MAX_PATH];
-	memset (chVerFile, 0, MAX_PATH);
-	sprintf (chVerFile, "%s\%s", chPath, "update.ini");
-
-	if (FALSE == IniFile.SetPath (chVerFile)){
-		OutputDebugPrintf ("IniFile Error.\r\n");
-		return 0;
-	}
-	
-	SOCKET ListenSocket; 
-	struct sockaddr_in ServerAddress;
-	ListenSocket = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);	
-	if (INVALID_SOCKET == ListenSocket) {
-		goto error;
-	}
-
-	ZeroMemory((char *)&ServerAddress, sizeof(ServerAddress));
-	ServerAddress.sin_family = AF_INET;
-	ServerAddress.sin_addr.s_addr = INADDR_ANY; //WinSock will supply address
-	ServerAddress.sin_port = htons(PORT);    //comes from commandline
-	
-	if (SOCKET_ERROR == bind(ListenSocket, (struct sockaddr *) &ServerAddress, sizeof(ServerAddress))) {
-		closesocket(ListenSocket);
-		goto error;
-	}
-
-	if (SOCKET_ERROR == listen(ListenSocket,SOMAXCONN)){
-		closesocket(ListenSocket);
-		goto error;
-	}
-	
-	g_hAcceptEvent = WSACreateEvent();
-	if (WSA_INVALID_EVENT == g_hAcceptEvent){
-		goto error;
-	}
-	
-	if (SOCKET_ERROR == WSAEventSelect(ListenSocket, g_hAcceptEvent, FD_ACCEPT)){
-		WSACloseEvent(g_hAcceptEvent);
-		goto error;
-	}
-
-	DWORD nThreadID;
-	g_hAcceptThread = CreateThread(0, 0, AcceptThread, (void *)ListenSocket, 0, &nThreadID);
-	while(!_kbhit())
-	{
-		::Sleep(100);  //switch to some other thread
-	}
-	
-	closesocket(ListenSocket);
-	DeInitialize();
-	
-	return 0; 
-	
-error:
-	closesocket(ListenSocket);
-	DeInitialize();
-	return 1;
-}
-
 bool 
 Initialize(
 	)
@@ -237,6 +164,8 @@ void
 DeInitialize(
 	)
 {
+	OutputDebugStringA ("DeInitialize Entry.\r\n");
+
 	SetEvent(g_hShutdownEvent);
 	WaitForSingleObject(g_hAcceptThread, INFINITE);
 	for (int i = 0; i < MAX_WORKER_THREADS; i++)
@@ -253,6 +182,8 @@ DeInitialize(
 	CloseHandle(g_hIOCompletionPort);
 	CloseHandle(g_hShutdownEvent);
 	WSACleanup();
+
+	OutputDebugStringA ("DeInitialize End.\r\n");
 }
 
 DWORD 
@@ -265,7 +196,8 @@ AcceptThread(
 	WSANETWORKEVENTS WSAEvents;
 	while(WAIT_OBJECT_0 != WaitForSingleObject(g_hShutdownEvent, 0))
 	{
-		if (WSA_WAIT_TIMEOUT != WSAWaitForMultipleEvents(1, &g_hAcceptEvent, FALSE, 0, FALSE))
+		if (WSA_WAIT_TIMEOUT != 
+			WSAWaitForMultipleEvents(1, &g_hAcceptEvent, FALSE, WSA_INFINITE, FALSE))
 		{
 			WSAEnumNetworkEvents(ListenSocket, g_hAcceptEvent, &WSAEvents);
 			if ((WSAEvents.lNetworkEvents & FD_ACCEPT) && 
@@ -286,7 +218,7 @@ AcceptConnection(
 {
 	sockaddr_in ClientAddress;
 	int nClientLength = sizeof(ClientAddress);
-	
+
 	SOCKET Socket = accept(ListenSocket, (sockaddr*)&ClientAddress, &nClientLength);
 	if (INVALID_SOCKET == Socket){
 		//TODO
@@ -438,7 +370,7 @@ WorkerThread(
 				if ((SOCKET_ERROR == nBytesSent) && (WSA_IO_PENDING != WSAGetLastError()))
 				{
 					RemoveFromClientList(pClientContext);
-				}
+				}	
 
 				//发送更新文件
 				for (int i = 0; i < FileInfo.count; i++) 
@@ -473,7 +405,10 @@ WorkerThread(
 			
 			}
 			break;
-			
+		case OP_OTHER:
+			{
+			}
+			break;
 		default:
 			break;
 		} // switch
@@ -541,4 +476,107 @@ void CleanClientList(
 	//ClearContextNode ();
 	
 	LeaveCriticalSection(&g_csClientList);
+}
+
+void 
+StartListenUpdate ()
+{
+	OutputDebugStringA ("StartListenUpdate  Entry.\r\n");
+
+	if (false == Initialize()){
+		return;
+	}
+
+	char chPath[MAX_PATH];
+	memset (chPath, 0, MAX_PATH);
+	GetCurrentPath (chPath);
+	char chVerFile[MAX_PATH];
+	memset (chVerFile, 0, MAX_PATH);
+	sprintf (chVerFile, "%s\%s", chPath, "update.ini");
+
+	if (FALSE == IniFile.SetPath (chVerFile)){
+		OutputDebugPrintf ("IniFile Error.\r\n");
+		return;
+	}
+	
+	SOCKET ListenSocket; 
+	struct sockaddr_in ServerAddress;
+	ListenSocket = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);	
+	if (INVALID_SOCKET == ListenSocket) {
+		goto error;
+	}
+
+	ZeroMemory((char *)&ServerAddress, sizeof(ServerAddress));
+	ServerAddress.sin_family = AF_INET;
+	ServerAddress.sin_addr.s_addr = INADDR_ANY; //WinSock will supply address
+	ServerAddress.sin_port = htons(PORT);    //comes from commandline
+	
+	if (SOCKET_ERROR == bind(ListenSocket, (struct sockaddr *) &ServerAddress, sizeof(ServerAddress))) {
+		closesocket(ListenSocket);
+		goto error;
+	}
+
+	if (SOCKET_ERROR == listen(ListenSocket,SOMAXCONN)){
+		closesocket(ListenSocket);
+		goto error;
+	}
+	
+	g_hAcceptEvent = WSACreateEvent();
+	if (WSA_INVALID_EVENT == g_hAcceptEvent){
+		goto error;
+	}
+	
+	if (SOCKET_ERROR == WSAEventSelect(ListenSocket, g_hAcceptEvent, FD_ACCEPT)){
+		WSACloseEvent(g_hAcceptEvent);
+		goto error;
+	}
+
+	//WSAWaitForMultipleEvents(1, &g_hAcceptEvent, FALSE, WSA_INFINITE, FALSE);
+
+	DWORD nThreadID;
+	g_hAcceptThread = CreateThread(0, 0, AcceptThread, (void *)ListenSocket, 0, &nThreadID);
+	while(!_kbhit())
+	{
+		::Sleep(100);  //switch to some other thread
+	}
+	
+	closesocket(ListenSocket);
+	DeInitialize();
+
+error:
+	closesocket(ListenSocket);
+	DeInitialize();
+}
+
+int 
+main(
+	int argc, 
+	char *argv[]
+)
+{     
+	if (argc > 2){
+	   return 0; 
+	}
+
+	if (2 == argc){
+		char *param = argv[1];
+		if (stricmp (param, "-install") == 0)
+		{
+			Install ("QHMServerUpdate", "QHMServerUpdate");
+			return 1;
+		}
+		else if (stricmp (param, "-uninstall") == 0){
+			Uninstall ("QHMServerUpdate");
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+
+	//服务入口
+	StartServer ("QHMServerUpdate",
+			StartListenUpdate, 
+			DeInitialize
+			);
 }

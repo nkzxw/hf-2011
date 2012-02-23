@@ -5,11 +5,11 @@
 #include <conio.h>
 #include <string.h>
 #include <winsock2.h>
-
-//#include "mswsock.h"
+#include <ShellAPI.h>
 
 #include "ClientUpdate.h"
 #include "..\Common\IniFile.h"
+#include "..\Common\installService.h"
 
 CIniFile IniFile;
 
@@ -70,15 +70,6 @@ BOOL DeleteDirectory  (
 			memset (chPath, MAX_PATH, 0);
 			sprintf (chPath, "%s\\%s", path, fData.cFileName);
 			DeleteDirectory(chPath);
-
-			//SetFileAttributesA(chPath, ~FILE_ATTRIBUTE_READONLY);
-			//if (!RemoveDirectoryA(chPath)){
-			//	int iError = GetLastError ();			
-			//	result = FALSE;
-			//}
-			//else{
-			//	result = TRUE;
-			//}
 		}
 		else{
 			memset (chPath, 0, MAX_PATH);
@@ -351,88 +342,23 @@ void AutoCheckLocal ()
 {
 }
 
-int 
-main(
-	int argc, 
-	char* argv[]
+//版本更新，执行安装程序。
+void 
+ExecuteInstallProcess(
+	LPCSTR ExeName
 	)
 {
-     WSADATA wsaData;     
-     int nResult = WSAStartup(MAKEWORD(2,2), &wsaData);
-     if (NO_ERROR != nResult){
-          return 1;
-     }
-     
-     InitializeCriticalSection(&g_csConsole);
-     
-     int nNoOfThreads = 0;
-     int nNoOfSends = 0;
-           
-	 nNoOfThreads = 1;
-     nNoOfSends = 1;
-     
-     HANDLE *p_hThreads = new HANDLE[nNoOfThreads];
-     ThreadInfo *pThreadInfo = new ThreadInfo[nNoOfThreads];
-	 if (NULL == pThreadInfo){
-		 //TODO
-	 }
+	//m_ExePath：程序安装后可执行文件的名字，一般以.exe结尾，比如：TTPlayer.exe
+	//m_Path：此可执行文件所在的目录，比如：C:\Program Files\TTPlayer
 
-	//检查更新路径是否存在
-	WIN32_FIND_DATA fData;
-	HANDLE hHandle = FindFirstFile ("update", &fData);
-	if (INVALID_HANDLE_VALUE == hHandle){
-		BOOL bRet = CreateDirectory (UPDATE, NULL);
-		if (!bRet)
-		{
-			OutputDebugPrintf ("CreateDirectory Error = %d.\r\n", GetLastError ());
-		}
-	}
-	FindClose (hHandle);
-
-	//初始化Version.ini文件
 	char chPath[MAX_PATH];
 	memset (chPath, 0, MAX_PATH);
 	GetCurrentPath (chPath);
-	char chVerFile[MAX_PATH];
-	memset (chVerFile, 0, MAX_PATH);
-	sprintf (chVerFile, "%s\\%s", chPath, "version.ini");
 
-	if (FALSE == IniFile.SetPath (chVerFile)){
-		OutputDebugPrintf ("IniFile Error.\r\n");
-		return 0;
-	}
-     
-     bool bConnectedSocketCreated = false;     
-     DWORD nThreadID;
-	 int i = 0;
-     for (i; i < nNoOfThreads; i++)
-     {
-         bConnectedSocketCreated = CreateSocket(&(pThreadInfo[i].m_Socket), ADDR, PORT); 
-         if (!bConnectedSocketCreated)
-         {
-               delete[] p_hThreads;
-			   p_hThreads = NULL;
-               delete[] pThreadInfo;
-			   pThreadInfo = NULL;
-               return 1;
-          }
-          
-          pThreadInfo[i].m_nNoOfSends = nNoOfSends;
-          pThreadInfo[i].m_nThreadNo = i+1;
-          p_hThreads[i] = CreateThread(0, 0, WorkerThread, (void *)(&pThreadInfo[i]), 0, &nThreadID);
-     }
-     
-	 ClientWaitForMultipleObjects(nNoOfThreads, p_hThreads, TRUE, INFINITE);
-     for (i = 0; i < nNoOfThreads; i++)
-     {
-          closesocket(pThreadInfo[i].m_Socket);
-     }
-
-	 delete[] p_hThreads;
-     delete[] pThreadInfo;
-	 DeleteCriticalSection(&g_csConsole);
-     WSACleanup();
-     return 0;
+	char chUpdate[MAX_PATH];
+	memset (chUpdate, 0, MAX_PATH);
+	sprintf (chUpdate, "%s\\%s", chPath, "update");
+	ShellExecute( NULL, NULL, ExeName, NULL, chUpdate, SW_SHOW );
 }
 
 bool 
@@ -659,3 +585,122 @@ ClientWaitForMultipleObjects(
 	VirtualFree( lpInner, 0, MEM_RELEASE ); 
 	return dwResult; 
 } 
+
+void 
+StartUpdate ()
+{
+     WSADATA wsaData;     
+     int nResult = WSAStartup(MAKEWORD(2,2), &wsaData);
+     if (NO_ERROR != nResult){
+         return;
+     }
+     
+     InitializeCriticalSection(&g_csConsole);
+     
+     int nNoOfThreads = 0;
+     int nNoOfSends = 0;
+           
+	 nNoOfThreads = 1;
+     nNoOfSends = 1;
+     
+     HANDLE *p_hThreads = new HANDLE[nNoOfThreads];
+     ThreadInfo *pThreadInfo = new ThreadInfo[nNoOfThreads];
+	 if (NULL == pThreadInfo){
+		 //TODO
+	 }
+
+	//检查更新路径是否存在
+	WIN32_FIND_DATA fData;
+	HANDLE hHandle = FindFirstFile ("update", &fData);
+	if (INVALID_HANDLE_VALUE == hHandle){
+		BOOL bRet = CreateDirectory (UPDATE, NULL);
+		if (!bRet)
+		{
+			OutputDebugPrintf ("CreateDirectory Error = %d.\r\n", GetLastError ());
+		}
+	}
+	FindClose (hHandle);
+
+	//初始化Version.ini文件
+	char chPath[MAX_PATH];
+	memset (chPath, 0, MAX_PATH);
+	GetCurrentPath (chPath);
+	char chVerFile[MAX_PATH];
+	memset (chVerFile, 0, MAX_PATH);
+	sprintf (chVerFile, "%s\\%s", chPath, "version.ini");
+
+	if (FALSE == IniFile.SetPath (chVerFile)){
+		OutputDebugPrintf ("IniFile Error.\r\n");
+		return;
+	}
+     
+     bool bConnectedSocketCreated = false;     
+     DWORD nThreadID;
+	 int i = 0;
+     for (i; i < nNoOfThreads; i++)
+     {
+         bConnectedSocketCreated = CreateSocket(&(pThreadInfo[i].m_Socket), ADDR, PORT); 
+         if (!bConnectedSocketCreated)
+         {
+               delete[] p_hThreads;
+			   p_hThreads = NULL;
+               delete[] pThreadInfo;
+			   pThreadInfo = NULL;
+               return;
+          }
+          
+          pThreadInfo[i].m_nNoOfSends = nNoOfSends;
+          pThreadInfo[i].m_nThreadNo = i+1;
+          p_hThreads[i] = CreateThread(0, 0, WorkerThread, (void *)(&pThreadInfo[i]), 0, &nThreadID);
+     }
+     
+	 ClientWaitForMultipleObjects(nNoOfThreads, p_hThreads, TRUE, INFINITE);
+     for (i = 0; i < nNoOfThreads; i++)
+     {
+          closesocket(pThreadInfo[i].m_Socket);
+     }
+
+	 delete[] p_hThreads;
+     delete[] pThreadInfo;
+	 DeleteCriticalSection(&g_csConsole);
+     WSACleanup();
+}
+
+void 
+DeInstance ()
+{
+	//TODO
+}
+
+int 
+main(
+	int argc, 
+	char* argv[]
+	)
+{
+	if (argc > 2){
+	   return 0; 
+	}
+
+	if (2 == argc){
+		char *param = argv[1];
+		if (stricmp (param, "-install") == 0)
+		{
+			Install ("QHMClientUpdate", "QHMClientUpdate");
+			return 1;
+		}
+		else if (stricmp (param, "-uninstall") == 0){
+			Uninstall ("QHMClientUpdate");
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+
+	//服务入口
+	StartServer ("QHMClientUpdate",
+			StartUpdate, 
+			DeInstance
+			);
+}

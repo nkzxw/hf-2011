@@ -2,9 +2,12 @@
 #define _SERVER_IOCP_H_
 
 #include "..\Common\common.h"
+#include "..\Common\lock.h"
 
-#define OP_READ     0
-#define OP_WRITE    1
+#define OP_ACCEPT   0
+#define OP_READ     1
+#define OP_WRITE    2
+#define OP_OTHER    3
 #define PORT		12345
 
 #define MAX_WORKER_THREADS 2
