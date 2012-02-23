@@ -2,6 +2,7 @@
 #define _CLIENT_IOCP_H_
 
 #include "..\Common\common.h"
+#include "..\Common\lock.h"
 
 #define MAX_BUFFER_LEN 256
 #define PORT 12345
