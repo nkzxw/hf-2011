@@ -65,11 +65,7 @@ ServiceMain(
 	func_start ();
 
 	//模拟服务的运行，10后自动退出。应用时将主要任务放于此即可
-	while (TRUE)
-	{
-		Sleep(10000);
-	}
-
+	Sleep (1000);
     status.dwCurrentState = SERVICE_STOPPED;
     SetServiceStatus(hServiceStatus, &status);
 }

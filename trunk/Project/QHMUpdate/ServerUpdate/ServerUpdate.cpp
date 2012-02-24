@@ -135,7 +135,6 @@ Initialize(
 {
 	InitializeCriticalSection(&g_csConsole);
 	InitializeCriticalSection(&g_csClientList);
-	g_hShutdownEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
 
 	int nResult;
 	WSADATA wsaData;	
@@ -152,7 +151,7 @@ Initialize(
 	DWORD nThreadID;
 	SYSTEM_INFO SystemInfo;
 	GetSystemInfo(&SystemInfo);
-	for (int j = 0; j < SystemInfo.dwNumberOfProcessors * 2; j++)
+	for (int j = 0; j < MAX_WORKER_THREADS + 2; j++)
 	{
 		g_hWorkerThreads[j] = CreateThread(0, 0, WorkerThread, (void *)(j+1), 0, &nThreadID);
 	}
@@ -164,26 +163,7 @@ void
 DeInitialize(
 	)
 {
-	OutputDebugStringA ("DeInitialize Entry.\r\n");
-
-	SetEvent(g_hShutdownEvent);
-	WaitForSingleObject(g_hAcceptThread, INFINITE);
-	for (int i = 0; i < MAX_WORKER_THREADS; i++)
-	{
-		PostQueuedCompletionStatus(g_hIOCompletionPort, 0, (DWORD) NULL, NULL);
-	}
-	
-	WaitForMultipleObjects(MAX_WORKER_THREADS, g_hWorkerThreads, TRUE, INFINITE);
-	WSACloseEvent(g_hAcceptEvent);
-	CleanClientList();
-
-	DeleteCriticalSection(&g_csConsole);
-	DeleteCriticalSection(&g_csClientList);
-	CloseHandle(g_hIOCompletionPort);
-	CloseHandle(g_hShutdownEvent);
-	WSACleanup();
-
-	OutputDebugStringA ("DeInitialize End.\r\n");
+	SetEvent (g_hShutdownEvent);
 }
 
 DWORD 
@@ -194,16 +174,29 @@ AcceptThread(
 {
 	SOCKET ListenSocket = (SOCKET)lParam;
 	WSANETWORKEVENTS WSAEvents;
-	while(WAIT_OBJECT_0 != WaitForSingleObject(g_hShutdownEvent, 0))
+
+	while (true) 
 	{
-		if (WSA_WAIT_TIMEOUT != 
-			WSAWaitForMultipleEvents(1, &g_hAcceptEvent, FALSE, WSA_INFINITE, FALSE))
+		int nIndex = WSAWaitForMultipleEvents(1, 
+								&g_hAcceptEvent, 
+								FALSE, 
+								WSA_INFINITE, 
+								FALSE);
+		if (WSA_WAIT_TIMEOUT == nIndex)
 		{
+			//TODO
+			break;
+		}
+		else {
 			WSAEnumNetworkEvents(ListenSocket, g_hAcceptEvent, &WSAEvents);
 			if ((WSAEvents.lNetworkEvents & FD_ACCEPT) && 
 				(0 == WSAEvents.iErrorCode[FD_ACCEPT_BIT]))
 			{
 				AcceptConnection(ListenSocket);
+			}
+			else {
+				//ÍË³öÏß³Ì
+				break;
 			}
 		}
 	}
@@ -275,13 +268,14 @@ WorkerThread(
 
 	IOCP_FILE_INFO FileInfo;
 
-	while (WAIT_OBJECT_0 != WaitForSingleObject(g_hShutdownEvent, 0))
+	while (TRUE)
 	{
 		BOOL bReturn = GetQueuedCompletionStatus(g_hIOCompletionPort,
 									&dwBytesTransfered,
 									(PULONG_PTR)&lpContext,
 									&pOverlapped,
 									INFINITE);
+		int iError = WSAGetLastError  ();
 		if (NULL == lpContext)
 		{
 			//TODO
@@ -481,11 +475,12 @@ void CleanClientList(
 void 
 StartListenUpdate ()
 {
-	OutputDebugStringA ("StartListenUpdate  Entry.\r\n");
 
 	if (false == Initialize()){
 		return;
 	}
+
+	g_hShutdownEvent = CreateEvent (NULL, FALSE, FALSE, 0);
 
 	char chPath[MAX_PATH];
 	memset (chPath, 0, MAX_PATH);
@@ -531,21 +526,33 @@ StartListenUpdate ()
 		goto error;
 	}
 
-	//WSAWaitForMultipleEvents(1, &g_hAcceptEvent, FALSE, WSA_INFINITE, FALSE);
-
 	DWORD nThreadID;
 	g_hAcceptThread = CreateThread(0, 0, AcceptThread, (void *)ListenSocket, 0, &nThreadID);
-	while(!_kbhit())
-	{
-		::Sleep(100);  //switch to some other thread
-	}
-	
-	closesocket(ListenSocket);
-	DeInitialize();
+
+	::WaitForSingleObject(g_hShutdownEvent, INFINITE);
+	::CloseHandle (g_hShutdownEvent);
+
+	::WSASetEvent(g_hAcceptEvent);
+	WaitForSingleObject(g_hAcceptThread, INFINITE);
+	::WSACloseEvent(g_hAcceptEvent);
 
 error:
 	closesocket(ListenSocket);
-	DeInitialize();
+
+	for (int i = 0; i < MAX_WORKER_THREADS + 2; i++)
+	{
+		PostQueuedCompletionStatus(g_hIOCompletionPort, 0, 0, NULL);
+	}
+	
+	WaitForMultipleObjects(MAX_WORKER_THREADS, g_hWorkerThreads, TRUE, INFINITE);
+
+	CleanClientList();
+
+	DeleteCriticalSection(&g_csConsole);
+	DeleteCriticalSection(&g_csClientList);
+	CloseHandle(g_hIOCompletionPort);
+
+	WSACleanup();
 }
 
 int 
