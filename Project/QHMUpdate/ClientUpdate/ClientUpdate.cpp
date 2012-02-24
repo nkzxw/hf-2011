@@ -12,6 +12,7 @@
 #include "..\Common\installService.h"
 
 CIniFile IniFile;
+HANDLE g_hShutdownEvent = NULL;
 
 inline 
 void CreateRelativeDir(
@@ -594,6 +595,8 @@ StartUpdate ()
      if (NO_ERROR != nResult){
          return;
      }
+
+	 g_hShutdownEvent = CreateEvent(NULL, TRUE, FALSE, 0);
      
      InitializeCriticalSection(&g_csConsole);
      
@@ -660,6 +663,9 @@ StartUpdate ()
           closesocket(pThreadInfo[i].m_Socket);
      }
 
+	 ::WaitForSingleObject (g_hShutdownEvent, INFINITE);
+	 ::CloseHandle (g_hShutdownEvent);
+
 	 delete[] p_hThreads;
      delete[] pThreadInfo;
 	 DeleteCriticalSection(&g_csConsole);
@@ -669,7 +675,7 @@ StartUpdate ()
 void 
 DeInstance ()
 {
-	//TODO
+	SetEvent (g_hShutdownEvent);
 }
 
 int 
