@@ -1,0 +1,1 @@
+采用IOCP，用AcceptEx来接受连接，代码精简清晰！-The use of IOCP, using AcceptEx to accept connections, the code to streamline the clear!
