@@ -1,0 +1,143 @@
+创建时间：2008-03-12
+文章属性：原创
+文章提交：zhouxiaoyong (zhouhongyun1978_at_gmail.com)
+
+    NDIS HOOK是专业级防火墙使用的一种拦截技术，NDIS HOOK的重点是如何获得特定协议对应NDIS_PROTOCOL_BLOCK指针，获得了该指针，接下来就可以替换该协议所注册的收发函数,而达到拦截网络数据的目的。
+
+     获 得NDIS_PROTOCOL_BLOCK指针的方法一般是用NdisRegisterProtocol注册一个新的协议，所获得的协议句柄实际上就是一 个NDIS_PROTOCOL_BLOCK指针，顺着该指针遍历NDIS_PROTOCOL_BLOCK链表，就可以找到你所要挂钩的协议所对应的 NDIS_PROTOCOL_BLOCK.之所以可以这样做，是因为每注册一个协议，系统都会把该协议对应的NDIS_PROTOCOL_BLOCK放置 在协议链表的开头，该协议链表每个元素都是NDIS_PROTOCOL_BLOCK类型，代表一个已经注册的协议。
+
+     事 实上我们需要的只是TCPIP协议族的NDIS_PROTOCOL_BLOCK指针，毕竟TCP,IP,ARP,ICMP等等几乎所有我们感兴趣的协议， 都是在tcpip.sys协议驱动里面实现的。如果我们只需要TCPIP协议所对应的NDIS_PROTOCOL_BLOCK，那么上面的方法就有点繁琐 了。我们可以试着寻找更简便的方法来获得TCPIP协议的NDIS_PROTOCOL_BLOCK.
+
+于 是我对tcpip.sys驱动进行了反汇编，发现NDIS_PROTOCOL_BLOCK指针存放在一个名为_ARPHandle的全局变量里面，所以如 果能找到_ARPHandle的地址，我们就成功了，我们完全可以把该全局变量的偏移量作为一个常量来使用，但这里纯粹为了拓宽思路，我介绍另一种找到该 全局变量的方法。
+
+     Tcpip.sys有个导出函数叫IPDelayedNdisReEnumerateBindings,该函数内部曾经出现过_ARPHandle 的地址，为什么会出现它的地址呢，因为该函数内部调用过NdisReEnumerateProtocolBindings函数，懂得反汇编的应该知道，在 用call指令调用函数之前，必然会用到push指令将函数的参数压到栈里面去，不巧的是， NdisReEnumerateProtocolBindings函数只有一个参数，而该参数恰恰是一个NDIS_PROTOCOL_BLOCK指针类 型，在这里，实际上就是把_ARPHandle当作参数传给了
+
+NdisReEnumerateProtocolBindings，所以_ARPHandle的地址必然会出现在push指令的后面，说具体一点，紧跟push指令的四个字节就是_ARPHandle的地址。
+
+      所以具体的思路就是这样，先找到IPDelayedNdisReEnumerateBindings函数的地址，然后从该函数的地址开始搜索push指令的特征码，搜到了以后，把紧跟push指令的四个字节作为指向NDIS_PROTOCOL_BLOCK指针的指针返回。
+
+     也许有的人会问，如果IPDelayedNdisReEnumerateBindings函数体内部出现过多次push指令，岂不是会搜出不正确的地址，事实上，虽然都叫push指令，然而在机器码级别是不同的，push指令的机器码表示有十几种之多，用来区别不同的寻址方式，调用NdisReEnumerateProtocolBindings 时用的push指令字节序列是0xff35，这个push指令表示后面紧跟的四个字节是一个内存地址，而不是一个立即数或者寄存器之类的。知道了这些，我 们就可以清楚，在一个有限的地址范围，0xff35的唯一性是可以得到满足的。根据我的观察，在win2000,winxp,win2003上面，IPDelayedNdisReEnumerateBindings本身是一个很短的函数，0xff35指令确实只出现过一次，所以该方法是很可靠的。
+
+思路已经出来了，下面我把详细的代码给大家贴出来，理解这些代码需要对windows Pe格式有所了解，如果你不想理解也行，代码可以直接拿来用。
+
+       以下是我写的一个 获取内核模块某个导出函数地址的 通用例程。这里主要是为了获取tcpip.sys模块的导出函数IPDelayedNdisReEnumerateBindings
+
+   void* GetRoutineAddress(char* ModuleName,char* RoutineName)
+
+{
+
+       PIMAGE_DOS_HEADER dos_hdr;
+
+    PIMAGE_NT_HEADERS nt_hdr;
+
+    PIMAGE_EXPORT_DIRECTORY export_dir;
+
+    ULONG *fn_name, *fn_addr, i;
+
+      char* base;
+
+      base=(char*)FindModule(ModuleName);//该函数用来获得内核模块的基地址
+
+  
+
+    if(!base)
+
+        return NULL;
+
+    DbgPrint("tcpip address:%p",base);
+
+    dos_hdr = (PIMAGE_DOS_HEADER)base;
+
+    if (dos_hdr->e_magic != IMAGE_DOS_SIGNATURE)
+
+        return NULL;
+
+    nt_hdr = (PIMAGE_NT_HEADERS)(base + dos_hdr->e_lfanew);
+
+    export_dir = (PIMAGE_EXPORT_DIRECTORY)(base + nt_hdr->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress);
+
+    fn_name = (ULONG *)(base + export_dir->AddressOfNames);
+
+    fn_addr = (ULONG *)(base + export_dir->AddressOfFunctions);
+
+    for (i = 0; i < export_dir->NumberOfNames; i++, fn_name++, fn_addr++)
+
+    {
+
+       
+
+        if (strcmp(RoutineName, base + *fn_name) == 0)
+
+        {
+
+           
+
+            return base + *fn_addr;
+
+        }
+
+    }
+
+    return NULL;
+
+}
+
+以下是FindModule函数的实现：
+
+void *
+FindModule(char *name)
+{
+    ULONG i, n, *q;
+    PSYSTEM_MODULE_INFORMATION p;
+    void *base;
+
+    ZwQuerySystemInformation(SystemModuleInformation, &n, 0, &n);
+    q = (ULONG *)ExAllocatePool(PagedPool, n);
+    ZwQuerySystemInformation(SystemModuleInformation, q, n * sizeof (*q), 0);
+   
+    p = (PSYSTEM_MODULE_INFORMATION)(q + 1);
+    base = NULL;
+    for (i = 0; i < *q; i++) {
+        if (_stricmp(p[i].ImageName + p[i].ModuleNameOffset, name) == 0) {
+            base = p[i].Base;
+          
+            break;
+        }
+    }
+       
+    ExFreePool(q);
+    return base;
+}
+
+以下是获取tcpip协议的NDIS_PROTOCOL_BLOCK指针的函数
+
+   
+
+   void* GetProtocolBlock()
+
+{
+
+    char* base;
+
+    char bytes[]={0xff,0x35};
+
+   
+
+    base=GetRoutineAddress("tcpip.sys","IPDelayedNdisReEnumerateBindings");
+
+     while(RtlCompareMemory(base,bytes,2)!=2)
+
+    {
+
+       base++;
+
+    }
+
+    
+
+    return **((void***)(base+2));
+
+    
+
+}
+

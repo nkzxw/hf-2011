@@ -1,0 +1,551 @@
+
+
+探索NDIS HOOK新的实现方法(2) 
+
+---INLINE HOOK实现NDIS HOOK
+
+
+
+前面讲述了如何通过获取NDIS_PROTOCOL_BLOCK来实现NDIS HOOK，这里讲述第二种方法，那就是inline hook方法。说起inline hook，也不是什么新鲜玩意，无非是在一个函数的首部嵌入一个jmp机器指令，在该函数执行有效代码前就跳到我们的代理函数，在我们的代理函数里做了必要的处理以后，再跳回原来的函数，接着执行原函数的指令。
+
+
+
+既然tcpip.sys是标准的NDIS协议驱动，那么收包函数显然应该是在tcpip.sys内部实现的，我们直接找到这两个收包函数，然后对其inline hook不就可以了吗？经过逆向分析，我找到了这两个函数，本人安装了两个XP系统，其中一个导出了这两个函数，另一个系统却没导出，所以我们仍然需要用特征码搜索这两个函数，这两个函数声明如下：
+
+
+
+NDIS_STATUS 
+
+ARPRcv (NDIS_HANDLE BindContext,
+
+NDIS_HANDLE MacContext,
+
+UCHAR* HeadBuffer,
+
+ULONG HeadSize,
+
+UCHAR* Buffer,
+
+ULONG BufferSize,
+
+ULONG PacketSize);
+
+
+
+INT
+
+ARPRcvPacket (NDIS_HANDLE BindContext,
+
+PNDIS_PACKET Packet);
+
+
+
+搜索这两个函数地址的代码如下：
+
+
+
+//以下全局变量保存两个函数的地址
+
+void* ARPRcv=NULL; 
+
+void* ARPRcvPacket=NULL;
+
+
+
+void SearchProtocolRoutine()
+
+{
+
+
+
+//以下分别为两个收包函数的特征码
+
+UCHAR ARPRcvBytes[] ={0x8b,0xff,0x55,0x8b,0xec,0x56,0x8b,0x75,0x08,0x33};
+
+UCHAR ARPRcvPacketBytes[]={0x8b,0xff,0x55,0x8b,0xec,0x51,0x53,0x56,0x57,0x8b};
+
+
+
+
+
+//获取tcpip.sys模块的基地址，该函数在前一节已经提供给大家
+
+char* base=FindModule("tcpip.sys");
+
+
+
+while(ARPRcv==NULL||ARPRcvPacket==NULL)
+
+{
+
+if(ARPRcv==NULL&&
+
+RtlCompareMemory(ARPRcvBytes,base,10)==10)
+
+
+
+{
+
+ARPRcv=base;
+
+}
+
+
+
+else if(ARPRcvPacket==NULL&&
+
+RtlCompareMemory(ARPRcvPacketBytes,base,10)==10)
+
+{
+
+
+
+ARPRcvPacket=base;
+
+
+
+}
+
+
+
+base ;
+
+
+
+}
+
+
+
+}
+
+
+
+各种编译器所编译的函数，前几个指令都是几乎一样的，用来建立堆栈帧，这些指令叫函数的序言。
+
+在win2000上是三字节
+
+push ebp
+
+mov ebp, esp
+
+
+
+到了winxp以及后续系统上，则变成了五字节
+
+mov edi, edi
+
+push ebp
+
+mov ebp, esp
+
+
+
+而一个近跳转指令刚好是五字节，在xp上刚好覆盖了函数的序言，所以在XP上挂钩也相对轻易一点，这里着重说明如何对ARPRcv进行挂钩，我们在ARPRcv内部插入一个jmp指令，将跳到ARPRcvProx函数，该函数是个裸函数，函数实现如下：
+
+
+
+_declspec(naked) ARPRcvProx()//跳板函数
+
+{
+
+_asm
+
+{
+
+mov edi, edi
+
+push ebp
+
+mov ebp ,esp
+
+
+
+//七个参数开始压栈
+
+push [ebp 20h]
+
+push [ebp 1ch]
+
+push [ebp 18h]
+
+push [ebp 14h]
+
+push [ebp 10h]
+
+push [ebp 0ch]
+
+push [ebp 8]
+
+
+
+call NewARPRcv //调用NewARPRcv函数
+
+
+
+
+
+cmp eax,0x10003 //判定函数返回值是否NDIS_STATUS_NOT_ACCEPTED
+
+
+
+
+
+jz end //假如是NDIS_STATUS_NOT_ACCEPTED，直接结束本函数
+
+//而不跳回到ARPRcv函数
+
+
+
+
+
+mov eax,ARPRcv //假如返回的不是NDIS_STATUS_NOT_ACCEPTED，将会
+
+//执行到这条指令，该指令将 ARPRcv函数的地址装入eax
+
+
+
+add eax,5 //将ARPRcv地址值加上5，存入eax，表示即将跳转的//地址
+
+jmp eax //开始跳回ARPRcv体内
+
+
+
+end: 
+
+pop ebp
+
+retn 1ch
+
+
+
+
+
+}
+
+
+
+}
+
+
+
+在该函数内部，又调用了NewARPRcv函数，原型和ARPRcv保持一致，也必须由我们自己实现：
+
+
+
+NDIS_STATUS 
+
+NewARPRcv(
+
+IN NDIS_HANDLE ProtocolBindingContext,
+
+IN NDIS_HANDLE MacReceiveContext,
+
+IN PVOID HeaderBuffer,
+
+IN UINT HeaderBufferSize,
+
+IN PVOID LookAheadBuffer,
+
+IN UINT LookaheadBufferSize,
+
+IN UINT PacketSize
+
+)
+
+{
+
+
+
+/*
+
+
+
+在这里加入你的判定逻辑代码，是否拦截该数据
+
+假如要拦截，则返回 NDIS_STATUS_NOT_ACCEPTED
+
+否则返回NDIS_STATUS_SUCCESS，把数据交给ARPRcv处理
+
+
+
+*/
+
+return NDIS_STATUS_SUCCESS;
+
+}
+
+
+
+同样的原理，我们在ARPRcvPacket里面插入jmp指令，将跳转到ARPRcvPacketProx裸函数，该函数实现如下：
+
+_declspec(naked) ARPRcvPacketProx()
+
+{
+
+
+
+_asm
+
+{
+
+mov edi, edi
+
+push ebp
+
+mov ebp ,esp
+
+
+
+//两个参数开始压栈
+
+push [ebp 0ch]
+
+push [ebp 8]
+
+
+
+call NewARPRcvPacket//调用NewARPRcvPacket 
+
+
+
+cmp eax,0 //假如返回0则表示拒绝该数据包
+
+jz end //直接返回本函数
+
+
+
+mov eax ,ARPRcvPacket
+
+add eax ,5
+
+jmp eax //跳回ARPRcvPacket函数第六个字节
+
+
+
+end: pop ebp
+
+retn 8
+
+
+
+
+
+}
+
+}
+
+
+
+在该函数内部，将会调用NewARPRcvPacket,函数实现如下：
+
+INT 
+
+NewARPRcvPacket(NDIS_HANDLE BindContext,
+
+PNDIS_PACKET ndisPacket)
+
+{
+
+
+
+/*
+
+在这里加入你的判定逻辑，是否拦截该数据，假如要拦截，则返回0，
+
+
+
+否则返回非0
+
+*/
+
+
+
+DbgPrint("RcvPacket");
+
+return 1;
+
+
+
+}
+
+
+
+请仔细阅读以上代码的注释，接下来，我们还必须提供一个函数实现安装和卸载挂钩功能
+
+
+
+void PatchARPRcv(BOOLEAN isPatch)//isPatch为TRUE表示安装挂钩，为FALSE表示卸载挂钩。
+
+{
+
+
+
+/*即将用以下五个字节覆盖ARPRcv函数前五个字节 
+
+这5个字节就是jmp XXXX指令的机器码，因为跳转的相对地址还需要
+
+进一步计算，所以暂时用零填充
+
+
+
+*/
+
+
+
+UCHAR patchBytes[5]={0xe9,0x00,0x00,0x00,0x00};
+
+
+
+
+
+
+
+//即将用以下五个字节覆盖ARPRcvPacket函数前五个字节
+
+UCHAR patchBytes2[5]={0xe9,0x00,0x00,0x00,0x00};
+
+
+
+//保存原始函数的前五个字节，方便以后恢复挂钩
+
+UCHAR restoreBytes[5]={0x8b,0xff,0x55,0x8b,0xec};
+
+
+
+
+
+/* 
+
+以下两行代码计算跳转的偏移量
+
+*/
+
+
+
+int offset=(char*)ARPRcvProx-(char*)ARPRcv-5;
+
+int offset2=(char*)ARPRcvPacketProx-(char*)ARPRcvPacket-5;
+
+
+
+
+
+//修正patchBytes和patchBytes2中的相对地址
+
+memcpy(patchBytes 1,&offset,4);
+
+memcpy(patchBytes2 1,&offset2,4);
+
+
+
+
+
+
+
+if(isPatch)
+
+{
+
+DisableWriteProtect();//禁止写保护
+
+
+
+memcpy(ARPRcv,patchBytes,5);
+
+memcpy(ARPRcvPacket,patchBytes2,5);
+
+
+
+EnableWriteProtect(); //开启写保护
+
+}
+
+
+
+else
+
+{
+
+
+
+DisableWriteProtect(); 
+
+
+
+memcpy(ARPRcv,restoreBytes,5);
+
+memcpy(ARPRcvPacket,restoreBytes,5);
+
+
+
+EnableWriteProtect();
+
+
+
+
+
+}
+
+
+
+}
+
+因为ARPRcv和ARPRcvPacket函数处于只读页，所以必须先禁用写保护才能向其中插入代码，禁用写保护和开启写保护代码如下：
+
+
+
+void
+
+DisableWriteProtect()
+
+{
+
+
+
+_asm{ 
+
+cli 
+
+mov eax, cr0 
+
+and eax, 0FFFEFFFFh
+
+mov cr0, eax 
+
+
+
+} 
+
+
+
+}
+
+
+
+void
+
+EnableWriteProtect()
+
+{
+
+
+
+_asm{ 
+
+
+
+mov eax, cr0 
+
+or eax, not 0FFFEFFFFh 
+
+mov cr0, eax 
+
+sti
+
+}
+
+}
+
+
+
+注重这些代码暂时只适用XP系统，在win2000和win2003上都需要少许改动。
