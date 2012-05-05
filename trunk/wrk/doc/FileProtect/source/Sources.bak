@@ -1,7 +1,0 @@
-TARGETNAME=wrkFilter
-TARGETTYPE=FS
-TARGETPATH=OBJ
-
-SOURCES=KrnlLib.cpp			\
-				FileFilter.cpp	\
-				FastIoFlt.cpp				
