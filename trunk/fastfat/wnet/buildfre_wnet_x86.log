@@ -1,0 +1,6 @@
+BUILD: Computing Include file dependencies:
+BUILD: Examining d:\winddk\7600.16385.0\src\filesys\fastfat\wnet directory for files to compile.
+oacr invalidate wdksamples:x86fre /autocleanqueue
+1>Compiling and Linking d:\winddk\7600.16385.0\src\filesys\fastfat\wnet *************
+1>'nmake.exe /nologo BUILDMSG=Stop. -i BUILD_PASS=PASS2 LINKONLY=1 NOPASS0=1 MAKEDIR_RELATIVE_TO_BASEDIR=src\filesys\fastfat\wnet'
+1>BUILDMSG: _NT_TARGET_VERSION SET TO WS03
