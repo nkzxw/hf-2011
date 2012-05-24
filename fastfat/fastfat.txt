@@ -1,0 +1,453 @@
+kd> bu fastfat!FatFsdCreate
+kd> bu fastfat!FatFsdClose
+kd> bu fastfat!FatFsdRead
+kd> bu fastfat!FatFsdWrite
+kd> bu fastfat!FatFsdQueryInformation
+kd> bu fastfat!FatFsdSetInformation
+kd> bu fastfat!FatFsdQueryEa
+kd> bu fastfat!FatFsdSetEa
+kd> bu fastfat!FatFsdFlushBuffers
+kd> bu fastfat!FatFsdQueryVolumeInformation
+kd> bu fastfat!FatFsdSetVolumeInformation
+kd> bu fastfat!FatFsdCleanup
+kd> bu fastfat!FatFsdDirectoryControl
+kd> bu fastfat!FatFsdFileSystemControl
+kd> bu fastfat!FatFsdLockControl
+kd> bu fastfat!FatFsdDeviceControl
+kd> bu fastfat!FatFsdShutdown
+kd> bu fastfat!FatFsdPnp
+
+DriverEntry 
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f79621b8 808ed241 84a92d68 84bdf000 00000000 Fastfat!DriverEntry [e:\google\fastfat\wnet\fatinit.c @ 86]
+f7962288 808ed355 8000021c 00000001 00000000 nt!IopLoadDriver+0x687 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 4228]
+f79622b0 80991a9b 8000021c f7962338 f79623b4 nt!IopLoadUnloadDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 4656]
+f796232c 8088283c f79623bc f79623c4 8082c5f5 nt!NtLoadDriver+0x143 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\loadunld.c @ 146]
+f796232c 8082c5f5 f79623bc f79623c4 8082c5f5 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+f79623a8 f778315b f79623bc 84c8c840 84c8c840 nt!ZwLoadDriver+0x11 [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\sysstubs.asm @ 924]
+f79623c4 f77839b3 c000010e f7783906 84c8c840 Fs_Rec!FsRecLoadFileSystem+0x4f
+f79623ec f77830b0 84c8c840 84ac1078 84eaaf38 Fs_Rec!FatRecFsControl+0x35
+f79623fc 8081f8a3 84c8c840 84ac1078 84c8c840 Fs_Rec!FsRecFsControl+0x6c
+f7962410 808ed918 84da6a40 8089f540 84bd4ea0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f796243c 808edc0c 84c8c840 80a46150 84bd4ea0 nt!IopLoadFileSystemDriver+0x60 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 4563]
+f7962490 80822fec c000019c 84f34100 00000000 nt!IopMountVolume+0x2ca [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 5040]
+f79624bc 808ee646 84f341b0 84bd4e01 f79625f8 nt!IopCheckVpbMounted+0x5a [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 151]
+f79625b4 809241d1 84bd4ea0 00000000 84ea6508 nt!IopParseDevice+0x3d4 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 867]
+f7962634 80920538 00000000 f7962674 00000240 nt!ObpLookupObjectName+0x5a7 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obdir.c @ 2567]
+f7962688 808e1119 00000000 00000000 00021c00 nt!ObOpenObjectByName+0xe8 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obref.c @ 773]
+f7962704 808e31cd f79628dc 00120089 f7962884 nt!IopCreateFile+0x447 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 5594]
+f7962760 808e6037 f79628dc 00120089 f7962884 nt!IoCreateFile+0xa1 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 4892]
+f79627a0 8088283c f79628dc 00120089 f7962884 nt!NtOpenFile+0x25 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\open.c @ 87]
+f79627a0 8082c799 f79628dc 00120089 f7962884 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+
+FatFsdFileSystemControl 
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f7962338 8081f8a3 84beba50 8477e208 8477e36c Fastfat!FatFsdFileSystemControl [e:\google\fastfat\wnet\fsctrl.c @ 536]
+f796234c f733023e 847205f8 8477e208 8477e208 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f79623c0 f7330644 847205f8 8477e208 8477e36c fltMgr!FltpFsControlMountVolume+0x186
+f79623f0 8081f8a3 847205f8 8477e208 8477e390 fltMgr!FltpFsControl+0x5a
+f7962404 f74ef27c 84da6a40 8471b7b8 84bd4ea0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f796242c 8081f8a3 84b2bbf0 8477e208 8477e208 Dfs!DfsFilterFsControl+0x82
+f7962440 808edaf4 80a46150 84bd4ea0 80a461d0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f7962490 80822fec 84b2bbf0 84f34100 00000000 nt!IopMountVolume+0x1b2 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 4934]
+f79624bc 808ee646 84f341b0 84bd4e01 f79625f8 nt!IopCheckVpbMounted+0x5a [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 151]
+f79625b4 809241d1 84bd4ea0 00000000 84ea6508 nt!IopParseDevice+0x3d4 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 867]
+f7962634 80920538 00000000 f7962674 00000240 nt!ObpLookupObjectName+0x5a7 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obdir.c @ 2567]
+f7962688 808e1119 00000000 00000000 00021c00 nt!ObOpenObjectByName+0xe8 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obref.c @ 773]
+f7962704 808e31cd f79628dc 00120089 f7962884 nt!IopCreateFile+0x447 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 5594]
+f7962760 808e6037 f79628dc 00120089 f7962884 nt!IoCreateFile+0xa1 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 4892]
+f79627a0 8088283c f79628dc 00120089 f7962884 nt!NtOpenFile+0x25 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\open.c @ 87]
+f79627a0 8082c799 f79628dc 00120089 f7962884 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+f7962830 f74c0e09 f79628dc 00120089 f7962884 nt!ZwOpenFile+0x11 [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\sysstubs.asm @ 1092]
+f79629ac f74c1069 8490ff10 e160dd00 8490ff10 MountMgr!OnlineMountedVolumes+0x121
+f79629c8 f74c35a5 8490ff10 e160dd00 f74b9400 MountMgr!ReconcileThisDatabaseWithMaster+0x75
+f7962ca4 f74c3635 8490ff10 f7962d74 00000000 MountMgr!MountMgrMountedDeviceArrival+0xa21
+
+Fastfat!FatFsdCleanup:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f7961f88 8081f8a3 849b7020 84c3e7d8 84c3e7d8 Fastfat!FatFsdCleanup [e:\google\fastfat\wnet\cleanup.c @ 73]
+f7961f9c 808ef8cc 84a921e0 8500be70 00000001 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f7961fcc 809215c8 84fd87a8 849b7020 00000001 nt!IopCloseFile+0x2ac [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\objsup.c @ 390]
+f7961ffc 80920f2f 84fd87a8 84a921f8 8500be70 nt!ObpDecrementHandleCount+0x108 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obhandle.c @ 2466]
+f7962024 80920fc6 e1003e38 84a921f8 00000230 nt!ObpCloseHandleTableEntry+0x12f [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obclose.c @ 200]
+f7962068 808e13e3 00000230 00000000 849b7118 nt!ObpCloseHandle+0x80 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obclose.c @ 289]
+f796209c 808e325c 84a921f8 80000230 00000000 nt!IoCreateStreamFileObjectEx+0x103 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 6020]
+f79620b0 bab01bcc 00000000 84bd4ea0 4d38b603 nt!IoCreateStreamFileObject+0x10 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 5864]
+f7962134 baafd333 84be0540 849b7118 84bd4808 Fastfat!FatInitializeVcb+0x1a2 [e:\google\fastfat\wnet\strucsup.c @ 388]
+f79622cc baafec7f 84be0540 84bd4808 847d0098 Fastfat!FatMountVolume+0x1f9 [e:\google\fastfat\wnet\fsctrl.c @ 1016]
+f79622ec baafed28 84be0540 8477e208 4d38b40f Fastfat!FatCommonFileSystemControl+0x3f [e:\google\fastfat\wnet\fsctrl.c @ 674]
+f7962338 8081f8a3 84beba50 8477e208 8477e36c Fastfat!FatFsdFileSystemControl+0x82 [e:\google\fastfat\wnet\fsctrl.c @ 590]
+f796234c f733023e 847205f8 8477e208 8477e208 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f79623c0 f7330644 847205f8 8477e208 8477e36c fltMgr!FltpFsControlMountVolume+0x186
+f79623f0 8081f8a3 847205f8 8477e208 8477e390 fltMgr!FltpFsControl+0x5a
+f7962404 f74ef27c 84da6a40 8471b7b8 84bd4ea0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f796242c 8081f8a3 84b2bbf0 8477e208 8477e208 Dfs!DfsFilterFsControl+0x82
+f7962440 808edaf4 80a46150 84bd4ea0 80a461d0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f7962490 80822fec 84b2bbf0 84f34100 00000000 nt!IopMountVolume+0x1b2 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 4934]
+f79624bc 808ee646 84f341b0 84bd4e01 f79625f8 nt!IopCheckVpbMounted+0x5a [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 151]
+
+Fastfat!FatFsdRead:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f7961f30 8081f8a3 849b7020 84c3e7d8 84c3e7d8 Fastfat!FatFsdRead [e:\google\fastfat\wnet\read.c @ 142]
+f7961f44 80820179 848232f0 84da6a40 848232e0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f7961f5c 8084bae8 84a92106 84823318 848232f8 nt!IoPageRead+0x107 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 9266]
+f7961fe0 80856b66 00000001 c4640000 c0311900 nt!MiDispatchFault+0xd28 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\pagfault.c @ 1241]
+f796203c 808857d8 00000000 c4640000 00000000 nt!MmAccessFault+0x648 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\mmfault.c @ 845]
+f796203c 808ab1fa 00000000 c4640000 00000000 nt!_KiTrap0E+0xdc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 5527]
+f7962104 baaeca2a 84a921f8 f7962128 0000003e nt!CcMapData+0x8c [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\cache\pinsup.c @ 203]
+f7962130 baafd359 84be0540 849b7118 00000000 Fastfat!FatReadVolumeFile+0x3a [e:\google\fastfat\wnet\cachesup.c @ 128]
+f79622cc baafec7f 84be0540 84bd4808 847d0098 Fastfat!FatMountVolume+0x21f [e:\google\fastfat\wnet\fsctrl.c @ 1037]
+f79622ec baafed28 84be0540 8477e208 4d38b40f Fastfat!FatCommonFileSystemControl+0x3f [e:\google\fastfat\wnet\fsctrl.c @ 674]
+f7962338 8081f8a3 84beba50 8477e208 8477e36c Fastfat!FatFsdFileSystemControl+0x82 [e:\google\fastfat\wnet\fsctrl.c @ 590]
+f796234c f733023e 847205f8 8477e208 8477e208 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f79623c0 f7330644 847205f8 8477e208 8477e36c fltMgr!FltpFsControlMountVolume+0x186
+f79623f0 8081f8a3 847205f8 8477e208 8477e390 fltMgr!FltpFsControl+0x5a
+f7962404 f74ef27c 84da6a40 8471b7b8 84bd4ea0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f796242c 8081f8a3 84b2bbf0 8477e208 8477e208 Dfs!DfsFilterFsControl+0x82
+f7962440 808edaf4 80a46150 84bd4ea0 80a461d0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f7962490 80822fec 84b2bbf0 84f34100 00000000 nt!IopMountVolume+0x1b2 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 4934]
+f79624bc 808ee646 84f341b0 84bd4e01 f79625f8 nt!IopCheckVpbMounted+0x5a [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 151]
+f79625b4 809241d1 84bd4ea0 00000000 84ea6508 nt!IopParseDevice+0x3d4 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 867]
+
+Fastfat!FatFsdPnp:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f7962058 8081f8a3 849b7020 84c3e7d8 f79620e4 Fastfat!FatFsdPnp [e:\google\fastfat\wnet\pnp.c @ 97]
+f796206c 8097d9d2 845c6438 f79620e4 849b7020 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f7962098 80950e2e 849b7020 f79620c0 f79620b8 nt!IopSynchronousCall+0xbc
+f79620e8 80950eac 845c6438 f79620f8 00000000 nt!IopGetRelatedTargetDevice+0x60
+f79620fc 808de25a 845c6438 f7962118 84be0540 nt!IoGetRelatedTargetDevice+0x14
+f7962140 baafd8b6 845c6438 00000006 4d38b5fb nt!FsRtlNotifyVolumeEvent+0x1e [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\fsrtl\pnp.c @ 74]
+f79622cc baafec7f 84be0540 84bd4808 847d0098 Fastfat!FatMountVolume+0x77c [e:\google\fastfat\wnet\fsctrl.c @ 1595]
+f79622ec baafed28 84be0540 8477e208 4d38b40f Fastfat!FatCommonFileSystemControl+0x3f [e:\google\fastfat\wnet\fsctrl.c @ 674]
+f7962338 8081f8a3 84beba50 8477e208 8477e36c Fastfat!FatFsdFileSystemControl+0x82 [e:\google\fastfat\wnet\fsctrl.c @ 590]
+f796234c f733023e 847205f8 8477e208 8477e208 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f79623c0 f7330644 847205f8 8477e208 8477e36c fltMgr!FltpFsControlMountVolume+0x186
+f79623f0 8081f8a3 847205f8 8477e208 8477e390 fltMgr!FltpFsControl+0x5a
+f7962404 f74ef27c 84da6a40 8471b7b8 84bd4ea0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f796242c 8081f8a3 84b2bbf0 8477e208 8477e208 Dfs!DfsFilterFsControl+0x82
+f7962440 808edaf4 80a46150 84bd4ea0 80a461d0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f7962490 80822fec 84b2bbf0 84f34100 00000000 nt!IopMountVolume+0x1b2 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 4934]
+f79624bc 808ee646 84f341b0 84bd4e01 f79625f8 nt!IopCheckVpbMounted+0x5a [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 151]
+f79625b4 809241d1 84bd4ea0 00000000 84ea6508 nt!IopParseDevice+0x3d4 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 867]
+f7962634 80920538 00000000 f7962674 00000240 nt!ObpLookupObjectName+0x5a7 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obdir.c @ 2567]
+f7962688 808e1119 00000000 00000000 00021c00 nt!ObOpenObjectByName+0xe8 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obref.c @ 773]
+
+Fastfat!FatFsdCreate:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f7962478 8081f8a3 849b7020 8477e208 845cd5b0 Fastfat!FatFsdCreate [e:\google\fastfat\wnet\create.c @ 258]
+f796248c f7330458 847d1c78 845cd5b0 84b2fbd8 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f79624b8 8081f8a3 84d357b8 8477e208 8477e208 fltMgr!FltpCreate+0xe4
+f79624cc 808eeca7 f7962674 84bd4e88 00000000 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f79625b4 809241d1 84bd4ea0 00000000 84ea6508 nt!IopParseDevice+0xa35 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 1382]
+f7962634 80920538 00000000 f7962674 00000240 nt!ObpLookupObjectName+0x5a7 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obdir.c @ 2567]
+f7962688 808e1119 00000000 00000000 00021c00 nt!ObOpenObjectByName+0xe8 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obref.c @ 773]
+f7962704 808e31cd f79628dc 00120089 f7962884 nt!IopCreateFile+0x447 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 5594]
+f7962760 808e6037 f79628dc 00120089 f7962884 nt!IoCreateFile+0xa1 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 4892]
+f79627a0 8088283c f79628dc 00120089 f7962884 nt!NtOpenFile+0x25 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\open.c @ 87]
+f79627a0 8082c799 f79628dc 00120089 f7962884 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+f7962830 f74c0e09 f79628dc 00120089 f7962884 nt!ZwOpenFile+0x11 [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\sysstubs.asm @ 1092]
+f79629ac f74c1069 8490ff10 e160dd00 8490ff10 MountMgr!OnlineMountedVolumes+0x121
+f79629c8 f74c35a5 8490ff10 e160dd00 f74b9400 MountMgr!ReconcileThisDatabaseWithMaster+0x75
+f7962ca4 f74c3635 8490ff10 f7962d74 00000000 MountMgr!MountMgrMountedDeviceArrival+0xa21
+f7962cc8 80951123 f7962d28 8490ff10 ffdffa7c MountMgr!MountMgrMountedDeviceNotification+0x4d
+f7962cf0 80951e86 f74c35e8 f7962d28 8490ff10 nt!PiNotifyDriverCallback+0x6d
+f7962d54 80976c10 e16601f8 e166021c f7962d74 nt!IopNotifyDeviceClassChange+0x12a
+f7962d80 80818943 84b396a8 00000000 84da6a40 nt!PiWalkDeviceList+0x1b2
+f7962dac 80930c70 84b396a8 00000000 00000000 nt!ExpWorkerThread+0xe9 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ex\worker.c @ 1183]
+
+Fastfat!FatFsdQueryInformation:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba8a5c70 8081f8a3 849b7020 849161e8 845cd5b0 Fastfat!FatFsdQueryInformation [e:\google\fastfat\wnet\fileinfo.c @ 215]
+ba8a5c84 f7322c45 845cd5b0 845dcc08 8081734f nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba8a5cac 8081f8a3 84d357b8 849161e8 849161e8 fltMgr!FltpDispatch+0x6f
+ba8a5cc0 808e6d1f ba8a5d64 0135f558 808e6896 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba8a5d48 8088283c 00000330 0135f560 0135f9a0 nt!NtQueryInformationFile+0x489 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\qsinfo.c @ 702]
+ba8a5d48 7c9585ec 00000330 0135f560 0135f9a0 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+WARNING: Stack unwind information not available. Following frames may be wrong.
+0135fbb4 7c8266e2 00000330 0135fbf0 002bc260 ntdll+0x285ec
+0135fc38 76a90b4b 002bc018 002bc21c 00000042 0x7c8266e2
+0135fc70 76a91311 0000031c 00000000 00000000 0x76a90b4b
+0135fcac 76a916c1 0135fd00 002b8890 002b8890 0x76a91311
+0135fcc4 76a99982 0135fd00 00000000 0135fd00 0x76a916c1
+0135fcdc 76a9a057 0135fd00 00000000 002b81f0 0x76a99982
+0135ff0c 76a93e11 002b81f4 7c823eee 76a9f460 0x76a9a057
+0135ff3c 76a9550b 00000000 76a9f044 76a9f048 0x76a93e11
+0135ff50 76a8bf6a 002b81f4 00000000 0008458c 0x76a9550b
+0135ff70 010012a4 00000001 000a6aec 00000000 0x76a8bf6a
+0135ffa4 77f45e91 00000001 000a6aec 00000000 0x10012a4
+0135ffb8 7c824829 000a6ae0 00000000 00000000 0x77f45e91
+0135ffec 00000000 77f45e70 000a6ae0 00000000 0x7c824829
+
+Fastfat!FatFsdQueryVolumeInformation:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba8a5c5c 8081f8a3 849b7020 849161e8 845cd5b0 Fastfat!FatFsdQueryVolumeInformation [e:\google\fastfat\wnet\volinfo.c @ 113]
+ba8a5c70 f7322c45 845cd5b0 849161e8 00000000 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba8a5c98 8081f8a3 84d357b8 849161e8 849161e8 fltMgr!FltpDispatch+0x6f
+ba8a5cac 808ec017 84916330 849161e8 849d1ed8 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba8a5cc0 808e7fcf 84d357b8 849161e8 849d1ed8 nt!IopSynchronousServiceTail+0x109 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 7502]
+ba8a5d48 8088283c 00000330 0135fbe8 000bc9b0 nt!NtQueryVolumeInformationFile+0x3af [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\qsfs.c @ 520]
+ba8a5d48 7c9585ec 00000330 0135fbe8 000bc9b0 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+WARNING: Stack unwind information not available. Following frames may be wrong.
+0135fc38 76a90b4b 002bc018 002bc21c 00000042 ntdll!KiFastSystemCallRet
+0135fc70 76a91311 0000031c 00000000 00000000 shsvcs!CVolume::_UpdateMediaInfo+0xfd
+0135fcac 76a916c1 0135fd00 002b8890 002b8890 shsvcs!CVolume::_InitHelper+0x17a
+0135fcc4 76a99982 0135fd00 00000000 0135fd00 shsvcs!CVolume::Init+0x5b
+0135fcdc 76a9a057 0135fd00 00000000 002b81f0 shsvcs!CNamedElemList::_Add+0x22
+0135ff0c 76a93e11 002b81f4 7c823eee 76a9f460 shsvcs!CNamedElemList::ReEnum+0xe0
+0135ff3c 76a9550b 00000000 76a9f044 76a9f048 shsvcs!CHWEventDetectorImpl::_RegisterForNotif+0x21
+0135ff50 76a8bf6a 002b81f4 00000000 0008458c shsvcs!CHWEventDetectorImpl::InitFinal+0x5c
+0135ff70 010012a4 00000001 000a6aec 00000000 shsvcs!CGenericServiceManager::_ServiceMain+0xcc
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for ADVAPI32.dll - 
+0135ffa4 77f45e91 00000001 000a6aec 00000000 svchost!ServiceStarter+0x9e
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for kernel32.dll - 
+0135ffb8 7c824829 000a6ae0 00000000 00000000 ADVAPI32!LookupPrivilegeValueW+0xca
+0135ffec 00000000 77f45e70 000a6ae0 00000000 kernel32!GetModuleHandleA+0xdf
+
+Fastfat!FatFsdClose:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba8a5c2c 8081f8a3 849b7020 849161e8 845cd5b0 Fastfat!FatFsdClose [e:\google\fastfat\wnet\close.c @ 99]
+ba8a5c40 f7322c45 845cd5b0 849161e8 849d1e07 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba8a5c68 8081f8a3 84d357b8 849161e8 849161f8 fltMgr!FltpDispatch+0x6f
+ba8a5c7c 808efa78 80a45be4 00000000 849d1ec0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba8a5cb4 8091ffec 009d1ed8 849d1ec0 00000000 nt!IopDeleteFile+0x138 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\objsup.c @ 635]
+ba8a5ccc 808687e1 849d1ed8 00000000 00000330 nt!ObpRemoveObjectRoutine+0xdc [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obref.c @ 2762]
+ba8a5cec 80920f37 e1a691c0 845de5e0 845dca00 nt!ObfDereferenceObject+0x65 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obref.c @ 2504]
+ba8a5d04 80920fc6 e1a691c0 849d1ed8 00000330 nt!ObpCloseHandleTableEntry+0x137 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obclose.c @ 206]
+ba8a5d48 809210df 00000330 00000001 ba8a5d64 nt!ObpCloseHandle+0x80 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obclose.c @ 289]
+ba8a5d58 8088283c 00000330 0135fc38 7c9585ec nt!NtClose+0x19 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obclose.c @ 422]
+ba8a5d58 7c9585ec 00000330 0135fc38 7c9585ec nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+WARNING: Stack unwind information not available. Following frames may be wrong.
+0135fc38 76a90b4b 002bc018 002bc21c 00000042 ntdll!KiFastSystemCallRet
+0135fc70 76a91311 0000031c 00000000 00000000 shsvcs!CVolume::_UpdateMediaInfo+0xfd
+0135fcac 76a916c1 0135fd00 002b8890 002b8890 shsvcs!CVolume::_InitHelper+0x17a
+0135fcc4 76a99982 0135fd00 00000000 0135fd00 shsvcs!CVolume::Init+0x5b
+0135fcdc 76a9a057 0135fd00 00000000 002b81f0 shsvcs!CNamedElemList::_Add+0x22
+0135ff0c 76a93e11 002b81f4 7c823eee 76a9f460 shsvcs!CNamedElemList::ReEnum+0xe0
+0135ff3c 76a9550b 00000000 76a9f044 76a9f048 shsvcs!CHWEventDetectorImpl::_RegisterForNotif+0x21
+0135ff50 76a8bf6a 002b81f4 00000000 0008458c shsvcs!CHWEventDetectorImpl::InitFinal+0x5c
+0135ff70 010012a4 00000001 000a6aec 00000000 shsvcs!CGenericServiceManager::_ServiceMain+0xcc
+
+Fastfat!FatFsdDeviceControl:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba7a1bfc 8081f8a3 849b7020 8434ecd8 845cd5b0 Fastfat!FatFsdDeviceControl [e:\google\fastfat\wnet\devctrl.c @ 67]
+ba7a1c10 f7322c45 845cd5b0 8434ecd8 84e09f90 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a1c38 8081f8a3 84d357b8 8434ecd8 84e09f90 fltMgr!FltpDispatch+0x6f
+ba7a1c4c 808ec017 8434ee20 84e09f90 8434ecd8 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a1c60 808ec6c3 84d357b8 8434ecd8 84e09f90 nt!IopSynchronousServiceTail+0x109 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 7502]
+ba7a1d00 808e50fc 000001a4 00000000 00000000 nt!IopXxxControlFile+0x5db [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 9221]
+ba7a1d34 8088283c 000001a4 00000000 00000000 nt!NtDeviceIoControlFile+0x28 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\devctrl.c @ 104]
+ba7a1d34 7c9585ec 000001a4 00000000 00000000 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+WARNING: Stack unwind information not available. Following frames may be wrong.
+00cdf704 0041800b 000001a4 002d1400 00cdfa5c ntdll!KiFastSystemCallRet
+00cdfb44 7c959f59 78134c39 003a0000 00000000 0x41800b
+00cdfbe0 7c95a124 003a06e8 72655320 65636976 ntdll!RtlFreeHeap+0x142
+00cdfc1c 7c821f47 003a0000 00000000 00000000 ntdll!RtlAllocateHeap+0x14e
+00cdfd10 7c959fb5 003a78e0 00cdfdfc 7c959f3d kernel32!CreateFileMappingW+0xd0
+00000000 00000000 00000000 00000000 00000000 ntdll!RtlGetNtGlobalFlags+0x38
+
+Fastfat!FatFsdDirectoryControl:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba39cca8 8081f8a3 849b7020 84bae008 845cd5b0 Fastfat!FatFsdDirectoryControl [e:\google\fastfat\wnet\dirctrl.c @ 92]
+ba39ccbc f7322c45 845cd5b0 84bae008 ba39cc74 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba39cce4 8081f8a3 84d357b8 84bae008 019ade2c fltMgr!FltpDispatch+0x6f
+ba39ccf8 808ec017 ba39cd64 019ade2c 808e5cf2 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba39cd0c 808e5d4d 84d357b8 84bae008 84b2f0d8 nt!IopSynchronousServiceTail+0x109 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 7502]
+ba39cd30 8088283c 0000050c 00000000 00000000 nt!NtQueryDirectoryFile+0x5b [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\dir.c @ 856]
+ba39cd30 7c9585ec 0000050c 00000000 00000000 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for SHELL32.dll - 
+WARNING: Stack unwind information not available. Following frames may be wrong.
+019ae100 7ca53919 019ae3a8 00000000 0014b084 ntdll!KiFastSystemCallRet
+019ae124 7ca538b3 019ae3a8 0014b084 0014ae74 SHELL32!SHGetSetSettings+0x1238
+019ae378 7ca5f580 0005003c 00000000 019ae3a8 SHELL32!SHGetSetSettings+0x11d2
+019ae5c8 7ca5f45a 00148750 00148738 019ae5f0 SHELL32!SHExtractIconsW+0xc10
+019ae5d8 7ca5f41a 000bee68 0005003c 000000e0 SHELL32!SHExtractIconsW+0xaea
+019ae5f0 7ca4c356 000bee78 0005003c 000000e0 SHELL32!SHExtractIconsW+0xaaa
+019ae624 7ca45268 0005003c 001373c4 001373a8 SHELL32!Ordinal237+0x1286
+019ae678 7787a816 00000003 00000000 001373a8 SHELL32!PathResolve+0x13ba
+019ae724 7787a59b 000d72e8 001373a8 0014a1a8 0x7787a816
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for USER32.dll - 
+019ae824 77e2c5b0 77e2c5bc 00000000 00137008 0x7787a59b
+019ae828 77e2c5bc 00000000 00137008 00000000 USER32!IsWindowVisible+0x22
+019ae8d8 7ca6509d 00149334 7ca1c1e8 7ca1c1e8 USER32!IsWindowVisible+0x2e
+019ae91c 7ca8d4b2 000d72d8 00000000 000d72e8 SHELL32!Ordinal740+0x1ef7
+
+Fastfat!FatFsdWrite:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba63c14c 8081f8a3 849b7020 84bbe5f0 845cd5b0 Fastfat!FatFsdWrite [e:\google\fastfat\wnet\write.c @ 96]
+ba63c160 f7322c45 845cd5b0 84bbe5f0 ba63c18c nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba63c188 8081f8a3 84d357b8 84bbe5f0 00000001 fltMgr!FltpDispatch+0x6f
+ba63c19c 808ec017 84bbe738 00000001 84bbe5f0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba63c1b0 808e94dc 84d357b8 84bbe5f0 84de4630 nt!IopSynchronousServiceTail+0x109 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 7502]
+ba63c258 8088283c 00000108 00000000 00000000 nt!NtWriteFile+0x65a [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\write.c @ 785]
+ba63c258 7c9585ec 00000108 00000000 00000000 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+WARNING: Stack unwind information not available. Following frames may be wrong.
+0007f6a0 01004c50 00000108 000b31b8 00000021 ntdll!KiFastSystemCallRet
+0007f6d8 0100503e 00000108 000003a8 00000400 svchost!___PchSym_+0x640
+0007f714 01002822 0003013c 0100ac00 000af558 svchost!___PchSym_+0xa2e
+0007f718 0003013c 0100ac00 000af558 0007f9d8 svchost!SvchostBuildSharedGlobals+0x18c
+0007f944 010035b9 00000000 0007f9d8 01003449 0x3013c
+0007f960 77e2b6e3 0003013c 00000010 00000000 svchost!_NULL_IMPORT_DESCRIPTOR+0x10b
+0007f98c 77e2b874 01003449 0003013c 00000010 USER32!LoadCursorW+0x4cf5
+0007fa04 77e2c8b8 00000000 01003449 0003013c USER32!LoadCursorW+0x4e86
+0007fa60 77e2c9c6 0055bde0 00000010 00000000 USER32!GetMessageW+0x9f
+0007fa88 7c958536 0007faa0 00000018 0007fb5c USER32!GetClientRect+0x4a
+0007fb08 77e2c6ae 0003013c 00000112 0000f060 ntdll!KiUserCallbackDispatcher+0x2e
+0007fb24 77e2c718 0003013c 00000112 0000f060 USER32!ReleaseDC+0x79
+0007fb6c 010038e2 0003013c 00000112 0000f060 USER32!DefWindowProcW+0x61
+
+Fastfat!FatFsdSetInformation:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba63c190 8081f8a3 849b7020 84bbe5f0 845cd5b0 Fastfat!FatFsdSetInformation [e:\google\fastfat\wnet\fileinfo.c @ 291]
+ba63c1a4 f7322c45 845cd5b0 84bbe738 8081734f nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba63c1cc 8081f8a3 84d357b8 84bbe5f0 8431d9b0 fltMgr!FltpDispatch+0x6f
+ba63c1e0 808e7443 ba63c284 0007f6c0 808e6e98 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba63c268 8088283c 00000108 0007f6c8 0007f6d8 nt!NtSetInformationFile+0x5ab [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\qsinfo.c @ 1470]
+ba63c268 7c9585ec 00000108 0007f6c8 0007f6d8 nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+WARNING: Stack unwind information not available. Following frames may be wrong.
+0007f6e8 0100512f 00000108 0100ac00 00000000 ntdll!KiFastSystemCallRet
+0007f714 01002822 0003013c 0100ac00 000af558 svchost!___PchSym_ <PERF> (svchost+0x512f)
+0007f718 0003013c 0100ac00 000af558 0007f9d8 svchost!SvchostBuildSharedGlobals+0x18c
+0007f944 010035b9 00000000 0007f9d8 01003449 0x3013c
+0007f960 77e2b6e3 0003013c 00000010 00000000 svchost!_NULL_IMPORT_DESCRIPTOR+0x10b
+0007f98c 77e2b874 01003449 0003013c 00000010 USER32!LoadCursorW+0x4cf5
+0007fa04 77e2c8b8 00000000 01003449 0003013c USER32!LoadCursorW+0x4e86
+0007fa60 77e2c9c6 0055bde0 00000010 00000000 USER32!GetMessageW+0x9f
+0007fa88 7c958536 0007faa0 00000018 0007fb5c USER32!GetClientRect+0x4a
+0007fb08 77e2c6ae 0003013c 00000112 0000f060 ntdll!KiUserCallbackDispatcher+0x2e
+0007fb24 77e2c718 0003013c 00000112 0000f060 USER32!ReleaseDC+0x79
+0007fb6c 010038e2 0003013c 00000112 0000f060 USER32!DefWindowProcW+0x61
+0007fb94 77e2b6e3 0003013c 00000112 0000f060 svchost!_NULL_IMPORT_DESCRIPTOR+0x478
+0007fbc0 77e2b874 01003449 0003013c 00000112 USER32!LoadCursorW+0x4cf5
+
+Fastfat!FatFsdWrite:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f78beabc 8081f8a3 849b7020 84bbe5f0 845cd5b0 Fastfat!FatFsdWrite [e:\google\fastfat\wnet\write.c @ 96]
+f78bead0 f7322c45 845cd5b0 84de4630 84d35707 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78beaf8 8081f8a3 84d357b8 84bbe5f0 00000000 fltMgr!FltpDispatch+0x6f
+f78beb0c 80820a89 00000000 84aaa858 f78beb48 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78beb20 80833cdc 84de4607 f78beb48 f78bec04 nt!IoSynchronousPageWrite+0xad [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 12184]
+f78bec30 80834e4d e1ae8098 e1ae809c 84aaa858 nt!MiFlushSectionInternal+0x67c [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\flushsec.c @ 2068]
+f78bec74 8080f72e 84aaa820 f78bec00 00001000 nt!MmFlushSection+0x20f [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\flushsec.c @ 1041]
+f78becfc 8080fa9f 00001000 00000000 00000001 nt!CcFlushCache+0x3a4 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\cache\cachesub.c @ 4916]
+f78bed40 80812414 84fd3b40 8089dd40 84fce6e8 nt!CcWriteBehind+0x119 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\cache\cachesub.c @ 4022]
+f78bed80 80818943 84fce6e8 00000000 84fd3b40 nt!CcWorkerThread+0x12c [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\cache\lazyrite.c @ 982]
+f78bedac 80930c70 84fce6e8 00000000 00000000 nt!ExpWorkerThread+0xe9 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ex\worker.c @ 1183]
+f78beddc 8088730e 8081885a 00000000 00000000 nt!PspSystemThreadStartup+0x2e [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ps\create.c @ 2214]
+00000000 00000000 00000000 00000000 00000000 nt!KiThreadStartup+0x16 [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\threadbg.asm @ 78]
+
+Fastfat!FatFsdWrite:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba7a1460 8081f8a3 849b7020 849dc908 845cd5b0 Fastfat!FatFsdWrite [e:\google\fastfat\wnet\write.c @ 96]
+ba7a1474 f7322c45 845cd5b0 845c6438 84d35707 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a149c 8081f8a3 84d357b8 849dc908 00000000 fltMgr!FltpDispatch+0x6f
+ba7a14b0 80820a89 00000000 845c63e0 ba7a14ec nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a14c4 80833cdc 845c6407 ba7a14ec ba7a15a8 nt!IoSynchronousPageWrite+0xad [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 12184]
+ba7a15d4 80834e7b e16727f8 e16727fc 845c63e0 nt!MiFlushSectionInternal+0x67c [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\flushsec.c @ 2068]
+ba7a1618 8080f72e 845c63a8 ba7a1600 00001000 nt!MmFlushSection+0x23d [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\flushsec.c @ 1064]
+ba7a16a0 baafb5ba 00001000 00000000 00000000 nt!CcFlushCache+0x3a4 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\cache\cachesub.c @ 4916]
+ba7a16c8 baafb841 84be0540 84720a90 00000001 Fastfat!FatFlushFile+0x20 [e:\google\fastfat\wnet\flush.c @ 958]
+ba7a172c baafb8cd 84be0540 84720a90 00000001 Fastfat!FatFlushDirectory+0x249 [e:\google\fastfat\wnet\flush.c @ 652]
+ba7a1748 baaee535 84be0540 849b7118 00000001 Fastfat!FatFlushVolume+0x27 [e:\google\fastfat\wnet\flush.c @ 895]
+ba7a1798 baaf0872 84be0540 84aaa8b0 849b7118 Fastfat!FatOpenVolume+0xc3 [e:\google\fastfat\wnet\create.c @ 2082]
+ba7a19c4 baaf1848 84be0540 84bae008 00d48d3f Fastfat!FatCommonCreate+0x3ea [e:\google\fastfat\wnet\create.c @ 707]
+ba7a1a08 8081f8a3 019b7020 84bae008 845cd5b0 Fastfat!FatFsdCreate+0x52 [e:\google\fastfat\wnet\create.c @ 296]
+ba7a1a1c f7330458 84aaa8b0 845cd5b0 84b2fbd8 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a1a48 8081f8a3 84d357b8 84bae008 84bae008 fltMgr!FltpCreate+0xe4
+ba7a1a5c 808eeca7 ba7a1c04 84bd4e88 00000000 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a1b44 809241d1 84bd4ea0 00000000 84b25a58 nt!IopParseDevice+0xa35 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 1382]
+ba7a1bc4 80920538 00000000 ba7a1c04 00000040 nt!ObpLookupObjectName+0x5a7 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obdir.c @ 2567]
+ba7a1c18 808e1119 00000000 00000000 88884f01 nt!ObOpenObjectByName+0xe8 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obref.c @ 773]
+
+Fastfat!FatFsdWrite:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba7a14f0 8081f8a3 849b7020 849dc908 845cd5b0 Fastfat!FatFsdWrite [e:\google\fastfat\wnet\write.c @ 96]
+ba7a1504 f7322c45 845cd5b0 84a921f8 84d35707 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a152c 8081f8a3 84d357b8 849dc908 00004000 fltMgr!FltpDispatch+0x6f
+ba7a1540 80820a89 00000000 84d35470 ba7a157c nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a1554 80833cdc 84a92107 ba7a157c ba7a1638 nt!IoSynchronousPageWrite+0xad [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 12184]
+ba7a1664 80834e7b e1672c10 e1672c14 84d35470 nt!MiFlushSectionInternal+0x67c [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\flushsec.c @ 2068]
+ba7a16a8 8080e8e4 84d35438 849d6400 00001000 nt!MmFlushSection+0x23d [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\flushsec.c @ 1064]
+ba7a16d0 baafb49d 849d64f0 00000001 ba7a16f4 nt!CcUnpinRepinnedBcb+0x60 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\cache\cachesub.c @ 5398]
+ba7a1730 baafb8dc 84be0540 849b7118 849b7118 Fastfat!FatFlushFat+0x121 [e:\google\fastfat\wnet\flush.c @ 797]
+ba7a1748 baaee535 84be0540 849b7118 00000001 Fastfat!FatFlushVolume+0x36 [e:\google\fastfat\wnet\flush.c @ 906]
+ba7a1798 baaf0872 84be0540 84aaa8b0 849b7118 Fastfat!FatOpenVolume+0xc3 [e:\google\fastfat\wnet\create.c @ 2082]
+ba7a19c4 baaf1848 84be0540 84bae008 00d48d3f Fastfat!FatCommonCreate+0x3ea [e:\google\fastfat\wnet\create.c @ 707]
+ba7a1a08 8081f8a3 019b7020 84bae008 845cd5b0 Fastfat!FatFsdCreate+0x52 [e:\google\fastfat\wnet\create.c @ 296]
+ba7a1a1c f7330458 84aaa8b0 845cd5b0 84b2fbd8 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a1a48 8081f8a3 84d357b8 84bae008 84bae008 fltMgr!FltpCreate+0xe4
+ba7a1a5c 808eeca7 ba7a1c04 84bd4e88 00000000 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba7a1b44 809241d1 84bd4ea0 00000000 84b25a58 nt!IopParseDevice+0xa35 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\parse.c @ 1382]
+ba7a1bc4 80920538 00000000 ba7a1c04 00000040 nt!ObpLookupObjectName+0x5a7 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obdir.c @ 2567]
+ba7a1c18 808e1119 00000000 00000000 88884f01 nt!ObOpenObjectByName+0xe8 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ob\obref.c @ 773]
+ba7a1c94 808e31cd 00cdf6d4 80100080 00cdf670 nt!IopCreateFile+0x447 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 5594]
+
+Fastfat!FatFsdFlushBuffers:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+ba731a0c 8081f8a3 849b7020 849dc908 845cd5b0 Fastfat!FatFsdFlushBuffers [e:\google\fastfat\wnet\flush.c @ 87]
+ba731a20 f7322c45 845cd5b0 849dc908 00000000 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba731a48 8081f8a3 84d357b8 849dc908 84bad978 fltMgr!FltpDispatch+0x6f
+ba731a5c 808ec017 84de4e90 849dc908 844cd590 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+ba731a70 808e429b 84d357b8 849dc908 84de4e90 nt!IopSynchronousServiceTail+0x109 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\internal.c @ 7502]
+ba731ae4 8088283c 800002cc ba731b98 ba731dac nt!NtFlushBuffersFile+0x1b5 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\misc.c @ 611]
+ba731ae4 8082c465 800002cc ba731b98 ba731dac nt!KiFastCallEntry+0xfc [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\trap.asm @ 1369]
+ba731b64 8096aaa7 800002cc ba731b98 00000000 nt!ZwFlushBuffersFile+0x11 [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\sysstubs.asm @ 764]
+ba731dac 80930c70 f6fa3ab0 00000000 00000000 nt!PopFlushVolumeWorker+0x153
+ba731ddc 8088730e 8096a954 f6fa3ab0 00000000 nt!PspSystemThreadStartup+0x2e [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ps\create.c @ 2214]
+00000000 00000000 00000000 00000000 00000000 nt!KiThreadStartup+0x16 [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\threadbg.asm @ 78]
+
+Fastfat!FatFsdShutdown:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f78cac9c 8081f8a3 84beba50 844ca5d0 844ca5d0 Fastfat!FatFsdShutdown [e:\google\fastfat\wnet\shutdown.c @ 61]
+f78cacb0 f7322c45 845cd5b0 84beba50 80802ec0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78cacd8 8081f8a3 847205f8 844ca5d0 8471b7b8 fltMgr!FltpDispatch+0x6f
+f78cacec f74e8b33 f78cad08 8081f8a3 84b2bbf0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78cacf4 8081f8a3 84b2bbf0 844ca5d0 8089f648 Dfs!DfsPassThrough+0x43
+f78cad08 80821b0d 00000001 8089dd40 00000000 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78cad34 80998efb 84b2bbf0 00000001 8089dd40 nt!IopShutdownBaseFileSystems+0x8b [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 11464]
+f78cad64 809a070c 00000001 84fd33f0 8089dd40 nt!IoShutdownSystem+0xdb [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 11332]
+f78cad80 80818943 00000000 00000000 84fd33f0 nt!PopGracefulShutdown+0x156
+f78cadac 80930c70 00000000 00000000 00000000 nt!ExpWorkerThread+0xe9 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ex\worker.c @ 1183]
+f78caddc 8088730e 8081885a 00000000 00000000 nt!PspSystemThreadStartup+0x2e [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\ps\create.c @ 2214]
+00000000 00000000 00000000 00000000 00000000 nt!KiThreadStartup+0x16 [E:\wrk\wrk1.2\wrk-v1.2\base\ntos\ke\i386\threadbg.asm @ 78]
+
+Fastfat!FatFsdWrite:
+kd> kb
+ChildEBP RetAddr  Args to Child              
+f78ca944 8081f8a3 849b7020 84e4a008 845cd5b0 Fastfat!FatFsdWrite [e:\google\fastfat\wnet\write.c @ 96]
+f78ca958 f7322c45 845cd5b0 84a921f8 84d35707 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78ca980 8081f8a3 84d357b8 84e4a008 00004000 fltMgr!FltpDispatch+0x6f
+f78ca994 80820a89 00000000 84d35470 f78ca9d0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78ca9a8 80833cdc 84a92107 f78ca9d0 f78caa8c nt!IoSynchronousPageWrite+0xad [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 12184]
+f78caab8 80834e7b e1672c10 e1672c14 84d35470 nt!MiFlushSectionInternal+0x67c [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\flushsec.c @ 2068]
+f78caafc 8080e8e4 84d35438 84d90f00 00001000 nt!MmFlushSection+0x23d [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\mm\flushsec.c @ 1064]
+f78cab24 baaea6f0 84d90f80 00000001 f78cab54 nt!CcUnpinRepinnedBcb+0x60 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\cache\cachesub.c @ 5398]
+f78cab34 baaea690 4d223cbf 84e4a008 849b7118 Fastfat!FatSetFatEntry+0x2f6 [e:\google\fastfat\wnet\allocsup.c @ 3868]
+f78cab88 baae5e25 84be0540 849b7118 00000001 Fastfat!FatSetFatEntry+0x296 [e:\google\fastfat\wnet\allocsup.c @ 3877]
+f78cac00 bab0122e 84be0540 849b7118 00000000 Fastfat!FatMarkVolume+0x2c1 [e:\google\fastfat\wnet\verfysup.c @ 1078]
+f78cac54 bab01393 84be0540 844ca5d0 4d223bab Fastfat!FatCommonShutdown+0xd4 [e:\google\fastfat\wnet\shutdown.c @ 219]
+f78cac9c 8081f8a3 84beba50 844ca5d0 844ca5d0 Fastfat!FatFsdShutdown+0x3b [e:\google\fastfat\wnet\shutdown.c @ 81]
+f78cacb0 f7322c45 845cd5b0 84beba50 80802ec0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78cacd8 8081f8a3 847205f8 844ca5d0 8471b7b8 fltMgr!FltpDispatch+0x6f
+f78cacec f74e8b33 f78cad08 8081f8a3 84b2bbf0 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78cacf4 8081f8a3 84b2bbf0 844ca5d0 8089f648 Dfs!DfsPassThrough+0x43
+f78cad08 80821b0d 00000001 8089dd40 00000000 nt!IofCallDriver+0x43 [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 2253]
+f78cad34 80998efb 84b2bbf0 00000001 8089dd40 nt!IopShutdownBaseFileSystems+0x8b [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 11464]
+f78cad64 809a070c 00000001 84fd33f0 8089dd40 nt!IoShutdownSystem+0xdb [e:\wrk\wrk1.2\wrk-v1.2\base\ntos\io\iomgr\iosubs.c @ 11332]
