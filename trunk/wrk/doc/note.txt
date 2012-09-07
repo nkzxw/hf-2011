@@ -1,0 +1,40 @@
+ke\i386
+    kernlini.c -> KiInitlizeKernel ->ExpInitializeExecutive
+init
+    ExpInitializeExecutive -> HalInitSystem + ExInitSystem + ObInitSystem + SeInitSystem + PsInitSystem + PpInitSystem
+
+     ->  Phase1Initialization -> Phase1InitializationDiscard
+ 
+     Phase1InitializationDiscard -> PoInitSystem + ObInitSystem + ExInitSystem + KeInitSystem + KdInitSystem + SeInitSystem
+Ps
+     PsInitSystem -> PspInitPhase0 + PspInitPhase1 -> (CreateSystemThread)Phase1Initialization
+
+
+
+
+ExpInitializeExecutive 
+PsInitSystem 
+Phase1Initialization 
+
+第一个系统线程执行系统初始化
+nt!PsInitSystem+0x3 [e:\wrk\base\ntos\ps\psinit.c @ 175]
+nt!ExpInitializeExecutive+0x4cd [e:\wrk\base\ntos\init\initos.c @ 835]
+nt!KiInitializeKernel+0x4be [e:\wrk\base\ntos\ke\i386\kernlini.c @ 888]
+nt!KiSystemStartup+0x2d6 [E:\wrk\base\ntos\ke\i386\newsysbg.asm @ 547]
+
+PsInitSystem 创建一个系统线程执行系统初始化
+nt!Phase1InitializationDiscard+0xc [e:\wrk\base\ntos\init\initos.c @ 980]
+nt!Phase1Initialization+0xb [e:\wrk\base\ntos\init\initos.c @ 929]
+nt!PspSystemThreadStartup+0x2e [e:\wrk\base\ntos\ps\create.c @ 2214]
+nt!KiThreadStartup+0x16 [E:\wrk\base\ntos\ke\i386\threadbg.asm @ 78]
+
+
+nt!PspInitPhase1+0x5 [e:\wrk\base\ntos\ps\psinit.c @ 572]
+nt!PsInitSystem+0x27 [e:\wrk\base\ntos\ps\psinit.c @ 180]
+nt!Phase1InitializationDiscard+0x757 [e:\wrk\base\ntos\init\initos.c @ 1604]
+nt!Phase1Initialization+0xb [e:\wrk\base\ntos\init\initos.c @ 929]
+nt!PspSystemThreadStartup+0x2e [e:\wrk\base\ntos\ps\create.c @ 2214]
+nt!KiThreadStartup+0x16 [E:\wrk\base\ntos\ke\i386\threadbg.asm @ 78]
+
+
+
