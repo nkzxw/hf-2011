@@ -1,7 +1,0 @@
-CreateDirectory
-
-RemoveDirectory
-
-FindFirstFile
-
-FindNextFile
